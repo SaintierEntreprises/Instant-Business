@@ -24,6 +24,7 @@
 		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
 		6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
 		765F61B32FC37861330E14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
+		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
 		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
 		7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */; };
 		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		0941CD3482DDC4B77D47F75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessApp.swift; sourceTree = "<group>"; };
+		116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
 		22B4B87701458F70F79A76CE /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessWidgetBundle.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				BC69EC37E218974E125EB582 /* ContentView.swift */,
+				BE9F7761B2802BF9E922ACC4 /* Components */,
 				D5FA5B8B3334741002550E92 /* Favorites */,
 				50BF522F7E2F5EC6A3797141 /* Home */,
 				6D0A22DCE1600886C34FAB67 /* Onboarding */,
@@ -257,6 +260,14 @@
 				22B4B87701458F70F79A76CE /* PaywallView.swift */,
 			);
 			path = Paywall;
+			sourceTree = "<group>";
+		};
+		BE9F7761B2802BF9E922ACC4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D5FA5B8B3334741002550E92 /* Favorites */ = {
@@ -394,6 +405,7 @@
 				BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */,
 				0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */,
 				46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */,
+				7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */,
 				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
 				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
 				F130446E75628E913CF52C8E /* SettingsView.swift in Sources */,

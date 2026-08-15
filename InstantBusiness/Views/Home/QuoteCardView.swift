@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct QuoteCardView: View {
     let quote: Quote
@@ -9,19 +10,28 @@ struct QuoteCardView: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [quote.category.tint.opacity(0.95), quote.category.tint.opacity(0.55)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+            LinearGradient(
+                colors: [quote.category.tint.opacity(0.95), quote.category.tint.opacity(0.55)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            Text("“")
+                .font(.system(size: 170, weight: .black))
+                .foregroundStyle(.white.opacity(0.08))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(.leading, 4)
+                .padding(.top, -20)
+                .allowsHitTesting(false)
 
             VStack(alignment: .leading, spacing: 20) {
-                Label(quote.category.displayName, systemImage: quote.category.symbolName)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.white.opacity(0.85))
+                Text(quote.category.displayName.uppercased())
+                    .font(.caption2.weight(.bold))
+                    .tracking(0.6)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.white.opacity(0.18), in: Capsule())
 
                 Spacer()
 
@@ -45,12 +55,21 @@ struct QuoteCardView: View {
                                 .frame(width: 44, height: 44)
                                 .contentShape(Rectangle())
                         }
-                        Button(action: onShare) {
+                        .buttonStyle(.pressable)
+                        .symbolEffect(.bounce, value: isFavorite)
+                        .sensoryFeedback(.impact(weight: .medium), trigger: isFavorite)
+
+                        Button {
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            onShare()
+                        } label: {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.title2)
                                 .frame(width: 44, height: 44)
                                 .contentShape(Rectangle())
                         }
+                        .buttonStyle(.pressable)
+
                         Spacer()
                     }
                     .foregroundStyle(.white)
@@ -58,8 +77,13 @@ struct QuoteCardView: View {
             }
             .padding(28)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(.white.opacity(0.18), lineWidth: 1)
+        }
         .aspectRatio(3 / 4, contentMode: .fit)
-        .shadow(color: .black.opacity(0.15), radius: 12, y: 8)
+        .shadow(color: quote.category.tint.opacity(0.35), radius: 20, y: 12)
     }
 }
 

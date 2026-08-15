@@ -2,9 +2,10 @@ import SwiftUI
 
 struct CardFeedView: View {
     @EnvironmentObject private var favorites: FavoritesStore
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var selectedCategory: QuoteCategory?
     @State private var displayedQuotes: [Quote] = []
-    @State private var selectedQuoteID: String?
+    @State private var scrollPosition: String?
     @State private var shareItem: ShareItem?
     @State private var showPaywall = false
 
@@ -15,19 +16,31 @@ struct CardFeedView: View {
                     showPaywall = true
                 }
 
-                TabView(selection: $selectedQuoteID) {
-                    ForEach(displayedQuotes) { quote in
-                        QuoteCardView(
-                            quote: quote,
-                            isFavorite: favorites.isFavorite(quote),
-                            onToggleFavorite: { favorites.toggle(quote) },
-                            onShare: { shareItem = ShareItem(quote: quote) }
-                        )
-                        .padding(.horizontal, 24)
-                        .tag(quote.id as String?)
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(displayedQuotes) { quote in
+                            QuoteCardView(
+                                quote: quote,
+                                isFavorite: favorites.isFavorite(quote),
+                                onToggleFavorite: { favorites.toggle(quote) },
+                                onShare: { shareItem = ShareItem(quote: quote) }
+                            )
+                            .padding(.horizontal, 4)
+                            .scrollTransition(axis: .horizontal) { content, phase in
+                                content
+                                    .scaleEffect(reduceMotion || phase.isIdentity ? 1 : 0.9)
+                                    .opacity(phase.isIdentity ? 1 : 0.55)
+                            }
+                            .containerRelativeFrame(.horizontal, count: 1, spacing: 20)
+                            .id(quote.id)
+                        }
                     }
+                    .scrollTargetLayout()
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
+                .contentMargins(.horizontal, 24, for: .scrollContent)
+                .scrollTargetBehavior(.paging)
+                .scrollIndicators(.hidden)
+                .scrollPosition(id: $scrollPosition)
             }
             .navigationTitle("Instant Business")
             .onAppear { reshuffle() }
@@ -46,7 +59,7 @@ struct CardFeedView: View {
     private func reshuffle() {
         let pool = selectedCategory.map(ContentStore.quotes(in:)) ?? ContentStore.allQuotes
         displayedQuotes = ContentStore.shuffledAvoidingAdjacentAuthors(pool)
-        selectedQuoteID = displayedQuotes.first?.id
+        scrollPosition = displayedQuotes.first?.id
     }
 }
 
