@@ -39,19 +39,26 @@ struct QuoteTimelineProvider: AppIntentTimelineProvider {
     func timeline(for configuration: QuoteWidgetConfigurationIntent, in context: Context) async -> Timeline<QuoteEntry> {
         let calendar = Calendar.current
         let now = Date()
-        let midnight = calendar.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTime) ?? now.addingTimeInterval(86_400)
-        let noon = calendar.nextDate(after: now, matching: DateComponents(hour: 12, minute: 0), matchingPolicy: .nextTime) ?? now.addingTimeInterval(43_200)
-        let nextRefresh = min(midnight, noon)
+        let seed = SharedDefaults.rotationSeed
+        let category = configuration.category.quoteCategory
+        let length = maxLength(for: context.family)
 
-        let entry = QuoteEntry(
-            date: now,
-            quote: ContentStore.quoteOfTheDay(
-                category: configuration.category.quoteCategory,
-                maxLength: maxLength(for: context.family)
-            ),
-            theme: configuration.theme
-        )
-        return Timeline(entries: [entry], policy: .after(nextRefresh))
+        // One entry per hour for the next day: WidgetKit switches between them on its own
+        // as each `date` is reached, no extra reload needed in between.
+        var hourComponents = calendar.dateComponents([.year, .month, .day, .hour], from: now)
+        hourComponents.minute = 0
+        hourComponents.second = 0
+        let currentHour = calendar.date(from: hourComponents) ?? now
+
+        let entries: [QuoteEntry] = (0..<24).map { offset in
+            let entryDate = calendar.date(byAdding: .hour, value: offset, to: currentHour) ?? now
+            let unit = ContentStore.hourSlot(for: entryDate)
+            let quote = ContentStore.rotatingQuote(seed: seed, unit: unit, category: category, maxLength: length)
+            return QuoteEntry(date: entryDate, quote: quote, theme: configuration.theme)
+        }
+
+        let nextReload = calendar.date(byAdding: .hour, value: 24, to: currentHour) ?? now.addingTimeInterval(86_400)
+        return Timeline(entries: entries, policy: .after(nextReload))
     }
 }
 

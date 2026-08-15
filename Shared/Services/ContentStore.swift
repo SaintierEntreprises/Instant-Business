@@ -70,6 +70,30 @@ enum ContentStore {
         return pool[index]
     }
 
+    /// Per-user rotating quote: `seed` (one random value per installation) picks a fixed
+    /// shuffle order for the pool, and `unit` (e.g. an hour count) walks through it. Same
+    /// (seed, unit) always yields the same quote, so the widget and the notification
+    /// scheduler agree on "what's showing right now" without sharing any other state.
+    static func rotatingQuote(seed: Int, unit: Int, category: QuoteCategory? = nil, maxLength: Int? = nil) -> Quote? {
+        var pool = category.map(quotes(in:)) ?? allQuotes
+        if let maxLength {
+            let short = pool.filter { $0.text.count <= maxLength }
+            if !short.isEmpty { pool = short }
+        }
+        guard !pool.isEmpty else { return nil }
+
+        var generator = SeededGenerator(seed: stableHash("\(seed)-\(category?.rawValue ?? "all")-\(maxLength ?? 0)"))
+        let order = pool.indices.shuffled(using: &generator)
+        let index = order[((unit % order.count) + order.count) % order.count]
+        return pool[index]
+    }
+
+    /// Number of whole hours since a fixed epoch — a stable, ever-increasing "hour slot"
+    /// shared by anyone computing it for the same instant.
+    static func hourSlot(for date: Date = Date()) -> Int {
+        Int(date.timeIntervalSince1970 / 3600)
+    }
+
     private static func stableHash(_ string: String) -> Int {
         var hash: UInt64 = 0xcbf29ce484222325
         for byte in string.utf8 {

@@ -11,13 +11,23 @@ enum SharedDefaults {
         static let lastOpenDate = "lastOpenDate"
         static let widgetTheme = "widgetTheme"
         static let widgetCategory = "widgetCategory"
-        static let notificationHour = "notificationHour"
-        static let notificationMinute = "notificationMinute"
         static let notificationsEnabled = "notificationsEnabled"
         static let isPremium = "isPremium"
         static let cardTheme = "cardTheme"
         static let quizProfile = "quizProfile"
         static let preferredCategories = "preferredCategories"
+        static let rotationSeed = "rotationSeed"
+    }
+
+    /// Per-installation random seed used to derive an hourly quote rotation that's
+    /// stable across app/widget/notifications but different from one user to the next.
+    static var rotationSeed: Int {
+        if let existing = suite.object(forKey: Keys.rotationSeed) as? Int {
+            return existing
+        }
+        let generated = Int.random(in: Int.min...Int.max)
+        suite.set(generated, forKey: Keys.rotationSeed)
+        return generated
     }
 
     static var cardTheme: CardTheme {
@@ -60,16 +70,6 @@ enum SharedDefaults {
     static var widgetCategory: QuoteCategory? {
         get { (suite.string(forKey: Keys.widgetCategory)).flatMap(QuoteCategory.init(rawValue:)) }
         set { suite.set(newValue?.rawValue, forKey: Keys.widgetCategory) }
-    }
-
-    static var notificationHour: Int {
-        get { suite.object(forKey: Keys.notificationHour) as? Int ?? 8 }
-        set { suite.set(newValue, forKey: Keys.notificationHour) }
-    }
-
-    static var notificationMinute: Int {
-        get { suite.object(forKey: Keys.notificationMinute) as? Int ?? 0 }
-        set { suite.set(newValue, forKey: Keys.notificationMinute) }
     }
 
     static var notificationsEnabled: Bool {

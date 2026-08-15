@@ -44,7 +44,7 @@ struct OnboardingView: View {
         .onChange(of: authManager.session != nil) { _, isSignedIn in
             guard isSignedIn else { return }
             Task {
-                await notificationManager.enable(hour: 8, minute: 0)
+                await notificationManager.enable()
                 complete()
             }
         }

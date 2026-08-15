@@ -7,16 +7,9 @@ struct SettingsView: View {
     @State private var showThemePicker = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
-    @State private var notificationTime = SettingsView.time(
-        hour: SharedDefaults.notificationHour,
-        minute: SharedDefaults.notificationMinute
-    )
     @State private var streak = SharedDefaults.streakCount
     @State private var showPaywall = false
     @State private var isSigningOut = false
-
-    private static let defaultFreeHour = 8
-    private static let defaultFreeMinute = 0
 
     var body: some View {
         NavigationStack {
@@ -61,7 +54,7 @@ struct SettingsView: View {
                     }
                 }
 
-                Section("Notifications") {
+                Section {
                     Toggle(isOn: $notificationsEnabled) {
                         HStack(spacing: 12) {
                             SettingsIconBadge(systemName: "bell.fill", color: .red)
@@ -71,54 +64,17 @@ struct SettingsView: View {
                     .onChange(of: notificationsEnabled) { _, newValue in
                         Task {
                             if newValue {
-                                let hour = store.isPremium
-                                    ? Calendar.current.component(.hour, from: notificationTime)
-                                    : Self.defaultFreeHour
-                                let minute = store.isPremium
-                                    ? Calendar.current.component(.minute, from: notificationTime)
-                                    : Self.defaultFreeMinute
-                                await notificationManager.enable(hour: hour, minute: minute)
+                                await notificationManager.enable()
                                 notificationsEnabled = SharedDefaults.notificationsEnabled
                             } else {
                                 notificationManager.disable()
                             }
                         }
                     }
-
-                    if notificationsEnabled {
-                        if store.isPremium {
-                            DatePicker(selection: $notificationTime, displayedComponents: .hourAndMinute) {
-                                HStack(spacing: 12) {
-                                    SettingsIconBadge(systemName: "clock.fill", color: .indigo)
-                                    Text("Heure")
-                                }
-                            }
-                            .onChange(of: notificationTime) { _, newValue in
-                                Task {
-                                    await notificationManager.enable(
-                                        hour: Calendar.current.component(.hour, from: newValue),
-                                        minute: Calendar.current.component(.minute, from: newValue)
-                                    )
-                                }
-                            }
-                        } else {
-                            HStack {
-                                HStack(spacing: 12) {
-                                    SettingsIconBadge(systemName: "clock.fill", color: .indigo)
-                                    Text("Heure")
-                                }
-                                Spacer()
-                                Text("8h00")
-                                    .foregroundStyle(.secondary)
-                            }
-                            Button {
-                                showPaywall = true
-                            } label: {
-                                Label("Choisir l'heure avec Premium", systemImage: "lock.fill")
-                                    .font(.footnote)
-                            }
-                        }
-                    }
+                } header: {
+                    Text("Notifications")
+                } footer: {
+                    Text("Ta citation du jour à minuit, plus une citation aléatoire toutes les 6h — synchronisée avec ce que montre ton widget.")
                 }
 
                 Section("Abonnement") {
@@ -156,6 +112,19 @@ struct SettingsView: View {
                     }
                 }
 
+                Section("Légal") {
+                    ForEach(LegalDocument.allCases) { document in
+                        NavigationLink {
+                            LegalDocumentView(document: document)
+                        } label: {
+                            HStack(spacing: 12) {
+                                SettingsIconBadge(systemName: document.icon, color: .gray)
+                                Text(document.title)
+                            }
+                        }
+                    }
+                }
+
                 Section("Compte") {
                     HStack(spacing: 12) {
                         SettingsIconBadge(systemName: "person.fill", color: .blue)
@@ -190,10 +159,6 @@ struct SettingsView: View {
                 CardThemePickerView()
             }
         }
-    }
-
-    private static func time(hour: Int, minute: Int) -> Date {
-        Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: Date()) ?? Date()
     }
 }
 
