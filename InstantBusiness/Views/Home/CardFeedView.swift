@@ -41,6 +41,10 @@ struct CardFeedView: View {
                 .scrollTargetBehavior(.paging)
                 .scrollIndicators(.hidden)
                 .scrollPosition(id: $scrollPosition)
+                .aspectRatio(3 / 4, contentMode: .fit)
+                .frame(maxHeight: 520)
+
+                Spacer(minLength: 0)
             }
             .navigationTitle("Instant Business")
             .onAppear { reshuffle() }

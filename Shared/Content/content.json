@@ -3106,5 +3106,305 @@
     "text": "Dire la vérité est la meilleure campagne marketing.",
     "author": "Richie Norton",
     "category": "sales"
+  },
+  {
+    "id": "q-0519",
+    "text": "Le bon entrepreneur, c'est vous : il n'y a pas de profil type pour réussir.",
+    "author": "Xavier Niel",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0520",
+    "text": "On peut casser les codes d'un secteur et oser ce que personne n'a osé faire.",
+    "author": "Xavier Niel",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0521",
+    "text": "Entrepreneur est un mot français : ce n'est sûrement pas un hasard.",
+    "author": "Xavier Niel",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0522",
+    "text": "L'échec n'est pas le contraire du succès, c'est une étape nécessaire pour y parvenir.",
+    "author": "Marc Simoncini",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0523",
+    "text": "Le véritable leadership dans une entreprise doit être son modèle économique et social.",
+    "author": "Vincent Bolloré",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0524",
+    "text": "Le cœur a ses raisons que la raison ne connaît point.",
+    "author": "Blaise Pascal",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0525",
+    "text": "L'essentiel est invisible pour les yeux.",
+    "author": "Antoine de Saint-Exupéry",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0526",
+    "text": "Fais de ta vie un rêve, et d'un rêve, une réalité.",
+    "author": "Antoine de Saint-Exupéry",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0527",
+    "text": "L'ambition s'accorde mal avec la paresse.",
+    "author": "La Rochefoucauld",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0528",
+    "text": "L'histoire est la rencontre d'une volonté et d'un événement.",
+    "author": "Charles de Gaulle",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0529",
+    "text": "Ne pas avoir peur d'échouer compte plus que ce qu'on apprend à l'école.",
+    "author": "Sara Blakely",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0530",
+    "text": "Ce qu'on ignore peut devenir notre plus grand atout.",
+    "author": "Sara Blakely",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0531",
+    "text": "Terminé vaut mieux que parfait : mieux vaut avancer qu'attendre la perfection.",
+    "author": "Sheryl Sandberg",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0532",
+    "text": "Demandez-vous : que ferais-je si je n'avais pas peur ? Puis faites-le.",
+    "author": "Sheryl Sandberg",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0533",
+    "text": "Je veux que chaque fillette qu'on a traitée d'autoritaire s'entende dire qu'elle a du leadership.",
+    "author": "Sheryl Sandberg",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0534",
+    "text": "Si vous n'avez pas honte de la première version de votre produit, vous avez lancé trop tard.",
+    "author": "Reid Hoffman",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0535",
+    "text": "L'échec n'est pas l'opposé de la réussite, il en fait partie.",
+    "author": "Arianna Huffington",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0536",
+    "text": "Le succès peut pousser à désapprendre les habitudes qui nous ont fait réussir.",
+    "author": "Satya Nadella",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0537",
+    "text": "Il faut passer d'une culture du tout savoir à une culture du tout apprendre.",
+    "author": "Satya Nadella",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0538",
+    "text": "Le métier des affaires, c'est d'améliorer l'état du monde.",
+    "author": "Satya Nadella",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0539",
+    "text": "On peut se focaliser sur les obstacles, ou se concentrer pour franchir le mur.",
+    "author": "Tim Cook",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0540",
+    "text": "Le poison le plus dangereux, c'est le sentiment d'avoir réussi.",
+    "author": "Ingvar Kamprad",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0541",
+    "text": "Le temps est votre ressource la plus précieuse : une fois perdu, il est perdu pour de bon.",
+    "author": "Ingvar Kamprad",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0542",
+    "text": "Soyez différent : c'est le meilleur conseil qu'on puisse donner à un entrepreneur.",
+    "author": "Anita Roddick",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0543",
+    "text": "Si vous faites bien les choses, faites-les encore mieux.",
+    "author": "Anita Roddick",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0544",
+    "text": "Personne ne voit l'entrepreneuriat comme une survie, pourtant c'est exactement ça.",
+    "author": "Anita Roddick",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0545",
+    "text": "Il est impossible de vivre sans jamais échouer, à moins de vivre trop prudemment pour vivre vraiment.",
+    "author": "J.K. Rowling",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0546",
+    "text": "Notre seul vrai plan stratégique, c'est d'agir, tout simplement.",
+    "author": "Herb Kelleher",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0547",
+    "text": "Le succès est lié à l'action : ceux qui réussissent avancent sans cesse, malgré les erreurs.",
+    "author": "Conrad Hilton",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0548",
+    "text": "Faites des erreurs, mais faites-les plus vite que les autres.",
+    "author": "Andrew Grove",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0549",
+    "text": "Jouez des jeux à long terme, avec des gens qui jouent aussi le long terme.",
+    "author": "Naval Ravikant",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0550",
+    "text": "Recherchez la richesse, pas l'argent ni le statut.",
+    "author": "Naval Ravikant",
+    "category": "finance"
+  },
+  {
+    "id": "q-0551",
+    "text": "Le revenu est la meilleure forme de financement.",
+    "author": "Naval Ravikant",
+    "category": "finance"
+  },
+  {
+    "id": "q-0552",
+    "text": "Dans une startup, l'exécution est tout.",
+    "author": "Paul Graham",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0553",
+    "text": "N'embauchez pas de génies toxiques : le coût pour l'esprit d'équipe est trop élevé.",
+    "author": "Reed Hastings",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0554",
+    "text": "Recruter les bons talents est la clé la plus importante de la croissance.",
+    "author": "Marc Benioff",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0555",
+    "text": "Mon but n'est pas d'échouer vite, mais de réussir sur la durée : ce n'est pas la même chose.",
+    "author": "Marc Andreessen",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0556",
+    "text": "Les mauvais managers embauchent de très mauvais employés car ils se sentent menacés par les meilleurs.",
+    "author": "Marc Andreessen",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0557",
+    "text": "Chaque décision difficile mais juste vous rend un peu plus courageux.",
+    "author": "Ben Horowitz",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0558",
+    "text": "Un fondateur doit croire qu'une solution existe et la chercher, sans se soucier des probabilités.",
+    "author": "Ben Horowitz",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0559",
+    "text": "Toute grande entreprise repose sur un secret caché du reste du monde.",
+    "author": "Peter Thiel",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0560",
+    "text": "La concurrence tue les profits ; visez plutôt un monopole créatif qui profite à tous.",
+    "author": "Peter Thiel",
+    "category": "finance"
+  },
+  {
+    "id": "q-0561",
+    "text": "On voulait des voitures volantes, on a eu 140 caractères.",
+    "author": "Peter Thiel",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0562",
+    "text": "Si ça ne vend pas, ce n'est pas créatif.",
+    "author": "David Ogilvy",
+    "category": "sales"
+  },
+  {
+    "id": "q-0563",
+    "text": "Dites la vérité, mais rendez-la fascinante : on n'achète pas ce qui nous ennuie.",
+    "author": "David Ogilvy",
+    "category": "sales"
+  },
+  {
+    "id": "q-0564",
+    "text": "Si chacun de nous embauche des gens plus petits que lui, nous deviendrons une entreprise de nains.",
+    "author": "David Ogilvy",
+    "category": "leadership"
+  },
+  {
+    "id": "q-0565",
+    "text": "Les grands battants sont portés non par la quête du succès, mais par la peur de l'échec.",
+    "author": "Larry Ellison",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0566",
+    "text": "Quand on innove, il faut être prêt à ce que tout le monde vous dise que vous êtes fou.",
+    "author": "Larry Ellison",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0567",
+    "text": "Pas besoin d'être un génie ou un visionnaire pour réussir : il faut un cadre et un rêve.",
+    "author": "Michael Dell",
+    "category": "mindset"
+  },
+  {
+    "id": "q-0568",
+    "text": "Les entreprises réussissent ou échouent selon leur capacité à transformer la donnée en décisions.",
+    "author": "Michael Dell",
+    "category": "leadership"
   }
 ]

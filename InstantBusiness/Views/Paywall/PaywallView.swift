@@ -4,60 +4,61 @@ import StoreKit
 struct PaywallView: View {
     @EnvironmentObject private var store: StoreManager
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedProductID: String?
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 24) {
-                    VStack(spacing: 8) {
-                        Image(systemName: "crown.fill")
-                            .font(.system(size: 44))
-                            .foregroundStyle(.orange)
+                VStack(spacing: 28) {
+                    VStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .fill(LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .frame(width: 76, height: 76)
+                                .shadow(color: .orange.opacity(0.35), radius: 20, y: 10)
+                            Image(systemName: "crown.fill")
+                                .font(.system(size: 32))
+                                .foregroundStyle(.white)
+                        }
                         Text("Instant Business Premium")
                             .font(.title2.weight(.bold))
-                        Text("Débloque toutes les catégories, tous les thèmes de widget et les notifications personnalisées.")
+                        Text("Débloque tout le potentiel de l'app")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
                     }
-                    .padding(.top, 16)
+                    .padding(.top, 12)
 
-                    VStack(alignment: .leading, spacing: 14) {
-                        benefitRow(icon: "square.grid.2x2.fill", text: "Toutes les catégories (Vente, Leadership, Finance)")
-                        benefitRow(icon: "paintpalette.fill", text: "Tous les thèmes de widget")
-                        benefitRow(icon: "bell.badge.fill", text: "Heure de notification personnalisée")
+                    VStack(spacing: 14) {
+                        benefitRow(icon: "square.grid.2x2.fill", color: .indigo, title: "Toutes les catégories", subtitle: "Vente, Leadership, Finance")
+                        benefitRow(icon: "paintpalette.fill", color: .pink, title: "Tous les thèmes de widget", subtitle: "Bold, Minimal, Sombre…")
+                        benefitRow(icon: "bell.badge.fill", color: .red, title: "Notification personnalisée", subtitle: "Choisis ton heure idéale")
                     }
                     .padding(.horizontal)
 
                     if store.products.isEmpty {
                         ProgressView()
-                            .padding()
+                            .padding(.vertical, 20)
                     } else {
-                        VStack(spacing: 12) {
+                        VStack(spacing: 10) {
                             ForEach(store.products) { product in
-                                Button {
-                                    Task { await store.purchase(product) }
-                                } label: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(product.displayName)
-                                                .font(.headline)
-                                            Text(product.description)
-                                                .font(.caption)
-                                                .foregroundStyle(.secondary)
-                                        }
-                                        Spacer()
-                                        Text(product.displayPrice)
-                                            .font(.headline)
-                                    }
-                                    .padding()
-                                    .background(Color(.secondarySystemBackground))
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                }
-                                .buttonStyle(.plain)
-                                .foregroundStyle(.primary)
+                                productCard(product)
                             }
                         }
+                        .padding(.horizontal)
+
+                        Button {
+                            guard let product = store.products.first(where: { $0.id == selectedProductID }) ?? store.products.first else { return }
+                            Task { await store.purchase(product) }
+                        } label: {
+                            Text("Continuer")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.accentColor)
+                                .foregroundStyle(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        }
+                        .buttonStyle(PressableButtonStyle(scale: 0.97))
                         .padding(.horizontal)
                     }
 
@@ -65,6 +66,7 @@ struct PaywallView: View {
                         Task { await store.restore() }
                     }
                     .font(.footnote)
+                    .foregroundStyle(.secondary)
                     .padding(.top, 4)
 
                     if let errorMessage = store.errorMessage {
@@ -85,19 +87,75 @@ struct PaywallView: View {
             .onChange(of: store.isPremium) { _, isPremium in
                 if isPremium { dismiss() }
             }
-            .task { await store.refresh() }
+            .task {
+                await store.refresh()
+                if selectedProductID == nil {
+                    selectedProductID = store.products.last?.id ?? store.products.first?.id
+                }
+            }
         }
     }
 
-    private func benefitRow(icon: String, text: String) -> some View {
-        HStack(spacing: 12) {
-            Image(systemName: icon)
-                .foregroundStyle(Color.accentColor)
-                .frame(width: 28)
-            Text(text)
-                .font(.subheadline)
+    private func benefitRow(icon: String, color: Color, title: String, subtitle: String) -> some View {
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(color.gradient)
+                Image(systemName: icon)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 36, height: 36)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.subheadline.weight(.semibold))
+                Text(subtitle).font(.caption).foregroundStyle(.secondary)
+            }
             Spacer()
         }
+    }
+
+    private func productCard(_ product: Product) -> some View {
+        let isSelected = selectedProductID == product.id
+        let isYearly = product.id == StoreManager.yearlyID
+
+        return Button {
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                selectedProductID = product.id
+            }
+        } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 6) {
+                        Text(product.displayName).font(.headline)
+                        if isYearly {
+                            Text("MEILLEUR PRIX")
+                                .font(.system(size: 9, weight: .bold))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 3)
+                                .background(Color.accentColor, in: Capsule())
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    Text(product.description)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(product.displayPrice).font(.headline)
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title3)
+                    .foregroundStyle(isSelected ? Color.accentColor : Color(.tertiaryLabel))
+            }
+            .padding()
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(isSelected ? Color.accentColor : .clear, lineWidth: 2)
+            }
+        }
+        .buttonStyle(PressableButtonStyle(scale: 0.98))
+        .foregroundStyle(.primary)
     }
 }
 

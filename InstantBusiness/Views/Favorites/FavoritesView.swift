@@ -3,6 +3,7 @@ import SwiftUI
 struct FavoritesView: View {
     @EnvironmentObject private var favorites: FavoritesStore
     @State private var shareItem: ShareItem?
+    var onDiscoverTapped: () -> Void = {}
 
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -10,12 +11,7 @@ struct FavoritesView: View {
         NavigationStack {
             ScrollView {
                 if favorites.favoriteQuotes.isEmpty {
-                    ContentUnavailableView(
-                        "Aucun favori",
-                        systemImage: "heart",
-                        description: Text("Appuie sur le cœur d'une citation pour l'ajouter ici.")
-                    )
-                    .padding(.top, 80)
+                    emptyState
                 } else {
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(favorites.favoriteQuotes) { quote in
@@ -37,6 +33,40 @@ struct FavoritesView: View {
                 }
             }
         }
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 20) {
+            ZStack {
+                Circle()
+                    .fill(Color.accentColor.opacity(0.12))
+                    .frame(width: 96, height: 96)
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 36))
+                    .foregroundStyle(Color.accentColor)
+            }
+
+            VStack(spacing: 6) {
+                Text("Aucun favori pour l'instant")
+                    .font(.headline)
+                Text("Appuie sur le cœur d'une citation pour la retrouver ici.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+            }
+
+            Button(action: onDiscoverTapped) {
+                Text("Découvrir des citations")
+                    .font(.subheadline.weight(.semibold))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
+                    .background(Color.accentColor, in: Capsule())
+                    .foregroundStyle(.white)
+            }
+            .buttonStyle(PressableButtonStyle(scale: 0.96))
+        }
+        .padding(.top, 90)
     }
 }
 

@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
@@ -28,18 +29,22 @@ struct OnboardingView: View {
     ]
 
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             TabView(selection: $page) {
                 ForEach(Array(pages.enumerated()), id: \.offset) { index, page in
                     OnboardingPageView(page: page)
                         .tag(index)
                 }
             }
-            .tabViewStyle(.page)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .animation(.spring(response: 0.4, dampingFraction: 0.85), value: page)
+
+            pageDots
 
             Button {
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 if page < pages.count - 1 {
-                    withAnimation { page += 1 }
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) { page += 1 }
                 } else {
                     Task {
                         await notificationManager.enable(hour: 8, minute: 0)
@@ -53,18 +58,29 @@ struct OnboardingView: View {
                     .padding()
                     .background(Color.accentColor)
                     .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
             }
+            .buttonStyle(PressableButtonStyle(scale: 0.97))
             .padding(.horizontal, 24)
 
             if page == pages.count - 1 {
                 Button("Plus tard") { complete() }
                     .font(.footnote)
                     .foregroundStyle(.secondary)
-                    .padding(.top, 8)
             }
         }
         .padding(.bottom, 24)
+    }
+
+    private var pageDots: some View {
+        HStack(spacing: 8) {
+            ForEach(pages.indices, id: \.self) { index in
+                Capsule()
+                    .fill(index == page ? Color.accentColor : Color(.tertiarySystemFill))
+                    .frame(width: index == page ? 20 : 7, height: 7)
+                    .animation(.spring(response: 0.35, dampingFraction: 0.8), value: page)
+            }
+        }
     }
 
     private func complete() {
@@ -86,12 +102,23 @@ struct OnboardingPageView: View {
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
-            Image(systemName: page.symbol)
-                .font(.system(size: 64))
-                .foregroundStyle(page.tint)
-                .frame(width: 140, height: 140)
-                .background(page.tint.opacity(0.12))
-                .clipShape(Circle())
+
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [page.tint, page.tint.opacity(0.6)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 140, height: 140)
+                    .shadow(color: page.tint.opacity(0.4), radius: 24, y: 12)
+
+                Image(systemName: page.symbol)
+                    .font(.system(size: 56))
+                    .foregroundStyle(.white)
+            }
 
             Text(page.title)
                 .font(.title.weight(.bold))

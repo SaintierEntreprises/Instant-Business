@@ -36,6 +36,7 @@
 		BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41636C5175259A1EAB7A77E9 /* StreakManager.swift */; };
 		D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
+		E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */; };
 		E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */; };
 		F130446E75628E913CF52C8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */; };
 		F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */; };
@@ -83,6 +84,7 @@
 		3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidget.swift; sourceTree = "<group>"; };
 		3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterBar.swift; sourceTree = "<group>"; };
 		41636C5175259A1EAB7A77E9 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconBadge.swift; sourceTree = "<group>"; };
 		53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusiness.entitlements; sourceTree = "<group>"; };
 		68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */,
+				44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */,
 				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
 				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
+				E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */,
 				F130446E75628E913CF52C8E /* SettingsView.swift in Sources */,
 				42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */,
 				38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */,
