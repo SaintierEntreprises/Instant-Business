@@ -51,11 +51,18 @@ enum ContentStore {
     /// Deterministic "quote of the day" so the app and the widget agree without shared state.
     /// Uses a stable (non-hashValue-based) seeded shuffle so the daily sequence doesn't
     /// mirror the raw content order, where quotes are grouped by author.
-    static func quoteOfTheDay(category: QuoteCategory? = nil, on date: Date = Date()) -> Quote? {
-        let pool = category.map(quotes(in:)) ?? allQuotes
+    ///
+    /// `maxLength` keeps the lock-screen widget readable: its container only fits a few
+    /// short lines, so long quotes would be truncated mid-sentence.
+    static func quoteOfTheDay(category: QuoteCategory? = nil, maxLength: Int? = nil, on date: Date = Date()) -> Quote? {
+        var pool = category.map(quotes(in:)) ?? allQuotes
+        if let maxLength {
+            let short = pool.filter { $0.text.count <= maxLength }
+            if !short.isEmpty { pool = short }
+        }
         guard !pool.isEmpty else { return nil }
 
-        var generator = SeededGenerator(seed: stableHash(category?.rawValue ?? "all"))
+        var generator = SeededGenerator(seed: stableHash("\(category?.rawValue ?? "all")-\(maxLength ?? 0)"))
         let order = pool.indices.shuffled(using: &generator)
 
         let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1

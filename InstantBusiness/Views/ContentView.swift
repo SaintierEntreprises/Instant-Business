@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var authManager: AuthManager
+    @EnvironmentObject private var router: AppRouter
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var selectedTab = 0
+    @State private var focusedQuoteID: String?
 
     private var needsAuthGate: Bool {
         !hasCompletedOnboarding || authManager.session == nil
@@ -11,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            CardFeedView()
+            CardFeedView(focusedQuoteID: $focusedQuoteID)
                 .tabItem { Label("Découvrir", systemImage: "sparkles") }
                 .tag(0)
 
@@ -34,6 +36,12 @@ struct ContentView: View {
                 OnboardingView()
             }
         }
+        .onChange(of: router.pendingQuoteID) { _, quoteID in
+            guard let quoteID else { return }
+            selectedTab = 0
+            focusedQuoteID = quoteID
+            router.pendingQuoteID = nil
+        }
         .fontDesign(.rounded)
     }
 }
@@ -43,4 +51,5 @@ struct ContentView: View {
         .environmentObject(FavoritesStore())
         .environmentObject(StoreManager())
         .environmentObject(AuthManager())
+        .environmentObject(AppRouter())
 }

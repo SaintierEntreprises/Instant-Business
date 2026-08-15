@@ -7,6 +7,7 @@ struct InstantBusinessApp: App {
     @StateObject private var notificationManager = NotificationManager()
     @StateObject private var store = StoreManager()
     @StateObject private var authManager = AuthManager()
+    @StateObject private var router = AppRouter()
     @Environment(\.scenePhase) private var scenePhase
 
     private let userSyncService = UserSyncService()
@@ -17,8 +18,15 @@ struct InstantBusinessApp: App {
                 .environmentObject(favorites)
                 .environmentObject(store)
                 .environmentObject(authManager)
+                .environmentObject(router)
                 .onOpenURL { url in
-                    GIDSignIn.sharedInstance.handle(url)
+                    // Single entry point: Google's callback and the widget deep link
+                    // arrive the same way, so they are routed here rather than in
+                    // competing handlers.
+                    if GIDSignIn.sharedInstance.handle(url) { return }
+                    if let quoteID = DeepLink.quoteID(from: url) {
+                        router.pendingQuoteID = quoteID
+                    }
                 }
                 .onChange(of: authManager.session != nil) { _, isSignedIn in
                     if isSignedIn {

@@ -24,18 +24,21 @@
 		5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
 		586AEABC34948980F2F4A256 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD38765966AF44016F29AA6 /* StoreManager.swift */; };
 		59D14923DC5F80C1B40913EB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
+		5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */; };
 		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
 		6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
 		765F61B32FC37861330E14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
 		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
 		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
 		7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */; };
+		80BD9D82533A89321F3AAC1E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */; };
 		83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E046D2F5BE2C6728EED66F45 /* LoginView.swift */; };
 		8827851E233719EDF272FCED /* SupabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */; };
 		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
 		98557D427E53D5A118ED373C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */; };
 		98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */; };
 		ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */; };
+		AF745263B22D180F5739BFCD /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A429C11A88920B3A9111ED /* DeepLink.swift */; };
 		B74091616CA8BE81685284FC /* InstantBusinessWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */; };
 		BD4D530951A67778D3752221 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A60239C5225A6CF0DDE4E /* AuthManager.swift */; };
@@ -43,6 +46,7 @@
 		BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41636C5175259A1EAB7A77E9 /* StreakManager.swift */; };
 		D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
+		E8D05120F698494B85B2DFB6 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A429C11A88920B3A9111ED /* DeepLink.swift */; };
 		E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */; };
 		E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */; };
 		F130446E75628E913CF52C8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */; };
@@ -96,6 +100,7 @@
 		44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconBadge.swift; sourceTree = "<group>"; };
 		53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusiness.entitlements; sourceTree = "<group>"; };
+		68A429C11A88920B3A9111ED /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
 		6B196CC6BCDAEF9134B4F604 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
@@ -114,8 +119,10 @@
 		BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGalleryView.swift; sourceTree = "<group>"; };
 		C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButtonView.swift; sourceTree = "<group>"; };
 		DD432231FB34B99577F98013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E046D2F5BE2C6728EED66F45 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				3C1DBE96777E0978047DC7F4 /* ContentStore.swift */,
+				68A429C11A88920B3A9111ED /* DeepLink.swift */,
 				8802591D8BA622C2533188CC /* SharedDefaults.swift */,
 			);
 			path = Services;
@@ -258,6 +266,7 @@
 		A85BFB2ECFBE9809F0031749 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */,
 				288A60239C5225A6CF0DDE4E /* AuthManager.swift */,
 				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
 				53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */,
@@ -306,6 +315,7 @@
 		C34F03C15DBF03898870FFB3 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */,
 				E046D2F5BE2C6728EED66F45 /* LoginView.swift */,
 			);
 			path = Auth;
@@ -451,14 +461,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BD9D82533A89321F3AAC1E /* AppRouter.swift in Sources */,
 				BD4D530951A67778D3752221 /* AuthManager.swift in Sources */,
 				F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */,
 				765F61B32FC37861330E14C7 /* Category.swift in Sources */,
 				B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */,
 				F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */,
 				668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */,
+				E8D05120F698494B85B2DFB6 /* DeepLink.swift in Sources */,
 				7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */,
 				E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */,
+				5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */,
 				F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */,
 				83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */,
 				BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */,
@@ -486,6 +499,7 @@
 			files = (
 				59D14923DC5F80C1B40913EB /* Category.swift in Sources */,
 				6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */,
+				AF745263B22D180F5739BFCD /* DeepLink.swift in Sources */,
 				98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */,
 				5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */,
 				4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */,
@@ -616,7 +630,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -677,7 +691,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
