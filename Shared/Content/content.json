@@ -1,0 +1,10 @@
+[
+  { "id": "seed-001", "text": "La meilleure façon de prédire l'avenir, c'est de le créer.", "author": "Peter Drucker", "category": "mindset" },
+  { "id": "seed-002", "text": "Le succès, c'est aller d'échec en échec sans perdre son enthousiasme.", "author": "Winston Churchill", "category": "mindset" },
+  { "id": "seed-003", "text": "Si vous n'êtes pas prêt à vous tromper, vous n'arriverez jamais à rien d'original.", "author": "Steve Jobs", "category": "mindset" },
+  { "id": "seed-004", "text": "Ce n'est pas la plus forte des espèces qui survit, mais celle qui s'adapte le mieux.", "author": "Charles Darwin", "category": "mindset" },
+  { "id": "seed-005", "text": "Vendre, c'est transférer sa conviction.", "author": "Zig Ziglar", "category": "sales" },
+  { "id": "seed-006", "text": "Un leader, c'est quelqu'un qui montre le chemin et qui connaît le chemin.", "author": "John C. Maxwell", "category": "leadership" },
+  { "id": "seed-007", "text": "Ne travaillez pas pour l'argent, faites en sorte que l'argent travaille pour vous.", "author": "Robert Kiyosaki", "category": "finance" },
+  { "id": "seed-008", "text": "L'échec n'est qu'une opportunité de recommencer, cette fois de façon plus intelligente.", "author": "Henry Ford", "category": "mindset" }
+]

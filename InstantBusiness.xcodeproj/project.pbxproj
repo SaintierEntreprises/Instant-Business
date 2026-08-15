@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18F5555FE3D730E0FFA78DC1 /* WidgetThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */; };
+		1BFA6C2BA2962A3B5EF5E526 /* WidgetGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */; };
+		1C4465A8F20A5F1AF2D23BF7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
+		23D20746DFC69DBE01802C70 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
+		38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
+		42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */; };
+		4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */; };
+		5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
+		59D14923DC5F80C1B40913EB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
+		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
+		6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
+		765F61B32FC37861330E14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
+		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
+		7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */; };
+		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
+		98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */; };
+		ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */; };
+		B74091616CA8BE81685284FC /* InstantBusinessWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */; };
+		D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
+		E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */; };
+		F130446E75628E913CF52C8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */; };
+		F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */; };
+		F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
+		F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */; };
+		F76AC46851EEA6B1DA17F5D5 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4FF9B2AC9913E2E3559B1A49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B9BFB4DC59E3A5F5A7B2942 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCEF630C256E84FBDE3EA1B3;
+			remoteInfo = InstantBusinessWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6F6A035712ACABBFF5DA01BB /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B74091616CA8BE81685284FC /* InstantBusinessWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0941CD3482DDC4B77D47F75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessApp.swift; sourceTree = "<group>"; };
+		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
+		297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessWidgetBundle.swift; sourceTree = "<group>"; };
+		2CD0BA7E4132A008E21F5E59 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = InstantBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C1DBE96777E0978047DC7F4 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
+		3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidget.swift; sourceTree = "<group>"; };
+		3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterBar.swift; sourceTree = "<group>"; };
+		67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusiness.entitlements; sourceTree = "<group>"; };
+		68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
+		74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
+		75079EF67F80899A96034B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InstantBusinessWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3762836BBFF09781681731 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		8802591D8BA622C2533188CC /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		98FA651AFB70B064EA7E06B7 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThemes.swift; sourceTree = "<group>"; };
+		AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeedView.swift; sourceTree = "<group>"; };
+		B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCardView.swift; sourceTree = "<group>"; };
+		BC69EC37E218974E125EB582 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGalleryView.swift; sourceTree = "<group>"; };
+		C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		14E38EFBC1503891AEE5A36A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				85C118B337AE0F22680AAF4E /* Content */,
+				A638462FE2C27D1AA4A68F55 /* Models */,
+				4BD56CC2F3E7AD540B8FAD54 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1B84DB14B3A8C6FAC3D16635 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1DE89A1AD500C108236A0AB4 /* WidgetGallery */ = {
+			isa = PBXGroup;
+			children = (
+				BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */,
+			);
+			path = WidgetGallery;
+			sourceTree = "<group>";
+		};
+		345B611FBBD1D0115D92CEFC /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		4BD56CC2F3E7AD540B8FAD54 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3C1DBE96777E0978047DC7F4 /* ContentStore.swift */,
+				8802591D8BA622C2533188CC /* SharedDefaults.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		50BF522F7E2F5EC6A3797141 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */,
+				3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */,
+				B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		69F32D5462796148967E1918 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				75079EF67F80899A96034B99 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80F39E9DDA37C84E1DED4A45 /* InstantBusinessWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0941CD3482DDC4B77D47F75C /* Info.plist */,
+				1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */,
+				297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */,
+				3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */,
+				68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */,
+				A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */,
+			);
+			path = InstantBusinessWidget;
+			sourceTree = "<group>";
+		};
+		85C118B337AE0F22680AAF4E /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				98FA651AFB70B064EA7E06B7 /* content.json */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		895719641F1335B48F8A790C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */,
+				75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9447C53DB608E20A9798DEA3 /* InstantBusiness */ = {
+			isa = PBXGroup;
+			children = (
+				67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */,
+				D9AB7F0A4B392A9B27C09D23 /* App */,
+				69F32D5462796148967E1918 /* Resources */,
+				A85BFB2ECFBE9809F0031749 /* Services */,
+				ACA35B8EAECB8E8861C9C516 /* Views */,
+			);
+			path = InstantBusiness;
+			sourceTree = "<group>";
+		};
+		A638462FE2C27D1AA4A68F55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CD0BA7E4132A008E21F5E59 /* Category.swift */,
+				7A3762836BBFF09781681731 /* Quote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A85BFB2ECFBE9809F0031749 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		ACA35B8EAECB8E8861C9C516 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC69EC37E218974E125EB582 /* ContentView.swift */,
+				D5FA5B8B3334741002550E92 /* Favorites */,
+				50BF522F7E2F5EC6A3797141 /* Home */,
+				1B84DB14B3A8C6FAC3D16635 /* Settings */,
+				345B611FBBD1D0115D92CEFC /* Share */,
+				1DE89A1AD500C108236A0AB4 /* WidgetGallery */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D5FA5B8B3334741002550E92 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		D9AB7F0A4B392A9B27C09D23 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E51C3A40C4038202658CC7BF = {
+			isa = PBXGroup;
+			children = (
+				9447C53DB608E20A9798DEA3 /* InstantBusiness */,
+				80F39E9DDA37C84E1DED4A45 /* InstantBusinessWidget */,
+				14E38EFBC1503891AEE5A36A /* Shared */,
+				895719641F1335B48F8A790C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A2F875A125EE8799FFF152F /* InstantBusiness */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DCB34EEFFF53296210B6422 /* Build configuration list for PBXNativeTarget "InstantBusiness" */;
+			buildPhases = (
+				A45493FE556CB24C371AA999 /* Sources */,
+				68D2A3AAA32334FA5BE0CEC0 /* Resources */,
+				6F6A035712ACABBFF5DA01BB /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8AE81E1C9067881CC1EAE2D /* PBXTargetDependency */,
+			);
+			name = InstantBusiness;
+			packageProductDependencies = (
+			);
+			productName = InstantBusiness;
+			productReference = 31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CCEF630C256E84FBDE3EA1B3 /* InstantBusinessWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D703EC428F60609F538A3F58 /* Build configuration list for PBXNativeTarget "InstantBusinessWidgetExtension" */;
+			buildPhases = (
+				B38D9190265EA0AE47CDF1F0 /* Sources */,
+				CBF557BA84C1C1B8F8579943 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InstantBusinessWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = InstantBusinessWidgetExtension;
+			productReference = 75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B9BFB4DC59E3A5F5A7B2942 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = EE84E1D868A5A77878CDAB59 /* Build configuration list for PBXProject "InstantBusiness" */;
+			developmentRegion = fr;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				fr,
+			);
+			mainGroup = E51C3A40C4038202658CC7BF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 895719641F1335B48F8A790C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A2F875A125EE8799FFF152F /* InstantBusiness */,
+				CCEF630C256E84FBDE3EA1B3 /* InstantBusinessWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68D2A3AAA32334FA5BE0CEC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */,
+				F76AC46851EEA6B1DA17F5D5 /* content.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBF557BA84C1C1B8F8579943 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23D20746DFC69DBE01802C70 /* content.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A45493FE556CB24C371AA999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */,
+				765F61B32FC37861330E14C7 /* Category.swift in Sources */,
+				B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */,
+				F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */,
+				668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */,
+				7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */,
+				E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */,
+				F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */,
+				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
+				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
+				F130446E75628E913CF52C8E /* SettingsView.swift in Sources */,
+				42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */,
+				38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */,
+				1BFA6C2BA2962A3B5EF5E526 /* WidgetGalleryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B38D9190265EA0AE47CDF1F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59D14923DC5F80C1B40913EB /* Category.swift in Sources */,
+				6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */,
+				98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */,
+				5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */,
+				4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */,
+				ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */,
+				1C4465A8F20A5F1AF2D23BF7 /* SharedDefaults.swift in Sources */,
+				18F5555FE3D730E0FFA78DC1 /* WidgetThemes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8AE81E1C9067881CC1EAE2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCEF630C256E84FBDE3EA1B3 /* InstantBusinessWidgetExtension */;
+			targetProxy = 4FF9B2AC9913E2E3559B1A49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		38FC9084A227F15CAABC2407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InstantBusiness/InstantBusiness.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Instant Business";
+				INFOPLIST_KEY_NSUserNotificationsUsageDescription = "Reçois une citation business chaque jour à l'heure de ton choix.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.instantbusiness.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		44571AB268F74E63FCD5F986 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = InstantBusinessWidget/InstantBusinessWidget.entitlements;
+				INFOPLIST_FILE = InstantBusinessWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.instantbusiness.app.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		494049F485123AB3C3FC15AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InstantBusiness/InstantBusiness.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Instant Business";
+				INFOPLIST_KEY_NSUserNotificationsUsageDescription = "Reçois une citation business chaque jour à l'heure de ton choix.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.instantbusiness.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		733F12C51DFE418529C375C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = InstantBusinessWidget/InstantBusinessWidget.entitlements;
+				INFOPLIST_FILE = InstantBusinessWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.instantbusiness.app.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C2665343ADAF47045CA9DA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CA255BCEC2246EF83B1320CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DCB34EEFFF53296210B6422 /* Build configuration list for PBXNativeTarget "InstantBusiness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38FC9084A227F15CAABC2407 /* Debug */,
+				494049F485123AB3C3FC15AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D703EC428F60609F538A3F58 /* Build configuration list for PBXNativeTarget "InstantBusinessWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				733F12C51DFE418529C375C5 /* Debug */,
+				44571AB268F74E63FCD5F986 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EE84E1D868A5A77878CDAB59 /* Build configuration list for PBXProject "InstantBusiness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA255BCEC2246EF83B1320CE /* Debug */,
+				9C2665343ADAF47045CA9DA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B9BFB4DC59E3A5F5A7B2942 /* Project object */;
+}
