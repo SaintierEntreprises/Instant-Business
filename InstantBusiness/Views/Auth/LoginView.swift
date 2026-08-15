@@ -23,8 +23,8 @@ struct LoginView: View {
                     )
                     .frame(width: 108, height: 108)
                     .shadow(color: .orange.opacity(0.35), radius: 24, y: 12)
-                Image(systemName: "flame.fill")
-                    .font(.system(size: 46))
+                Image(systemName: "quote.bubble.fill")
+                    .font(.system(size: 44))
                     .foregroundStyle(.white)
             }
 

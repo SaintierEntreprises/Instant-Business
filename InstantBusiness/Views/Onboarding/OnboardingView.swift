@@ -11,7 +11,7 @@ struct OnboardingView: View {
 
     private let pages: [OnboardingPage] = [
         OnboardingPage(
-            symbol: "flame.fill",
+            symbol: "quote.bubble.fill",
             tint: .orange,
             title: "Instant Business",
             message: "Ta dose quotidienne de mindset et de conseils business, signée par les plus grands entrepreneurs."
