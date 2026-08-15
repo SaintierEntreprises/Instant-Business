@@ -22,6 +22,8 @@
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>Reçois une citation business chaque jour à l'heure de ton choix.</string>
 	<key>GIDClientID</key>
