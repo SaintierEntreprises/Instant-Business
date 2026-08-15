@@ -61,6 +61,7 @@ schemes:
         InstantBusiness: all
     run:
       config: Debug
+      storeKitConfiguration: InstantBusiness/Resources/StoreKitConfig.storekit
     archive:
       config: Release
     profile:

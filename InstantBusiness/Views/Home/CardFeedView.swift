@@ -5,6 +5,7 @@ struct CardFeedView: View {
     @State private var selectedCategory: QuoteCategory?
     @State private var selectedQuoteID: String?
     @State private var shareItem: ShareItem?
+    @State private var showPaywall = false
 
     private var quotes: [Quote] {
         guard let selectedCategory else { return ContentStore.allQuotes }
@@ -14,7 +15,9 @@ struct CardFeedView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                CategoryFilterBar(selectedCategory: $selectedCategory)
+                CategoryFilterBar(selectedCategory: $selectedCategory) { _ in
+                    showPaywall = true
+                }
 
                 TabView(selection: $selectedQuoteID) {
                     ForEach(quotes) { quote in
@@ -36,6 +39,9 @@ struct CardFeedView: View {
                     ShareSheet(items: [uiImage, item.quote.text])
                 }
             }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView()
+            }
         }
     }
 }
@@ -43,4 +49,5 @@ struct CardFeedView: View {
 #Preview {
     CardFeedView()
         .environmentObject(FavoritesStore())
+        .environmentObject(StoreManager())
 }

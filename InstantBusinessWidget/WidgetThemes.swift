@@ -1,21 +1,4 @@
 import SwiftUI
-import AppIntents
-
-enum WidgetTheme: String, CaseIterable, AppEnum {
-    case bold
-    case minimal
-    case gradient
-    case dark
-
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Thème"
-
-    static var caseDisplayRepresentations: [WidgetTheme: DisplayRepresentation] = [
-        .bold: "Bold",
-        .minimal: "Minimal",
-        .gradient: "Dégradé",
-        .dark: "Sombre"
-    ]
-}
 
 struct ThemedQuoteView: View {
     let quote: Quote
