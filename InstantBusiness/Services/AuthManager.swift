@@ -103,6 +103,26 @@ final class AuthManager: NSObject, ObservableObject {
         GIDSignIn.sharedInstance.signOut()
     }
 
+    /// Permanently deletes the account: server-side row (favorites/streak cascade
+    /// automatically), then clears every local trace of it on this device.
+    func deleteAccount() async -> Bool {
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            _ = try await SupabaseProvider.client.functions.invoke("delete-account")
+        } catch {
+            errorMessage = "La suppression du compte a échoué. Réessaie."
+            return false
+        }
+        try? await SupabaseProvider.client.auth.signOut()
+        GIDSignIn.sharedInstance.signOut()
+        SharedDefaults.resetAccountData()
+        UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
+        UserDefaults.standard.removeObject(forKey: "hasCompletedQuiz")
+        errorMessage = nil
+        return true
+    }
+
     // MARK: - Nonce helpers (Sign in with Apple replay protection)
 
     private static func randomNonceString(length: Int = 32) -> String {

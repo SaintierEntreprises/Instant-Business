@@ -81,4 +81,16 @@ enum SharedDefaults {
         get { suite.bool(forKey: Keys.isPremium) }
         set { suite.set(newValue, forKey: Keys.isPremium) }
     }
+
+    /// Wipes everything tied to the account being deleted, so a fresh sign-in
+    /// doesn't inherit a stranger's favorites, streak, or quiz profile.
+    static func resetAccountData() {
+        suite.removeObject(forKey: Keys.favoriteIDs)
+        suite.removeObject(forKey: Keys.streakCount)
+        suite.removeObject(forKey: Keys.lastOpenDate)
+        suite.removeObject(forKey: Keys.isPremium)
+        suite.removeObject(forKey: Keys.quizProfile)
+        suite.removeObject(forKey: Keys.preferredCategories)
+        suite.removeObject(forKey: Keys.cardTheme)
+    }
 }

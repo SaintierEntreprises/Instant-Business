@@ -10,6 +10,8 @@ struct SettingsView: View {
     @State private var streak = SharedDefaults.streakCount
     @State private var showPaywall = false
     @State private var isSigningOut = false
+    @State private var isDeletingAccount = false
+    @State private var showDeleteConfirmation = false
 
     var body: some View {
         NavigationStack {
@@ -148,6 +150,19 @@ struct SettingsView: View {
                         }
                     }
                     .disabled(isSigningOut)
+
+                    Button(role: .destructive) {
+                        showDeleteConfirmation = true
+                    } label: {
+                        HStack {
+                            Text("Supprimer mon compte")
+                            Spacer()
+                            if isDeletingAccount {
+                                ProgressView()
+                            }
+                        }
+                    }
+                    .disabled(isDeletingAccount)
                 }
             }
             .navigationTitle("Réglages")
@@ -157,6 +172,18 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showThemePicker) {
                 CardThemePickerView()
+            }
+            .alert("Supprimer définitivement ton compte ?", isPresented: $showDeleteConfirmation) {
+                Button("Annuler", role: .cancel) {}
+                Button("Supprimer", role: .destructive) {
+                    Task {
+                        isDeletingAccount = true
+                        _ = await authManager.deleteAccount()
+                        isDeletingAccount = false
+                    }
+                }
+            } message: {
+                Text("Tes favoris, ta série et ton profil seront effacés définitivement. Cette action est irréversible.")
             }
         }
     }
