@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var store: StoreManager
+    @EnvironmentObject private var authManager: AuthManager
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
     @State private var notificationTime = SettingsView.time(
@@ -10,6 +11,7 @@ struct SettingsView: View {
     )
     @State private var streak = SharedDefaults.streakCount
     @State private var showPaywall = false
+    @State private var isSigningOut = false
 
     private static let defaultFreeHour = 8
     private static let defaultFreeMinute = 0
@@ -133,6 +135,31 @@ struct SettingsView: View {
                         .padding(.vertical, 2)
                     }
                 }
+
+                Section("Compte") {
+                    HStack(spacing: 12) {
+                        SettingsIconBadge(systemName: "person.fill", color: .blue)
+                        Text(authManager.session?.user.email ?? "Connecté")
+                            .lineLimit(1)
+                        Spacer()
+                    }
+                    Button(role: .destructive) {
+                        Task {
+                            isSigningOut = true
+                            await authManager.signOut()
+                            isSigningOut = false
+                        }
+                    } label: {
+                        HStack {
+                            Text("Se déconnecter")
+                            Spacer()
+                            if isSigningOut {
+                                ProgressView()
+                            }
+                        }
+                    }
+                    .disabled(isSigningOut)
+                }
             }
             .navigationTitle("Réglages")
             .onAppear { streak = SharedDefaults.streakCount }
@@ -150,4 +177,5 @@ struct SettingsView: View {
 #Preview {
     SettingsView()
         .environmentObject(StoreManager())
+        .environmentObject(AuthManager())
 }

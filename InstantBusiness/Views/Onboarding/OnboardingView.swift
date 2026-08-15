@@ -3,9 +3,11 @@ import UIKit
 
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var authManager: AuthManager
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var page = 0
+    @State private var showLogin = false
 
     private let pages: [OnboardingPage] = [
         OnboardingPage(
@@ -29,6 +31,26 @@ struct OnboardingView: View {
     ]
 
     var body: some View {
+        Group {
+            if showLogin {
+                LoginView()
+                    .transition(.move(edge: .trailing).combined(with: .opacity))
+            } else {
+                onboardingPages
+                    .transition(.opacity)
+            }
+        }
+        .animation(.spring(response: 0.4, dampingFraction: 0.85), value: showLogin)
+        .onChange(of: authManager.session != nil) { _, isSignedIn in
+            guard isSignedIn else { return }
+            Task {
+                await notificationManager.enable(hour: 8, minute: 0)
+                complete()
+            }
+        }
+    }
+
+    private var onboardingPages: some View {
         VStack(spacing: 20) {
             TabView(selection: $page) {
                 ForEach(Array(pages.enumerated()), id: \.offset) { index, page in
@@ -46,13 +68,10 @@ struct OnboardingView: View {
                 if page < pages.count - 1 {
                     withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) { page += 1 }
                 } else {
-                    Task {
-                        await notificationManager.enable(hour: 8, minute: 0)
-                        complete()
-                    }
+                    showLogin = true
                 }
             } label: {
-                Text(page < pages.count - 1 ? "Continuer" : "Commencer")
+                Text(page < pages.count - 1 ? "Continuer" : "Se connecter")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -62,12 +81,6 @@ struct OnboardingView: View {
             }
             .buttonStyle(PressableButtonStyle(scale: 0.97))
             .padding(.horizontal, 24)
-
-            if page == pages.count - 1 {
-                Button("Plus tard") { complete() }
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
         }
         .padding(.bottom, 24)
     }
@@ -136,4 +149,5 @@ struct OnboardingPageView: View {
 
 #Preview {
     OnboardingView()
+        .environmentObject(AuthManager())
 }

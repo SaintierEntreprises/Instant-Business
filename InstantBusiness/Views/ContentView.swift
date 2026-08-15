@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var authManager: AuthManager
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var selectedTab = 0
+
+    private var needsAuthGate: Bool {
+        !hasCompletedOnboarding || authManager.session == nil
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -22,11 +27,12 @@ struct ContentView: View {
                 .tabItem { Label("Réglages", systemImage: "gearshape") }
                 .tag(3)
         }
-        .fullScreenCover(isPresented: .init(
-            get: { !hasCompletedOnboarding },
-            set: { hasCompletedOnboarding = !$0 }
-        )) {
-            OnboardingView()
+        .fullScreenCover(isPresented: Binding(get: { needsAuthGate }, set: { _ in })) {
+            if hasCompletedOnboarding {
+                LoginView()
+            } else {
+                OnboardingView()
+            }
         }
         .fontDesign(.rounded)
     }
@@ -36,4 +42,5 @@ struct ContentView: View {
     ContentView()
         .environmentObject(FavoritesStore())
         .environmentObject(StoreManager())
+        .environmentObject(AuthManager())
 }

@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083C7B0A876C8F39B6B62F85 /* UserSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C21D015741E420EBB13737 /* UserSyncService.swift */; };
 		0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B196CC6BCDAEF9134B4F604 /* OnboardingView.swift */; };
 		18F5555FE3D730E0FFA78DC1 /* WidgetThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */; };
 		1BFA6C2BA2962A3B5EF5E526 /* WidgetGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */; };
 		1C4465A8F20A5F1AF2D23BF7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
+		1DF2DB7C42C828A616DE34B3 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = CB6897B2C8A2EB351679232C /* Supabase */; };
 		23D20746DFC69DBE01802C70 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
 		28B13A1FB234A24248DD2953 /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B01FE7E009BA4172D14587B4 /* StoreKitConfig.storekit */; };
 		38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
+		3956F9DBFB34D6E567097CFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */; };
 		422D82E3FCC197BE8F90FD92 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */; };
 		46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4B87701458F70F79A76CE /* PaywallView.swift */; };
@@ -27,11 +30,15 @@
 		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
 		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
 		7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */; };
+		83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E046D2F5BE2C6728EED66F45 /* LoginView.swift */; };
+		8827851E233719EDF272FCED /* SupabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */; };
 		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
+		98557D427E53D5A118ED373C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */; };
 		98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */; };
 		ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */; };
 		B74091616CA8BE81685284FC /* InstantBusinessWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */; };
+		BD4D530951A67778D3752221 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A60239C5225A6CF0DDE4E /* AuthManager.swift */; };
 		BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */; };
 		BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41636C5175259A1EAB7A77E9 /* StreakManager.swift */; };
@@ -75,6 +82,8 @@
 		116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
 		22B4B87701458F70F79A76CE /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		25C21D015741E420EBB13737 /* UserSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSyncService.swift; sourceTree = "<group>"; };
+		288A60239C5225A6CF0DDE4E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessWidgetBundle.swift; sourceTree = "<group>"; };
 		2AD38765966AF44016F29AA6 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		2CD0BA7E4132A008E21F5E59 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -93,6 +102,7 @@
 		75079EF67F80899A96034B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InstantBusinessWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3762836BBFF09781681731 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseProvider.swift; sourceTree = "<group>"; };
 		8802591D8BA622C2533188CC /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		98FA651AFB70B064EA7E06B7 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThemes.swift; sourceTree = "<group>"; };
@@ -104,7 +114,22 @@
 		BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGalleryView.swift; sourceTree = "<group>"; };
 		C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		DD432231FB34B99577F98013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E046D2F5BE2C6728EED66F45 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFAEE54B8038862DAACA91A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DF2DB7C42C828A616DE34B3 /* Supabase in Frameworks */,
+				98557D427E53D5A118ED373C /* GoogleSignIn in Frameworks */,
+				3956F9DBFB34D6E567097CFF /* GoogleSignInSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		14E38EFBC1503891AEE5A36A /* Shared */ = {
@@ -210,6 +235,7 @@
 		9447C53DB608E20A9798DEA3 /* InstantBusiness */ = {
 			isa = PBXGroup;
 			children = (
+				DD432231FB34B99577F98013 /* Info.plist */,
 				67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */,
 				D9AB7F0A4B392A9B27C09D23 /* App */,
 				69F32D5462796148967E1918 /* Resources */,
@@ -232,10 +258,13 @@
 		A85BFB2ECFBE9809F0031749 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				288A60239C5225A6CF0DDE4E /* AuthManager.swift */,
 				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
 				53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */,
 				2AD38765966AF44016F29AA6 /* StoreManager.swift */,
 				41636C5175259A1EAB7A77E9 /* StreakManager.swift */,
+				82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */,
+				25C21D015741E420EBB13737 /* UserSyncService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -244,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				BC69EC37E218974E125EB582 /* ContentView.swift */,
+				C34F03C15DBF03898870FFB3 /* Auth */,
 				BE9F7761B2802BF9E922ACC4 /* Components */,
 				D5FA5B8B3334741002550E92 /* Favorites */,
 				50BF522F7E2F5EC6A3797141 /* Home */,
@@ -271,6 +301,14 @@
 				44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		C34F03C15DBF03898870FFB3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E046D2F5BE2C6728EED66F45 /* LoginView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		D5FA5B8B3334741002550E92 /* Favorites */ = {
@@ -308,6 +346,7 @@
 			buildPhases = (
 				A45493FE556CB24C371AA999 /* Sources */,
 				68D2A3AAA32334FA5BE0CEC0 /* Resources */,
+				CFAEE54B8038862DAACA91A8 /* Frameworks */,
 				6F6A035712ACABBFF5DA01BB /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -317,6 +356,9 @@
 			);
 			name = InstantBusiness;
 			packageProductDependencies = (
+				CB6897B2C8A2EB351679232C /* Supabase */,
+				FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */,
+				D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */,
 			);
 			productName = InstantBusiness;
 			productReference = 31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */;
@@ -360,6 +402,10 @@
 			);
 			mainGroup = E51C3A40C4038202658CC7BF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8FA6A50835A10894074C5C86 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				612C3678B19B617D4EF7D580 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 895719641F1335B48F8A790C /* Products */;
 			projectDirPath = "";
@@ -397,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4D530951A67778D3752221 /* AuthManager.swift in Sources */,
 				F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */,
 				765F61B32FC37861330E14C7 /* Category.swift in Sources */,
 				B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */,
@@ -405,6 +452,7 @@
 				7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */,
 				E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */,
 				F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */,
+				83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */,
 				BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */,
 				0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */,
 				46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */,
@@ -417,6 +465,8 @@
 				38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */,
 				586AEABC34948980F2F4A256 /* StoreManager.swift in Sources */,
 				C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */,
+				8827851E233719EDF272FCED /* SupabaseProvider.swift in Sources */,
+				083C7B0A876C8F39B6B62F85 /* UserSyncService.swift in Sources */,
 				1BFA6C2BA2962A3B5EF5E526 /* WidgetGalleryView.swift in Sources */,
 				BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */,
 			);
@@ -456,12 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = InstantBusiness/InstantBusiness.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Instant Business";
-				INFOPLIST_KEY_NSUserNotificationsUsageDescription = "Reçois une citation business chaque jour à l'heure de ton choix.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = InstantBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,12 +543,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = InstantBusiness/InstantBusiness.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Instant Business";
-				INFOPLIST_KEY_NSUserNotificationsUsageDescription = "Reçois une citation business chaque jour à l'heure de ton choix.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_FILE = InstantBusiness/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -695,6 +735,43 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		612C3678B19B617D4EF7D580 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		8FA6A50835A10894074C5C86 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CB6897B2C8A2EB351679232C /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 612C3678B19B617D4EF7D580 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+		D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FA6A50835A10894074C5C86 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FA6A50835A10894074C5C86 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B9BFB4DC59E3A5F5A7B2942 /* Project object */;
 }
