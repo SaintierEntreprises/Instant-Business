@@ -4,6 +4,7 @@ import GoogleSignInSwift
 
 struct LoginView: View {
     @EnvironmentObject private var authManager: AuthManager
+    @State private var legalDocument: LegalDocument?
 
     private let buttonHeight: CGFloat = 54
     private let buttonRadius: CGFloat = 16
@@ -67,14 +68,31 @@ struct LoginView: View {
                 }
                 .frame(height: 24)
 
-                Text("En continuant, tu acceptes que tes favoris soient sauvegardés sur ton compte.")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 8)
+                VStack(spacing: 2) {
+                    Text("En continuant, tu acceptes nos")
+                    HStack(spacing: 4) {
+                        Button("CGU") { legalDocument = .termsOfUse }
+                        Text("et notre")
+                        Button("Politique de confidentialité") { legalDocument = .privacyPolicy }
+                    }
+                }
+                .font(.caption2)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 8)
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
+        }
+        .sheet(item: $legalDocument) { document in
+            NavigationStack {
+                LegalDocumentView(document: document)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Fermer") { legalDocument = nil }
+                        }
+                    }
+            }
         }
     }
 }

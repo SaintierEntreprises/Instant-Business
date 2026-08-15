@@ -5,6 +5,7 @@ struct PaywallView: View {
     @EnvironmentObject private var store: StoreManager
     @Environment(\.dismiss) private var dismiss
     @State private var selectedProductID: String?
+    @State private var legalDocument: LegalDocument?
 
     var body: some View {
         NavigationStack {
@@ -31,7 +32,7 @@ struct PaywallView: View {
                     VStack(spacing: 14) {
                         benefitRow(icon: "square.grid.2x2.fill", color: .indigo, title: "Toutes les catégories", subtitle: "Vente, Leadership, Finance")
                         benefitRow(icon: "paintpalette.fill", color: .pink, title: "Tous les thèmes de widget", subtitle: "Bold, Minimal, Sombre…")
-                        benefitRow(icon: "bell.badge.fill", color: .red, title: "Notification personnalisée", subtitle: "Choisis ton heure idéale")
+                        benefitRow(icon: "rectangle.stack.fill", color: .teal, title: "Tous les thèmes de cartes", subtitle: "Crème, Noir, Nuit…")
                     }
                     .padding(.horizontal)
 
@@ -69,6 +70,14 @@ struct PaywallView: View {
                     .foregroundStyle(.secondary)
                     .padding(.top, 4)
 
+                    HStack(spacing: 6) {
+                        Button("Conditions Générales de Vente") { legalDocument = .termsOfSale }
+                        Text("·")
+                        Button("Politique de confidentialité") { legalDocument = .privacyPolicy }
+                    }
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+
                     if let errorMessage = store.errorMessage {
                         Text(errorMessage)
                             .font(.footnote)
@@ -91,6 +100,16 @@ struct PaywallView: View {
                 await store.refresh()
                 if selectedProductID == nil {
                     selectedProductID = store.products.last?.id ?? store.products.first?.id
+                }
+            }
+            .sheet(item: $legalDocument) { document in
+                NavigationStack {
+                    LegalDocumentView(document: document)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Fermer") { legalDocument = nil }
+                            }
+                        }
                 }
             }
         }
