@@ -15,6 +15,26 @@ enum SharedDefaults {
         static let notificationMinute = "notificationMinute"
         static let notificationsEnabled = "notificationsEnabled"
         static let isPremium = "isPremium"
+        static let cardTheme = "cardTheme"
+        static let quizProfile = "quizProfile"
+        static let preferredCategories = "preferredCategories"
+    }
+
+    static var cardTheme: CardTheme {
+        get { CardTheme(rawValue: suite.string(forKey: Keys.cardTheme) ?? "") ?? .couleur }
+        set { suite.set(newValue.rawValue, forKey: Keys.cardTheme) }
+    }
+
+    /// Profile label produced by the onboarding quiz (e.g. "Le Bâtisseur").
+    static var quizProfile: String? {
+        get { suite.string(forKey: Keys.quizProfile) }
+        set { suite.set(newValue, forKey: Keys.quizProfile) }
+    }
+
+    /// Categories the quiz pre-selected for this user.
+    static var preferredCategories: [QuoteCategory] {
+        get { (suite.stringArray(forKey: Keys.preferredCategories) ?? []).compactMap(QuoteCategory.init(rawValue:)) }
+        set { suite.set(newValue.map(\.rawValue), forKey: Keys.preferredCategories) }
     }
 
     static var favoriteIDs: Set<String> {

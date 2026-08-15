@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FavoritesView: View {
     @EnvironmentObject private var favorites: FavoritesStore
+    @EnvironmentObject private var appearance: AppearanceStore
     @State private var shareItem: ShareItem?
     var onDiscoverTapped: () -> Void = {}
 
@@ -18,6 +19,7 @@ struct FavoritesView: View {
                             QuoteCardView(
                                 quote: quote,
                                 isFavorite: true,
+                                theme: appearance.cardTheme,
                                 onToggleFavorite: { favorites.toggle(quote) },
                                 onShare: { shareItem = ShareItem(quote: quote) }
                             )
@@ -73,4 +75,5 @@ struct FavoritesView: View {
 #Preview {
     FavoritesView()
         .environmentObject(FavoritesStore())
+        .environmentObject(AppearanceStore())
 }

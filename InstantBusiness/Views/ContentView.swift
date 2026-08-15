@@ -4,11 +4,13 @@ struct ContentView: View {
     @EnvironmentObject private var authManager: AuthManager
     @EnvironmentObject private var router: AppRouter
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasCompletedQuiz") private var hasCompletedQuiz = false
     @State private var selectedTab = 0
     @State private var focusedQuoteID: String?
 
-    private var needsAuthGate: Bool {
-        !hasCompletedOnboarding || authManager.session == nil
+    /// Intro → connexion → quiz, puis l'app. Le quiz n'arrive qu'une fois le compte créé.
+    private var needsGate: Bool {
+        !hasCompletedOnboarding || authManager.session == nil || !hasCompletedQuiz
     }
 
     var body: some View {
@@ -29,11 +31,13 @@ struct ContentView: View {
                 .tabItem { Label("Réglages", systemImage: "gearshape") }
                 .tag(3)
         }
-        .fullScreenCover(isPresented: Binding(get: { needsAuthGate }, set: { _ in })) {
-            if hasCompletedOnboarding {
+        .fullScreenCover(isPresented: Binding(get: { needsGate }, set: { _ in })) {
+            if !hasCompletedOnboarding {
+                OnboardingView()
+            } else if authManager.session == nil {
                 LoginView()
             } else {
-                OnboardingView()
+                QuizView()
             }
         }
         .onChange(of: router.pendingQuoteID) { _, quoteID in
@@ -52,4 +56,5 @@ struct ContentView: View {
         .environmentObject(StoreManager())
         .environmentObject(AuthManager())
         .environmentObject(AppRouter())
+        .environmentObject(AppearanceStore())
 }

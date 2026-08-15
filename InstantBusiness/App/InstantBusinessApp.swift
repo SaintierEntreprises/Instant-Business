@@ -8,6 +8,7 @@ struct InstantBusinessApp: App {
     @StateObject private var store = StoreManager()
     @StateObject private var authManager = AuthManager()
     @StateObject private var router = AppRouter()
+    @StateObject private var appearance = AppearanceStore()
     @Environment(\.scenePhase) private var scenePhase
 
     private let userSyncService = UserSyncService()
@@ -19,6 +20,7 @@ struct InstantBusinessApp: App {
                 .environmentObject(store)
                 .environmentObject(authManager)
                 .environmentObject(router)
+                .environmentObject(appearance)
                 .onOpenURL { url in
                     // Single entry point: Google's callback and the widget deep link
                     // arrive the same way, so they are routed here rather than in

@@ -13,8 +13,8 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 @MainActor
 enum ShareCardRenderer {
-    static func uiImage(for quote: Quote) -> UIImage? {
-        let view = QuoteCardView(quote: quote, showControls: false)
+    static func uiImage(for quote: Quote, theme: CardTheme = SharedDefaults.cardTheme) -> UIImage? {
+        let view = QuoteCardView(quote: quote, showControls: false, theme: theme)
             .frame(width: 400, height: 533)
 
         let renderer = ImageRenderer(content: view)

@@ -5,20 +5,17 @@ struct QuoteCardView: View {
     let quote: Quote
     var isFavorite: Bool = false
     var showControls: Bool = true
+    var theme: CardTheme = SharedDefaults.cardTheme
     var onToggleFavorite: () -> Void = {}
     var onShare: () -> Void = {}
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [quote.category.tint.opacity(0.95), quote.category.tint.opacity(0.55)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            theme.background(for: quote.category)
 
             Text("“")
                 .font(.system(size: 170, weight: .black))
-                .foregroundStyle(.white.opacity(0.08))
+                .foregroundStyle(theme.watermarkColor)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(.leading, 4)
                 .padding(.top, -20)
@@ -28,22 +25,22 @@ struct QuoteCardView: View {
                 Text(quote.category.displayName.uppercased())
                     .font(.caption2.weight(.bold))
                     .tracking(0.6)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(theme.pillForeground(for: quote.category))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
-                    .background(.white.opacity(0.18), in: Capsule())
+                    .background(theme.pillBackground(for: quote.category), in: Capsule())
 
                 Spacer()
 
                 Text(quote.text)
                     .font(.title2.weight(.bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(theme.textColor)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
 
                 Text("— \(quote.author)")
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white.opacity(0.85))
+                    .foregroundStyle(theme.secondaryTextColor)
 
                 Spacer()
 
@@ -72,7 +69,7 @@ struct QuoteCardView: View {
 
                         Spacer()
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(theme.textColor)
                 }
             }
             .padding(28)
@@ -80,10 +77,10 @@ struct QuoteCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .stroke(.white.opacity(0.18), lineWidth: 1)
+                .stroke(theme.borderColor, lineWidth: 1)
         }
         .aspectRatio(3 / 4, contentMode: .fit)
-        .shadow(color: quote.category.tint.opacity(0.35), radius: 20, y: 12)
+        .shadow(color: theme.shadowColor(for: quote.category), radius: 20, y: 12)
     }
 }
 

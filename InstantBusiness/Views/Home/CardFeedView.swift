@@ -2,7 +2,10 @@ import SwiftUI
 
 struct CardFeedView: View {
     @EnvironmentObject private var favorites: FavoritesStore
+    @EnvironmentObject private var appearance: AppearanceStore
+    @EnvironmentObject private var store: StoreManager
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var didApplyQuizPreference = false
     @Binding var focusedQuoteID: String?
 
     @State private var selectedCategory: QuoteCategory?
@@ -27,6 +30,7 @@ struct CardFeedView: View {
                         DailyQuoteCard(
                             quote: dailyQuote,
                             isFavorite: favorites.isFavorite(dailyQuote),
+                            theme: appearance.cardTheme,
                             onToggleFavorite: { favorites.toggle(dailyQuote) },
                             onShare: { shareItem = ShareItem(quote: dailyQuote) }
                         )
@@ -54,6 +58,7 @@ struct CardFeedView: View {
             }
             .toolbar(.hidden, for: .navigationBar)
             .onAppear {
+                applyQuizPreferenceIfNeeded()
                 reshuffle()
                 streak = SharedDefaults.streakCount
             }
@@ -103,6 +108,7 @@ struct CardFeedView: View {
                         QuoteCardView(
                             quote: quote,
                             isFavorite: favorites.isFavorite(quote),
+                            theme: appearance.cardTheme,
                             onToggleFavorite: { favorites.toggle(quote) },
                             onShare: { shareItem = ShareItem(quote: quote) }
                         )
@@ -125,6 +131,18 @@ struct CardFeedView: View {
             .scrollPosition(id: $scrollPosition)
         }
         .aspectRatio(0.78, contentMode: .fit)
+    }
+
+    /// Pre-selects the category the quiz favoured — but only when it's actually usable,
+    /// so a free user is never dropped onto a locked category.
+    private func applyQuizPreferenceIfNeeded() {
+        guard !didApplyQuizPreference else { return }
+        didApplyQuizPreference = true
+        guard selectedCategory == nil,
+              let preferred = SharedDefaults.preferredCategories.first,
+              preferred == .mindset || store.isPremium
+        else { return }
+        selectedCategory = preferred
     }
 
     private func reshuffle() {
@@ -154,4 +172,5 @@ struct CardFeedView: View {
     CardFeedView(focusedQuoteID: .constant(nil))
         .environmentObject(FavoritesStore())
         .environmentObject(StoreManager())
+        .environmentObject(AppearanceStore())
 }

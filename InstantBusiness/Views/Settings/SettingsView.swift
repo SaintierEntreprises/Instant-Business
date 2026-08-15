@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject private var store: StoreManager
     @EnvironmentObject private var authManager: AuthManager
+    @EnvironmentObject private var appearance: AppearanceStore
+    @State private var showThemePicker = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
     @State private var notificationTime = SettingsView.time(
@@ -39,6 +41,24 @@ struct SettingsView: View {
                         Spacer()
                     }
                     .padding(.vertical, 6)
+                }
+
+                Section("Apparence") {
+                    Button {
+                        showThemePicker = true
+                    } label: {
+                        HStack(spacing: 12) {
+                            SettingsIconBadge(systemName: "paintpalette.fill", color: .pink)
+                            Text("Thème des cartes")
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            Text(appearance.cardTheme.displayName)
+                                .foregroundStyle(.secondary)
+                            Image(systemName: "chevron.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
                 }
 
                 Section("Notifications") {
@@ -166,6 +186,9 @@ struct SettingsView: View {
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
+            .sheet(isPresented: $showThemePicker) {
+                CardThemePickerView()
+            }
         }
     }
 
@@ -178,4 +201,5 @@ struct SettingsView: View {
     SettingsView()
         .environmentObject(StoreManager())
         .environmentObject(AuthManager())
+        .environmentObject(AppearanceStore())
 }

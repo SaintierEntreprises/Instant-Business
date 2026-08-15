@@ -14,7 +14,9 @@
 		1C4465A8F20A5F1AF2D23BF7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
 		1DF2DB7C42C828A616DE34B3 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = CB6897B2C8A2EB351679232C /* Supabase */; };
 		23D20746DFC69DBE01802C70 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
+		273B0ADB4641FDF9D8238A7D /* CardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1560ED9E0632BCE797684 /* CardTheme.swift */; };
 		28B13A1FB234A24248DD2953 /* StoreKitConfig.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B01FE7E009BA4172D14587B4 /* StoreKitConfig.storekit */; };
+		28D0A316CA58CBE166B6E386 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276E1E1A05265244CA9B1126 /* QuizModel.swift */; };
 		38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
 		3956F9DBFB34D6E567097CFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */; };
 		422D82E3FCC197BE8F90FD92 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
@@ -38,14 +40,17 @@
 		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
 		98557D427E53D5A118ED373C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */; };
 		98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */; };
+		9C2517B12A4F1B2E209E06FD /* AppearanceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AFDBB050BDFE08FD82ADD1 /* AppearanceStore.swift */; };
 		ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */; };
 		AF745263B22D180F5739BFCD /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A429C11A88920B3A9111ED /* DeepLink.swift */; };
 		B74091616CA8BE81685284FC /* InstantBusinessWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */; };
+		BAB367EE1B1791E4D9C3046E /* CardThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BBB3C381C0F4D20628F136 /* CardThemePickerView.swift */; };
 		BD4D530951A67778D3752221 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A60239C5225A6CF0DDE4E /* AuthManager.swift */; };
 		BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */; };
 		BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41636C5175259A1EAB7A77E9 /* StreakManager.swift */; };
+		D7B2D6D80E91FE34A169A18C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BCFD73D825AEF19A64D53C /* QuizView.swift */; };
 		D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
 		E8D05120F698494B85B2DFB6 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A429C11A88920B3A9111ED /* DeepLink.swift */; };
 		E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */; };
@@ -55,6 +60,7 @@
 		F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
 		F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */; };
 		F76AC46851EEA6B1DA17F5D5 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
+		F7897E35F08E3F46517D3B5B /* CardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A1560ED9E0632BCE797684 /* CardTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +94,7 @@
 		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
 		22B4B87701458F70F79A76CE /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		25C21D015741E420EBB13737 /* UserSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSyncService.swift; sourceTree = "<group>"; };
+		276E1E1A05265244CA9B1126 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		288A60239C5225A6CF0DDE4E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessWidgetBundle.swift; sourceTree = "<group>"; };
 		2AD38765966AF44016F29AA6 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
@@ -100,6 +107,7 @@
 		41636C5175259A1EAB7A77E9 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
 		44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconBadge.swift; sourceTree = "<group>"; };
 		53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		66BCFD73D825AEF19A64D53C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusiness.entitlements; sourceTree = "<group>"; };
 		68A429C11A88920B3A9111ED /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		68CA58DFC13A2B0701BE6A35 /* QuoteWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
@@ -108,10 +116,13 @@
 		75079EF67F80899A96034B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75D0364BD0F447E3D2897DF4 /* InstantBusinessWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InstantBusinessWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3762836BBFF09781681731 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		81A1560ED9E0632BCE797684 /* CardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTheme.swift; sourceTree = "<group>"; };
+		81BBB3C381C0F4D20628F136 /* CardThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardThemePickerView.swift; sourceTree = "<group>"; };
 		82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseProvider.swift; sourceTree = "<group>"; };
 		8802591D8BA622C2533188CC /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		98FA651AFB70B064EA7E06B7 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThemes.swift; sourceTree = "<group>"; };
+		A6AFDBB050BDFE08FD82ADD1 /* AppearanceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceStore.swift; sourceTree = "<group>"; };
 		AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeedView.swift; sourceTree = "<group>"; };
 		B01FE7E009BA4172D14587B4 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
@@ -154,6 +165,7 @@
 		1B84DB14B3A8C6FAC3D16635 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				81BBB3C381C0F4D20628F136 /* CardThemePickerView.swift */,
 				C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */,
 			);
 			path = Settings;
@@ -209,8 +221,17 @@
 			isa = PBXGroup;
 			children = (
 				6B196CC6BCDAEF9134B4F604 /* OnboardingView.swift */,
+				66BCFD73D825AEF19A64D53C /* QuizView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		7C0EC610381197D9AEFE18A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				276E1E1A05265244CA9B1126 /* QuizModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		80F39E9DDA37C84E1DED4A45 /* InstantBusinessWidget */ = {
@@ -249,6 +270,7 @@
 				DD432231FB34B99577F98013 /* Info.plist */,
 				67B90F19BB483AE23EBA7DE8 /* InstantBusiness.entitlements */,
 				D9AB7F0A4B392A9B27C09D23 /* App */,
+				7C0EC610381197D9AEFE18A8 /* Models */,
 				69F32D5462796148967E1918 /* Resources */,
 				A85BFB2ECFBE9809F0031749 /* Services */,
 				ACA35B8EAECB8E8861C9C516 /* Views */,
@@ -259,6 +281,7 @@
 		A638462FE2C27D1AA4A68F55 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				81A1560ED9E0632BCE797684 /* CardTheme.swift */,
 				2CD0BA7E4132A008E21F5E59 /* Category.swift */,
 				7A3762836BBFF09781681731 /* Quote.swift */,
 				3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */,
@@ -269,6 +292,7 @@
 		A85BFB2ECFBE9809F0031749 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A6AFDBB050BDFE08FD82ADD1 /* AppearanceStore.swift */,
 				F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */,
 				288A60239C5225A6CF0DDE4E /* AuthManager.swift */,
 				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
@@ -465,8 +489,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				80BD9D82533A89321F3AAC1E /* AppRouter.swift in Sources */,
+				9C2517B12A4F1B2E209E06FD /* AppearanceStore.swift in Sources */,
 				BD4D530951A67778D3752221 /* AuthManager.swift in Sources */,
 				F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */,
+				273B0ADB4641FDF9D8238A7D /* CardTheme.swift in Sources */,
+				BAB367EE1B1791E4D9C3046E /* CardThemePickerView.swift in Sources */,
 				765F61B32FC37861330E14C7 /* Category.swift in Sources */,
 				B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */,
 				F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */,
@@ -482,6 +509,8 @@
 				0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */,
 				46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */,
 				7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */,
+				28D0A316CA58CBE166B6E386 /* QuizModel.swift in Sources */,
+				D7B2D6D80E91FE34A169A18C /* QuizView.swift in Sources */,
 				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
 				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
 				E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */,
@@ -501,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7897E35F08E3F46517D3B5B /* CardTheme.swift in Sources */,
 				59D14923DC5F80C1B40913EB /* Category.swift in Sources */,
 				6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */,
 				AF745263B22D180F5739BFCD /* DeepLink.swift in Sources */,
@@ -634,7 +664,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -695,7 +725,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
