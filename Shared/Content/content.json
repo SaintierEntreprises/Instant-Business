@@ -1,1406 +1,2186 @@
 [
   {
-    "id": "q-0001",
     "text": "S'il y a une chose que je sais faire, c'est du blé.",
     "author": "Bernard Tapie",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0001"
   },
   {
-    "id": "q-0002",
     "text": "Je me suis toujours entouré des meilleurs.",
     "author": "Bernard Tapie",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0002"
   },
   {
-    "id": "q-0003",
     "text": "Ma seule ambition, c'est d'être Bernard Tapie.",
     "author": "Bernard Tapie",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0003"
   },
   {
-    "id": "q-0004",
+    "text": "J'ai un goût pour la compétition : toujours faire mieux, plus, toujours plus.",
+    "author": "Bernard Tapie",
+    "category": "mindset",
+    "id": "q-0004"
+  },
+  {
+    "text": "Quand vous êtes dans le sens contraire du courant et que vous nagez vite, vous reculez moins que les autres.",
+    "author": "Bernard Tapie",
+    "category": "mindset",
+    "id": "q-0005"
+  },
+  {
+    "text": "La réussite, c'est un peu de talent, beaucoup de travail et surtout une passion dévorante.",
+    "author": "Bernard Tapie",
+    "category": "mindset",
+    "id": "q-0006"
+  },
+  {
     "text": "Seul un poisson mort navigue dans le sens du courant.",
     "author": "Bernard Arnault",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0007"
   },
   {
-    "id": "q-0005",
     "text": "Un bon produit peut durer éternellement.",
     "author": "Bernard Arnault",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0008"
   },
   {
-    "id": "q-0006",
     "text": "Si vous contrôlez votre distribution, vous contrôlez votre image.",
     "author": "Bernard Arnault",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0009"
   },
   {
-    "id": "q-0007",
+    "text": "Quand quelque chose doit être fait, faites-le !",
+    "author": "Bernard Arnault",
+    "category": "mindset",
+    "id": "q-0010"
+  },
+  {
     "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
     "author": "Steve Jobs",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0011"
   },
   {
-    "id": "q-0008",
     "text": "L'innovation distingue un leader d'un suiveur.",
     "author": "Steve Jobs",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0012"
   },
   {
-    "id": "q-0009",
     "text": "Votre temps est limité, ne le gaspillez pas en vivant la vie de quelqu'un d'autre.",
     "author": "Steve Jobs",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0013"
   },
   {
-    "id": "q-0010",
     "text": "Qu'est-ce qu'une entreprise ? C'est simplement une idée qui améliore la vie de quelqu'un d'autre.",
     "author": "Richard Branson",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0014"
   },
   {
-    "id": "q-0011",
     "text": "Écoutez plus que vous parlez. Personne n'a rien appris en s'entendant parler.",
     "author": "Richard Branson",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0015"
   },
   {
-    "id": "q-0012",
     "text": "Seul un imbécile ne change jamais d'avis.",
     "author": "Richard Branson",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0016"
   },
   {
-    "id": "q-0013",
     "text": "L'opportunité se situe à l'endroit où se trouvent les réclamations et les plaintes.",
     "author": "Jack Ma",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0017"
   },
   {
-    "id": "q-0014",
-    "text": "Nous plaçons le client en numéro un, l'employé en numéro deux, l'actionnaire en numéro trois.",
-    "author": "Jack Ma",
-    "category": "sales"
-  },
-  {
-    "id": "q-0015",
     "text": "Si vous pouvez le rêver, vous pouvez le faire.",
     "author": "Walt Disney",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0018"
   },
   {
-    "id": "q-0016",
-    "text": "Tous nos rêves peuvent devenir réalité si nous avons le courage de les poursuivre.",
-    "author": "Walt Disney",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0017",
-    "text": "Le secret de la réussite est de se concentrer sur ce que vous voulez.",
-    "author": "Walt Disney",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0018",
     "text": "L'échec est simplement l'opportunité de recommencer, cette fois de manière plus pertinente.",
     "author": "Henry Ford",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0019"
   },
   {
-    "id": "q-0019",
-    "text": "Le succès c'est d'aller d'échec en échec sans perdre son enthousiasme.",
-    "author": "Henry Ford",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0020",
-    "text": "Se réunir est un début ; rester ensemble est un progrès ; travailler ensemble est la réussite.",
-    "author": "Henry Ford",
-    "category": "leadership"
-  },
-  {
-    "id": "q-0021",
     "text": "Prenez mes idées, j'en aurai d'autres.",
     "author": "Coco Chanel",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0020"
   },
   {
-    "id": "q-0022",
-    "text": "Pour être irremplaçable, il faut être différente.",
-    "author": "Coco Chanel",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0023",
-    "text": "La mode se démode, le style jamais.",
-    "author": "Coco Chanel",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0024",
     "text": "Prudence n'est que l'euphémisme de peur.",
     "author": "Jules Renard",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0021"
   },
   {
-    "id": "q-0025",
     "text": "La peur bloque la compréhension intelligente de la vie.",
     "author": "Jiddu Krishnamurti",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0022"
   },
   {
-    "id": "q-0026",
     "text": "J'ai appris que le courage n'est pas l'absence de peur, mais la capacité de la vaincre.",
     "author": "Nelson Mandela",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0023"
   },
   {
-    "id": "q-0027",
-    "text": "Je ne perds jamais. Soit je gagne, soit j'apprends.",
-    "author": "Nelson Mandela",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0028",
-    "text": "Un gagnant est un rêveur qui n'abandonne jamais.",
-    "author": "Nelson Mandela",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0029",
     "text": "Je n'ai pas échoué. J'ai juste utilisé 10 000 méthodes qui n'ont pas marché.",
     "author": "Thomas Edison",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0024"
   },
   {
-    "id": "q-0030",
     "text": "Le seul endroit où le succès vient avant le travail, c'est dans le dictionnaire.",
     "author": "Vidal Sassoon",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0025"
   },
   {
-    "id": "q-0031",
     "text": "Les gagnants trouvent des moyens, les perdants des excuses.",
     "author": "Franklin D. Roosevelt",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0026"
   },
   {
-    "id": "q-0032",
-    "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
-    "author": "Franklin D. Roosevelt",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0033",
     "text": "La logique vous amènera de A à B. L'imagination vous amènera partout.",
     "author": "Albert Einstein",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0027"
   },
   {
-    "id": "q-0034",
-    "text": "Ce n'est pas que je sois si intelligent, c'est juste que je reste avec les problèmes plus longtemps.",
-    "author": "Albert Einstein",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0035",
-    "text": "Les intérêts composés sont la huitième merveille du monde. Celui qui les comprend les gagne, celui qui ne les comprend pas les paie.",
-    "author": "Albert Einstein",
-    "category": "finance"
-  },
-  {
-    "id": "q-0036",
     "text": "L'audace réussit à ceux qui savent profiter des occasions.",
     "author": "Marcel Proust",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0028"
   },
   {
-    "id": "q-0037",
     "text": "Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.",
     "author": "Winston Churchill",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0029"
   },
   {
-    "id": "q-0038",
-    "text": "Le succès n'est pas final. L'échec n'est pas fatal. C'est le courage de continuer qui compte.",
-    "author": "Winston Churchill",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0039",
-    "text": "La peur est une réaction. Le courage est une décision.",
-    "author": "Winston Churchill",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0040",
     "text": "Ne cherchez pas d'ascenseur, il n'y en a pas : les entrepreneurs prennent toujours l'escalier !",
     "author": "Frédéric Mazzella",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0030"
   },
   {
-    "id": "q-0041",
     "text": "Un jour, on se dit qu'on va changer le monde et on se lance !",
     "author": "Frédéric Mazzella",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0031"
   },
   {
-    "id": "q-0042",
     "text": "Le capitalisme est un pari sur le mouvement : c'est de là que vient le progrès.",
     "author": "Alain Minc",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0032"
   },
   {
-    "id": "q-0043",
     "text": "La victoire appartient à celui qui a la persévérance la plus longue.",
     "author": "Napoléon Bonaparte",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0033"
   },
   {
-    "id": "q-0044",
     "text": "Toutes les choses semblent réalisables par la volonté et le courage.",
     "author": "Napoléon Bonaparte",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0034"
   },
   {
-    "id": "q-0045",
     "text": "Se concentrer sur le client rend une entreprise plus résiliente.",
     "author": "Jeff Bezos",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0035"
   },
   {
-    "id": "q-0046",
     "text": "Travaille dur, amuse-toi, écris l'histoire.",
     "author": "Jeff Bezos",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0036"
   },
   {
-    "id": "q-0047",
     "text": "Votre marque est ce que les gens disent de vous lorsque vous n'êtes pas dans la pièce.",
     "author": "Jeff Bezos",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0037"
   },
   {
-    "id": "q-0048",
+    "text": "Si vous ne voulez jamais être critiqué, ne faites rien de nouveau.",
+    "author": "Jeff Bezos",
+    "category": "mindset",
+    "id": "q-0038"
+  },
+  {
+    "text": "Observez les clients, pas les concurrents.",
+    "author": "Jeff Bezos",
+    "category": "sales",
+    "id": "q-0039"
+  },
+  {
+    "text": "Si vous voulez être inventif, vous devez être prêt à échouer.",
+    "author": "Jeff Bezos",
+    "category": "mindset",
+    "id": "q-0040"
+  },
+  {
+    "text": "L'échec fait partie intégrante de l'invention.",
+    "author": "Jeff Bezos",
+    "category": "mindset",
+    "id": "q-0041"
+  },
+  {
+    "text": "Nous sommes têtus sur la vision. Nous sommes flexibles sur les détails.",
+    "author": "Jeff Bezos",
+    "category": "leadership",
+    "id": "q-0042"
+  },
+  {
     "text": "L'échec est une option. Si les choses n'échouent pas, vous n'innovez pas assez.",
     "author": "Elon Musk",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0043"
   },
   {
-    "id": "q-0049",
     "text": "La persévérance est très importante. N'abandonnez jamais à moins d'y être obligé.",
     "author": "Elon Musk",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0044"
   },
   {
-    "id": "q-0050",
     "text": "Beaucoup de choses sont improbables, seules quelques-unes sont impossibles.",
     "author": "Elon Musk",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0045"
   },
   {
-    "id": "q-0051",
+    "text": "Si les règles vous empêchent de progresser, battez-vous pour les changer.",
+    "author": "Elon Musk",
+    "category": "mindset",
+    "id": "q-0046"
+  },
+  {
+    "text": "Vous devez être assez motivé pour y arriver. Sinon, vous vous rendrez simplement misérable.",
+    "author": "Elon Musk",
+    "category": "mindset",
+    "id": "q-0047"
+  },
+  {
+    "text": "Lorsque quelque chose est suffisamment importante, vous la faites même si les chances ne sont pas en votre faveur.",
+    "author": "Elon Musk",
+    "category": "mindset",
+    "id": "q-0048"
+  },
+  {
+    "text": "Le succès c'est d'aller d'échec en échec sans perdre son enthousiasme.",
+    "author": "Henry Ford",
+    "category": "mindset",
+    "id": "q-0049"
+  },
+  {
+    "text": "Se réunir est un début ; rester ensemble est un progrès ; travailler ensemble est la réussite.",
+    "author": "Henry Ford",
+    "category": "leadership",
+    "id": "q-0050"
+  },
+  {
+    "text": "Quand tout semble être contre vous, souvenez-vous que l'avion décolle face au vent.",
+    "author": "Henry Ford",
+    "category": "mindset",
+    "id": "q-0051"
+  },
+  {
+    "text": "Ce n'est pas l'employeur qui paie les salaires, mais le client.",
+    "author": "Henry Ford",
+    "category": "sales",
+    "id": "q-0052"
+  },
+  {
+    "text": "Les deux choses les plus importantes n'apparaissent pas au bilan : sa réputation et ses hommes.",
+    "author": "Henry Ford",
+    "category": "leadership",
+    "id": "q-0053"
+  },
+  {
+    "text": "La qualité signifie faire les choses correctement quand personne ne regarde.",
+    "author": "Henry Ford",
+    "category": "mindset",
+    "id": "q-0054"
+  },
+  {
+    "text": "Les obstacles sont ces choses effrayantes que vous voyez quand vous détournez les yeux de votre objectif.",
+    "author": "Henry Ford",
+    "category": "mindset",
+    "id": "q-0055"
+  },
+  {
+    "text": "Que vous croyiez que vous pouvez ou non, vous avez raison.",
+    "author": "Henry Ford",
+    "category": "mindset",
+    "id": "q-0056"
+  },
+  {
     "text": "Il faut 20 ans pour bâtir une réputation et cinq minutes pour l'anéantir.",
     "author": "Warren Buffett",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0057"
   },
   {
-    "id": "q-0052",
     "text": "Le risque provient de ne pas savoir ce que l'on fait.",
     "author": "Warren Buffett",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0058"
   },
   {
-    "id": "q-0053",
     "text": "Achetez seulement des choses que vous seriez parfaitement heureux de posséder si le marché s'effondrait pendant dix ans.",
     "author": "Warren Buffett",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0059"
   },
   {
-    "id": "q-0054",
+    "text": "Notre horizon d'investissement préféré est : pour toujours.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0060"
+  },
+  {
+    "text": "La bourse est un moyen de transférer l'argent des impatients vers les patients.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0061"
+  },
+  {
+    "text": "Le meilleur investissement que vous puissiez faire, c'est de miser sur vos propres capacités.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0062"
+  },
+  {
+    "text": "Tous nos rêves peuvent devenir réalité si nous avons le courage de les poursuivre.",
+    "author": "Walt Disney",
+    "category": "mindset",
+    "id": "q-0063"
+  },
+  {
+    "text": "Le secret de la réussite est de se concentrer sur ce que vous voulez.",
+    "author": "Walt Disney",
+    "category": "mindset",
+    "id": "q-0064"
+  },
+  {
+    "text": "La manière de commencer est d'arrêter de parler et de commencer à faire.",
+    "author": "Walt Disney",
+    "category": "mindset",
+    "id": "q-0065"
+  },
+  {
+    "text": "C'est vraiment amusant de faire l'impossible.",
+    "author": "Walt Disney",
+    "category": "mindset",
+    "id": "q-0066"
+  },
+  {
+    "text": "Pensez, croyez, rêvez et osez.",
+    "author": "Walt Disney",
+    "category": "mindset",
+    "id": "q-0067"
+  },
+  {
     "text": "Ce n'est pas votre faute si vous êtes né pauvre. En revanche, si vous mourez pauvre, c'est votre erreur.",
     "author": "Bill Gates",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0068"
   },
   {
-    "id": "q-0055",
     "text": "La patience est un élément clé de la réussite.",
     "author": "Bill Gates",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0069"
   },
   {
-    "id": "q-0056",
     "text": "Le succès est un mauvais professeur. Il pousse les gens intelligents à croire qu'ils sont infaillibles.",
     "author": "Bill Gates",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0070"
   },
   {
-    "id": "q-0057",
+    "text": "Il ne faut jamais se comparer aux autres. Le faire, c'est s'insulter soi-même.",
+    "author": "Bill Gates",
+    "category": "mindset",
+    "id": "q-0071"
+  },
+  {
+    "text": "Pour gagner gros, il faut parfois prendre de gros risques.",
+    "author": "Bill Gates",
+    "category": "finance",
+    "id": "q-0072"
+  },
+  {
+    "text": "Célébrer le succès, c'est bien, mais il est plus important de tirer les leçons de l'échec.",
+    "author": "Bill Gates",
+    "category": "mindset",
+    "id": "q-0073"
+  },
+  {
     "text": "Le plus grand risque est de ne prendre aucun risque.",
     "author": "Mark Zuckerberg",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0074"
   },
   {
-    "id": "q-0058",
     "text": "Si les choses ne se cassent pas, vous ne vous déplacez pas assez vite.",
     "author": "Mark Zuckerberg",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0075"
   },
   {
-    "id": "q-0059",
     "text": "La chose la plus importante est de garder votre équipe aussi petite que possible.",
     "author": "Mark Zuckerberg",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0076"
   },
   {
-    "id": "q-0060",
+    "text": "Mon objectif n'a jamais été de créer une entreprise, mais de bâtir quelque chose susceptible de changer le monde.",
+    "author": "Mark Zuckerberg",
+    "category": "leadership",
+    "id": "q-0077"
+  },
+  {
     "text": "Pensez comme une reine. Une reine n'a pas peur d'échouer.",
     "author": "Oprah Winfrey",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0078"
   },
   {
-    "id": "q-0061",
     "text": "L'échec est un excellent enseignant et chaque erreur a une leçon à offrir.",
     "author": "Oprah Winfrey",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0079"
   },
   {
-    "id": "q-0062",
     "text": "Entourez-vous seulement de personnes qui vont vous élever plus haut.",
     "author": "Oprah Winfrey",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0080"
   },
   {
-    "id": "q-0063",
+    "text": "Vous ne devenez pas ce que vous voulez, vous devenez ce que vous croyez.",
+    "author": "Oprah Winfrey",
+    "category": "mindset",
+    "id": "q-0081"
+  },
+  {
+    "text": "Qu'importe d'où tu viens et qui tu es, tu peux réussir.",
+    "author": "Oprah Winfrey",
+    "category": "mindset",
+    "id": "q-0082"
+  },
+  {
     "text": "Si mon esprit peut le concevoir et si mon cœur peut y croire, alors je peux le réaliser.",
     "author": "Muhammad Ali",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0083"
   },
   {
-    "id": "q-0064",
     "text": "Je n'ai jamais permis à personne de me convaincre de ne pas croire en moi.",
     "author": "Muhammad Ali",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0084"
   },
   {
-    "id": "q-0065",
     "text": "Celui qui n'a pas d'objectifs ne risque pas de les atteindre.",
     "author": "Sun Tzu",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0085"
   },
   {
-    "id": "q-0066",
     "text": "Le bon général a gagné la bataille avant de l'engager.",
     "author": "Sun Tzu",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0086"
   },
   {
-    "id": "q-0067",
     "text": "Un grand dirigeant commande par l'exemple et non par la force.",
     "author": "Sun Tzu",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0087"
   },
   {
-    "id": "q-0068",
+    "text": "Connais l'adversaire et surtout connais-toi toi-même et tu seras invincible.",
+    "author": "Sun Tzu",
+    "category": "mindset",
+    "id": "q-0088"
+  },
+  {
     "text": "Le commencement est beaucoup plus que la moitié de l'objectif.",
     "author": "Aristote",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0089"
   },
   {
-    "id": "q-0069",
     "text": "C'est par l'expérience que la science et l'art font leur progrès.",
     "author": "Aristote",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0090"
   },
   {
-    "id": "q-0070",
     "text": "Là où vos talents et les besoins du monde se rencontrent, là se trouve votre vocation.",
     "author": "Aristote",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0091"
   },
   {
-    "id": "q-0071",
+    "text": "Le courage est la première des qualités humaines car elle garantit toutes les autres.",
+    "author": "Aristote",
+    "category": "mindset",
+    "id": "q-0092"
+  },
+  {
     "text": "Croyez en vos rêves et ils se réaliseront peut-être. Croyez en vous et ils se réaliseront sûrement.",
     "author": "Martin Luther King",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0093"
   },
   {
-    "id": "q-0072",
     "text": "Faites le premier pas sur le chemin de la foi. Vous n'avez pas à le parcourir entièrement, juste à faire le premier pas.",
     "author": "Martin Luther King",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0094"
   },
   {
-    "id": "q-0073",
     "text": "Avoir la foi, c'est monter la première marche, même quand on ne voit pas tout l'escalier.",
     "author": "Martin Luther King",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0095"
   },
   {
-    "id": "q-0074",
     "text": "Soyez le changement que vous voulez voir dans le monde.",
     "author": "Mahatma Gandhi",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0096"
   },
   {
-    "id": "q-0075",
     "text": "Tout ce que tu feras sera dérisoire, mais il est essentiel que tu le fasses.",
     "author": "Mahatma Gandhi",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0097"
   },
   {
-    "id": "q-0076",
-    "text": "À une époque, le leadership résidait dans les muscles. Aujourd'hui, il réside dans la façon de traiter les gens.",
-    "author": "Mahatma Gandhi",
-    "category": "leadership"
-  },
-  {
-    "id": "q-0077",
     "text": "Je ne crains pas l'homme qui a pratiqué 10 000 coups une fois, mais celui qui a pratiqué un coup 10 000 fois.",
     "author": "Bruce Lee",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0098"
   },
   {
-    "id": "q-0078",
     "text": "Connaître ne suffit pas, il faut savoir appliquer. La volonté ne suffit pas, il faut savoir agir.",
     "author": "Bruce Lee",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0099"
   },
   {
-    "id": "q-0079",
     "text": "Ne crains pas l'échec. Ce n'est pas l'échec, mais le manque d'ambition qui est un crime.",
     "author": "Bruce Lee",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0100"
   },
   {
-    "id": "q-0080",
+    "text": "Il n'y a pas de limites. Il y a seulement des niveaux, et tu ne dois pas en rester là.",
+    "author": "Bruce Lee",
+    "category": "mindset",
+    "id": "q-0101"
+  },
+  {
     "text": "C'est dur d'échouer, mais c'est pire de n'avoir jamais essayé de réussir.",
     "author": "Theodore Roosevelt",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0102"
   },
   {
-    "id": "q-0081",
     "text": "Le seul homme à ne jamais faire d'erreurs est celui qui ne fait rien.",
     "author": "Theodore Roosevelt",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0103"
   },
   {
-    "id": "q-0082",
     "text": "Le mérite est à ceux qui luttent constamment.",
     "author": "Theodore Roosevelt",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0104"
   },
   {
-    "id": "q-0083",
+    "text": "Parlez doucement, et tenez un gros bâton, vous irez loin.",
+    "author": "Theodore Roosevelt",
+    "category": "leadership",
+    "id": "q-0105"
+  },
+  {
     "text": "N'ayez pas peur d'échouer. Ayez peur de ne pas essayer.",
     "author": "Michael Jordan",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0106"
   },
   {
-    "id": "q-0084",
     "text": "Je peux accepter l'échec, tout le monde échoue dans quelque chose. Mais je ne peux pas accepter de ne pas essayer.",
     "author": "Michael Jordan",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0107"
   },
   {
-    "id": "q-0085",
     "text": "Plus je me prépare, plus j'ai de chance.",
     "author": "Michael Jordan",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0108"
   },
   {
-    "id": "q-0086",
+    "text": "Rien de valeur ne vient sans être gagné.",
+    "author": "Michael Jordan",
+    "category": "mindset",
+    "id": "q-0109"
+  },
+  {
+    "text": "Le talent fait gagner les matches, mais le travail d'équipe et l'intelligence font gagner des tournois.",
+    "author": "Michael Jordan",
+    "category": "leadership",
+    "id": "q-0110"
+  },
+  {
+    "text": "Le succès n'est pas final. L'échec n'est pas fatal. C'est le courage de continuer qui compte.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "id": "q-0111"
+  },
+  {
+    "text": "La peur est une réaction. Le courage est une décision.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "id": "q-0112"
+  },
+  {
+    "text": "Il n'y a qu'une réponse à la défaite, et c'est la victoire.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "id": "q-0113"
+  },
+  {
+    "text": "Agissez comme s'il était impossible d'échouer.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "id": "q-0114"
+  },
+  {
+    "text": "Pour s'améliorer, il faut changer. Donc, pour être parfait, il faut avoir changé souvent.",
+    "author": "Winston Churchill",
+    "category": "mindset",
+    "id": "q-0115"
+  },
+  {
     "text": "Celui qui déplace la montagne, c'est celui qui commence à enlever les petites pierres.",
     "author": "Confucius",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0116"
   },
   {
-    "id": "q-0087",
     "text": "Celui qui ne progresse pas chaque jour, recule chaque jour.",
     "author": "Confucius",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0117"
   },
   {
-    "id": "q-0088",
     "text": "Un homme est grand non pas parce qu'il n'a pas échoué ; un homme est grand parce que l'échec ne l'a pas arrêté.",
     "author": "Confucius",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0118"
   },
   {
-    "id": "q-0089",
+    "text": "Choisissez un travail que vous aimez et vous n'aurez pas à travailler un seul jour de votre vie.",
+    "author": "Confucius",
+    "category": "mindset",
+    "id": "q-0119"
+  },
+  {
+    "text": "Ne vous souciez pas de n'être pas remarqué ; cherchez plutôt à faire quelque chose de remarquable.",
+    "author": "Confucius",
+    "category": "mindset",
+    "id": "q-0120"
+  },
+  {
+    "text": "Exige beaucoup de toi-même et attends peu des autres.",
+    "author": "Confucius",
+    "category": "mindset",
+    "id": "q-0121"
+  },
+  {
+    "text": "Dans les affaires, les grandes choses ne sont jamais faites par une seule personne.",
+    "author": "Steve Jobs",
+    "category": "leadership",
+    "id": "q-0122"
+  },
+  {
+    "text": "Les gens qui sont assez fous pour penser qu'ils peuvent changer le monde sont ceux qui le font.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0123"
+  },
+  {
+    "text": "La simplicité est la sophistication ultime.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0124"
+  },
+  {
+    "text": "Je suis convaincu que la moitié qui sépare les entrepreneurs qui réussissent de ceux qui échouent est purement la persévérance.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0125"
+  },
+  {
+    "text": "Innover, c'est savoir abandonner des milliers de bonnes idées.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0126"
+  },
+  {
+    "text": "Cela n'a aucun sens d'embaucher des gens intelligents et de leur dire quoi faire.",
+    "author": "Steve Jobs",
+    "category": "leadership",
+    "id": "q-0127"
+  },
+  {
+    "text": "La chance est ce qui se passe lorsque la préparation rencontre l'opportunité.",
+    "author": "Richard Branson",
+    "category": "mindset",
+    "id": "q-0128"
+  },
+  {
+    "text": "Ne quittez jamais les flux de trésorerie des yeux, car c'est le sang de l'entreprise.",
+    "author": "Richard Branson",
+    "category": "finance",
+    "id": "q-0129"
+  },
+  {
+    "text": "La complexité est votre ennemie. N'importe quel imbécile peut compliquer quelque chose.",
+    "author": "Richard Branson",
+    "category": "mindset",
+    "id": "q-0130"
+  },
+  {
+    "text": "Les opportunités, c'est comme les autobus, il y en a toujours un autre qui arrive.",
+    "author": "Richard Branson",
+    "category": "mindset",
+    "id": "q-0131"
+  },
+  {
+    "text": "Si vous vous occupez de votre personnel, ils s'occuperont de vos clients.",
+    "author": "Richard Branson",
+    "category": "sales",
+    "id": "q-0132"
+  },
+  {
+    "text": "Vous devez prendre des risques si vous voulez réussir.",
+    "author": "Richard Branson",
+    "category": "mindset",
+    "id": "q-0133"
+  },
+  {
+    "text": "Parfois, la décision la plus risquée que vous puissiez prendre est de ne rien faire.",
+    "author": "Richard Branson",
+    "category": "mindset",
+    "id": "q-0134"
+  },
+  {
+    "text": "Lancer une entreprise, c'est résoudre des problèmes avec succès.",
+    "author": "Richard Branson",
+    "category": "leadership",
+    "id": "q-0135"
+  },
+  {
+    "text": "Réussir en affaires, c'est avant tout créer des liens.",
+    "author": "Richard Branson",
+    "category": "sales",
+    "id": "q-0136"
+  },
+  {
+    "text": "Le bonheur est l'ingrédient secret des entreprises prospères.",
+    "author": "Richard Branson",
+    "category": "leadership",
+    "id": "q-0137"
+  },
+  {
     "text": "Ce qu'on obtient en atteignant nos objectifs n'est pas aussi important que ce que l'on devient en les atteignant.",
     "author": "Zig Ziglar",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0138"
   },
   {
-    "id": "q-0090",
     "text": "La pire décision de toutes est celle que l'on n'a pas prise.",
     "author": "Zig Ziglar",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0139"
   },
   {
-    "id": "q-0091",
     "text": "La meilleure arme de persuasion que tu possèdes dans ton arsenal est l'intégrité.",
     "author": "Zig Ziglar",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0140"
   },
   {
-    "id": "q-0092",
+    "text": "Si l'échec vous apprend quelque chose, vous n'êtes pas vraiment perdant.",
+    "author": "Zig Ziglar",
+    "category": "mindset",
+    "id": "q-0141"
+  },
+  {
+    "text": "Gagner n'est pas tout, mais l'effort qu'il faut fournir l'est.",
+    "author": "Zig Ziglar",
+    "category": "mindset",
+    "id": "q-0142"
+  },
+  {
+    "text": "Plus vous aidez les gens à obtenir ce qu'ils désirent, plus vous avez de succès.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0143"
+  },
+  {
     "text": "Tout ce que l'esprit conçoit et croit, il peut l'obtenir.",
     "author": "Napoleon Hill",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0144"
   },
   {
-    "id": "q-0093",
     "text": "Le succès ne s'explique pas. L'échec ne s'excuse pas.",
     "author": "Napoleon Hill",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0145"
   },
   {
-    "id": "q-0094",
     "text": "Chaque difficulté porte en elle le germe d'un avantage équivalent ou supérieur.",
     "author": "Napoleon Hill",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0146"
   },
   {
-    "id": "q-0095",
+    "text": "Les opportunités apparaissent le plus souvent sous la forme de malchance ou d'échec temporaire.",
+    "author": "Napoleon Hill",
+    "category": "mindset",
+    "id": "q-0147"
+  },
+  {
+    "text": "Le monde a l'habitude de faire de la place à l'homme dont les paroles et les actions montrent qu'il sait où il va.",
+    "author": "Napoleon Hill",
+    "category": "mindset",
+    "id": "q-0148"
+  },
+  {
     "text": "La culture mange la stratégie au petit-déjeuner.",
     "author": "Peter Drucker",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0149"
   },
   {
-    "id": "q-0096",
     "text": "La meilleure façon de prédire l'avenir est de le créer.",
     "author": "Peter Drucker",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0150"
   },
   {
-    "id": "q-0097",
     "text": "S'il y a un secret à l'efficacité, c'est la concentration.",
     "author": "Peter Drucker",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0151"
   },
   {
-    "id": "q-0098",
+    "text": "Le temps est le capital le plus rare, et si on ne sait pas le gérer, alors on ne peut rien gérer d'autre.",
+    "author": "Peter Drucker",
+    "category": "leadership",
+    "id": "q-0152"
+  },
+  {
+    "text": "Le management se résume à deux fonctions : commercialiser et innover.",
+    "author": "Peter Drucker",
+    "category": "leadership",
+    "id": "q-0153"
+  },
+  {
+    "text": "On obtient des résultats en exploitant des opportunités, non en résolvant des problèmes.",
+    "author": "Peter Drucker",
+    "category": "mindset",
+    "id": "q-0154"
+  },
+  {
+    "text": "Il n'y a pas « un » caractère d'entrepreneur. Mais il faut « du » caractère pour l'être.",
+    "author": "Peter Drucker",
+    "category": "mindset",
+    "id": "q-0155"
+  },
+  {
+    "text": "Pour être irremplaçable, il faut être différente.",
+    "author": "Coco Chanel",
+    "category": "mindset",
+    "id": "q-0156"
+  },
+  {
+    "text": "La mode se démode, le style jamais.",
+    "author": "Coco Chanel",
+    "category": "mindset",
+    "id": "q-0157"
+  },
+  {
+    "text": "Ma vie ne me plaisait pas, alors j'ai créé ma vie.",
+    "author": "Coco Chanel",
+    "category": "mindset",
+    "id": "q-0158"
+  },
+  {
+    "text": "La force est construite par les échecs, pas par les réussites.",
+    "author": "Coco Chanel",
+    "category": "mindset",
+    "id": "q-0159"
+  },
+  {
+    "text": "Pour réaliser de grandes choses, il faut d'abord rêver.",
+    "author": "Coco Chanel",
+    "category": "mindset",
+    "id": "q-0160"
+  },
+  {
     "text": "Un investissement dans le savoir paie toujours les meilleurs intérêts.",
     "author": "Benjamin Franklin",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0161"
   },
   {
-    "id": "q-0099",
     "text": "Le temps, c'est de l'argent.",
     "author": "Benjamin Franklin",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0162"
   },
   {
-    "id": "q-0100",
     "text": "Le succès est le résidu de la planification.",
     "author": "Benjamin Franklin",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0163"
   },
   {
-    "id": "q-0101",
+    "text": "Si vous ne parvenez pas à planifier, vous prévoyez d'échouer !",
+    "author": "Benjamin Franklin",
+    "category": "mindset",
+    "id": "q-0164"
+  },
+  {
+    "text": "Ne remettez pas au lendemain ce que vous pouvez faire le jour même.",
+    "author": "Benjamin Franklin",
+    "category": "mindset",
+    "id": "q-0165"
+  },
+  {
+    "text": "La paresse chemine si lentement que la pauvreté la rattrape.",
+    "author": "Benjamin Franklin",
+    "category": "finance",
+    "id": "q-0166"
+  },
+  {
     "text": "Ils ne savaient pas que c'était impossible, alors ils l'ont fait.",
     "author": "Mark Twain",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0167"
   },
   {
-    "id": "q-0102",
     "text": "Dans 20 ans, vous serez plus déçu par les choses que vous n'avez pas faites que par celles que vous avez faites.",
     "author": "Mark Twain",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0168"
   },
   {
-    "id": "q-0103",
     "text": "Le secret pour aller de l'avant est de commencer.",
     "author": "Mark Twain",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0169"
   },
   {
-    "id": "q-0104",
+    "text": "Chaque fois que vous vous trouvez du côté de la majorité, il est temps de faire une pause et de réfléchir.",
+    "author": "Mark Twain",
+    "category": "mindset",
+    "id": "q-0170"
+  },
+  {
+    "text": "La vie est courte, enfreignez les règles.",
+    "author": "Mark Twain",
+    "category": "mindset",
+    "id": "q-0171"
+  },
+  {
     "text": "Trop de publicité tue la publicité.",
     "author": "Jacques Séguéla",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0172"
   },
   {
-    "id": "q-0105",
     "text": "Tout homme qui meurt riche meurt déshonoré.",
     "author": "Andrew Carnegie",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0173"
   },
   {
-    "id": "q-0106",
     "text": "Aucun homme ne devient riche à moins qu'il enrichisse autrui.",
     "author": "Andrew Carnegie",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0174"
   },
   {
-    "id": "q-0107",
     "text": "Visez au plus haut.",
     "author": "Andrew Carnegie",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0175"
   },
   {
-    "id": "q-0108",
+    "text": "Faites votre devoir et un peu plus encore, et l'avenir prendra soin de lui-même.",
+    "author": "Andrew Carnegie",
+    "category": "mindset",
+    "id": "q-0176"
+  },
+  {
+    "text": "Concentrez vos énergies, vos pensées et votre capital.",
+    "author": "Andrew Carnegie",
+    "category": "finance",
+    "id": "q-0177"
+  },
+  {
+    "text": "Ceux qui réussissent sont des hommes qui ont choisi une ligne de conduite et qui s'y tiennent.",
+    "author": "Andrew Carnegie",
+    "category": "mindset",
+    "id": "q-0178"
+  },
+  {
     "text": "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.",
     "author": "Sénèque",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0179"
   },
   {
-    "id": "q-0109",
     "text": "Il n'est pas de vent favorable pour celui qui ne sait pas où il va.",
     "author": "Sénèque",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0180"
   },
   {
-    "id": "q-0110",
     "text": "C'est par l'épreuve du feu qu'on reconnaît l'or pur. C'est par les épreuves qu'on reconnaît l'homme de cœur.",
     "author": "Sénèque",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0181"
   },
   {
-    "id": "q-0111",
+    "text": "Le plus grand obstacle à la vie est l'attente, qui espère demain et néglige aujourd'hui.",
+    "author": "Sénèque",
+    "category": "mindset",
+    "id": "q-0182"
+  },
+  {
+    "text": "À force de remettre à plus tard, la vie nous dépasse.",
+    "author": "Sénèque",
+    "category": "mindset",
+    "id": "q-0183"
+  },
+  {
+    "text": "C'est pendant l'orage qu'on connaît le pilote.",
+    "author": "Sénèque",
+    "category": "mindset",
+    "id": "q-0184"
+  },
+  {
     "text": "Un voyage de mille lieues commence toujours par un premier pas.",
     "author": "Lao Tseu",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0185"
   },
   {
-    "id": "q-0112",
     "text": "Avoir un but trace la voie.",
     "author": "Lao Tseu",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0186"
   },
   {
-    "id": "q-0113",
     "text": "Qui triomphe de lui-même possède la force.",
     "author": "Lao Tseu",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0187"
   },
   {
-    "id": "q-0114",
     "text": "Tout ce que je sais, c'est que je ne sais rien.",
     "author": "Socrate",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0188"
   },
   {
-    "id": "q-0115",
     "text": "Connais-toi toi-même.",
     "author": "Socrate",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0189"
   },
   {
-    "id": "q-0116",
     "text": "Le secret du changement, c'est de concentrer toute son énergie, non pas à lutter contre le passé mais à construire l'avenir.",
     "author": "Socrate",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0190"
   },
   {
-    "id": "q-0117",
+    "text": "Une vie sans examen ne vaut pas la peine d'être vécue.",
+    "author": "Socrate",
+    "category": "mindset",
+    "id": "q-0191"
+  },
+  {
     "text": "La douceur est invincible.",
     "author": "Marc Aurèle",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0192"
   },
   {
-    "id": "q-0118",
     "text": "Sois comme un promontoire contre lequel les flots viennent sans cesse se briser.",
     "author": "Marc Aurèle",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0193"
   },
   {
-    "id": "q-0119",
     "text": "Tout ce qui paraît au-dessus de tes forces n'est pas forcément impossible.",
     "author": "Marc Aurèle",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0194"
   },
   {
-    "id": "q-0120",
     "text": "Avoir du courage ne veut pas dire que nous n'avons pas peur, mais que nous affrontons nos peurs.",
     "author": "Maya Angelou",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0195"
   },
   {
-    "id": "q-0121",
     "text": "Vous ferez face à de nombreuses défaites dans votre vie, mais ne vous laissez jamais vaincre.",
     "author": "Maya Angelou",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0196"
   },
   {
-    "id": "q-0122",
     "text": "Faites de votre mieux jusqu'à ce que vous en sachiez mieux. Ensuite, faites mieux.",
     "author": "Maya Angelou",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0197"
   },
   {
-    "id": "q-0123",
     "text": "Du travail et de la persévérance découlent des bonnes choses.",
     "author": "Kobe Bryant",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0198"
   },
   {
-    "id": "q-0124",
     "text": "Aussi dur que tu crois pouvoir travailler, tu peux travailler encore plus dur que ça.",
     "author": "Kobe Bryant",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0199"
   },
   {
-    "id": "q-0125",
     "text": "On n'abandonne pas, on ne bat en retraite, on ne fuit pas.",
     "author": "Kobe Bryant",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0200"
   },
   {
-    "id": "q-0126",
     "text": "Tout changement de vie commence par une décision.",
     "author": "Tony Robbins",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0201"
   },
   {
-    "id": "q-0127",
     "text": "L'échec est une partie du succès. Quiconque évite l'échec évite aussi le succès.",
     "author": "Tony Robbins",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0202"
   },
   {
-    "id": "q-0128",
     "text": "Les décisions que nous prenons déterminent notre destin.",
     "author": "Tony Robbins",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0203"
   },
   {
-    "id": "q-0129",
+    "text": "Il n'y a aucun succès permanent sans un engagement constant envers l'excellence.",
+    "author": "Tony Robbins",
+    "category": "mindset",
+    "id": "q-0204"
+  },
+  {
     "text": "La qualité de la vie d'une personne est en rapport direct avec sa volonté d'exceller, quel que soit le domaine où elle s'exerce.",
     "author": "Vince Lombardi",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0205"
   },
   {
-    "id": "q-0130",
     "text": "Si l'important n'est pas de gagner, pourquoi compte-t-on les points ?",
     "author": "Vince Lombardi",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0206"
   },
   {
-    "id": "q-0131",
-    "text": "Les leaders ne naissent pas, ils sont faits. Et ils sont faits par l'effort acharné.",
-    "author": "Vince Lombardi",
-    "category": "leadership"
-  },
-  {
-    "id": "q-0132",
     "text": "Les conditions essentielles pour réussir sont la patience et la certitude du succès.",
     "author": "John D. Rockefeller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0207"
   },
   {
-    "id": "q-0133",
     "text": "Si vous voulez réussir, lancez-vous sur de nouveaux chemins plutôt que de parcourir les sentiers usés du succès accepté.",
     "author": "John D. Rockefeller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0208"
   },
   {
-    "id": "q-0134",
     "text": "La ténacité est une des qualités indispensables pour réussir dans la vie, quel que soit le but à atteindre.",
     "author": "John D. Rockefeller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0209"
   },
   {
-    "id": "q-0135",
+    "text": "Le secret du succès est de faire les choses communes de manière peu commune.",
+    "author": "John D. Rockefeller",
+    "category": "mindset",
+    "id": "q-0210"
+  },
+  {
     "text": "Il n'y a qu'un seul patron : le client. Il peut licencier tout le monde, simplement en allant dépenser son argent ailleurs.",
     "author": "Sam Walton",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0211"
   },
   {
-    "id": "q-0136",
     "text": "L'exécution, c'est ce qui compte.",
     "author": "Guy Kawasaki",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0212"
   },
   {
-    "id": "q-0137",
     "text": "La meilleure raison de lancer une entreprise, c'est de créer du sens.",
     "author": "Guy Kawasaki",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0213"
   },
   {
-    "id": "q-0138",
     "text": "Les vrais entrepreneurs sont motivés par leur passion, non par le profit.",
     "author": "Guy Kawasaki",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0214"
   },
   {
-    "id": "q-0139",
     "text": "L'échec n'est pas une option. Tout le monde doit réussir.",
     "author": "Arnold Schwarzenegger",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0215"
   },
   {
-    "id": "q-0140",
     "text": "La pire chose que je puisse être, c'est comme tout le monde. Je déteste ça.",
     "author": "Arnold Schwarzenegger",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0216"
   },
   {
-    "id": "q-0141",
     "text": "Ne laissez jamais quelqu'un vous dire que vous ne pouvez pas faire quelque chose.",
     "author": "Will Smith",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0217"
   },
   {
-    "id": "q-0142",
     "text": "Ayez une éthique de travail maladive.",
     "author": "Will Smith",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0218"
   },
   {
-    "id": "q-0143",
     "text": "Vous devez y croire. Il n'y a aucune raison d'avoir un plan B.",
     "author": "Will Smith",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0219"
   },
   {
-    "id": "q-0144",
+    "text": "Commencez chaque journée comme si elle avait été écrite spécialement pour vous.",
+    "author": "Will Smith",
+    "category": "mindset",
+    "id": "q-0220"
+  },
+  {
+    "text": "Être réaliste est la voie la plus commune vers la médiocrité.",
+    "author": "Will Smith",
+    "category": "mindset",
+    "id": "q-0221"
+  },
+  {
+    "text": "La grandeur existe en chacun de nous.",
+    "author": "Will Smith",
+    "category": "mindset",
+    "id": "q-0222"
+  },
+  {
+    "text": "Je ne perds jamais. Soit je gagne, soit j'apprends.",
+    "author": "Nelson Mandela",
+    "category": "mindset",
+    "id": "q-0223"
+  },
+  {
+    "text": "Un gagnant est un rêveur qui n'abandonne jamais.",
+    "author": "Nelson Mandela",
+    "category": "mindset",
+    "id": "q-0224"
+  },
+  {
+    "text": "La plus grande gloire n'est pas de ne jamais tomber, mais de se relever à chaque chute.",
+    "author": "Nelson Mandela",
+    "category": "mindset",
+    "id": "q-0225"
+  },
+  {
+    "text": "Ne me jugez pas par mon succès, jugez-moi par combien de fois je suis tombé et je me suis relevé.",
+    "author": "Nelson Mandela",
+    "category": "mindset",
+    "id": "q-0226"
+  },
+  {
+    "text": "C'est toujours impossible jusqu'à ce que ça soit fait.",
+    "author": "Nelson Mandela",
+    "category": "mindset",
+    "id": "q-0227"
+  },
+  {
     "text": "La confiance en soi est le premier secret du succès.",
     "author": "Ralph Waldo Emerson",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0228"
   },
   {
-    "id": "q-0145",
     "text": "N'allez pas là où le chemin peut mener. Allez là où il n'y a pas de chemin et laissez une trace.",
     "author": "Ralph Waldo Emerson",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0229"
   },
   {
-    "id": "q-0146",
     "text": "Les hommes parlent de la victoire comme d'une chance. C'est le travail qui fait la victoire.",
     "author": "Ralph Waldo Emerson",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0230"
   },
   {
-    "id": "q-0147",
+    "text": "Rien de grand ne se fit jamais sans enthousiasme.",
+    "author": "Ralph Waldo Emerson",
+    "category": "mindset",
+    "id": "q-0231"
+  },
+  {
+    "text": "L'ancêtre de toute action est une pensée.",
+    "author": "Ralph Waldo Emerson",
+    "category": "mindset",
+    "id": "q-0232"
+  },
+  {
     "text": "La vie est une aventure audacieuse ou elle n'est rien.",
     "author": "Helen Keller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0233"
   },
   {
-    "id": "q-0148",
     "text": "Gardez votre visage dans le soleil et vous ne verrez pas les ombres.",
     "author": "Helen Keller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0234"
   },
   {
-    "id": "q-0149",
     "text": "Aucun pessimiste n'a jamais découvert le secret des étoiles ni ouvert un nouveau chemin pour l'esprit humain.",
     "author": "Helen Keller",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0235"
   },
   {
-    "id": "q-0150",
     "text": "Il y a toujours deux raisons pour faire quelque chose : une bonne raison et la vraie raison !",
     "author": "Dale Carnegie",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0236"
   },
   {
-    "id": "q-0151",
     "text": "Ni les situations ni les gens ne peuvent être améliorés par un facteur externe. Si amélioration il doit y avoir, elle doit venir de l'intérieur.",
     "author": "Dale Carnegie",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0237"
   },
   {
-    "id": "q-0152",
     "text": "Je crois au pouvoir et à la force des mots.",
     "author": "Malala Yousafzai",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0238"
   },
   {
-    "id": "q-0153",
     "text": "Un enfant, un professeur, un livre, un crayon peuvent changer le monde.",
     "author": "Malala Yousafzai",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0239"
   },
   {
-    "id": "q-0154",
     "text": "Je suis persuadée que les rêves d'aujourd'hui seront les réalités de demain.",
     "author": "Malala Yousafzai",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0240"
   },
   {
-    "id": "q-0155",
     "text": "Le succès est meilleur lorsqu'il est partagé.",
     "author": "Howard Schultz",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0241"
   },
   {
-    "id": "q-0156",
     "text": "Le succès est quelque chose qui se mérite chaque jour.",
     "author": "Howard Schultz",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0242"
   },
   {
-    "id": "q-0157",
     "text": "Croyez en vos rêves et rêvez grand. Et puis, après avoir fait cela, rêvez plus grand.",
     "author": "Howard Schultz",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0243"
   },
   {
-    "id": "q-0158",
+    "text": "Les chefs d'entreprise ne peuvent pas être des spectateurs.",
+    "author": "Howard Schultz",
+    "category": "leadership",
+    "id": "q-0244"
+  },
+  {
+    "text": "Parfois, vous devez créer la chose dont vous voulez faire partie.",
+    "author": "Howard Schultz",
+    "category": "mindset",
+    "id": "q-0245"
+  },
+  {
     "text": "Livrez toujours plus que prévu.",
     "author": "Larry Page",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0246"
   },
   {
-    "id": "q-0159",
     "text": "Nous devrions construire de grandes choses qui n'existent pas.",
     "author": "Larry Page",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0247"
   },
   {
-    "id": "q-0160",
     "text": "Presque tous ceux qui ont eu une idée quelque peu révolutionnaire ont d'abord été traités de fous.",
     "author": "Larry Page",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0248"
   },
   {
-    "id": "q-0161",
+    "text": "L'optimisme est important. Vous devez être un peu ridicule sur les objectifs que vous allez définir.",
+    "author": "Larry Page",
+    "category": "mindset",
+    "id": "q-0249"
+  },
+  {
+    "text": "Il est très difficile d'échouer complètement, si vous visez assez haut.",
+    "author": "Larry Page",
+    "category": "mindset",
+    "id": "q-0250"
+  },
+  {
     "text": "Il vaut mieux agir trop rapidement qu'attendre trop longtemps.",
     "author": "Jack Welch",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0251"
   },
   {
-    "id": "q-0162",
     "text": "Restructurer, c'est un chemin, pas une destination.",
     "author": "Jack Welch",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0252"
   },
   {
-    "id": "q-0163",
     "text": "Contrôlez votre destinée ou quelqu'un d'autre le fera à votre place.",
     "author": "Jack Welch",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0253"
   },
   {
-    "id": "q-0164",
+    "text": "Soit vous êtes le meilleur dans ce que vous faites, soit vous ne le faites pas très longtemps.",
+    "author": "Jack Welch",
+    "category": "mindset",
+    "id": "q-0254"
+  },
+  {
     "text": "Le vrai secret du succès, c'est l'enthousiasme.",
     "author": "Walter Chrysler",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0255"
   },
   {
-    "id": "q-0165",
     "text": "J'attribue mon succès à ceci : je n'ai jamais présenté ou accepté aucune excuse.",
     "author": "Earl Nightingale",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0256"
   },
   {
-    "id": "q-0166",
     "text": "Pour augmenter votre taux de succès, vous devez augmenter votre taux d'échecs.",
     "author": "Thomas J. Watson",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0257"
   },
   {
-    "id": "q-0167",
+    "text": "Nos clients les plus mécontents sont notre plus grande source de progrès.",
+    "author": "Bill Gates",
+    "category": "sales",
+    "id": "q-0258"
+  },
+  {
+    "text": "On ne devient homme qu'en se surpassant.",
+    "author": "Aristote",
+    "category": "mindset",
+    "id": "q-0259"
+  },
+  {
+    "text": "La stratégie, c'est l'art de faire face à son destin.",
+    "author": "Peter Drucker",
+    "category": "leadership",
+    "id": "q-0260"
+  },
+  {
     "text": "Il faut toujours être prêt à négocier, mais ne jamais négocier sans être prêt.",
     "author": "Richard Nixon",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0261"
   },
   {
-    "id": "q-0168",
     "text": "Vous pouvez tromper tout le monde une fois, quelques-uns souvent, mais jamais tout le monde tout le temps.",
     "author": "Abraham Lincoln",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0262"
   },
   {
-    "id": "q-0169",
     "text": "Gagner de l'argent est un art, travailler est un art et faire de bonnes affaires est le plus bel art.",
     "author": "Andy Warhol",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0263"
   },
   {
-    "id": "q-0170",
     "text": "Le secret des affaires est de savoir quelque chose que personne ne sait.",
     "author": "Aristote Onassis",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0264"
   },
   {
-    "id": "q-0171",
     "text": "Vous n'êtes jamais trop vieux pour fixer un nouvel objectif ou rêver un nouveau rêve.",
     "author": "C.S. Lewis",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0265"
   },
   {
-    "id": "q-0172",
+    "text": "Seul, nous pouvons faire si peu ; ensemble, nous pouvons faire tant.",
+    "author": "Helen Keller",
+    "category": "leadership",
+    "id": "q-0266"
+  },
+  {
     "text": "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès.",
     "author": "Albert Schweitzer",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0267"
   },
   {
-    "id": "q-0173",
+    "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
+    "author": "Franklin D. Roosevelt",
+    "category": "mindset",
+    "id": "q-0268"
+  },
+  {
+    "text": "Ce n'est pas que je sois si intelligent, c'est juste que je reste avec les problèmes plus longtemps.",
+    "author": "Albert Einstein",
+    "category": "mindset",
+    "id": "q-0269"
+  },
+  {
     "text": "Le succès est la somme de petits efforts, répétés jour après jour.",
     "author": "Robert Collier",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0270"
   },
   {
-    "id": "q-0174",
     "text": "La force de l'équipe, c'est chaque membre. La force de chaque membre, c'est l'équipe.",
     "author": "Phil Jackson",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0271"
   },
   {
-    "id": "q-0175",
+    "text": "Fixer des objectifs est le premier pas pour transformer l'invisible en visible.",
+    "author": "Tony Robbins",
+    "category": "mindset",
+    "id": "q-0272"
+  },
+  {
     "text": "L'avenir appartient à ceux qui croient à la beauté de leurs rêves.",
     "author": "Eleanor Roosevelt",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0273"
   },
   {
-    "id": "q-0176",
+    "text": "Croyez que vous pouvez et vous êtes déjà à mi-chemin.",
+    "author": "Theodore Roosevelt",
+    "category": "mindset",
+    "id": "q-0274"
+  },
+  {
+    "text": "Ce qui est derrière nous et ce qui est devant nous sont de petites choses comparées à ce qui est en nous.",
+    "author": "Ralph Waldo Emerson",
+    "category": "mindset",
+    "id": "q-0275"
+  },
+  {
     "text": "Si ce que vous faites ne vous rapproche pas de vos buts, alors c'est que ça vous en éloigne.",
     "author": "Brian Tracy",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0276"
   },
   {
-    "id": "q-0177",
     "text": "En matière commerciale, le succès vient davantage de l'attitude que de l'aptitude.",
     "author": "Michael Aguilar",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0277"
   },
   {
-    "id": "q-0178",
+    "text": "Les 5 freins à toute vente : pas de besoin, pas de budget, pas d'urgence, pas d'envie, pas de confiance.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0278"
+  },
+  {
+    "text": "Si les gens vous apprécient, ils vous écouteront, mais s'ils ont confiance en vous, ils feront affaire avec vous.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0279"
+  },
+  {
+    "text": "La vente est essentiellement un transfert de sentiments.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0280"
+  },
+  {
+    "text": "Nous considérons nos clients comme des invités, à une fête où nous sommes les hôtes.",
+    "author": "Jeff Bezos",
+    "category": "sales",
+    "id": "q-0281"
+  },
+  {
+    "text": "Mettre le client en premier. Inventer. Et être patient.",
+    "author": "Jeff Bezos",
+    "category": "sales",
+    "id": "q-0282"
+  },
+  {
     "text": "Ne trouvez pas des clients pour vos produits, trouvez des produits pour vos clients.",
     "author": "Seth Godin",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0283"
   },
   {
-    "id": "q-0179",
+    "text": "Nous plaçons le client en numéro un, l'employé en numéro deux, l'actionnaire en numéro trois.",
+    "author": "Jack Ma",
+    "category": "sales",
+    "id": "q-0284"
+  },
+  {
     "text": "On se souvient de la qualité bien plus longtemps que du prix.",
     "author": "Guccio Gucci",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0285"
   },
   {
-    "id": "q-0180",
+    "text": "La meilleure des publicités est un client satisfait.",
+    "author": "Bill Gates",
+    "category": "sales",
+    "id": "q-0286"
+  },
+  {
+    "text": "Il ne sert à rien d'être le meilleur si on est le seul à le savoir.",
+    "author": "Richard Branson",
+    "category": "sales",
+    "id": "q-0287"
+  },
+  {
     "text": "Savoir écouter, c'est posséder, outre le sien, le cerveau des autres.",
     "author": "Léonard de Vinci",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0288"
   },
   {
-    "id": "q-0181",
     "text": "L'entreprise est élue tous les jours par ses clients.",
     "author": "François Michelin",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0289"
   },
   {
-    "id": "q-0182",
-    "text": "Un client qui n'a qu'un seul fournisseur cesse d'être intelligent.",
-    "author": "François Michelin",
-    "category": "sales"
-  },
-  {
-    "id": "q-0183",
     "text": "La philosophie commerciale nous enseigne que celui qui ne demande rien n'a rien, et il est déçu.",
     "author": "Jean-Jacques Servan-Schreiber",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0290"
   },
   {
-    "id": "q-0184",
     "text": "La politesse coûte peu et achète tout.",
     "author": "Montaigne",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0291"
   },
   {
-    "id": "q-0185",
     "text": "Quand on ne sait pas où on va, tous les chemins mènent un peu nulle part.",
     "author": "Henry Kissinger",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0292"
   },
   {
-    "id": "q-0186",
     "text": "Si vous voulez vous élever, élevez quelqu'un d'autre.",
     "author": "Booker T. Washington",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0293"
   },
   {
-    "id": "q-0187",
     "text": "L'attitude détermine les actions. Les actions déterminent les résultats.",
     "author": "Jim Rohn",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0294"
   },
   {
-    "id": "q-0188",
     "text": "Un leader est quelqu'un qui connaît le chemin, qui suit le chemin, et qui montre le chemin.",
     "author": "John C. Maxwell",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0295"
   },
   {
-    "id": "q-0189",
-    "text": "Le leadership n'a rien à voir avec les titres. C'est la capacité à influencer d'autres vies.",
-    "author": "John C. Maxwell",
-    "category": "leadership"
+    "text": "Si vous ne pouvez pas contrôler vos émotions, vous ne pouvez pas contrôler votre argent.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0296"
   },
   {
-    "id": "q-0190",
-    "text": "Le leadership, c'est de l'influence, rien de plus, rien de moins.",
-    "author": "John C. Maxwell",
-    "category": "leadership"
+    "text": "Règle numéro un : ne perdez jamais d'argent. Règle numéro deux : n'oubliez jamais la règle numéro un.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0297"
   },
   {
-    "id": "q-0191",
+    "text": "Les intérêts composés sont la huitième merveille du monde. Celui qui les comprend les gagne, celui qui ne les comprend pas les paie.",
+    "author": "Albert Einstein",
+    "category": "finance",
+    "id": "q-0298"
+  },
+  {
     "text": "En bourse, tu as deux choix : t'enrichir lentement ou t'appauvrir rapidement.",
     "author": "Benjamin Graham",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0299"
   },
   {
-    "id": "q-0192",
-    "text": "Investir n'est pas battre les autres à leur jeu. Il s'agit de se contrôler soi-même.",
-    "author": "Benjamin Graham",
-    "category": "finance"
-  },
-  {
-    "id": "q-0193",
     "text": "La chance ne sourit qu'aux esprits bien préparés.",
     "author": "Louis Pasteur",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0300"
   },
   {
-    "id": "q-0194",
     "text": "L'enthousiasme est une maladie contagieuse.",
     "author": "Voltaire",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0301"
   },
   {
-    "id": "q-0195",
     "text": "Accepter l'idée de la défaite, c'est être déjà vaincu.",
     "author": "Général Foch",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0302"
   },
   {
-    "id": "q-0196",
     "text": "Ne pensez pas à l'échec, pensez aux opportunités que vous risquez de manquer.",
     "author": "Jack Canfield",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0303"
   },
   {
-    "id": "q-0197",
     "text": "Vous risquez d'être déçu si vous échouez, mais vous êtes condamné si vous n'essayez pas.",
     "author": "Beverly Sills",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0304"
   },
   {
-    "id": "q-0198",
     "text": "Être conscient de son ignorance est le premier pas vers la connaissance.",
     "author": "Benjamin Disraeli",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0305"
   },
   {
-    "id": "q-0199",
     "text": "Le savoir, c'est le pouvoir.",
     "author": "Francis Bacon",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0306"
   },
   {
-    "id": "q-0200",
     "text": "Les réussites spectaculaires sont toujours précédées de préparations peu spectaculaires.",
     "author": "Chamfort",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0307"
   },
   {
-    "id": "q-0201",
     "text": "La façon la plus courante d'abandonner son pouvoir, c'est de penser qu'on n'en a pas.",
     "author": "Alice Walker",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0308"
   },
   {
-    "id": "q-0202",
+    "text": "Les deux jours les plus importants de votre vie sont le jour où vous êtes né et le jour où vous découvrez pourquoi.",
+    "author": "Mark Twain",
+    "category": "mindset",
+    "id": "q-0309"
+  },
+  {
     "text": "Pour réussir, il ne suffit pas d'apprendre les ficelles du métier. Il faut apprendre le métier.",
     "author": "Donald Trump",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0310"
   },
   {
-    "id": "q-0203",
     "text": "Si vous voulez que votre futur soit différent de votre présent, étudiez le passé.",
     "author": "Baruch Spinoza",
-    "category": "mindset"
+    "category": "mindset",
+    "id": "q-0311"
   },
   {
-    "id": "q-0204",
+    "text": "Le leadership n'a rien à voir avec les titres. C'est la capacité à influencer d'autres vies.",
+    "author": "John C. Maxwell",
+    "category": "leadership",
+    "id": "q-0312"
+  },
+  {
     "text": "On ne naît pas leader, on le devient.",
     "author": "Warren Bennis",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0313"
   },
   {
-    "id": "q-0205",
+    "text": "À une époque, le leadership résidait dans les muscles. Aujourd'hui, il réside dans la façon de traiter les gens.",
+    "author": "Mahatma Gandhi",
+    "category": "leadership",
+    "id": "q-0314"
+  },
+  {
+    "text": "Diriger, c'est servir.",
+    "author": "Sénèque",
+    "category": "leadership",
+    "id": "q-0315"
+  },
+  {
+    "text": "Le leader est celui qui sait inspirer sans éteindre, diriger sans écraser.",
+    "author": "Maya Angelou",
+    "category": "leadership",
+    "id": "q-0316"
+  },
+  {
     "text": "Les gens n'achètent pas ce que vous faites, ils achètent pourquoi vous le faites.",
     "author": "Simon Sinek",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0317"
   },
   {
-    "id": "q-0206",
-    "text": "Une équipe n'est pas un groupe de personnes qui travaillent ensemble. C'est un groupe de personnes qui se font confiance.",
-    "author": "Simon Sinek",
-    "category": "leadership"
-  },
-  {
-    "id": "q-0207",
-    "text": "Un chef possède un titre, un leader a les autres avec lui.",
-    "author": "Simon Sinek",
-    "category": "leadership"
-  },
-  {
-    "id": "q-0208",
     "text": "La fonction du leadership est de produire d'autres leaders, pas plus de suiveurs.",
     "author": "Ralph Nader",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0318"
   },
   {
-    "id": "q-0209",
     "text": "Tout le monde porte un panneau invisible autour du cou qui dit : faites-moi sentir que je suis important.",
     "author": "Mary Kay Ash",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0319"
   },
   {
-    "id": "q-0210",
+    "text": "Avant d'être un leader, le succès consiste à se développer soi-même. Une fois leader, le succès consiste à faire grandir les autres.",
+    "author": "Jack Welch",
+    "category": "leadership",
+    "id": "q-0320"
+  },
+  {
+    "text": "Les leaders ne naissent pas, ils sont faits. Et ils sont faits par l'effort acharné.",
+    "author": "Vince Lombardi",
+    "category": "leadership",
+    "id": "q-0321"
+  },
+  {
+    "text": "Soyez craintifs quand les autres sont avides. Soyez avide quand les autres sont craintifs.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0322"
+  },
+  {
+    "text": "Si vous n'êtes pas prêt à détenir une action pendant 10 ans, ne pensez même pas à la détenir pendant 10 minutes.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0323"
+  },
+  {
+    "text": "Il ne s'agit pas de prédire la pluie, il s'agit de construire l'arche.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0324"
+  },
+  {
     "text": "Les quatre mots les plus dangereux dans le monde de l'investissement sont : « cette fois, c'est différent ».",
     "author": "John Templeton",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0325"
   },
   {
-    "id": "q-0211",
     "text": "La patience est la clé de l'investissement réussi.",
     "author": "John Templeton",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0326"
   },
   {
-    "id": "q-0212",
     "text": "Ne cherchez pas l'aiguille dans la meule de foin : achetez la meule.",
     "author": "John C. Bogle",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0327"
   },
   {
-    "id": "q-0213",
     "text": "Investissez dans ce que vous connaissez.",
     "author": "Peter Lynch",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0328"
   },
   {
-    "id": "q-0214",
+    "text": "Investir n'est pas battre les autres à leur jeu. Il s'agit de se contrôler soi-même.",
+    "author": "Benjamin Graham",
+    "category": "finance",
+    "id": "q-0329"
+  },
+  {
     "text": "Les riches investissent leur argent et dépensent ce qui reste.",
     "author": "Robert Kiyosaki",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0330"
   },
   {
-    "id": "q-0215",
     "text": "Les pauvres et la classe moyenne travaillent pour de l'argent. Les riches font travailler l'argent.",
     "author": "Robert Kiyosaki",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0331"
   },
   {
-    "id": "q-0216",
     "text": "L'éducation obligatoire amène un salaire, l'éducation personnelle amène la fortune.",
     "author": "Robert Kiyosaki",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0332"
   },
   {
-    "id": "q-0217",
     "text": "L'important n'est pas d'avoir raison ou tort, mais de savoir combien d'argent on gagne quand on a raison.",
     "author": "George Soros",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0333"
   },
   {
-    "id": "q-0218",
     "text": "Le moment d'acheter, c'est quand le sang coule dans les rues.",
     "author": "Nathan Rothschild",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0334"
   },
   {
-    "id": "q-0219",
     "text": "On apprend beaucoup plus de ses pertes que de ses gains.",
     "author": "Paul Tudor Jones",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0335"
   },
   {
-    "id": "q-0220",
     "text": "N'essayez pas d'acheter aux points bas et de vendre aux points hauts. Seuls les menteurs peuvent faire ça.",
     "author": "Bernard Baruch",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0336"
   },
   {
-    "id": "q-0221",
     "text": "La vente commence quand le client dit : non.",
     "author": "Elmer G. Leterman",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0337"
   },
   {
-    "id": "q-0222",
     "text": "La raison d'être d'une entreprise est de créer et de garder un client.",
     "author": "Théodore Levitt",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0338"
   },
   {
-    "id": "q-0223",
     "text": "Prenez soin du client et l'entreprise prendra soin d'elle-même.",
     "author": "Ray Kroc",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0339"
   },
   {
-    "id": "q-0224",
     "text": "Le service client ne doit pas être uniquement un service, il doit concerner l'ensemble de l'entreprise.",
     "author": "Tony Hsieh",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0340"
   },
   {
-    "id": "q-0225",
+    "text": "Un client qui n'a qu'un seul fournisseur cesse d'être intelligent.",
+    "author": "François Michelin",
+    "category": "sales",
+    "id": "q-0341"
+  },
+  {
+    "text": "Ce qui compte, c'est le chiffre un : une tasse, un client, un partenaire.",
+    "author": "Howard Schultz",
+    "category": "sales",
+    "id": "q-0342"
+  },
+  {
     "text": "Le client n'est pas la source de l'innovation.",
     "author": "Joseph Schumpeter",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0343"
   },
   {
-    "id": "q-0226",
+    "text": "Un objectif correctement défini est à moitié atteint.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0344"
+  },
+  {
+    "text": "Pour une vente manquée par excès d'enthousiasme, on en compte cent manquées par faute d'enthousiasme.",
+    "author": "Zig Ziglar",
+    "category": "sales",
+    "id": "q-0345"
+  },
+  {
     "text": "Le marketing ne consiste pas à vendre ce que vous produisez, mais à connaître ce dont le consommateur a besoin.",
     "author": "Philip Kotler",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0346"
   },
   {
-    "id": "q-0227",
     "text": "L'objectif de la vente est de satisfaire un besoin client, celui du marketing est de comprendre ce besoin.",
     "author": "Philip Kotler",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0347"
   },
   {
-    "id": "q-0228",
     "text": "Le marketing peut s'apprendre en une heure ; il faut toute une vie pour le maîtriser.",
     "author": "Philip Kotler",
-    "category": "sales"
+    "category": "sales",
+    "id": "q-0348"
   },
   {
-    "id": "q-0229",
     "text": "Il est impossible d'être chef d'entreprise sans un minimum d'audace.",
     "author": "Carlos Ghosn",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0349"
   },
   {
-    "id": "q-0230",
     "text": "Le manager trop mou et le manager trop dur sont deux catastrophes.",
     "author": "Carlos Ghosn",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0350"
   },
   {
-    "id": "q-0231",
     "text": "Si vous vous limitez aux avis des experts, il y a peu de chances que vous innoviez.",
     "author": "Carlos Ghosn",
-    "category": "leadership"
+    "category": "leadership",
+    "id": "q-0351"
   },
   {
-    "id": "q-0232",
+    "text": "Une équipe n'est pas un groupe de personnes qui travaillent ensemble. C'est un groupe de personnes qui se font confiance.",
+    "author": "Simon Sinek",
+    "category": "leadership",
+    "id": "q-0352"
+  },
+  {
+    "text": "Un chef possède un titre, un leader a les autres avec lui.",
+    "author": "Simon Sinek",
+    "category": "leadership",
+    "id": "q-0353"
+  },
+  {
+    "text": "Bâtir la confiance ne réclame rien de plus que de dire la vérité.",
+    "author": "Simon Sinek",
+    "category": "leadership",
+    "id": "q-0354"
+  },
+  {
+    "text": "Le leadership, c'est de l'influence, rien de plus, rien de moins.",
+    "author": "John C. Maxwell",
+    "category": "leadership",
+    "id": "q-0355"
+  },
+  {
+    "text": "Les managers travaillent avec les processus, les leaders travaillent avec les gens.",
+    "author": "John C. Maxwell",
+    "category": "leadership",
+    "id": "q-0356"
+  },
+  {
+    "text": "Pour réaliser une grande vision, vous devez avoir une grande équipe.",
+    "author": "John C. Maxwell",
+    "category": "leadership",
+    "id": "q-0357"
+  },
+  {
+    "text": "La confiance est le fondement de tout bon leadership.",
+    "author": "John C. Maxwell",
+    "category": "leadership",
+    "id": "q-0358"
+  },
+  {
     "text": "Investissez dans une entreprise que n'importe quel imbécile peut diriger, parce qu'un jour un imbécile le fera.",
     "author": "Charlie Munger",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0359"
   },
   {
-    "id": "q-0233",
     "text": "Si investir était si simple, tout le monde serait riche.",
     "author": "Charlie Munger",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0360"
   },
   {
-    "id": "q-0234",
     "text": "Le gros argent n'est pas dans l'achat ou la vente, mais dans l'attente.",
     "author": "Charlie Munger",
-    "category": "finance"
+    "category": "finance",
+    "id": "q-0361"
+  },
+  {
+    "text": "Vous n'avez pas besoin d'être brillant, juste un peu plus sage que les autres, en moyenne, pendant longtemps.",
+    "author": "Charlie Munger",
+    "category": "finance",
+    "id": "q-0362"
+  },
+  {
+    "text": "Les riches acquièrent des actifs. Les pauvres et la classe moyenne acquièrent des passifs en pensant que ce sont des actifs.",
+    "author": "Robert Kiyosaki",
+    "category": "finance",
+    "id": "q-0363"
+  },
+  {
+    "text": "Ce qui compte, ce n'est pas combien d'argent vous faites, mais combien vous parvenez à en conserver.",
+    "author": "Robert Kiyosaki",
+    "category": "finance",
+    "id": "q-0364"
   }
 ]
