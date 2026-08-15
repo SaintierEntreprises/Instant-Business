@@ -12,31 +12,46 @@ struct CardFeedView: View {
     @State private var showPaywall = false
     @State private var streak = SharedDefaults.streakCount
 
-    private var currentIndex: Int? {
-        guard let scrollPosition else { return nil }
-        return displayedQuotes.firstIndex { $0.id == scrollPosition }
-    }
+    /// Same quote for every user on a given day — independent of the shuffled feed below.
+    private let dailyQuote = ContentStore.quoteOfTheDay()
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                header
-                    .padding(.horizontal, 24)
-                    .padding(.top, 8)
+            ScrollView {
+                VStack(spacing: 0) {
+                    header
+                        .padding(.horizontal, 24)
+                        .padding(.top, 8)
 
-                CategoryFilterBar(selectedCategory: $selectedCategory) { _ in
-                    showPaywall = true
+                    if let dailyQuote {
+                        DailyQuoteCard(
+                            quote: dailyQuote,
+                            isFavorite: favorites.isFavorite(dailyQuote),
+                            onToggleFavorite: { favorites.toggle(dailyQuote) },
+                            onShare: { shareItem = ShareItem(quote: dailyQuote) }
+                        )
+                        .padding(.horizontal, 24)
+                        .padding(.top, 20)
+                    }
+
+                    Text("DÉCOUVRIR")
+                        .font(.caption.weight(.bold))
+                        .tracking(0.6)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 24)
+                        .padding(.top, 28)
+                        .padding(.bottom, 10)
+
+                    CategoryFilterBar(selectedCategory: $selectedCategory) { _ in
+                        showPaywall = true
+                    }
+
+                    carousel
+                        .padding(.top, 20)
+                        .padding(.bottom, 24)
                 }
-                .padding(.top, 18)
-
-                carousel
-                    .padding(.top, 20)
-
-                progressIndicator
-                    .padding(.top, 16)
-                    .padding(.bottom, 8)
             }
-            .frame(maxHeight: .infinity, alignment: .top)
             .toolbar(.hidden, for: .navigationBar)
             .onAppear {
                 reshuffle()
@@ -112,22 +127,14 @@ struct CardFeedView: View {
         .aspectRatio(0.78, contentMode: .fit)
     }
 
-    private var progressIndicator: some View {
-        Group {
-            if let currentIndex {
-                Text("\(currentIndex + 1) / \(displayedQuotes.count)")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-                    .contentTransition(.numericText())
-                    .animation(.default, value: currentIndex)
-            }
-        }
-        .frame(height: 16)
-    }
-
     private func reshuffle() {
         let pool = selectedCategory.map(ContentStore.quotes(in:)) ?? ContentStore.allQuotes
-        displayedQuotes = ContentStore.shuffledAvoidingAdjacentAuthors(pool)
+        var shuffled = ContentStore.shuffledAvoidingAdjacentAuthors(pool)
+        // Avoid showing the daily quote twice — it already has its own spot above.
+        if let dailyQuote {
+            shuffled.removeAll { $0.id == dailyQuote.id }
+        }
+        displayedQuotes = shuffled
         scrollPosition = displayedQuotes.first?.id
     }
 

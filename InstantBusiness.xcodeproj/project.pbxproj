@@ -27,6 +27,7 @@
 		5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */; };
 		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
 		6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
+		6D1FC49BD1BF16B7B45664AF /* DailyQuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60D8F19F23E265DB4C64E09 /* DailyQuoteCard.swift */; };
 		765F61B32FC37861330E14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
 		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
 		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
@@ -122,6 +123,7 @@
 		CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButtonView.swift; sourceTree = "<group>"; };
 		DD432231FB34B99577F98013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E046D2F5BE2C6728EED66F45 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E60D8F19F23E265DB4C64E09 /* DailyQuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuoteCard.swift; sourceTree = "<group>"; };
 		F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +190,7 @@
 			children = (
 				AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */,
 				3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */,
+				E60D8F19F23E265DB4C64E09 /* DailyQuoteCard.swift */,
 				B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */,
 			);
 			path = Home;
@@ -468,6 +471,7 @@
 				B914830609000B7080F0D16F /* CategoryFilterBar.swift in Sources */,
 				F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */,
 				668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */,
+				6D1FC49BD1BF16B7B45664AF /* DailyQuoteCard.swift in Sources */,
 				E8D05120F698494B85B2DFB6 /* DeepLink.swift in Sources */,
 				7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */,
 				E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */,
@@ -630,7 +634,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -691,7 +695,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
