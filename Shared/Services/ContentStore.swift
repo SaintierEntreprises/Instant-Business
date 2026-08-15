@@ -20,12 +20,73 @@ enum ContentStore {
         allQuotes.first { $0.id == id }
     }
 
+    /// Random order, but never two quotes from the same author back to back.
+    static func shuffledAvoidingAdjacentAuthors(_ quotes: [Quote]) -> [Quote] {
+        var buckets: [String: [Quote]] = [:]
+        for quote in quotes {
+            buckets[quote.author, default: []].append(quote)
+        }
+        for key in buckets.keys {
+            buckets[key]?.shuffle()
+        }
+
+        var result: [Quote] = []
+        result.reserveCapacity(quotes.count)
+        var lastAuthor: String?
+
+        while result.count < quotes.count {
+            let candidates = buckets.keys.filter { !(buckets[$0]?.isEmpty ?? true) }
+            guard !candidates.isEmpty else { break }
+            let preferred = candidates.filter { $0 != lastAuthor }
+            let pool = preferred.isEmpty ? candidates : preferred
+            guard let author = pool.randomElement(), var bucket = buckets[author], let quote = bucket.popLast() else { break }
+            buckets[author] = bucket
+            result.append(quote)
+            lastAuthor = author
+        }
+
+        return result
+    }
+
     /// Deterministic "quote of the day" so the app and the widget agree without shared state.
+    /// Uses a stable (non-hashValue-based) seeded shuffle so the daily sequence doesn't
+    /// mirror the raw content order, where quotes are grouped by author.
     static func quoteOfTheDay(category: QuoteCategory? = nil, on date: Date = Date()) -> Quote? {
         let pool = category.map(quotes(in:)) ?? allQuotes
         guard !pool.isEmpty else { return nil }
+
+        var generator = SeededGenerator(seed: stableHash(category?.rawValue ?? "all"))
+        let order = pool.indices.shuffled(using: &generator)
+
         let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
-        let index = dayOfYear % pool.count
+        let index = order[dayOfYear % order.count]
         return pool[index]
+    }
+
+    private static func stableHash(_ string: String) -> Int {
+        var hash: UInt64 = 0xcbf29ce484222325
+        for byte in string.utf8 {
+            hash ^= UInt64(byte)
+            hash = hash &* 0x100000001b3
+        }
+        return Int(truncatingIfNeeded: hash)
+    }
+}
+
+/// Deterministic RNG (splitmix64) so the same seed always produces the same sequence,
+/// unlike Swift's built-in hashValue which is randomized per process.
+private struct SeededGenerator: RandomNumberGenerator {
+    private var state: UInt64
+
+    init(seed: Int) {
+        state = UInt64(bitPattern: Int64(seed)) &+ 0x9E3779B97F4A7C15
+    }
+
+    mutating func next() -> UInt64 {
+        state = state &+ 0x9E3779B97F4A7C15
+        var z = state
+        z = (z ^ (z >> 30)) &* 0xBF58476D1CE4E5B9
+        z = (z ^ (z >> 27)) &* 0x94D049BB133111EB
+        return z ^ (z >> 31)
     }
 }
