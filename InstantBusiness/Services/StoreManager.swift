@@ -29,9 +29,13 @@ final class StoreManager: ObservableObject {
     func refresh() async {
         isLoading = true
         defer { isLoading = false }
+        errorMessage = nil
         do {
             products = try await Product.products(for: [Self.monthlyID, Self.yearlyID])
                 .sorted { $0.price < $1.price }
+            if products.isEmpty {
+                errorMessage = "Les offres ne sont pas disponibles pour le moment."
+            }
         } catch {
             errorMessage = "Impossible de charger les offres."
         }

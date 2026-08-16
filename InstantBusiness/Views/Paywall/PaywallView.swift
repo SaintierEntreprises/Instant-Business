@@ -36,9 +36,21 @@ struct PaywallView: View {
                     }
                     .padding(.horizontal)
 
-                    if store.products.isEmpty {
+                    if store.isLoading {
                         ProgressView()
                             .padding(.vertical, 20)
+                    } else if store.products.isEmpty {
+                        VStack(spacing: 12) {
+                            Text(store.errorMessage ?? "Les offres ne sont pas disponibles pour le moment.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                            Button("Réessayer") {
+                                Task { await store.refresh() }
+                            }
+                            .font(.footnote.weight(.semibold))
+                        }
+                        .padding(.vertical, 20)
                     } else {
                         VStack(spacing: 10) {
                             ForEach(store.products) { product in
@@ -78,7 +90,7 @@ struct PaywallView: View {
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
 
-                    if let errorMessage = store.errorMessage {
+                    if let errorMessage = store.errorMessage, !store.products.isEmpty {
                         Text(errorMessage)
                             .font(.footnote)
                             .foregroundStyle(.red)
