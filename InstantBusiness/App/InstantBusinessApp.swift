@@ -53,6 +53,9 @@ struct InstantBusinessApp: App {
         } else {
             favorites.detachSession()
         }
+        // Re-check StoreKit on every foreground: without this an expired or cancelled
+        // subscription keeps unlocking premium content until the app is cold-launched.
+        await store.refresh()
         await notificationManager.reschedule()
     }
 }
