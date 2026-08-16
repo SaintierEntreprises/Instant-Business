@@ -25,6 +25,7 @@
 		42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */; };
 		46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4B87701458F70F79A76CE /* PaywallView.swift */; };
 		4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */; };
+		4EBA62ADABC5EB714240275D /* LaunchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43772A66EA93DD473FC9428F /* LaunchPlaceholderView.swift */; };
 		5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
 		586AEABC34948980F2F4A256 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD38765966AF44016F29AA6 /* StoreManager.swift */; };
 		59D14923DC5F80C1B40913EB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
@@ -112,6 +113,7 @@
 		3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidget.swift; sourceTree = "<group>"; };
 		3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterBar.swift; sourceTree = "<group>"; };
 		41636C5175259A1EAB7A77E9 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		43772A66EA93DD473FC9428F /* LaunchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPlaceholderView.swift; sourceTree = "<group>"; };
 		44179F7DBDC3140082247FBE /* SettingsIconBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconBadge.swift; sourceTree = "<group>"; };
 		53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5B334C99F00D956274C16932 /* TermsOfSale.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TermsOfSale.md; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				BC69EC37E218974E125EB582 /* ContentView.swift */,
+				43772A66EA93DD473FC9428F /* LaunchPlaceholderView.swift */,
 				C34F03C15DBF03898870FFB3 /* Auth */,
 				BE9F7761B2802BF9E922ACC4 /* Components */,
 				D5FA5B8B3334741002550E92 /* Favorites */,
@@ -538,6 +541,7 @@
 				E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */,
 				5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */,
 				F6505580551E736F8D35E28D /* InstantBusinessApp.swift in Sources */,
+				4EBA62ADABC5EB714240275D /* LaunchPlaceholderView.swift in Sources */,
 				702AA521D93B14A6E8C610ED /* LegalDocument.swift in Sources */,
 				3A9E8FBC56F7BF482B7C2235 /* LegalDocumentView.swift in Sources */,
 				83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */,
@@ -700,7 +704,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -761,7 +765,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

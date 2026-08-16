@@ -14,6 +14,17 @@ struct ContentView: View {
     }
 
     var body: some View {
+        Group {
+            if authManager.isRestoringSession {
+                LaunchPlaceholderView()
+            } else {
+                mainInterface
+            }
+        }
+        .animation(.easeOut(duration: 0.2), value: authManager.isRestoringSession)
+    }
+
+    private var mainInterface: some View {
         TabView(selection: $selectedTab) {
             CardFeedView(focusedQuoteID: $focusedQuoteID)
                 .tabItem { Label("Découvrir", systemImage: "sparkles") }

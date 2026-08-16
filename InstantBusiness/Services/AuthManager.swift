@@ -11,6 +11,10 @@ final class AuthManager: NSObject, ObservableObject {
     @Published var errorMessage: String?
     @Published var isLoading = false
 
+    /// True until Supabase has restored (or ruled out) a stored session. Without this the
+    /// app would briefly consider the user signed out and flash the login screen on launch.
+    @Published private(set) var isRestoringSession = true
+
     private var currentAppleNonce: String?
 
     override init() {
@@ -22,7 +26,13 @@ final class AuthManager: NSObject, ObservableObject {
         Task {
             for await (_, session) in SupabaseProvider.client.auth.authStateChanges {
                 self.session = session
+                self.isRestoringSession = false
             }
+        }
+        // Safety net: never leave the app stuck on the splash if no event ever arrives.
+        Task {
+            try? await Task.sleep(for: .seconds(3))
+            self.isRestoringSession = false
         }
     }
 
