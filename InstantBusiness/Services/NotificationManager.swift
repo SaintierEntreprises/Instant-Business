@@ -6,10 +6,13 @@ final class NotificationManager: ObservableObject {
     private static let dailyIdentifierPrefix = "instant-business-daily-"
     private static let rotationIdentifierPrefix = "instant-business-rotation-"
 
-    /// Every 6h + 1 daily "citation du jour" = 5/day. iOS caps pending local notifications
-    /// at 64, so a 10-day rolling window (50 requests) stays comfortably under that.
+    /// Fixed times of day for the rotating quote. With the daily quote at midnight,
+    /// this yields one notification every 6 hours: 00h, 06h, 12h, 18h.
+    private static let rotationHours = [6, 12, 18]
+
+    /// 4 notifications/day (1 daily + 3 rotation). iOS caps pending local notifications
+    /// at 64, so a 10-day rolling window (40 requests) stays comfortably under that.
     private let rollingWindowDays = 10
-    private let rotationIntervalHours = 6
 
     func requestAuthorizationIfNeeded() async -> Bool {
         let center = UNUserNotificationCenter.current()
@@ -64,27 +67,27 @@ final class NotificationManager: ObservableObject {
             )
         }
 
-        // Per-user rotation, every 6h: same schedule the widget reads from, so a
-        // notification always matches whatever is currently showing on the widget.
-        var hourComponents = calendar.dateComponents([.year, .month, .day, .hour], from: now)
-        hourComponents.minute = 0
-        hourComponents.second = 0
-        let currentHour = calendar.date(from: hourComponents) ?? now
-        let totalSlots = (rollingWindowDays * 24) / rotationIntervalHours
+        // Per-user rotation at fixed times of day, so the schedule never shifts.
+        // Anchoring on "now" instead would push the next notification 6h away every
+        // time the app is opened — the more someone uses the app, the fewer they'd get.
+        // Combined with the midnight daily quote, this lands one notification every 6h.
+        for offset in 0..<rollingWindowDays {
+            guard let day = calendar.date(byAdding: .day, value: offset, to: now) else { continue }
 
-        for slot in 0..<totalSlots {
-            guard let fireDate = calendar.date(byAdding: .hour, value: slot * rotationIntervalHours, to: currentHour),
-                  fireDate > now else { continue }
-            let unit = ContentStore.hourSlot(for: fireDate)
-            guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
+            for hour in Self.rotationHours {
+                guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
+                      fireDate > now else { continue }
+                let unit = ContentStore.hourSlot(for: fireDate)
+                guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
 
-            await schedule(
-                identifier: Self.rotationIdentifierPrefix + "\(slot)",
-                title: "Instant Business",
-                quote: quote,
-                fireDate: fireDate,
-                center: center
-            )
+                await schedule(
+                    identifier: Self.rotationIdentifierPrefix + "\(offset)-\(hour)",
+                    title: "Instant Business",
+                    quote: quote,
+                    fireDate: fireDate,
+                    center: center
+                )
+            }
         }
     }
 
