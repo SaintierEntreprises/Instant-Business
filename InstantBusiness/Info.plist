@@ -31,7 +31,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>Reçois une citation business chaque jour à l'heure de ton choix.</string>
+	<string>Reçois ta citation du jour et une citation aléatoire toutes les 6 heures.</string>
 	<key>GIDClientID</key>
 	<string>402139778118-579ska9bnosvu3cs3r39nmp0u5uue3el.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>

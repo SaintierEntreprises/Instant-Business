@@ -94,7 +94,8 @@ final class UserSyncService {
             streak_count: newStreak,
             last_open_date: Self.dateFormatter.string(from: today)
         )
-        try? await SupabaseProvider.client
+        // Best-effort: the streak is returned locally even if the write fails.
+        _ = try? await SupabaseProvider.client
             .from("user_state")
             .upsert(updated)
             .execute()

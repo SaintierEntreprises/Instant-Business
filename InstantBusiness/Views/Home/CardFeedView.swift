@@ -101,7 +101,10 @@ struct CardFeedView: View {
     }
 
     private var carousel: some View {
-        GeometryReader { proxy in
+        // Read once here: the scroll transition closure is Sendable and can't
+        // reach back into main-actor state.
+        let reduceMotion = reduceMotion
+        return GeometryReader { proxy in
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 16) {
                     ForEach(displayedQuotes) { quote in
