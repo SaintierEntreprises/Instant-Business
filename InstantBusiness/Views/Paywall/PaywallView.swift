@@ -82,10 +82,20 @@ struct PaywallView: View {
                     .foregroundStyle(.secondary)
                     .padding(.top, 4)
 
-                    HStack(spacing: 6) {
-                        Button("Conditions Générales de Vente") { legalDocument = .termsOfSale }
-                        Text("·")
-                        Button("Politique de confidentialité") { legalDocument = .privacyPolicy }
+                    VStack(spacing: 6) {
+                        Text("Abonnement à renouvellement automatique, résiliable à tout moment depuis les réglages de ton compte Apple.")
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 8)
+
+                        // Apple requires functional links to both the Terms of Use (EULA)
+                        // and the privacy policy inside the purchase flow.
+                        HStack(spacing: 6) {
+                            Button("Conditions d'utilisation") { legalDocument = .termsOfUse }
+                            Text("·")
+                            Button("CGV") { legalDocument = .termsOfSale }
+                            Text("·")
+                            Button("Confidentialité") { legalDocument = .privacyPolicy }
+                        }
                     }
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
@@ -146,6 +156,19 @@ struct PaywallView: View {
         }
     }
 
+    /// Spells out the renewal period next to the price, so the purchase flow states the
+    /// subscription length explicitly rather than leaving it implied by the product name.
+    private func periodLabel(for product: Product) -> String? {
+        guard let period = product.subscription?.subscriptionPeriod else { return nil }
+        switch period.unit {
+        case .day: return period.value == 1 ? "par jour" : "tous les \(period.value) jours"
+        case .week: return period.value == 1 ? "par semaine" : "toutes les \(period.value) semaines"
+        case .month: return period.value == 1 ? "par mois" : "tous les \(period.value) mois"
+        case .year: return period.value == 1 ? "par an" : "tous les \(period.value) ans"
+        @unknown default: return nil
+        }
+    }
+
     private func productCard(_ product: Product) -> some View {
         let isSelected = selectedProductID == product.id
         let isYearly = product.id == StoreManager.yearlyID
@@ -173,7 +196,16 @@ struct PaywallView: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-                Text(product.displayPrice).font(.headline)
+                // The billed amount stays the most prominent element; the period is
+                // deliberately subordinate (guideline 3.1.2(c)).
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(product.displayPrice).font(.headline)
+                    if let period = periodLabel(for: product) {
+                        Text(period)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
                     .foregroundStyle(isSelected ? Color.accentColor : Color(.tertiaryLabel))
