@@ -39,7 +39,11 @@ final class AuthManager: NSObject, ObservableObject {
     // MARK: - Apple
 
     func appleRequest(_ request: ASAuthorizationAppleIDRequest) {
-        let nonce = Self.randomNonceString()
+        // SwiftUI can rebuild SignInWithAppleButton — and re-run this closure — between the
+        // request and Apple's callback. Generating a fresh nonce each time would leave us
+        // unable to match the token we get back, so an in-flight nonce is reused and only
+        // cleared once the attempt finishes.
+        let nonce = currentAppleNonce ?? Self.randomNonceString()
         currentAppleNonce = nonce
         request.requestedScopes = [.fullName, .email]
         request.nonce = Self.sha256(nonce)
@@ -57,8 +61,10 @@ final class AuthManager: NSObject, ObservableObject {
                 errorMessage = "Connexion Apple invalide."
                 return
             }
+            currentAppleNonce = nil
             Task { await signIn(provider: .apple, idToken: identityToken, nonce: nonce) }
         case .failure(let error):
+            currentAppleNonce = nil
             if (error as? ASAuthorizationError)?.code != .canceled {
                 errorMessage = "La connexion Apple a échoué."
             }
@@ -73,8 +79,18 @@ final class AuthManager: NSObject, ObservableObject {
             .first?.rootViewController
         else { return }
 
+        // Google embeds this nonce in the ID token; Supabase then checks it against the
+        // one we pass alongside. Letting the SDK pick its own would leave us unable to
+        // reproduce it, and the token would be rejected for a nonce mismatch.
+        let nonce = Self.randomNonceString()
+
         isLoading = true
-        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [weak self] result, error in
+        GIDSignIn.sharedInstance.signIn(
+            withPresenting: rootViewController,
+            hint: nil,
+            additionalScopes: nil,
+            nonce: nonce
+        ) { [weak self] result, error in
             guard let self else { return }
             Task { @MainActor in
                 self.isLoading = false
@@ -88,7 +104,7 @@ final class AuthManager: NSObject, ObservableObject {
                     self.errorMessage = "Connexion Google invalide."
                     return
                 }
-                await self.signIn(provider: .google, idToken: idToken, nonce: nil)
+                await self.signIn(provider: .google, idToken: idToken, nonce: nonce)
             }
         }
     }
