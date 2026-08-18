@@ -18,10 +18,15 @@ struct ContentView: View {
         Group {
             if authManager.isRestoringSession {
                 LaunchPlaceholderView()
-            } else if !hasCompletedOnboarding {
-                OnboardingView()
             } else if authManager.session == nil {
-                LoginView()
+                // Une session ouverte prime sur le drapeau d'accueil : quelqu'un de
+                // connecté ne doit jamais retomber sur l'intro ou la connexion, même si
+                // l'étape d'accueil n'a pas eu l'occasion de se marquer terminée.
+                if hasCompletedOnboarding {
+                    LoginView()
+                } else {
+                    OnboardingView()
+                }
             } else if !hasCompletedQuiz {
                 QuizView()
             } else {

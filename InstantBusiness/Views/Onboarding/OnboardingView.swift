@@ -43,10 +43,11 @@ struct OnboardingView: View {
         .animation(.spring(response: 0.4, dampingFraction: 0.85), value: showLogin)
         .onChange(of: authManager.session != nil) { _, isSignedIn in
             guard isSignedIn else { return }
-            Task {
-                await notificationManager.enable()
-                complete()
-            }
+            // On sort de l'accueil d'abord : demander les notifications avant laisserait
+            // l'utilisateur bloqué ici tant que la demande d'autorisation n'a pas rendu
+            // la main.
+            complete()
+            Task { await notificationManager.enable() }
         }
     }
 

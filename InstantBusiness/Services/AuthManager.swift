@@ -109,7 +109,10 @@ final class AuthManager: NSObject, ObservableObject {
         isLoading = true
         defer { isLoading = false }
         do {
-            _ = try await SupabaseProvider.client.auth.signInWithIdToken(
+            // La session est appliquée directement plutôt que d'attendre le flux
+            // authStateChanges : si celui-ci tarde ou n'émet pas, l'utilisateur resterait
+            // sur l'écran de connexion alors qu'il est authentifié.
+            session = try await SupabaseProvider.client.auth.signInWithIdToken(
                 credentials: OpenIDConnectCredentials(provider: provider, idToken: idToken, nonce: nonce)
             )
             errorMessage = nil
