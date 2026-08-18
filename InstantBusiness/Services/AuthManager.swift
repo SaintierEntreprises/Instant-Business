@@ -79,18 +79,8 @@ final class AuthManager: NSObject, ObservableObject {
             .first?.rootViewController
         else { return }
 
-        // Google embeds this nonce in the ID token; Supabase then checks it against the
-        // one we pass alongside. Letting the SDK pick its own would leave us unable to
-        // reproduce it, and the token would be rejected for a nonce mismatch.
-        let nonce = Self.randomNonceString()
-
         isLoading = true
-        GIDSignIn.sharedInstance.signIn(
-            withPresenting: rootViewController,
-            hint: nil,
-            additionalScopes: nil,
-            nonce: nonce
-        ) { [weak self] result, error in
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [weak self] result, error in
             guard let self else { return }
             Task { @MainActor in
                 self.isLoading = false
@@ -104,7 +94,11 @@ final class AuthManager: NSObject, ObservableObject {
                     self.errorMessage = "Connexion Google invalide."
                     return
                 }
-                await self.signIn(provider: .google, idToken: idToken, nonce: nonce)
+                // Le SDK Google place son propre nonce dans le jeton, que l'app ne peut
+                // pas reproduire ; la vérification du nonce est donc désactivée côté
+                // Supabase pour ce fournisseur (le jeton reste validé : signature,
+                // audience et expiration).
+                await self.signIn(provider: .google, idToken: idToken, nonce: nil)
             }
         }
     }

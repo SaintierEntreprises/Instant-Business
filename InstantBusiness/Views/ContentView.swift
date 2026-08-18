@@ -9,19 +9,27 @@ struct ContentView: View {
     @State private var focusedQuoteID: String?
 
     /// Intro → connexion → quiz, puis l'app. Le quiz n'arrive qu'une fois le compte créé.
-    private var needsGate: Bool {
-        !hasCompletedOnboarding || authManager.session == nil || !hasCompletedQuiz
-    }
-
+    ///
+    /// Ces étapes sont de simples branches plutôt qu'un fullScreenCover : la version
+    /// précédente pilotait le cover par une liaison au setter vide, si bien qu'un
+    /// `dismiss()` interne laissait la vue présentée sans jamais réévaluer son contenu —
+    /// l'utilisateur restait sur l'écran de connexion alors que sa session était ouverte.
     var body: some View {
         Group {
             if authManager.isRestoringSession {
                 LaunchPlaceholderView()
+            } else if !hasCompletedOnboarding {
+                OnboardingView()
+            } else if authManager.session == nil {
+                LoginView()
+            } else if !hasCompletedQuiz {
+                QuizView()
             } else {
                 mainInterface
             }
         }
         .animation(.easeOut(duration: 0.2), value: authManager.isRestoringSession)
+        .fontDesign(.rounded)
     }
 
     private var mainInterface: some View {
@@ -42,22 +50,12 @@ struct ContentView: View {
                 .tabItem { Label("Réglages", systemImage: "gearshape") }
                 .tag(3)
         }
-        .fullScreenCover(isPresented: Binding(get: { needsGate }, set: { _ in })) {
-            if !hasCompletedOnboarding {
-                OnboardingView()
-            } else if authManager.session == nil {
-                LoginView()
-            } else {
-                QuizView()
-            }
-        }
         .onChange(of: router.pendingQuoteID) { _, quoteID in
             guard let quoteID else { return }
             selectedTab = 0
             focusedQuoteID = quoteID
             router.pendingQuoteID = nil
         }
-        .fontDesign(.rounded)
     }
 }
 
