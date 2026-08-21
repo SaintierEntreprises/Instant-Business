@@ -42,6 +42,8 @@ struct InstantBusinessApp: App {
                     // competing handlers.
                     if GIDSignIn.sharedInstance.handle(url) { return }
                     if let quoteID = DeepLink.quoteID(from: url) {
+                        Analytics.track(.widgetOpened, ["quote_id": .string(quoteID)])
+                        router.launchSource = .widget
                         router.pendingQuoteID = quoteID
                     }
                 }
@@ -123,6 +125,14 @@ struct InstantBusinessApp: App {
         // subscription keeps unlocking premium content until the app is cold-launched.
         await store.refresh()
         await notificationManager.reschedule()
+
+        // Après `store.refresh()`, pour que l'évènement porte le bon état d'abonnement.
+        Analytics.track(.appOpened, [
+            "source": .string(router.consumeLaunchSource().rawValue),
+            "streak": .int(SharedDefaults.streakCount),
+            "favorites": .int(SharedDefaults.favoriteIDs.count),
+            "notifications_on": .bool(SharedDefaults.notificationsEnabled)
+        ])
     }
 
     /// `signOut()` ne nettoyait rien en local : quelqu'un qui se connectait ensuite sur le

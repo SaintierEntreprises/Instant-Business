@@ -72,8 +72,13 @@ struct SettingsView: View {
                             if newValue {
                                 await notificationManager.enable()
                                 notificationsEnabled = SharedDefaults.notificationsEnabled
+                                Analytics.track(
+                                    notificationsEnabled ? .notificationsEnabled : .notificationsDisabled,
+                                    ["granted": .bool(notificationsEnabled)]
+                                )
                             } else {
                                 notificationManager.disable()
+                                Analytics.track(.notificationsDisabled, ["granted": .bool(false)])
                             }
                         }
                     }
@@ -193,7 +198,7 @@ struct SettingsView: View {
             // cette relecture, l'interrupteur restait allumé alors que plus rien n'arrivait.
             .task { await refreshNotificationState() }
             .sheet(isPresented: $showPaywall) {
-                PaywallView()
+                PaywallView(origin: "settings")
             }
             .sheet(isPresented: $showThemePicker) {
                 CardThemePickerView()
@@ -203,6 +208,7 @@ struct SettingsView: View {
                 Button("Supprimer", role: .destructive) {
                     Task {
                         isDeletingAccount = true
+                        Analytics.track(.accountDeleted)
                         _ = await authManager.deleteAccount()
                         isDeletingAccount = false
                     }

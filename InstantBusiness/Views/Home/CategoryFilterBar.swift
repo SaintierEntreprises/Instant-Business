@@ -42,9 +42,13 @@ struct CategoryFilterBar: View {
         Button {
             if locked, let item {
                 Haptics.tap()
+                Analytics.track(.lockedCategoryTapped, ["category": .string(item.rawValue)])
                 onLockedCategoryTap(item)
             } else {
                 Haptics.select()
+                Analytics.track(.categorySelected, [
+                    "category": .string(item?.rawValue ?? "all")
+                ])
                 withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
                     selectedCategory = item
                 }

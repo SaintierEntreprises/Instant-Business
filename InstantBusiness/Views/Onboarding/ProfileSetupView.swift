@@ -249,6 +249,8 @@ struct ProfileSetupView: View {
                 )
             }
             isSaving = false
+            // Le genre seul : ni le prénom ni le nom ne quittent l'app par ce canal.
+            Analytics.track(.profileCompleted, ["gender": .string(gender.rawValue)])
             hasCompletedProfile = true
         }
     }

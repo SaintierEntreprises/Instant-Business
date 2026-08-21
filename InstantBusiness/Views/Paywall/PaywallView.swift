@@ -2,6 +2,11 @@ import SwiftUI
 import StoreKit
 
 struct PaywallView: View {
+    /// D'où l'écran a été ouvert : la barre de catégories, une page auteur, les
+    /// réglages… C'est cette information qui dira lequel de ces points d'entrée
+    /// convertit réellement.
+    var origin: String = "unknown"
+
     @EnvironmentObject private var store: StoreManager
     @Environment(\.dismiss) private var dismiss
     @State private var selectedProductID: String?
@@ -61,6 +66,10 @@ struct PaywallView: View {
 
                         Button {
                             guard let product = store.products.first(where: { $0.id == selectedProductID }) ?? store.products.first else { return }
+                            Analytics.track(.purchaseStarted, [
+                                "product": .string(product.id),
+                                "origin": .string(origin)
+                            ])
                             Task { await store.purchase(product) }
                         } label: {
                             Text("Continuer")
@@ -112,13 +121,20 @@ struct PaywallView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Fermer") { dismiss() }
+                    Button("Fermer") {
+                        Analytics.track(.paywallDismissed, ["origin": .string(origin)])
+                        dismiss()
+                    }
                 }
             }
             .onChange(of: store.isPremium) { _, isPremium in
-                if isPremium { dismiss() }
+                if isPremium {
+                    Analytics.track(.purchaseCompleted, ["origin": .string(origin)])
+                    dismiss()
+                }
             }
             .task {
+                Analytics.track(.paywallShown, ["origin": .string(origin)])
                 await store.refresh()
                 if selectedProductID == nil {
                     selectedProductID = store.products.last?.id ?? store.products.first?.id

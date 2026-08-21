@@ -98,6 +98,7 @@ struct OnboardingView: View {
     /// `dismiss()` figurait ici du temps où l'accueil était présenté en `fullScreenCover` ;
     /// c'est maintenant une branche de `ContentView`, où l'appel ne faisait plus rien.
     private func complete() {
+        Analytics.track(.onboardingCompleted)
         hasCompletedOnboarding = true
     }
 }

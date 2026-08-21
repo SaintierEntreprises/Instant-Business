@@ -25,6 +25,18 @@ struct AuthorQuotesView: View {
         }
     }
 
+    private var unlockedSections: [(category: QuoteCategory, quotes: [Quote])] {
+        sections.filter { !isLocked($0.category) }
+    }
+
+    private var lockedSections: [(category: QuoteCategory, quotes: [Quote])] {
+        sections.filter { isLocked($0.category) }
+    }
+
+    private var lockedCount: Int {
+        lockedSections.reduce(0) { $0 + $1.quotes.count }
+    }
+
     /// Même règle que la barre de filtres du fil : Mindset est ouvert, le reste est
     /// Premium. Sans cela, cette page distribuerait gratuitement ce que le paywall vend.
     private func isLocked(_ category: QuoteCategory) -> Bool {
@@ -45,16 +57,16 @@ struct AuthorQuotesView: View {
                 header
                     .padding(.bottom, 2)
 
-                ForEach(sections, id: \.category) { section in
+                ForEach(unlockedSections, id: \.category) { section in
                     sectionHeader(section.category, count: section.quotes.count)
 
-                    if isLocked(section.category) {
-                        lockedCard(section.category, count: section.quotes.count)
-                    } else {
-                        ForEach(section.quotes) { quote in
-                            row(for: quote)
-                        }
+                    ForEach(section.quotes) { quote in
+                        row(for: quote)
                     }
+                }
+
+                if !lockedSections.isEmpty {
+                    lockedCard
                 }
             }
             .padding(.horizontal, 20)
@@ -69,7 +81,7 @@ struct AuthorQuotesView: View {
             }
         }
         .sheet(isPresented: $showPaywall) {
-            PaywallView()
+            PaywallView(origin: "author_page")
         }
     }
 
@@ -113,12 +125,6 @@ struct AuthorQuotesView: View {
                 .tracking(0.8)
                 .foregroundStyle(category.tint)
 
-            if isLocked(category) {
-                Image(systemName: "lock.fill")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(category.tint.opacity(0.7))
-            }
-
             Spacer(minLength: 0)
 
             Text("\(count)")
@@ -130,38 +136,61 @@ struct AuthorQuotesView: View {
         .padding(.top, 14)
     }
 
-    /// Le paywall arrive ici plutôt qu'en bas de page : la personne vient de lire un
-    /// auteur qu'elle apprécie et voit précisément ce qui lui manque chez lui, ce qui est
-    /// un bien meilleur moment pour proposer l'abonnement qu'un écran générique.
-    private func lockedCard(_ category: QuoteCategory, count: Int) -> some View {
+    /// Un seul encart pour toutes les catégories verrouillées.
+    ///
+    /// Un encart par catégorie, comme dans la première version, empilait jusqu'à trois
+    /// blocs quasi identiques à la suite — chez Branson, qui couvre les quatre catégories,
+    /// ça se lisait comme du harcèlement plutôt que comme une offre. Le détail par
+    /// catégorie reste visible ici, mais il n'y a qu'un seul appel à l'action, et le
+    /// total cumulé est plus convaincant que trois petits nombres séparés.
+    ///
+    /// Placé après les citations lisibles : la personne vient de lire un auteur qu'elle
+    /// apprécie et voit précisément ce qui lui manque chez lui — bien meilleur moment
+    /// qu'un écran générique.
+    private var lockedCard: some View {
         Button {
             Haptics.tap()
             showPaywall = true
         } label: {
-            VStack(spacing: 12) {
+            VStack(spacing: 14) {
                 Image(systemName: "lock.fill")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(category.tint)
+                    .foregroundStyle(Color.accentColor)
                     .frame(width: 48, height: 48)
-                    .background(category.tint.opacity(0.12), in: Circle())
+                    .background(Color.accentColor.opacity(0.12), in: Circle())
 
-                Text("\(count) citation\(count > 1 ? "s" : "") de \(author)")
-                    .font(.system(size: 16, weight: .semibold, design: .rounded))
+                Text("\(lockedCount) autre\(lockedCount > 1 ? "s" : "") citation\(lockedCount > 1 ? "s" : "") de \(author)")
+                    .font(.system(size: 17, weight: .semibold, design: .rounded))
                     .foregroundStyle(.primary)
                     .multilineTextAlignment(.center)
 
-                Text("Débloque \(category.displayName) avec Premium")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+                VStack(spacing: 8) {
+                    ForEach(lockedSections, id: \.category) { section in
+                        HStack(spacing: 8) {
+                            Circle()
+                                .fill(section.category.tint)
+                                .frame(width: 6, height: 6)
+                            Text(section.category.displayName)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            Spacer(minLength: 8)
+                            Text("\(section.quotes.count)")
+                                .font(.subheadline.weight(.semibold))
+                                .monospacedDigit()
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 2)
 
                 Text("Voir l'offre")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.white)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(category.tint, in: Capsule())
-                    .padding(.top, 2)
+                    .padding(.horizontal, 22)
+                    .padding(.vertical, 11)
+                    .background(Color.accentColor, in: Capsule())
+                    .padding(.top, 4)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 26)
@@ -169,6 +198,7 @@ struct AuthorQuotesView: View {
             .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(PressableButtonStyle(scale: 0.98))
+        .padding(.top, 14)
     }
 
     private func row(for quote: Quote) -> some View {
@@ -192,6 +222,7 @@ struct AuthorQuotesView: View {
 
                 Button {
                     Haptics.tap()
+                    Analytics.trackShare(quote, origin: "author_page")
                     shareItem = ShareItem(quote: quote)
                 } label: {
                     Image(systemName: "square.and.arrow.up")

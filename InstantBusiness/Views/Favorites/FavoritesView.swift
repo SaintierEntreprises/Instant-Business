@@ -21,7 +21,10 @@ struct FavoritesView: View {
                                 isFavorite: true,
                                 theme: appearance.cardTheme,
                                 onToggleFavorite: { favorites.toggle(quote) },
-                                onShare: { shareItem = ShareItem(quote: quote) }
+                                onShare: {
+                                    Analytics.trackShare(quote, origin: "favorites")
+                                    shareItem = ShareItem(quote: quote)
+                                }
                             )
                         }
                     }

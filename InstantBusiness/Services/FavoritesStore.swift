@@ -27,6 +27,13 @@ final class FavoritesStore: ObservableObject {
         }
         SharedDefaults.favoriteIDs = favoriteIDs
 
+        Analytics.track(isNowFavorite ? .quoteFavorited : .quoteUnfavorited, [
+            "quote_id": .string(quote.id),
+            "category": .string(quote.category.rawValue),
+            "author": .string(quote.author),
+            "total": .int(favoriteIDs.count)
+        ])
+
         if let userID {
             Task { await syncService.toggleFavorite(userID: userID, quoteID: quote.id, isFavorite: isNowFavorite) }
         }

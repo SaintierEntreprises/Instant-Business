@@ -23,10 +23,14 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        if let quoteID = response.notification.request.content.userInfo[NotificationPayload.quoteIDKey] as? String {
-            Task { @MainActor in
-                AppRouter.shared.pendingQuoteID = quoteID
-            }
+        let quoteID = response.notification.request.content.userInfo[NotificationPayload.quoteIDKey] as? String
+        Task { @MainActor in
+            Analytics.track(.notificationOpened, [
+                "quote_id": .string(quoteID ?? "none"),
+                "identifier": .string(response.notification.request.identifier)
+            ])
+            AppRouter.shared.launchSource = .notification
+            if let quoteID { AppRouter.shared.pendingQuoteID = quoteID }
         }
         completionHandler()
     }

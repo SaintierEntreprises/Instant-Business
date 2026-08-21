@@ -111,12 +111,22 @@ struct QuizView: View {
 
     private func complete() {
         let scores = Quiz.scores(for: answers)
-        SharedDefaults.quizProfile = Quiz.profile(
+        let profile = Quiz.profile(
             for: scores,
             stage: Quiz.stage(from: answers),
             intent: Quiz.intent(from: answers)
-        ).name
-        SharedDefaults.preferredCategories = Quiz.preferredCategories(for: scores)
+        )
+        let preferred = Quiz.preferredCategories(for: scores)
+
+        SharedDefaults.quizProfile = profile.name
+        SharedDefaults.preferredCategories = preferred
+
+        Analytics.track(.quizCompleted, [
+            "profile": .string(profile.name),
+            "top_category": .string(preferred.first?.rawValue ?? "none"),
+            "preferred_count": .int(preferred.count)
+        ])
+
         hasCompletedQuiz = true
     }
 }

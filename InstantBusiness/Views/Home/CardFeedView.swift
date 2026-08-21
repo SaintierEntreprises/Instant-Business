@@ -40,7 +40,10 @@ struct CardFeedView: View {
                             isFavorite: favorites.isFavorite(dailyQuote),
                             theme: appearance.cardTheme,
                             onToggleFavorite: { favorites.toggle(dailyQuote) },
-                            onShare: { shareItem = ShareItem(quote: dailyQuote) }
+                            onShare: {
+                                Analytics.trackShare(dailyQuote, origin: "daily_card")
+                                shareItem = ShareItem(quote: dailyQuote)
+                            }
                         )
                         .padding(.horizontal, 24)
                         .padding(.top, 20)
@@ -98,7 +101,7 @@ struct CardFeedView: View {
                 }
             }
             .sheet(isPresented: $showPaywall) {
-                PaywallView()
+                PaywallView(origin: "category_filter")
             }
             .sheet(isPresented: $showAuthorSearch) {
                 AuthorSearchView()
@@ -137,6 +140,7 @@ struct CardFeedView: View {
 
             Button {
                 Haptics.tap()
+                Analytics.track(.authorSearched)
                 showAuthorSearch = true
             } label: {
                 Image(systemName: "magnifyingglass")
@@ -165,8 +169,17 @@ struct CardFeedView: View {
                             isFavorite: favorites.isFavorite(quote),
                             theme: appearance.cardTheme,
                             onToggleFavorite: { favorites.toggle(quote) },
-                            onShare: { shareItem = ShareItem(quote: quote) },
-                            onAuthorTapped: { selectedAuthor = quote.author }
+                            onShare: {
+                                Analytics.trackShare(quote, origin: "feed")
+                                shareItem = ShareItem(quote: quote)
+                            },
+                            onAuthorTapped: {
+                                Analytics.track(.authorOpened, [
+                                    "author": .string(quote.author),
+                                    "origin": .string("card")
+                                ])
+                                selectedAuthor = quote.author
+                            }
                         )
                         .frame(width: proxy.size.width - 48)
                         .scrollTransition(axis: .horizontal) { content, phase in

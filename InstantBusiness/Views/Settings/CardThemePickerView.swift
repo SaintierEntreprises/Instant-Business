@@ -45,6 +45,7 @@ struct CardThemePickerView: View {
                 showPaywall = true
             } else {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    Analytics.track(.cardThemeChanged, ["theme": .string(theme.rawValue)])
                     appearance.cardTheme = theme
                 }
             }
