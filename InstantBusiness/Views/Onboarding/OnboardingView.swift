@@ -23,8 +23,8 @@ struct OnboardingView: View {
         OnboardingPage(
             symbol: "bell.badge.fill",
             tint: .pink,
-            title: "Une citation par jour",
-            message: "Active les notifications pour recevoir ta citation du jour et ne jamais manquer ta dose de motivation."
+            title: "Active tes notifications",
+            message: "C'est le cœur de l'app : sans elles, tes citations restent enfermées dans l'app. Avec elles, ta dose de motivation arrive d'elle-même, toutes les 6h."
         )
     ]
 

@@ -13,6 +13,16 @@ struct InstantBusinessApp: App {
     @StateObject private var updateGate = AppUpdateGate()
     @Environment(\.scenePhase) private var scenePhase
 
+    /// `notificationManager.enable()` — la seule chose qui demande vraiment l'autorisation
+    /// et arme les notifications — n'était appelée qu'à l'instant précis de la toute
+    /// première connexion (dans OnboardingView). Quiconque avait un compte avant, ou dont
+    /// le drapeau local `notificationsEnabled` a été perdu (réinstallation, TestFlight),
+    /// n'avait plus aucun chemin pour jamais rien activer : `reschedule()` se contente de
+    /// ne rien faire si ce drapeau est à faux, sa valeur par défaut. Ce drapeau garantit
+    /// qu'on demande une bonne fois pour toutes, pour chaque installation, sans jamais
+    /// re-solliciter quelqu'un qui a déjà refusé ou désactivé volontairement.
+    @AppStorage("hasRequestedNotificationPermission") private var hasRequestedNotificationPermission = false
+
     private let userSyncService = UserSyncService()
 
     var body: some Scene {
@@ -92,6 +102,18 @@ struct InstantBusinessApp: App {
             // Le blocage doit aussi s'appliquer avant connexion.
             await updateGate.refresh()
         }
+
+        // Une seule fois par installation, pour tout compte connecté : couvre aussi bien
+        // quelqu'un qui vient de créer son compte (déjà géré par OnboardingView, ce
+        // deuxième appel n'y fait alors rien de plus) que quelqu'un déjà inscrit avant
+        // l'existence de cette étape, ou dont le drapeau local a été perdu.
+        // `enable()` ne redemande jamais si le système a déjà tranché — refusé ou
+        // accepté — donc personne n'est resollicité à tort.
+        if authManager.session != nil, !hasRequestedNotificationPermission {
+            hasRequestedNotificationPermission = true
+            await notificationManager.enable()
+        }
+
         // Re-check StoreKit on every foreground: without this an expired or cancelled
         // subscription keeps unlocking premium content until the app is cold-launched.
         await store.refresh()
