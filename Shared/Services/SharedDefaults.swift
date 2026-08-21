@@ -17,6 +17,20 @@ enum SharedDefaults {
         static let quizProfile = "quizProfile"
         static let preferredCategories = "preferredCategories"
         static let rotationSeed = "rotationSeed"
+        static let firstName = "firstName"
+        static let gender = "gender"
+    }
+
+    /// Prénom saisi après la connexion, aussi enregistré côté serveur.
+    static var firstName: String? {
+        get { suite.string(forKey: Keys.firstName) }
+        set { suite.set(newValue, forKey: Keys.firstName) }
+    }
+
+    /// Genre, utilisé pour l'accord grammatical du profil et des salutations.
+    static var gender: Gender? {
+        get { suite.string(forKey: Keys.gender).flatMap(Gender.init(rawValue:)) }
+        set { suite.set(newValue?.rawValue, forKey: Keys.gender) }
     }
 
     /// Per-installation random seed used to derive an hourly quote rotation that's
@@ -92,5 +106,7 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.quizProfile)
         suite.removeObject(forKey: Keys.preferredCategories)
         suite.removeObject(forKey: Keys.cardTheme)
+        suite.removeObject(forKey: Keys.firstName)
+        suite.removeObject(forKey: Keys.gender)
     }
 }

@@ -4,11 +4,13 @@ struct ContentView: View {
     @EnvironmentObject private var authManager: AuthManager
     @EnvironmentObject private var router: AppRouter
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasCompletedProfile") private var hasCompletedProfile = false
     @AppStorage("hasCompletedQuiz") private var hasCompletedQuiz = false
     @State private var selectedTab = 0
     @State private var focusedQuoteID: String?
 
-    /// Intro → connexion → quiz, puis l'app. Le quiz n'arrive qu'une fois le compte créé.
+    /// Intro → connexion → profil → quiz, puis l'app. Profil et quiz n'arrivent qu'une
+    /// fois le compte créé.
     ///
     /// Ces étapes sont de simples branches plutôt qu'un fullScreenCover : la version
     /// précédente pilotait le cover par une liaison au setter vide, si bien qu'un
@@ -27,6 +29,8 @@ struct ContentView: View {
                 } else {
                     OnboardingView()
                 }
+            } else if !hasCompletedProfile {
+                ProfileSetupView()
             } else if !hasCompletedQuiz {
                 QuizView()
             } else {

@@ -101,17 +101,38 @@ enum Quiz {
         }
     }
 
-    static func profile(for scores: [QuoteCategory: Double]) -> QuizProfile {
+    /// Le profil s'accorde au genre renseigné après la connexion : « La Déterminée »
+    /// plutôt que « Le Déterminé ».
+    static func profile(for scores: [QuoteCategory: Double], gender: Gender? = SharedDefaults.gender) -> QuizProfile {
         let top = scores.max { $0.value < $1.value }?.key ?? .mindset
+        let isFeminine = gender == .femme
+        let article = isFeminine ? "La" : "Le"
+
         switch top {
         case .mindset:
-            return QuizProfile(name: "Le Déterminé", tagline: "Ton moteur, c'est le mental. Tu avances quand les autres lâchent.", symbol: "flame.fill")
+            return QuizProfile(
+                name: "\(article) Déterminé\(isFeminine ? "e" : "")",
+                tagline: "Ton moteur, c'est le mental. Tu avances quand les autres lâchent.",
+                symbol: "flame.fill"
+            )
         case .sales:
-            return QuizProfile(name: "Le Closer", tagline: "Tu es fait pour convaincre et pour vendre ce en quoi tu crois.", symbol: "megaphone.fill")
+            return QuizProfile(
+                name: "\(article) Closer",
+                tagline: "Tu es fait\(isFeminine ? "e" : "") pour convaincre et pour vendre ce en quoi tu crois.",
+                symbol: "megaphone.fill"
+            )
         case .leadership:
-            return QuizProfile(name: "Le Bâtisseur", tagline: "Tu penses équipe, vision et long terme.", symbol: "person.3.fill")
+            return QuizProfile(
+                name: "\(article) Bâtisseu\(isFeminine ? "se" : "r")",
+                tagline: "Tu penses équipe, vision et long terme.",
+                symbol: "person.3.fill"
+            )
         case .finance:
-            return QuizProfile(name: "Le Stratège", tagline: "Tu raisonnes chiffres, marges et indépendance financière.", symbol: "chart.line.uptrend.xyaxis")
+            return QuizProfile(
+                name: "\(article) Stratège",
+                tagline: "Tu raisonnes chiffres, marges et indépendance financière.",
+                symbol: "chart.line.uptrend.xyaxis"
+            )
         }
     }
 

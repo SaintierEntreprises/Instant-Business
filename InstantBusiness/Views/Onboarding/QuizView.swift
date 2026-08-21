@@ -144,7 +144,7 @@ struct QuizResultView: View {
             .scaleEffect(revealed ? 1 : 0.7)
             .opacity(revealed ? 1 : 0)
 
-            Text("Ton profil")
+            Text(SharedDefaults.firstName.map { "\($0), ton profil" } ?? "Ton profil")
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(.secondary)
                 .padding(.top, 22)

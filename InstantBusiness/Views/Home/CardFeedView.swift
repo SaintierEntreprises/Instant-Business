@@ -78,7 +78,7 @@ struct CardFeedView: View {
     private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Instant Business")
+                Text(SharedDefaults.firstName.map { "Salut \($0)" } ?? "Instant Business")
                     .font(.system(.title, design: .rounded, weight: .heavy))
                 Text(Date().formatted(.dateTime.weekday(.wide).day().month(.wide)).capitalized)
                     .font(.footnote.weight(.medium))

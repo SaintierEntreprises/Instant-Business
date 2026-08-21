@@ -7,10 +7,31 @@ final class UserSyncService {
         let quote_id: String
     }
 
-    private struct RemoteUserState: Codable {
+    private struct RemoteUserState: Decodable {
+        var streak_count: Int
+        var last_open_date: String?
+        var first_name: String?
+        var gender: String?
+    }
+
+    /// Écritures volontairement séparées : chaque upsert ne transmet que ses propres
+    /// colonnes, sinon la mise à jour du streak écraserait le prénom avec une valeur
+    /// nulle (et inversement).
+    private struct StreakUpdate: Encodable {
         let user_id: String
         var streak_count: Int
         var last_open_date: String?
+    }
+
+    private struct ProfileUpdate: Encodable {
+        let user_id: String
+        var first_name: String
+        var gender: String
+    }
+
+    struct Profile {
+        var firstName: String?
+        var gender: Gender?
     }
 
     private static let dateFormatter: DateFormatter = {
@@ -23,10 +44,18 @@ final class UserSyncService {
 
     /// Pulls remote favorites and reconciles the streak (server is authoritative across devices).
     /// Returns the merged state to apply locally.
-    func syncOnSignIn(userID: String) async -> (favoriteIDs: Set<String>, streak: Int) {
+    func syncOnSignIn(userID: String) async -> (favoriteIDs: Set<String>, streak: Int, profile: Profile) {
         async let favorites = fetchFavorites(userID: userID)
-        async let streak = reconcileStreak(userID: userID)
-        return (await favorites, await streak)
+        async let state = reconcileStreak(userID: userID)
+        let resolved = await state
+        return (await favorites, resolved.streak, resolved.profile)
+    }
+
+    func saveProfile(userID: String, firstName: String, gender: Gender) async {
+        _ = try? await SupabaseProvider.client
+            .from("user_state")
+            .upsert(ProfileUpdate(user_id: userID, first_name: firstName, gender: gender.rawValue))
+            .execute()
     }
 
     func toggleFavorite(userID: String, quoteID: String, isFavorite: Bool) async {
@@ -63,7 +92,7 @@ final class UserSyncService {
         }
     }
 
-    private func reconcileStreak(userID: String) async -> Int {
+    private func reconcileStreak(userID: String) async -> (streak: Int, profile: Profile) {
         let today = Calendar.current.startOfDay(for: Date())
 
         let remote: RemoteUserState? = try? await SupabaseProvider.client
@@ -89,7 +118,7 @@ final class UserSyncService {
             }
         }
 
-        let updated = RemoteUserState(
+        let updated = StreakUpdate(
             user_id: userID,
             streak_count: newStreak,
             last_open_date: Self.dateFormatter.string(from: today)
@@ -100,6 +129,10 @@ final class UserSyncService {
             .upsert(updated)
             .execute()
 
-        return newStreak
+        let profile = Profile(
+            firstName: remote?.first_name,
+            gender: remote?.gender.flatMap(Gender.init(rawValue:))
+        )
+        return (newStreak, profile)
     }
 }

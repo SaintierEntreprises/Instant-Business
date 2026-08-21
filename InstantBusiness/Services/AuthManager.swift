@@ -141,6 +141,7 @@ final class AuthManager: NSObject, ObservableObject {
         GIDSignIn.sharedInstance.signOut()
         SharedDefaults.resetAccountData()
         UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
+        UserDefaults.standard.removeObject(forKey: "hasCompletedProfile")
         UserDefaults.standard.removeObject(forKey: "hasCompletedQuiz")
         errorMessage = nil
         return true

@@ -50,6 +50,14 @@ struct InstantBusinessApp: App {
             let result = await userSyncService.syncOnSignIn(userID: userID)
             favorites.applyRemote(favoriteIDs: result.favoriteIDs)
             SharedDefaults.streakCount = result.streak
+
+            // Le profil vit côté serveur : sur un nouvel appareil, on le restaure plutôt
+            // que de redemander prénom et genre à quelqu'un qui les a déjà renseignés.
+            if let firstName = result.profile.firstName, !firstName.isEmpty {
+                SharedDefaults.firstName = firstName
+                SharedDefaults.gender = result.profile.gender
+                UserDefaults.standard.set(true, forKey: "hasCompletedProfile")
+            }
         } else {
             favorites.detachSession()
         }
