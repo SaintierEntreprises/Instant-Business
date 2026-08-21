@@ -22,6 +22,18 @@ enum SharedDefaults {
         static let gender = "gender"
         static let accountUserID = "accountUserID"
         static let hasGrantedPremium = "hasGrantedPremium"
+        static let lastForegroundDate = "lastForegroundDate"
+    }
+
+    /// Dernier passage au premier plan, écrit à chaque ouverture.
+    ///
+    /// Distinct de `lastOpenDate`, que `StreakManager` compare pour calculer la série et
+    /// qui ne doit donc pas être écrasé avant ce calcul. Sert uniquement à savoir quel
+    /// jour l'app a réellement été ouverte, pour ne pas rappeler une série à quelqu'un
+    /// qui vient de la sécuriser.
+    static var lastForegroundDate: Date? {
+        get { suite.object(forKey: Keys.lastForegroundDate) as? Date }
+        set { suite.set(newValue, forKey: Keys.lastForegroundDate) }
     }
 
     /// Premium offert depuis Supabase, conservé en local pour rester valable hors ligne
@@ -137,5 +149,6 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.gender)
         suite.removeObject(forKey: Keys.accountUserID)
         suite.removeObject(forKey: Keys.hasGrantedPremium)
+        suite.removeObject(forKey: Keys.lastForegroundDate)
     }
 }

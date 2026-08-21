@@ -11,8 +11,12 @@ final class NotificationManager: ObservableObject {
     private static let rotationHours = [4, 8, 12, 16, 20]
 
     /// 6 notifications/day (1 daily + 5 rotation). iOS caps pending local notifications
-    /// at 64, so a 10-day rolling window (60 requests) stays under that.
+    /// at 64, so a 10-day rolling window (60 requests) stays under that — plus the single
+    /// streak reminder below, 61 in total.
     private let rollingWindowDays = 10
+
+    private static let streakReminderIdentifier = "instant-business-streak"
+    private static let streakReminderHour = 18
 
     /// Autorisation réellement accordée au niveau du système, sans jamais présenter de
     /// demande — contrairement à `requestAuthorizationIfNeeded`, qui en déclenche une.
@@ -96,6 +100,46 @@ final class NotificationManager: ObservableObject {
                 )
             }
         }
+
+        await scheduleStreakReminder(now: now, calendar: calendar, center: center)
+    }
+
+    /// Rappel de série, à 18h, uniquement le lendemain du dernier jour d'ouverture.
+    ///
+    /// Une notification locale ne peut pas décider au dernier moment si elle doit
+    /// s'afficher : elle est programmée à l'avance. Le filtrage se fait donc à l'envers —
+    /// `reschedule()` efface tout et reprogramme à chaque passage au premier plan, si
+    /// bien qu'ouvrir l'app supprime mécaniquement le rappel du jour. Il ne survit que
+    /// si personne n'ouvre l'app d'ici là, ce qui est exactement la condition voulue.
+    ///
+    /// Un seul jour est programmé, et c'est volontaire : rater une seule journée remet
+    /// déjà la série à 1 (voir le `default` de `UserSyncService.reconcileStreak`).
+    /// Le surlendemain, la série est perdue — annoncer « ne perds pas ta série de 6
+    /// jours » y serait faux.
+    private func scheduleStreakReminder(now: Date, calendar: Calendar, center: UNUserNotificationCenter) async {
+        let streak = SharedDefaults.streakCount
+        guard streak > 0 else { return }
+
+        let lastOpen = SharedDefaults.lastForegroundDate ?? now
+        guard let nextDay = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: lastOpen)),
+              let fireDate = calendar.date(bySettingHour: Self.streakReminderHour, minute: 0, second: 0, of: nextDay),
+              fireDate > now
+        else { return }
+
+        let content = UNMutableNotificationContent()
+        content.title = "Ne perds pas ta série de \(streak) jour\(streak > 1 ? "s" : "")"
+        if let firstName = SharedDefaults.firstName, !firstName.isEmpty {
+            content.body = "\(firstName), tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder."
+        } else {
+            content.body = "Tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder."
+        }
+        content.sound = .default
+
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        try? await center.add(
+            UNNotificationRequest(identifier: Self.streakReminderIdentifier, content: content, trigger: trigger)
+        )
     }
 
     private func schedule(identifier: String, title: String, quote: Quote, fireDate: Date, center: UNUserNotificationCenter) async {

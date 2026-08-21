@@ -60,6 +60,10 @@ struct InstantBusinessApp: App {
     }
 
     private func syncOnForeground() async {
+        // Écrit avant tout le reste : c'est ce qui dit au planificateur que la série du
+        // jour est sécurisée, et donc qu'il ne faut pas rappeler quoi que ce soit ce soir.
+        SharedDefaults.lastForegroundDate = Date()
+
         if let userID = authManager.session?.user.id.uuidString {
             // Marqué avant le moindre await : c'est ce drapeau qui retient l'affichage du
             // profil, il ne servirait à rien s'il arrivait après une requête réseau.
