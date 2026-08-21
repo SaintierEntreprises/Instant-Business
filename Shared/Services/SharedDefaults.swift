@@ -18,13 +18,28 @@ enum SharedDefaults {
         static let preferredCategories = "preferredCategories"
         static let rotationSeed = "rotationSeed"
         static let firstName = "firstName"
+        static let lastName = "lastName"
         static let gender = "gender"
+        static let accountUserID = "accountUserID"
+    }
+
+    /// Compte dont proviennent les données stockées ici, pour ne pas les servir à
+    /// quelqu'un d'autre qui se connecterait sur le même téléphone.
+    static var accountUserID: String? {
+        get { suite.string(forKey: Keys.accountUserID) }
+        set { suite.set(newValue, forKey: Keys.accountUserID) }
     }
 
     /// Prénom saisi après la connexion, aussi enregistré côté serveur.
     static var firstName: String? {
         get { suite.string(forKey: Keys.firstName) }
         set { suite.set(newValue, forKey: Keys.firstName) }
+    }
+
+    /// Nom de famille saisi après la connexion, aussi enregistré côté serveur.
+    static var lastName: String? {
+        get { suite.string(forKey: Keys.lastName) }
+        set { suite.set(newValue, forKey: Keys.lastName) }
     }
 
     /// Genre, utilisé pour l'accord grammatical du profil et des salutations.
@@ -65,6 +80,9 @@ enum SharedDefaults {
         get { Set(suite.stringArray(forKey: Keys.favoriteIDs) ?? []) }
         set { suite.set(Array(newValue), forKey: Keys.favoriteIDs) }
     }
+
+    /// Exposée pour permettre à une vue de s'y abonner via `@AppStorage`.
+    static var streakCountKey: String { Keys.streakCount }
 
     static var streakCount: Int {
         get { suite.integer(forKey: Keys.streakCount) }
@@ -107,6 +125,8 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.preferredCategories)
         suite.removeObject(forKey: Keys.cardTheme)
         suite.removeObject(forKey: Keys.firstName)
+        suite.removeObject(forKey: Keys.lastName)
         suite.removeObject(forKey: Keys.gender)
+        suite.removeObject(forKey: Keys.accountUserID)
     }
 }

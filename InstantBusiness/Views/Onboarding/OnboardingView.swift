@@ -1,8 +1,6 @@
 import SwiftUI
-import UIKit
 
 struct OnboardingView: View {
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authManager: AuthManager
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @StateObject private var notificationManager = NotificationManager()
@@ -65,7 +63,7 @@ struct OnboardingView: View {
             pageDots
 
             Button {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                Haptics.commit()
                 if page < pages.count - 1 {
                     withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) { page += 1 }
                 } else {
@@ -97,9 +95,10 @@ struct OnboardingView: View {
         }
     }
 
+    /// `dismiss()` figurait ici du temps où l'accueil était présenté en `fullScreenCover` ;
+    /// c'est maintenant une branche de `ContentView`, où l'appel ne faisait plus rien.
     private func complete() {
         hasCompletedOnboarding = true
-        dismiss()
     }
 }
 

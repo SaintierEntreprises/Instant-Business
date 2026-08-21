@@ -36,23 +36,25 @@ struct DailyQuoteCard: View {
                 Spacer()
 
                 HStack(spacing: 14) {
-                    Button(action: onToggleFavorite) {
-                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                            .frame(width: 32, height: 32)
-                            .contentShape(Rectangle())
-                    }
-                    .symbolEffect(.bounce, value: isFavorite)
-                    .sensoryFeedback(.impact(weight: .medium), trigger: isFavorite)
+                    FavoriteHeartButton(
+                        isFavorite: isFavorite,
+                        iconFont: .title3,
+                        hitSize: 34,
+                        action: onToggleFavorite
+                    )
 
-                    Button(action: onShare) {
+                    Button {
+                        Haptics.tap()
+                        onShare()
+                    } label: {
                         Image(systemName: "square.and.arrow.up")
-                            .frame(width: 32, height: 32)
+                            .font(.title3)
+                            .frame(width: 34, height: 34)
                             .contentShape(Rectangle())
                     }
+                    .buttonStyle(PressableButtonStyle())
                 }
-                .font(.title3)
                 .foregroundStyle(theme.textColor)
-                .buttonStyle(PressableButtonStyle())
             }
         }
         .padding(20)

@@ -14,6 +14,13 @@ final class NotificationManager: ObservableObject {
     /// at 64, so a 10-day rolling window (40 requests) stays comfortably under that.
     private let rollingWindowDays = 10
 
+    /// Autorisation réellement accordée au niveau du système, sans jamais présenter de
+    /// demande — contrairement à `requestAuthorizationIfNeeded`, qui en déclenche une.
+    func isSystemAuthorized() async -> Bool {
+        let status = await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+        return status == .authorized || status == .provisional
+    }
+
     func requestAuthorizationIfNeeded() async -> Bool {
         let center = UNUserNotificationCenter.current()
         let settings = await center.notificationSettings()

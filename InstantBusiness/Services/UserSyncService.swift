@@ -11,6 +11,7 @@ final class UserSyncService {
         var streak_count: Int
         var last_open_date: String?
         var first_name: String?
+        var last_name: String?
         var gender: String?
     }
 
@@ -26,11 +27,13 @@ final class UserSyncService {
     private struct ProfileUpdate: Encodable {
         let user_id: String
         var first_name: String
+        var last_name: String
         var gender: String
     }
 
     struct Profile {
         var firstName: String?
+        var lastName: String?
         var gender: Gender?
     }
 
@@ -44,17 +47,22 @@ final class UserSyncService {
 
     /// Pulls remote favorites and reconciles the streak (server is authoritative across devices).
     /// Returns the merged state to apply locally.
-    func syncOnSignIn(userID: String) async -> (favoriteIDs: Set<String>, streak: Int, profile: Profile) {
+    func syncOnSignIn(userID: String) async -> (favoriteIDs: Set<String>?, streak: Int?, profile: Profile) {
         async let favorites = fetchFavorites(userID: userID)
         async let state = reconcileStreak(userID: userID)
         let resolved = await state
         return (await favorites, resolved.streak, resolved.profile)
     }
 
-    func saveProfile(userID: String, firstName: String, gender: Gender) async {
+    func saveProfile(userID: String, firstName: String, lastName: String, gender: Gender) async {
         _ = try? await SupabaseProvider.client
             .from("user_state")
-            .upsert(ProfileUpdate(user_id: userID, first_name: firstName, gender: gender.rawValue))
+            .upsert(ProfileUpdate(
+                user_id: userID,
+                first_name: firstName,
+                last_name: lastName,
+                gender: gender.rawValue
+            ))
             .execute()
     }
 
@@ -78,7 +86,9 @@ final class UserSyncService {
         }
     }
 
-    private func fetchFavorites(userID: String) async -> Set<String> {
+    /// `nil` quand la requête échoue — hors ligne, l'appelant doit conserver ce qu'il a en
+    /// local plutôt que de le remplacer par une liste vide.
+    private func fetchFavorites(userID: String) async -> Set<String>? {
         do {
             let rows: [RemoteFavorite] = try await SupabaseProvider.client
                 .from("favorites")
@@ -88,20 +98,32 @@ final class UserSyncService {
                 .value
             return Set(rows.map(\.quote_id))
         } catch {
-            return []
+            return nil
         }
     }
 
-    private func reconcileStreak(userID: String) async -> (streak: Int, profile: Profile) {
+    private func reconcileStreak(userID: String) async -> (streak: Int?, profile: Profile) {
         let today = Calendar.current.startOfDay(for: Date())
 
-        let remote: RemoteUserState? = try? await SupabaseProvider.client
-            .from("user_state")
-            .select()
-            .eq("user_id", value: userID)
-            .single()
-            .execute()
-            .value
+        // Volontairement `limit(1)` et non `single()` : `single()` lève aussi bien quand la
+        // ligne n'existe pas encore (compte tout neuf) que quand le réseau est coupé. Les
+        // deux cas étaient donc traités comme « aucune donnée », et une ouverture hors
+        // ligne remettait la série à 1 — y compris à l'écran et dans les préférences.
+        let remote: RemoteUserState?
+        do {
+            let rows: [RemoteUserState] = try await SupabaseProvider.client
+                .from("user_state")
+                .select()
+                .eq("user_id", value: userID)
+                .limit(1)
+                .execute()
+                .value
+            remote = rows.first
+        } catch {
+            // Requête impossible : on ne touche à rien côté serveur et on laisse
+            // l'appelant garder son état local.
+            return (nil, Profile())
+        }
 
         var newStreak = 1
         if let lastOpenString = remote?.last_open_date, let lastOpen = Self.dateFormatter.date(from: lastOpenString) {
@@ -131,6 +153,7 @@ final class UserSyncService {
 
         let profile = Profile(
             firstName: remote?.first_name,
+            lastName: remote?.last_name,
             gender: remote?.gender.flatMap(Gender.init(rawValue:))
         )
         return (newStreak, profile)

@@ -13,7 +13,13 @@ struct CardFeedView: View {
     @State private var scrollPosition: String?
     @State private var shareItem: ShareItem?
     @State private var showPaywall = false
-    @State private var streak = SharedDefaults.streakCount
+    @State private var suppressesScrollFeedback = true
+
+    /// Lu via `@AppStorage` sur la suite partagée, et non copié dans un `@State` au moment
+    /// de l'apparition : la synchronisation serveur arrive après, et la valeur affichée
+    /// restait donc celle d'avant — le plus souvent 0 au premier lancement.
+    @AppStorage(SharedDefaults.streakCountKey, store: SharedDefaults.suite)
+    private var streak = 0
 
     /// Same quote for every user on a given day — independent of the shuffled feed below.
     private let dailyQuote = ContentStore.quoteOfTheDay()
@@ -57,10 +63,23 @@ struct CardFeedView: View {
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
+            // Sans barre de navigation, le contenu défilait à nu sous la barre d'état et
+            // le texte des cartes passait derrière l'encoche. Un fondu vers le fond, sans
+            // trait de séparation, sépare les deux sans alourdir l'écran.
+            .overlay(alignment: .top) {
+                LinearGradient(
+                    colors: [Color(.systemBackground), Color(.systemBackground).opacity(0)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .frame(height: 56)
+                .ignoresSafeArea(edges: .top)
+                .allowsHitTesting(false)
+            }
             .onAppear {
+                Haptics.prepare()
                 applyQuizPreferenceIfNeeded()
                 reshuffle()
-                streak = SharedDefaults.streakCount
             }
             .onChange(of: selectedCategory) { _, _ in reshuffle() }
             .onChange(of: focusedQuoteID) { _, id in focus(on: id) }
@@ -96,8 +115,12 @@ struct CardFeedView: View {
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
                 .background(.orange.opacity(0.12), in: Capsule())
+                .contentTransition(.numericText())
+                .transition(.scale.combined(with: .opacity))
             }
         }
+        // La série arrive après la synchronisation : elle doit se poser, pas surgir.
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: streak)
     }
 
     private var carousel: some View {
@@ -118,8 +141,17 @@ struct CardFeedView: View {
                         .frame(width: proxy.size.width - 48)
                         .scrollTransition(axis: .horizontal) { content, phase in
                             content
-                                .scaleEffect(reduceMotion || phase.isIdentity ? 1 : 0.92)
-                                .opacity(phase.isIdentity ? 1 : 0.5)
+                                .scaleEffect(reduceMotion || phase.isIdentity ? 1 : 0.90)
+                                .opacity(phase.isIdentity ? 1 : 0.45)
+                                // La carte résiste légèrement au défilement : le décalage
+                                // inverse crée une parallaxe entre elle et le geste, et
+                                // c'est ce qui donne l'impression d'une épaisseur.
+                                .offset(x: reduceMotion ? 0 : phase.value * -14)
+                                .rotation3DEffect(
+                                    .degrees(reduceMotion ? 0 : phase.value * -5),
+                                    axis: (x: 0, y: 1, z: 0),
+                                    perspective: 0.4
+                                )
                         }
                         .id(quote.id)
                     }
@@ -132,6 +164,13 @@ struct CardFeedView: View {
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
             .scrollPosition(id: $scrollPosition)
+            // Un cran à chaque carte franchie. Filtré pendant les repositionnements
+            // programmés (mélange, ouverture depuis le widget), qui déplacent aussi
+            // `scrollPosition` sans que l'utilisateur ait rien fait.
+            .sensoryFeedback(.selection, trigger: scrollPosition) { previous, current in
+                guard !suppressesScrollFeedback, let previous, let current else { return false }
+                return previous != current
+            }
         }
         .aspectRatio(0.78, contentMode: .fit)
     }
@@ -156,7 +195,18 @@ struct CardFeedView: View {
             shuffled.removeAll { $0.id == dailyQuote.id }
         }
         displayedQuotes = shuffled
-        scrollPosition = displayedQuotes.first?.id
+        jump(to: displayedQuotes.first?.id)
+    }
+
+    /// Repositionne le carrousel sans déclencher le retour haptique du défilement, qui
+    /// n'a de sens que quand c'est la personne qui fait glisser la carte.
+    private func jump(to id: String?) {
+        suppressesScrollFeedback = true
+        scrollPosition = id
+        Task {
+            try? await Task.sleep(nanoseconds: 350_000_000)
+            suppressesScrollFeedback = false
+        }
     }
 
     /// Brings a quote opened from the widget to the front of the feed.
@@ -166,7 +216,7 @@ struct CardFeedView: View {
         var pool = ContentStore.shuffledAvoidingAdjacentAuthors(ContentStore.allQuotes)
         pool.removeAll { $0.id == id }
         displayedQuotes = [quote] + pool
-        scrollPosition = id
+        jump(to: id)
         focusedQuoteID = nil
     }
 }

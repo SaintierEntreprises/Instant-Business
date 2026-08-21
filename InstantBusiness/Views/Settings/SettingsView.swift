@@ -7,7 +7,11 @@ struct SettingsView: View {
     @State private var showThemePicker = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
-    @State private var streak = SharedDefaults.streakCount
+
+    /// Voir `CardFeedView` : recopier la valeur dans un `@State` à l'apparition affichait
+    /// une série périmée, la synchronisation serveur arrivant après.
+    @AppStorage(SharedDefaults.streakCountKey, store: SharedDefaults.suite)
+    private var streak = 0
     @State private var showPaywall = false
     @State private var isSigningOut = false
     @State private var isDeletingAccount = false
@@ -130,8 +134,17 @@ struct SettingsView: View {
                 Section("Compte") {
                     HStack(spacing: 12) {
                         SettingsIconBadge(systemName: "person.fill", color: .blue)
-                        Text(authManager.session?.user.email ?? "Connecté")
-                            .lineLimit(1)
+                        VStack(alignment: .leading, spacing: 2) {
+                            if let name = fullName {
+                                Text(name)
+                                    .fontWeight(.semibold)
+                                    .lineLimit(1)
+                            }
+                            Text(authManager.session?.user.email ?? "Connecté")
+                                .font(fullName == nil ? .body : .caption)
+                                .foregroundStyle(fullName == nil ? .primary : .secondary)
+                                .lineLimit(1)
+                        }
                         Spacer()
                     }
                     Button(role: .destructive) {
@@ -166,7 +179,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Réglages")
-            .onAppear { streak = SharedDefaults.streakCount }
+            // Les notifications peuvent avoir été coupées depuis les réglages d'iOS : sans
+            // cette relecture, l'interrupteur restait allumé alors que plus rien n'arrivait.
+            .task { await refreshNotificationState() }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
@@ -186,6 +201,23 @@ struct SettingsView: View {
                 Text("Tes favoris, ta série et ton profil seront effacés définitivement. Cette action est irréversible.")
             }
         }
+    }
+
+    /// Le prénom et le nom saisis après la connexion, quand ils existent : l'adresse
+    /// e-mail seule était peu parlante, surtout avec le relais « Masquer mon adresse ».
+    private var fullName: String? {
+        let parts = [SharedDefaults.firstName, SharedDefaults.lastName]
+            .compactMap { $0 }
+            .filter { !$0.isEmpty }
+        return parts.isEmpty ? nil : parts.joined(separator: " ")
+    }
+
+    private func refreshNotificationState() async {
+        let granted = await notificationManager.isSystemAuthorized()
+        if !granted, SharedDefaults.notificationsEnabled {
+            SharedDefaults.notificationsEnabled = false
+        }
+        notificationsEnabled = SharedDefaults.notificationsEnabled
     }
 }
 

@@ -15,7 +15,22 @@ struct CategoryFilterBar: View {
                     chip(for: item)
                 }
             }
-            .padding(.horizontal)
+            // 24 comme le reste du fil : à 16, la puce « Tout » ne s'alignait pas sur le
+            // titre « DÉCOUVRIR » juste au-dessus.
+            .padding(.horizontal, 24)
+        }
+        // Sans ce dégradé, la puce de droite est tranchée net au bord de l'écran et se lit
+        // comme un défaut de mise en page plutôt que comme « ça continue ».
+        .mask {
+            LinearGradient(
+                stops: [
+                    .init(color: .black, location: 0),
+                    .init(color: .black, location: 0.9),
+                    .init(color: .clear, location: 1)
+                ],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
         }
     }
 
@@ -26,9 +41,11 @@ struct CategoryFilterBar: View {
 
         Button {
             if locked, let item {
+                Haptics.tap()
                 onLockedCategoryTap(item)
             } else {
-                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                Haptics.select()
+                withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
                     selectedCategory = item
                 }
             }

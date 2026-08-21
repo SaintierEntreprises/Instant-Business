@@ -20,6 +20,9 @@ struct ContentView: View {
         Group {
             if authManager.isRestoringSession {
                 LaunchPlaceholderView()
+                    // Le logo grandit en s'effaçant : la transition se lit comme un
+                    // passage au premier plan, pas comme un écran qu'on remplace.
+                    .transition(.opacity.combined(with: .scale(scale: 1.08)))
             } else if authManager.session == nil {
                 // Une session ouverte prime sur le drapeau d'accueil : quelqu'un de
                 // connecté ne doit jamais retomber sur l'intro ou la connexion, même si
@@ -37,7 +40,11 @@ struct ContentView: View {
                 mainInterface
             }
         }
-        .animation(.easeOut(duration: 0.2), value: authManager.isRestoringSession)
+        // Amorti complet partout : ces bascules structurent la navigation, un rebond y
+        // ferait passer un changement d'écran pour un effet.
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: authManager.isRestoringSession)
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: hasCompletedProfile)
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: hasCompletedQuiz)
         .fontDesign(.rounded)
     }
 
