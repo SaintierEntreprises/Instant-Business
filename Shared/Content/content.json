@@ -3508,5 +3508,629 @@
     "author": "Ray Dalio",
     "category": "mindset",
     "id": "q-0601"
+  },
+  {
+    "text": "La concurrence est pour les perdants.",
+    "author": "Peter Thiel",
+    "category": "sales",
+    "id": "q-0602"
+  },
+  {
+    "text": "Il vaut mieux avoir cent personnes qui vous adorent que cent mille qui vous trouvent sympathique.",
+    "author": "Peter Thiel",
+    "category": "sales",
+    "id": "q-0603"
+  },
+  {
+    "text": "Faites des choses qui ne passent pas à l'échelle.",
+    "author": "Paul Graham",
+    "category": "sales",
+    "id": "q-0604"
+  },
+  {
+    "text": "Le logiciel est en train de dévorer le monde.",
+    "author": "Marc Andreessen",
+    "category": "sales",
+    "id": "q-0605"
+  },
+  {
+    "text": "Le seul moyen de gagner est d'apprendre plus vite que tout le monde.",
+    "author": "Eric Ries",
+    "category": "sales",
+    "id": "q-0606"
+  },
+  {
+    "text": "Le patron, c'est le client. Il peut licencier tout le monde, du président au simple employé, simplement en dépensant son argent ailleurs.",
+    "author": "Sam Walton",
+    "category": "sales",
+    "id": "q-0607"
+  },
+  {
+    "text": "Il faut commencer par l'expérience client et remonter vers la technologie, jamais l'inverse.",
+    "author": "Steve Jobs",
+    "category": "sales",
+    "id": "q-0608"
+  },
+  {
+    "text": "Il faut accepter d'être incompris pendant longtemps.",
+    "author": "Jeff Bezos",
+    "category": "sales",
+    "id": "q-0609"
+  },
+  {
+    "text": "Ce qui compte, ce n'est pas ce que vous vendez, c'est le problème que vous résolvez.",
+    "author": "Clayton Christensen",
+    "category": "sales",
+    "id": "q-0610"
+  },
+  {
+    "text": "Les gens n'achètent pas une perceuse, ils achètent un trou dans leur mur.",
+    "author": "Theodore Levitt",
+    "category": "sales",
+    "id": "q-0611"
+  },
+  {
+    "text": "Le marketing, c'est l'art de rendre le produit inutile à vendre.",
+    "author": "Peter Drucker",
+    "category": "sales",
+    "id": "q-0612"
+  },
+  {
+    "text": "Un client mécontent est votre meilleure source d'apprentissage.",
+    "author": "Bill Gates",
+    "category": "sales",
+    "id": "q-0613"
+  },
+  {
+    "text": "Faites ce que vous faites si bien que les gens auront envie de revenir et d'amener leurs amis.",
+    "author": "Walt Disney",
+    "category": "sales",
+    "id": "q-0614"
+  },
+  {
+    "text": "On ne construit pas une réputation sur ce qu'on a l'intention de faire.",
+    "author": "Henry Ford",
+    "category": "sales",
+    "id": "q-0615"
+  },
+  {
+    "text": "Si vous avez le temps de flâner, vous avez le temps de nettoyer.",
+    "author": "Ray Kroc",
+    "category": "sales",
+    "id": "q-0616"
+  },
+  {
+    "text": "Le doute tue plus de rêves que l'échec ne le fera jamais.",
+    "author": "Suzy Kassem",
+    "category": "sales",
+    "id": "q-0617"
+  },
+  {
+    "text": "Créez quelque chose que les gens veulent vraiment. C'est tout.",
+    "author": "Paul Graham",
+    "category": "sales",
+    "id": "q-0618"
+  },
+  {
+    "text": "Quelqu'un est assis à l'ombre aujourd'hui parce qu'un autre a planté un arbre il y a longtemps.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0620"
+  },
+  {
+    "text": "Les chaînes de l'habitude sont trop légères pour être senties, jusqu'à ce qu'elles deviennent trop lourdes pour être brisées.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0621"
+  },
+  {
+    "text": "Prévoir la pluie ne compte pas. Construire l'arche, si.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0622"
+  },
+  {
+    "text": "Il faut beaucoup de temps pour devenir riche lentement, et c'est précisément pour cela que peu de gens le font.",
+    "author": "Charlie Munger",
+    "category": "finance",
+    "id": "q-0623"
+  },
+  {
+    "text": "Tout ce que je veux savoir, c'est où je vais mourir, comme ça je n'irai jamais.",
+    "author": "Charlie Munger",
+    "category": "finance",
+    "id": "q-0624"
+  },
+  {
+    "text": "L'investisseur avisé est un réaliste qui vend aux optimistes et achète aux pessimistes.",
+    "author": "Benjamin Graham",
+    "category": "finance",
+    "id": "q-0625"
+  },
+  {
+    "text": "L'ennemi principal de l'investisseur, c'est probablement lui-même.",
+    "author": "Benjamin Graham",
+    "category": "finance",
+    "id": "q-0626"
+  },
+  {
+    "text": "Le temps est l'ami des belles entreprises et l'ennemi des médiocres.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0627"
+  },
+  {
+    "text": "Ne me dites pas ce que vous pensez, montrez-moi votre portefeuille.",
+    "author": "Nassim Nicholas Taleb",
+    "category": "finance",
+    "id": "q-0628"
+  },
+  {
+    "text": "La richesse, c'est ce que vous ne voyez pas : les voitures non achetées, les sacs non achetés.",
+    "author": "Morgan Housel",
+    "category": "finance",
+    "id": "q-0629"
+  },
+  {
+    "text": "Le plus grand dividende que l'argent puisse verser, c'est la maîtrise de votre temps.",
+    "author": "Morgan Housel",
+    "category": "finance",
+    "id": "q-0630"
+  },
+  {
+    "text": "Ce ne sont pas les revenus qui font la richesse, c'est l'écart entre ce que vous gagnez et ce que vous dépensez.",
+    "author": "Thomas J. Stanley",
+    "category": "finance",
+    "id": "q-0631"
+  },
+  {
+    "text": "Payez-vous en premier.",
+    "author": "George S. Clason",
+    "category": "finance",
+    "id": "q-0632"
+  },
+  {
+    "text": "Une partie de tout ce que vous gagnez vous appartient, à vous et à personne d'autre.",
+    "author": "George S. Clason",
+    "category": "finance",
+    "id": "q-0633"
+  },
+  {
+    "text": "L'intérêt composé est la force la plus puissante de l'univers financier : celui qui la comprend en profite, celui qui l'ignore la subit.",
+    "author": "John C. Bogle",
+    "category": "finance",
+    "id": "q-0634"
+  },
+  {
+    "text": "Le temps passé sur le marché bat le fait de vouloir choisir le bon moment.",
+    "author": "Peter Lynch",
+    "category": "finance",
+    "id": "q-0635"
+  },
+  {
+    "text": "Bien plus d'argent a été perdu par des investisseurs à essayer d'anticiper les corrections qu'à en subir.",
+    "author": "Peter Lynch",
+    "category": "finance",
+    "id": "q-0636"
+  },
+  {
+    "text": "Il vaut mieux acheter une entreprise formidable à un prix correct qu'une entreprise correcte à un prix formidable.",
+    "author": "Warren Buffett",
+    "category": "finance",
+    "id": "q-0637"
+  },
+  {
+    "text": "Ce n'est pas le critique qui compte, ni celui qui montre comment l'homme fort a trébuché. Le mérite revient à celui qui est dans l'arène.",
+    "author": "Theodore Roosevelt",
+    "category": "leadership",
+    "id": "q-0638"
+  },
+  {
+    "text": "Faites ce que vous pouvez, avec ce que vous avez, là où vous êtes.",
+    "author": "Theodore Roosevelt",
+    "category": "leadership",
+    "id": "q-0639"
+  },
+  {
+    "text": "Le meilleur dirigeant est celui qui a assez de bon sens pour choisir des gens capables, et assez de retenue pour ne pas se mêler de leur travail.",
+    "author": "Theodore Roosevelt",
+    "category": "leadership",
+    "id": "q-0640"
+  },
+  {
+    "text": "La difficulté attire l'homme de caractère, car c'est en l'étreignant qu'il se réalise lui-même.",
+    "author": "Charles de Gaulle",
+    "category": "leadership",
+    "id": "q-0641"
+  },
+  {
+    "text": "On ne fait rien de grand sans de grands hommes, et ceux-ci le sont pour l'avoir voulu.",
+    "author": "Charles de Gaulle",
+    "category": "leadership",
+    "id": "q-0642"
+  },
+  {
+    "text": "Le prix de la grandeur, c'est la responsabilité.",
+    "author": "Winston Churchill",
+    "category": "leadership",
+    "id": "q-0643"
+  },
+  {
+    "text": "Un chef est un marchand d'espérance.",
+    "author": "Napoléon Bonaparte",
+    "category": "leadership",
+    "id": "q-0644"
+  },
+  {
+    "text": "Ne demandez pas ce que votre pays peut faire pour vous, demandez ce que vous pouvez faire pour votre pays.",
+    "author": "John F. Kennedy",
+    "category": "leadership",
+    "id": "q-0645"
+  },
+  {
+    "text": "Le changement est la loi de la vie. Ceux qui ne regardent que le passé ou le présent manqueront à coup sûr l'avenir.",
+    "author": "John F. Kennedy",
+    "category": "leadership",
+    "id": "q-0646"
+  },
+  {
+    "text": "Les problèmes du monde ne peuvent être résolus par les sceptiques dont l'horizon se limite aux réalités visibles.",
+    "author": "John F. Kennedy",
+    "category": "leadership",
+    "id": "q-0647"
+  },
+  {
+    "text": "L'effort et le courage ne suffisent pas sans but ni direction.",
+    "author": "John F. Kennedy",
+    "category": "leadership",
+    "id": "q-0648"
+  },
+  {
+    "text": "Un dirigeant est un homme qui a besoin des autres.",
+    "author": "Paul Valéry",
+    "category": "leadership",
+    "id": "q-0649"
+  },
+  {
+    "text": "La qualité d'un dirigeant se mesure aux normes qu'il se fixe à lui-même.",
+    "author": "Ray Kroc",
+    "category": "leadership",
+    "id": "q-0650"
+  },
+  {
+    "text": "Les gens ne quittent pas des entreprises, ils quittent des managers.",
+    "author": "Marcus Buckingham",
+    "category": "leadership",
+    "id": "q-0651"
+  },
+  {
+    "text": "Mettez d'abord les bonnes personnes dans le bus, ensuite décidez où aller.",
+    "author": "Jim Collins",
+    "category": "leadership",
+    "id": "q-0652"
+  },
+  {
+    "text": "Commencez avec la fin en tête.",
+    "author": "Stephen R. Covey",
+    "category": "leadership",
+    "id": "q-0653"
+  },
+  {
+    "text": "Cherchez d'abord à comprendre, ensuite à être compris.",
+    "author": "Stephen R. Covey",
+    "category": "leadership",
+    "id": "q-0654"
+  },
+  {
+    "text": "Recrutez lentement, licenciez vite.",
+    "author": "Ray Dalio",
+    "category": "leadership",
+    "id": "q-0656"
+  },
+  {
+    "text": "Une organisation excellente n'est pas celle où il n'y a pas de problèmes, c'est celle où les problèmes remontent vite.",
+    "author": "Ray Dalio",
+    "category": "leadership",
+    "id": "q-0657"
+  },
+  {
+    "text": "La transparence radicale n'est pas confortable, mais elle est efficace.",
+    "author": "Ray Dalio",
+    "category": "leadership",
+    "id": "q-0658"
+  },
+  {
+    "text": "Notre culture, c'est la liberté et la responsabilité.",
+    "author": "Reed Hastings",
+    "category": "leadership",
+    "id": "q-0659"
+  },
+  {
+    "text": "Le talent dense attire le talent dense.",
+    "author": "Reed Hastings",
+    "category": "leadership",
+    "id": "q-0660"
+  },
+  {
+    "text": "L'empathie n'est pas un luxe pour un dirigeant, c'est un outil de travail.",
+    "author": "Satya Nadella",
+    "category": "leadership",
+    "id": "q-0661"
+  },
+  {
+    "text": "Notre secteur ne respecte pas la tradition, il ne respecte que l'innovation.",
+    "author": "Satya Nadella",
+    "category": "leadership",
+    "id": "q-0662"
+  },
+  {
+    "text": "Le leadership, c'est aussi savoir quand se taire.",
+    "author": "Indra Nooyi",
+    "category": "leadership",
+    "id": "q-0663"
+  },
+  {
+    "text": "Supposez toujours la bonne intention chez votre interlocuteur.",
+    "author": "Indra Nooyi",
+    "category": "leadership",
+    "id": "q-0664"
+  },
+  {
+    "text": "Si vous voulez aller vite, allez seul. Si vous voulez aller loin, allez ensemble.",
+    "author": "Proverbe africain",
+    "category": "leadership",
+    "id": "q-0665"
+  },
+  {
+    "text": "La seule chose que nous devons craindre, c'est la crainte elle-même.",
+    "author": "Franklin D. Roosevelt",
+    "category": "leadership",
+    "id": "q-0667"
+  },
+  {
+    "text": "Un bon plan exécuté aujourd'hui vaut mieux qu'un plan parfait exécuté la semaine prochaine.",
+    "author": "George S. Patton",
+    "category": "leadership",
+    "id": "q-0668"
+  },
+  {
+    "text": "Ne dites pas aux gens comment faire les choses. Dites-leur quoi faire et laissez-les vous surprendre par leur ingéniosité.",
+    "author": "George S. Patton",
+    "category": "leadership",
+    "id": "q-0669"
+  },
+  {
+    "text": "Restez affamés, restez fous.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0670"
+  },
+  {
+    "text": "On ne peut pas relier les points en regardant devant soi, seulement en regardant en arrière.",
+    "author": "Steve Jobs",
+    "category": "mindset",
+    "id": "q-0671"
+  },
+  {
+    "text": "Je n'ai pas échoué. J'ai simplement trouvé dix mille façons qui ne fonctionnent pas.",
+    "author": "Thomas Edison",
+    "category": "mindset",
+    "id": "q-0672"
+  },
+  {
+    "text": "La vie se rétrécit ou s'élargit à proportion de notre courage.",
+    "author": "Anaïs Nin",
+    "category": "mindset",
+    "id": "q-0673"
+  },
+  {
+    "text": "Vous êtes la moyenne des cinq personnes que vous fréquentez le plus.",
+    "author": "Jim Rohn",
+    "category": "mindset",
+    "id": "q-0674"
+  },
+  {
+    "text": "Ne souhaitez pas que ce soit plus facile, souhaitez d'être meilleur.",
+    "author": "Jim Rohn",
+    "category": "mindset",
+    "id": "q-0675"
+  },
+  {
+    "text": "Ce que l'esprit peut concevoir et croire, il peut le réaliser.",
+    "author": "Napoleon Hill",
+    "category": "mindset",
+    "id": "q-0676"
+  },
+  {
+    "text": "Devenir vaut mieux qu'être.",
+    "author": "Carol Dweck",
+    "category": "mindset",
+    "id": "q-0677"
+  },
+  {
+    "text": "Rien dans la vie n'a autant d'importance que vous ne le pensez pendant que vous y pensez.",
+    "author": "Daniel Kahneman",
+    "category": "mindset",
+    "id": "q-0678"
+  },
+  {
+    "text": "J'ai raté plus de neuf mille tirs dans ma carrière. C'est pour cela que je réussis.",
+    "author": "Michael Jordan",
+    "category": "mindset",
+    "id": "q-0679"
+  },
+  {
+    "text": "On rate cent pour cent des tirs qu'on ne tente pas.",
+    "author": "Wayne Gretzky",
+    "category": "mindset",
+    "id": "q-0680"
+  },
+  {
+    "text": "Je détestais chaque minute d'entraînement, mais je me disais : souffre maintenant et vis le reste de ta vie en champion.",
+    "author": "Muhammad Ali",
+    "category": "mindset",
+    "id": "q-0681"
+  },
+  {
+    "text": "L'homme qui n'a pas d'imagination n'a pas d'ailes.",
+    "author": "Muhammad Ali",
+    "category": "mindset",
+    "id": "q-0682"
+  },
+  {
+    "text": "Le job n'est pas fini.",
+    "author": "Kobe Bryant",
+    "category": "mindset",
+    "id": "q-0683"
+  },
+  {
+    "text": "Les gens oublieront ce que vous avez dit et ce que vous avez fait, mais jamais ce que vous leur avez fait ressentir.",
+    "author": "Maya Angelou",
+    "category": "mindset",
+    "id": "q-0684"
+  },
+  {
+    "text": "Rien ne fonctionnera si vous ne le faites pas.",
+    "author": "Maya Angelou",
+    "category": "mindset",
+    "id": "q-0685"
+  },
+  {
+    "text": "Aujourd'hui est dur, demain sera pire, mais après-demain sera magnifique. La plupart abandonnent le soir du deuxième jour.",
+    "author": "Jack Ma",
+    "category": "mindset",
+    "id": "q-0686"
+  },
+  {
+    "text": "Chaque action que vous entreprenez est un vote pour la personne que vous voulez devenir.",
+    "author": "James Clear",
+    "category": "mindset",
+    "id": "q-0687"
+  },
+  {
+    "text": "La passion est courante, la persévérance est rare.",
+    "author": "Angela Duckworth",
+    "category": "mindset",
+    "id": "q-0688"
+  },
+  {
+    "text": "Le talent, c'est le potentiel. L'effort, c'est ce qui le transforme en résultat.",
+    "author": "Angela Duckworth",
+    "category": "mindset",
+    "id": "q-0689"
+  },
+  {
+    "text": "L'obstacle est le chemin.",
+    "author": "Marc Aurèle",
+    "category": "mindset",
+    "id": "q-0690"
+  },
+  {
+    "text": "Tu as pouvoir sur ton esprit, pas sur les évènements extérieurs. Comprends cela et tu trouveras la force.",
+    "author": "Marc Aurèle",
+    "category": "mindset",
+    "id": "q-0691"
+  },
+  {
+    "text": "Nous souffrons plus souvent en imagination qu'en réalité.",
+    "author": "Sénèque",
+    "category": "mindset",
+    "id": "q-0692"
+  },
+  {
+    "text": "Ce n'est pas ce qui t'arrive qui compte, mais la façon dont tu y réagis.",
+    "author": "Épictète",
+    "category": "mindset",
+    "id": "q-0693"
+  },
+  {
+    "text": "Ne cherche pas que les évènements arrivent comme tu veux, mais veuille les évènements comme ils arrivent.",
+    "author": "Épictète",
+    "category": "mindset",
+    "id": "q-0694"
+  },
+  {
+    "text": "Le premier pas n'emmène pas là où vous voulez aller, mais il vous sort de là où vous êtes.",
+    "author": "James Clear",
+    "category": "mindset",
+    "id": "q-0695"
+  },
+  {
+    "text": "Connaître les autres, c'est sagesse. Se connaître soi-même, c'est sagesse supérieure.",
+    "author": "Lao Tseu",
+    "category": "mindset",
+    "id": "q-0696"
+  },
+  {
+    "text": "Le succès, c'est de tomber sept fois et de se relever huit.",
+    "author": "Proverbe japonais",
+    "category": "mindset",
+    "id": "q-0697"
+  },
+  {
+    "text": "Ce qui ne nous tue pas nous rend plus fort.",
+    "author": "Friedrich Nietzsche",
+    "category": "mindset",
+    "id": "q-0699"
+  },
+  {
+    "text": "Celui qui a un pourquoi qui lui tient lieu de but peut supporter presque n'importe quel comment.",
+    "author": "Friedrich Nietzsche",
+    "category": "mindset",
+    "id": "q-0700"
+  },
+  {
+    "text": "La plus grande aventure, c'est de vivre la vie de ses rêves.",
+    "author": "Oprah Winfrey",
+    "category": "mindset",
+    "id": "q-0701"
+  },
+  {
+    "text": "Transformez vos blessures en sagesse.",
+    "author": "Oprah Winfrey",
+    "category": "mindset",
+    "id": "q-0702"
+  },
+  {
+    "text": "Échouer, ce n'est pas ne pas réussir, c'est ne pas essayer.",
+    "author": "Sara Blakely",
+    "category": "mindset",
+    "id": "q-0703"
+  },
+  {
+    "text": "La perfection est atteinte non pas lorsqu'il n'y a plus rien à ajouter, mais lorsqu'il n'y a plus rien à retirer.",
+    "author": "Antoine de Saint-Exupéry",
+    "category": "mindset",
+    "id": "q-0705"
+  },
+  {
+    "text": "On ne subit pas l'avenir, on le fait.",
+    "author": "Georges Bernanos",
+    "category": "mindset",
+    "id": "q-0707"
+  },
+  {
+    "text": "Le pessimiste se plaint du vent, l'optimiste espère qu'il va changer, le réaliste ajuste ses voiles.",
+    "author": "William Arthur Ward",
+    "category": "mindset",
+    "id": "q-0709"
+  },
+  {
+    "text": "Le doute est le commencement de la sagesse.",
+    "author": "Aristote",
+    "category": "mindset",
+    "id": "q-0710"
+  },
+  {
+    "text": "Nous sommes ce que nous faisons de manière répétée. L'excellence n'est donc pas un acte mais une habitude.",
+    "author": "Will Durant",
+    "category": "mindset",
+    "id": "q-0711"
+  },
+  {
+    "text": "Tout le monde savait que c'était impossible. Il est venu un imbécile qui ne le savait pas et qui l'a fait.",
+    "author": "Marcel Pagnol",
+    "category": "mindset",
+    "id": "q-0712"
   }
 ]
