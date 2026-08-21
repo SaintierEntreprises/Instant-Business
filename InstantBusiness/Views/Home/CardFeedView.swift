@@ -79,7 +79,14 @@ struct CardFeedView: View {
             .onAppear {
                 Haptics.prepare()
                 applyQuizPreferenceIfNeeded()
-                reshuffle()
+                // L'identifiant peut déjà être posé quand le fil apparaît, si l'app vient
+                // d'être lancée depuis le widget ou une notification. Mélanger d'abord
+                // écraserait la citation demandée.
+                if let focusedQuoteID {
+                    focus(on: focusedQuoteID)
+                } else {
+                    reshuffle()
+                }
             }
             .onChange(of: selectedCategory) { _, _ in reshuffle() }
             .onChange(of: focusedQuoteID) { _, id in focus(on: id) }

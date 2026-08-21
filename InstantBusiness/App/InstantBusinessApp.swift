@@ -6,8 +6,9 @@ struct InstantBusinessApp: App {
     @StateObject private var favorites = FavoritesStore()
     @StateObject private var notificationManager = NotificationManager()
     @StateObject private var store = StoreManager()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var authManager = AuthManager()
-    @StateObject private var router = AppRouter()
+    @StateObject private var router = AppRouter.shared
     @StateObject private var appearance = AppearanceStore()
     @StateObject private var syncState = SyncState()
     @StateObject private var updateGate = AppUpdateGate()

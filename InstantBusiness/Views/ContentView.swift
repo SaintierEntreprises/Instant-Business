@@ -62,6 +62,13 @@ struct ContentView: View {
         .fontDesign(.rounded)
     }
 
+    private func consumePendingQuote(_ quoteID: String?) {
+        guard let quoteID else { return }
+        selectedTab = 0
+        focusedQuoteID = quoteID
+        router.pendingQuoteID = nil
+    }
+
     private var mainInterface: some View {
         TabView(selection: $selectedTab) {
             CardFeedView(focusedQuoteID: $focusedQuoteID)
@@ -81,10 +88,14 @@ struct ContentView: View {
                 .tag(3)
         }
         .onChange(of: router.pendingQuoteID) { _, quoteID in
-            guard let quoteID else { return }
-            selectedTab = 0
-            focusedQuoteID = quoteID
-            router.pendingQuoteID = nil
+            consumePendingQuote(quoteID)
+        }
+        // App fermée au moment de l'appui : l'URL du widget, ou la réponse à la
+        // notification, arrive pendant que l'écran de lancement est encore affiché. Le
+        // fil n'existait pas encore, `onChange` ne voyait donc jamais rien passer et la
+        // citation était perdue — le cas le plus courant, justement.
+        .onAppear {
+            consumePendingQuote(router.pendingQuoteID)
         }
     }
 }

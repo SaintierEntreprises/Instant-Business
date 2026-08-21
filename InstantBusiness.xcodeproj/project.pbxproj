@@ -45,6 +45,7 @@
 		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
 		7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DB5D3F97CA156C007FE20 /* QuoteCardView.swift */; };
 		7EDAA5DDBC7746154BF50D36 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */; };
+		80B2D76ED4A9E0768FFF4909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839EF20BDAA6B3D63F32C1A2 /* AppDelegate.swift */; };
 		80BD9D82533A89321F3AAC1E /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */; };
 		811FB64C80651E32E5C8CFEB /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B619CC87D0D27E2848B53FBA /* Gender.swift */; };
 		83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E046D2F5BE2C6728EED66F45 /* LoginView.swift */; };
@@ -142,6 +143,7 @@
 		81A1560ED9E0632BCE797684 /* CardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTheme.swift; sourceTree = "<group>"; };
 		81BBB3C381C0F4D20628F136 /* CardThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardThemePickerView.swift; sourceTree = "<group>"; };
 		82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseProvider.swift; sourceTree = "<group>"; };
+		839EF20BDAA6B3D63F32C1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8802591D8BA622C2533188CC /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
 		98FA651AFB70B064EA7E06B7 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		A080AB01F0BF4CC3EA397F22 /* FavoriteHeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeartButton.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 		D9AB7F0A4B392A9B27C09D23 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				839EF20BDAA6B3D63F32C1A2 /* AppDelegate.swift */,
 				0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */,
 			);
 			path = App;
@@ -550,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80B2D76ED4A9E0768FFF4909 /* AppDelegate.swift in Sources */,
 				80BD9D82533A89321F3AAC1E /* AppRouter.swift in Sources */,
 				2732C1FABBD1063AA555E082 /* AppUpdateGate.swift in Sources */,
 				9C2517B12A4F1B2E209E06FD /* AppearanceStore.swift in Sources */,

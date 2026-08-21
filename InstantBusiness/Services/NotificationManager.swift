@@ -147,6 +147,9 @@ final class NotificationManager: ObservableObject {
         content.title = title
         content.body = "\(quote.text) — \(quote.author)"
         content.sound = .default
+        // Sans cet identifiant, appuyer sur la notification ouvrait l'app sur un fil
+        // mélangé, sans la citation qu'on venait de lire.
+        content.userInfo = [NotificationPayload.quoteIDKey: quote.id]
 
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
