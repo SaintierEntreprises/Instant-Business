@@ -1,6 +1,6 @@
 # Politique de confidentialité
 
-Dernière mise à jour : 15 août 2026
+Dernière mise à jour : 21 août 2026
 
 ## Préambule
 
@@ -14,19 +14,23 @@ La présente politique explique quelles données sont collectées par l'applicat
 
 **Données de compte.** Lors de la connexion via Sign in with Apple ou Google Sign-In, nous recevons un identifiant unique et, selon votre choix, une adresse email (qui peut être une adresse de relais privée si vous utilisez « Masquer mon adresse e-mail » avec Apple).
 
+**Données de profil.** Après la connexion, l'Application vous demande votre prénom, votre nom et votre genre. Ces informations sont associées à votre compte et stockées sur nos serveurs, afin que l'Application s'adresse à vous personnellement et accorde correctement les textes, et pour que votre profil vous suive si vous changez d'appareil.
+
 **Données synchronisées entre vos appareils.** Vos citations favorites et votre série de jours consécutifs (streak) sont associées à votre compte et stockées sur nos serveurs pour être disponibles sur tous vos appareils connectés au même compte.
 
-**Données conservées uniquement sur votre appareil.** Vos réponses au questionnaire d'accueil, le profil qui en résulte, vos catégories préférées et votre thème de cartes choisi restent stockés localement sur votre appareil (et partagés uniquement avec le widget via le groupe d'applications Apple) — ils ne sont jamais transmis à nos serveurs.
+**Données d'utilisation.** Afin de comprendre comment l'Application est utilisée et de l'améliorer, nous enregistrons certaines actions : ouverture de l'Application et son origine (icône, notification ou widget), ajout ou retrait d'un favori, partage d'une citation, consultation d'un auteur, sélection d'une catégorie, affichage de l'offre Premium et souscription, activation ou désactivation des notifications, et achèvement des étapes d'inscription. Chaque enregistrement contient l'identifiant de la citation, de l'auteur ou de la catégorie concernée, l'écran d'origine, la version de l'Application et votre statut d'abonnement. **Aucun texte que vous saisissez, ni votre prénom, votre nom ou votre adresse email ne figure dans ces enregistrements.** Ces données sont associées à l'identifiant de votre compte et hébergées sur nos propres serveurs ; elles ne sont transmises à aucun outil d'analyse tiers et ne servent à aucune forme de suivi publicitaire.
+
+**Données conservées uniquement sur votre appareil.** Vos réponses individuelles au questionnaire d'accueil ne quittent jamais votre appareil. Le profil qui en résulte, vos catégories préférées et votre thème de cartes sont eux aussi stockés localement (et partagés uniquement avec le widget via le groupe d'applications Apple) ; seul leur intitulé figure dans les données d'utilisation décrites ci-dessus, afin de savoir quels profils et quels thèmes sont les plus courants.
 
 **Données de paiement.** Nous ne collectons ni ne stockons aucune donnée bancaire. Les abonnements sont traités intégralement par Apple via In-App Purchase ; nous recevons uniquement une confirmation du statut de votre abonnement (actif ou non).
 
 **Notifications.** Les notifications sont programmées localement sur votre appareil par l'Application ; aucune donnée n'est envoyée à un service tiers de notification push pour vous les envoyer.
 
-Nous ne collectons aucune donnée de géolocalisation, ne recourons à aucun outil publicitaire, et n'utilisons aucun cookie ou traceur (l'Application ne contient aucune page web ni aucun SDK publicitaire ou analytique tiers).
+Nous ne collectons aucune donnée de géolocalisation, ne recourons à aucun outil publicitaire, et n'utilisons aucun cookie ou traceur. L'Application ne contient aucun SDK publicitaire ou analytique tiers : la mesure d'utilisation décrite ci-dessus est réalisée par nos propres moyens, et aucune donnée n'est croisée avec celles d'autres applications ou sites.
 
 ## Finalités du traitement
 
-Vos données sont utilisées pour : fournir et sécuriser l'accès à votre compte, synchroniser vos favoris et votre série entre vos appareils, gérer votre abonnement Premium, et assurer le bon fonctionnement technique de l'Application.
+Vos données sont utilisées pour : fournir et sécuriser l'accès à votre compte, personnaliser l'Application avec votre prénom et accorder correctement les textes, synchroniser vos favoris et votre série entre vos appareils, gérer votre abonnement Premium, assurer le bon fonctionnement technique de l'Application, et mesurer son utilisation afin de l'améliorer.
 
 ## Base légale
 
@@ -44,7 +48,7 @@ Ces prestataires peuvent héberger des données au sein de l'Union européenne o
 
 ## Durée de conservation
 
-Vos données sont conservées tant que votre compte est actif. En cas de suppression de compte, vos données (favoris, streak, identifiant) sont supprimées de nos serveurs dans un délai raisonnable, sauf obligation légale de conservation plus longue.
+Vos données sont conservées tant que votre compte est actif. En cas de suppression de compte, vos données (profil, favoris, streak, données d'utilisation, identifiant) sont supprimées de nos serveurs dans un délai raisonnable, sauf obligation légale de conservation plus longue. Les données d'utilisation sont en outre conservées au maximum douze mois, puis supprimées.
 
 ## Sécurité
 
