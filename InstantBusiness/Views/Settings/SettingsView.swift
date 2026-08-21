@@ -87,8 +87,18 @@ struct SettingsView: View {
                     if store.isPremium {
                         HStack(spacing: 12) {
                             SettingsIconBadge(systemName: "crown.fill", color: .yellow)
-                            Text("Premium actif")
-                                .fontWeight(.semibold)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(store.hasGrantedPremium ? "Premium offert" : "Premium actif")
+                                    .fontWeight(.semibold)
+                                if store.hasGrantedPremium {
+                                    // Sans cette ligne, quelqu'un à qui l'accès a été
+                                    // offert pourrait le croire facturé et chercher à
+                                    // résilier un abonnement qui n'existe pas.
+                                    Text("Accès accordé par Instant Business, rien ne t'est facturé.")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                             Spacer()
                             Image(systemName: "checkmark.seal.fill")
                                 .foregroundStyle(.green)

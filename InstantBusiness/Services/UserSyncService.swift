@@ -13,6 +13,8 @@ final class UserSyncService {
         var first_name: String?
         var last_name: String?
         var gender: String?
+        var premium_granted: Bool?
+        var premium_until: String?
     }
 
     /// Écritures volontairement séparées : chaque upsert ne transmet que ses propres
@@ -47,11 +49,16 @@ final class UserSyncService {
 
     /// Pulls remote favorites and reconciles the streak (server is authoritative across devices).
     /// Returns the merged state to apply locally.
-    func syncOnSignIn(userID: String) async -> (favoriteIDs: Set<String>?, streak: Int?, profile: Profile) {
+    func syncOnSignIn(userID: String) async -> (
+        favoriteIDs: Set<String>?,
+        streak: Int?,
+        profile: Profile,
+        grantedPremium: Bool?
+    ) {
         async let favorites = fetchFavorites(userID: userID)
         async let state = reconcileStreak(userID: userID)
         let resolved = await state
-        return (await favorites, resolved.streak, resolved.profile)
+        return (await favorites, resolved.streak, resolved.profile, resolved.grantedPremium)
     }
 
     func saveProfile(userID: String, firstName: String, lastName: String, gender: Gender) async {
@@ -102,7 +109,7 @@ final class UserSyncService {
         }
     }
 
-    private func reconcileStreak(userID: String) async -> (streak: Int?, profile: Profile) {
+    private func reconcileStreak(userID: String) async -> (streak: Int?, profile: Profile, grantedPremium: Bool?) {
         let today = Calendar.current.startOfDay(for: Date())
 
         // Volontairement `limit(1)` et non `single()` : `single()` lève aussi bien quand la
@@ -122,7 +129,7 @@ final class UserSyncService {
         } catch {
             // Requête impossible : on ne touche à rien côté serveur et on laisse
             // l'appelant garder son état local.
-            return (nil, Profile())
+            return (nil, Profile(), nil)
         }
 
         var newStreak = 1
@@ -156,6 +163,35 @@ final class UserSyncService {
             lastName: remote?.last_name,
             gender: remote?.gender.flatMap(Gender.init(rawValue:))
         )
-        return (newStreak, profile)
+        return (newStreak, profile, Self.isGrantActive(remote))
     }
+
+    /// Un cadeau n'est actif que s'il est marqué comme tel et qu'il n'a pas expiré.
+    /// `premium_until` nul vaut « sans limite de durée ».
+    private static func isGrantActive(_ remote: RemoteUserState?) -> Bool {
+        guard remote?.premium_granted == true else { return false }
+        guard let until = remote?.premium_until else { return true }
+        guard let expiry = parseTimestamp(until) else {
+            // Date illisible : on préfère laisser l'accès plutôt que de le couper à tort.
+            return true
+        }
+        return expiry > Date()
+    }
+
+    /// PostgREST renvoie les `timestamptz` avec ou sans fractions de seconde selon la
+    /// valeur stockée, et un `ISO8601DateFormatter` n'accepte que l'une des deux formes.
+    private static func parseTimestamp(_ value: String) -> Date? {
+        for formatter in [Self.iso8601WithFraction, Self.iso8601] {
+            if let date = formatter.date(from: value) { return date }
+        }
+        return nil
+    }
+
+    private static let iso8601WithFraction: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+
+    private static let iso8601 = ISO8601DateFormatter()
 }

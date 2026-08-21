@@ -9,6 +9,8 @@ struct InstantBusinessApp: App {
     @StateObject private var authManager = AuthManager()
     @StateObject private var router = AppRouter()
     @StateObject private var appearance = AppearanceStore()
+    @StateObject private var syncState = SyncState()
+    @StateObject private var updateGate = AppUpdateGate()
     @Environment(\.scenePhase) private var scenePhase
 
     private let userSyncService = UserSyncService()
@@ -21,6 +23,8 @@ struct InstantBusinessApp: App {
                 .environmentObject(authManager)
                 .environmentObject(router)
                 .environmentObject(appearance)
+                .environmentObject(syncState)
+                .environmentObject(updateGate)
                 .onOpenURL { url in
                     // Single entry point: Google's callback and the widget deep link
                     // arrive the same way, so they are routed here rather than in
@@ -35,6 +39,7 @@ struct InstantBusinessApp: App {
                         Task { await syncOnForeground() }
                     } else {
                         favorites.detachSession()
+                        syncState.reset()
                     }
                 }
         }
@@ -46,9 +51,18 @@ struct InstantBusinessApp: App {
 
     private func syncOnForeground() async {
         if let userID = authManager.session?.user.id.uuidString {
+            // Marqué avant le moindre await : c'est ce drapeau qui retient l'affichage du
+            // profil, il ne servirait à rien s'il arrivait après une requête réseau.
+            syncState.beginFirstSync(userID: userID)
             discardDataFromAnotherAccount(newUserID: userID)
             favorites.attachSession(userID: userID)
+
+            // La version minimale ne dépend pas du compte : les deux requêtes partent
+            // ensemble plutôt que l'une après l'autre.
+            async let versionCheck: Void = updateGate.refresh()
             let result = await userSyncService.syncOnSignIn(userID: userID)
+            await versionCheck
+            syncState.endFirstSync(userID: userID)
 
             // Chaque valeur n'est appliquée que si le serveur a réellement répondu : hors
             // ligne, mieux vaut afficher l'état local un peu daté qu'une liste de favoris
@@ -56,6 +70,9 @@ struct InstantBusinessApp: App {
             if let remoteFavorites = result.favoriteIDs {
                 favorites.applyRemote(favoriteIDs: remoteFavorites)
             }
+            // Avant `store.refresh()`, qui recalcule Premium à partir des deux sources.
+            store.applyGrantedPremium(result.grantedPremium)
+
             if let remoteStreak = result.streak {
                 SharedDefaults.streakCount = remoteStreak
             } else {
@@ -72,6 +89,8 @@ struct InstantBusinessApp: App {
             }
         } else {
             favorites.detachSession()
+            // Le blocage doit aussi s'appliquer avant connexion.
+            await updateGate.refresh()
         }
         // Re-check StoreKit on every foreground: without this an expired or cancelled
         // subscription keeps unlocking premium content until the app is cold-launched.

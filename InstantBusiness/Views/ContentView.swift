@@ -3,6 +3,8 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject private var authManager: AuthManager
     @EnvironmentObject private var router: AppRouter
+    @EnvironmentObject private var syncState: SyncState
+    @EnvironmentObject private var updateGate: AppUpdateGate
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("hasCompletedProfile") private var hasCompletedProfile = false
     @AppStorage("hasCompletedQuiz") private var hasCompletedQuiz = false
@@ -18,7 +20,11 @@ struct ContentView: View {
     /// l'utilisateur restait sur l'écran de connexion alors que sa session était ouverte.
     var body: some View {
         Group {
-            if authManager.isRestoringSession {
+            if updateGate.isUpdateRequired {
+                // Avant tout le reste, connexion comprise : une version bloquée l'est
+                // aussi pour quelqu'un qui n'a pas encore de compte.
+                ForcedUpdateView(requiredVersion: updateGate.requiredVersion)
+            } else if authManager.isRestoringSession {
                 LaunchPlaceholderView()
                     // Le logo grandit en s'effaçant : la transition se lit comme un
                     // passage au premier plan, pas comme un écran qu'on remplace.
@@ -32,6 +38,13 @@ struct ContentView: View {
                 } else {
                     OnboardingView()
                 }
+            } else if !hasCompletedProfile, syncState.isAwaitingFirstSync {
+                // Le profil existe peut-être déjà côté serveur, sans être encore arrivé
+                // en local — changement de téléphone, réinstallation. Sans cette attente,
+                // l'écran « Tu es ? » s'affichait le temps de la synchronisation, à
+                // quelqu'un qui avait déjà tout renseigné.
+                LaunchPlaceholderView()
+                    .transition(.opacity.combined(with: .scale(scale: 1.08)))
             } else if !hasCompletedProfile {
                 ProfileSetupView()
             } else if !hasCompletedQuiz {
@@ -43,6 +56,7 @@ struct ContentView: View {
         // Amorti complet partout : ces bascules structurent la navigation, un rebond y
         // ferait passer un changement d'écran pour un effet.
         .animation(.spring(response: 0.45, dampingFraction: 1), value: authManager.isRestoringSession)
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: syncState.isAwaitingFirstSync)
         .animation(.spring(response: 0.45, dampingFraction: 1), value: hasCompletedProfile)
         .animation(.spring(response: 0.45, dampingFraction: 1), value: hasCompletedQuiz)
         .fontDesign(.rounded)
@@ -82,4 +96,6 @@ struct ContentView: View {
         .environmentObject(AuthManager())
         .environmentObject(AppRouter())
         .environmentObject(AppearanceStore())
+        .environmentObject(SyncState())
+        .environmentObject(AppUpdateGate())
 }

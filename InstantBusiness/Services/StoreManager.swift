@@ -11,6 +11,12 @@ final class StoreManager: ObservableObject {
     @Published private(set) var isLoading = false
     @Published var errorMessage: String?
 
+    /// Premium peut venir de deux sources indépendantes : un abonnement StoreKit, ou un
+    /// accès offert à la main depuis Supabase. Les deux sont suivies séparément, sinon
+    /// le rafraîchissement StoreKit du retour au premier plan écraserait le cadeau.
+    private var hasSubscription = false
+    @Published private(set) var hasGrantedPremium = SharedDefaults.hasGrantedPremium
+
     private var updatesTask: Task<Void, Never>?
 
     init() {
@@ -75,6 +81,16 @@ final class StoreManager: ObservableObject {
         await updateEntitlement()
     }
 
+    /// Accès offert, tel que le serveur vient de le rapporter. Passer `nil` quand la
+    /// requête a échoué : on garde alors la dernière valeur connue plutôt que de retirer
+    /// Premium à quelqu'un simplement parce qu'il a ouvert l'app hors ligne.
+    func applyGrantedPremium(_ granted: Bool?) {
+        guard let granted else { return }
+        hasGrantedPremium = granted
+        SharedDefaults.hasGrantedPremium = granted
+        publishEntitlement()
+    }
+
     private func updateEntitlement() async {
         var premium = false
         for await result in Transaction.currentEntitlements {
@@ -83,7 +99,14 @@ final class StoreManager: ObservableObject {
                 premium = true
             }
         }
+        hasSubscription = premium
+        publishEntitlement()
+    }
+
+    private func publishEntitlement() {
+        let premium = hasSubscription || hasGrantedPremium
         isPremium = premium
+        // Le widget lit cette valeur : elle doit refléter les deux sources.
         SharedDefaults.isPremium = premium
     }
 }

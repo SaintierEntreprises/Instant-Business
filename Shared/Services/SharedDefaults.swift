@@ -21,6 +21,14 @@ enum SharedDefaults {
         static let lastName = "lastName"
         static let gender = "gender"
         static let accountUserID = "accountUserID"
+        static let hasGrantedPremium = "hasGrantedPremium"
+    }
+
+    /// Premium offert depuis Supabase, conservé en local pour rester valable hors ligne
+    /// et entre deux synchronisations.
+    static var hasGrantedPremium: Bool {
+        get { suite.bool(forKey: Keys.hasGrantedPremium) }
+        set { suite.set(newValue, forKey: Keys.hasGrantedPremium) }
     }
 
     /// Compte dont proviennent les données stockées ici, pour ne pas les servir à
@@ -128,5 +136,6 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.lastName)
         suite.removeObject(forKey: Keys.gender)
         suite.removeObject(forKey: Keys.accountUserID)
+        suite.removeObject(forKey: Keys.hasGrantedPremium)
     }
 }
