@@ -16,6 +16,49 @@ enum ContentStore {
         allQuotes.filter { $0.category == category }
     }
 
+    // MARK: - Auteurs
+
+    struct Author: Identifiable, Hashable {
+        let name: String
+        let quoteCount: Int
+        /// Nom réduit en minuscules sans accent ni ponctuation, comparé tel quel à la
+        /// saisie : « senequ » doit trouver « Sénèque », et « stjobs » ne doit rien
+        /// trouver plutôt que de renvoyer n'importe quoi.
+        let searchKey: String
+
+        var id: String { name }
+    }
+
+    /// Index construit une seule fois au premier accès, et non à chaque frappe : trier
+    /// 285 auteurs à chaque caractère saisi rendait la liste visiblement saccadée.
+    ///
+    /// Ordre alphabétique : dans une liste de cette longueur, c'est le seul classement où
+    /// l'on sait d'avance où regarder. `localizedStandardCompare` place « Sénèque » sous
+    /// S et non après Z, contrairement à une comparaison brute de chaînes.
+    static let authors: [Author] = {
+        Dictionary(grouping: allQuotes, by: \.author)
+            .map { Author(name: $0.key, quoteCount: $0.value.count, searchKey: searchKey(for: $0.key)) }
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+    }()
+
+    private static let quotesByAuthor: [String: [Quote]] = Dictionary(grouping: allQuotes, by: \.author)
+
+    static func quotes(by author: String) -> [Quote] {
+        quotesByAuthor[author] ?? []
+    }
+
+    static func authors(matching query: String) -> [Author] {
+        let key = searchKey(for: query)
+        guard !key.isEmpty else { return authors }
+        return authors.filter { $0.searchKey.contains(key) }
+    }
+
+    private static func searchKey(for string: String) -> String {
+        string
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .filter { $0.isLetter || $0.isNumber }
+    }
+
     static func quote(id: String) -> Quote? {
         allQuotes.first { $0.id == id }
     }

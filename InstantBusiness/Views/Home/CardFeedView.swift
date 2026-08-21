@@ -13,6 +13,8 @@ struct CardFeedView: View {
     @State private var scrollPosition: String?
     @State private var shareItem: ShareItem?
     @State private var showPaywall = false
+    @State private var showAuthorSearch = false
+    @State private var selectedAuthor: String?
     @State private var suppressesScrollFeedback = true
 
     /// Lu via `@AppStorage` sur la suite partagée, et non copié dans un `@State` au moment
@@ -98,6 +100,12 @@ struct CardFeedView: View {
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
+            .sheet(isPresented: $showAuthorSearch) {
+                AuthorSearchView()
+            }
+            .navigationDestination(item: $selectedAuthor) { author in
+                AuthorQuotesView(author: author)
+            }
         }
     }
 
@@ -111,6 +119,7 @@ struct CardFeedView: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
+
             if streak > 0 {
                 HStack(spacing: 4) {
                     Image(systemName: "flame.fill")
@@ -125,6 +134,19 @@ struct CardFeedView: View {
                 .contentTransition(.numericText())
                 .transition(.scale.combined(with: .opacity))
             }
+
+            Button {
+                Haptics.tap()
+                showAuthorSearch = true
+            } label: {
+                Image(systemName: "magnifyingglass")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .frame(width: 36, height: 36)
+                    .background(Color(.secondarySystemBackground), in: Circle())
+            }
+            .buttonStyle(PressableButtonStyle(scale: 0.9))
+            .accessibilityLabel("Rechercher un auteur")
         }
         // La série arrive après la synchronisation : elle doit se poser, pas surgir.
         .animation(.spring(response: 0.45, dampingFraction: 1), value: streak)
@@ -143,7 +165,8 @@ struct CardFeedView: View {
                             isFavorite: favorites.isFavorite(quote),
                             theme: appearance.cardTheme,
                             onToggleFavorite: { favorites.toggle(quote) },
-                            onShare: { shareItem = ShareItem(quote: quote) }
+                            onShare: { shareItem = ShareItem(quote: quote) },
+                            onAuthorTapped: { selectedAuthor = quote.author }
                         )
                         .frame(width: proxy.size.width - 48)
                         .scrollTransition(axis: .horizontal) { content, phase in
