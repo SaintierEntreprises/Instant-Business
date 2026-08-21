@@ -24,7 +24,7 @@ struct OnboardingView: View {
             symbol: "bell.badge.fill",
             tint: .pink,
             title: "Active tes notifications",
-            message: "C'est le cœur de l'app : sans elles, tes citations restent enfermées dans l'app. Avec elles, ta dose de motivation arrive d'elle-même, toutes les 6h."
+            message: "C'est le cœur de l'app : sans elles, tes citations restent enfermées dans l'app. Avec elles, ta dose de motivation arrive d'elle-même, toutes les 4h."
         )
     ]
 

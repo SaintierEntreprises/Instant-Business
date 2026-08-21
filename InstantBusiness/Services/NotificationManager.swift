@@ -7,11 +7,11 @@ final class NotificationManager: ObservableObject {
     private static let rotationIdentifierPrefix = "instant-business-rotation-"
 
     /// Fixed times of day for the rotating quote. With the daily quote at midnight,
-    /// this yields one notification every 6 hours: 00h, 06h, 12h, 18h.
-    private static let rotationHours = [6, 12, 18]
+    /// this yields one notification every 4 hours: 00h, 04h, 08h, 12h, 16h, 20h.
+    private static let rotationHours = [4, 8, 12, 16, 20]
 
-    /// 4 notifications/day (1 daily + 3 rotation). iOS caps pending local notifications
-    /// at 64, so a 10-day rolling window (40 requests) stays comfortably under that.
+    /// 6 notifications/day (1 daily + 5 rotation). iOS caps pending local notifications
+    /// at 64, so a 10-day rolling window (60 requests) stays under that.
     private let rollingWindowDays = 10
 
     /// Autorisation réellement accordée au niveau du système, sans jamais présenter de
@@ -75,9 +75,9 @@ final class NotificationManager: ObservableObject {
         }
 
         // Per-user rotation at fixed times of day, so the schedule never shifts.
-        // Anchoring on "now" instead would push the next notification 6h away every
+        // Anchoring on "now" instead would push the next notification 4h away every
         // time the app is opened — the more someone uses the app, the fewer they'd get.
-        // Combined with the midnight daily quote, this lands one notification every 6h.
+        // Combined with the midnight daily quote, this lands one notification every 4h.
         for offset in 0..<rollingWindowDays {
             guard let day = calendar.date(byAdding: .day, value: offset, to: now) else { continue }
 

@@ -80,7 +80,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Notifications")
                 } footer: {
-                    Text("Ta citation du jour à minuit, plus une citation aléatoire toutes les 6h — synchronisée avec ce que montre ton widget.")
+                    Text("Ta citation du jour à minuit, plus une citation aléatoire toutes les 4h — synchronisée avec ce que montre ton widget.")
                 }
 
                 Section("Abonnement") {
