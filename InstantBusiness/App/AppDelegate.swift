@@ -44,6 +44,23 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     ) {
         completionHandler([.banner, .sound])
     }
+
+    // MARK: - Notifications push
+
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+        Task { @MainActor in PushRegistrar.store(deviceToken: deviceToken) }
+    }
+
+    /// Échec silencieux volontaire : sans réseau, ou sur un simulateur qui ne sait pas
+    /// délivrer de jeton, il n'y a rien à faire et rien à dire à l'utilisateur — le push
+    /// est un complément, les notifications programmées localement continuent seules.
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {}
 }
 
 enum NotificationPayload {

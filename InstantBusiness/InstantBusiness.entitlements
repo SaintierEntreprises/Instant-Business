@@ -10,5 +10,10 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<!-- « development » ici et en toutes circonstances : Xcode bascule automatiquement
+	     sur le serveur de production d'Apple au moment de la distribution App Store.
+	     Écrire « production » casserait au contraire les builds lancés depuis Xcode. -->
+	<key>aps-environment</key>
+	<string>development</string>
 </dict>
 </plist>

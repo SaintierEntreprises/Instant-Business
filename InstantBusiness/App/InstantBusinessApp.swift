@@ -128,6 +128,14 @@ struct InstantBusinessApp: App {
             await notificationManager.enable()
         }
 
+        // À chaque ouverture, pas une seule fois : Apple change le jeton d'un appareil
+        // à la réinstallation, à la restauration d'une sauvegarde, et parfois sans motif
+        // apparent. Ne l'enregistrer qu'au premier lancement laisserait des appareils
+        // injoignables sans que rien ne le signale.
+        if authManager.session != nil {
+            await PushRegistrar.registerIfAuthorized()
+        }
+
         // Re-check StoreKit on every foreground: without this an expired or cancelled
         // subscription keeps unlocking premium content until the app is cold-launched.
         await store.refresh()

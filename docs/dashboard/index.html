@@ -193,6 +193,36 @@
   .notif-text { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.5; }
   .notif-text b { color: var(--ink); }
 
+  .composer { display: flex; flex-direction: column; gap: 9px; }
+  .composer input, .composer textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 12px;
+    border: 1.5px solid var(--line-strong);
+    background: var(--paper);
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--ink);
+    resize: none;
+  }
+  .composer input::placeholder, .composer textarea::placeholder { color: var(--ink-faint); }
+  .composer input:focus, .composer textarea:focus { outline: none; border-color: var(--accent); }
+  .composer button {
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .composer button:disabled { background: var(--line-strong); color: var(--ink-faint); cursor: default; }
+  .push-result { margin: 2px 0 0; font-size: 0.78rem; font-weight: 600; min-height: 1.1em; }
+  .push-result.ok { color: var(--good); }
+  .push-result.err { color: var(--bad); }
+
   .footer-row {
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 4px;
@@ -270,6 +300,17 @@
   <div class="section">
     <div class="section-head"><span class="section-title">Auteurs les plus partagés</span><span class="section-note">30 jours</span></div>
     <div class="authors" id="authors"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="section-title">Envoyer une notification</span></div>
+    <div class="composer">
+      <input id="push-title" type="text" placeholder="Titre" maxlength="60">
+      <textarea id="push-body" rows="2" placeholder="Message" maxlength="180"></textarea>
+      <input id="push-user" type="text" placeholder="Identifiant du compte (vide = tout le monde)" autocapitalize="off" spellcheck="false">
+      <button id="push-send">Envoyer</button>
+      <p class="push-result" id="push-result"></p>
+    </div>
   </div>
 
   <div class="footer-row">
@@ -411,6 +452,55 @@
   });
   tokenInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") document.getElementById("unlock-btn").click();
+  });
+
+  const PUSH_URL = "https://lexbvkrvgsaprrgijsrf.supabase.co/functions/v1/send-push";
+
+  document.getElementById("push-send").addEventListener("click", async () => {
+    const btn = document.getElementById("push-send");
+    const result = document.getElementById("push-result");
+    const title = document.getElementById("push-title").value.trim();
+    const body = document.getElementById("push-body").value.trim();
+    const userId = document.getElementById("push-user").value.trim();
+
+    if (!title || !body) {
+      result.className = "push-result err";
+      result.textContent = "Titre et message obligatoires.";
+      return;
+    }
+
+    // Un envoi à tous est irréversible : une confirmation explicite évite le message
+    // parti par erreur sur tout le parc.
+    const target = userId ? "cette personne" : "TOUS les utilisateurs";
+    if (!confirm("Envoyer « " + title + " » à " + target + " ?")) return;
+
+    btn.disabled = true;
+    result.className = "push-result";
+    result.textContent = "Envoi…";
+    try {
+      const res = await fetch(PUSH_URL, {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + ANON_KEY,
+          "x-dashboard-token": localStorage.getItem(STORAGE_KEY),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: title, body: body, user_id: userId || null }),
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      result.className = "push-result ok";
+      result.textContent = "Envoyé à " + data.sent + " appareil(s)" +
+        (data.failed ? " — " + data.failed + " échec(s)" : "") +
+        (data.note ? " — " + data.note : "");
+      document.getElementById("push-title").value = "";
+      document.getElementById("push-body").value = "";
+    } catch (e) {
+      result.className = "push-result err";
+      result.textContent = e.message;
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   document.getElementById("refresh-btn").addEventListener("click", load);
