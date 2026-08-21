@@ -1,5 +1,6 @@
 import SwiftUI
 import GoogleSignIn
+import WidgetKit
 
 @main
 struct InstantBusinessApp: App {
@@ -45,6 +46,12 @@ struct InstantBusinessApp: App {
                         Analytics.track(.widgetOpened, ["quote_id": .string(quoteID)])
                         router.launchSource = .widget
                         router.pendingQuoteID = quoteID
+
+                        // La citation vient d'être lue dans l'app : on avance la rotation
+                        // et on redemande une timeline, sinon on revient à l'écran
+                        // d'accueil pour retrouver exactement celle qu'on quitte.
+                        ContentStore.advanceRotation()
+                        WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
                 .onChange(of: authManager.session != nil) { _, isSignedIn in

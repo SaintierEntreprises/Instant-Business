@@ -52,7 +52,7 @@ struct QuoteTimelineProvider: AppIntentTimelineProvider {
 
         let entries: [QuoteEntry] = (0..<24).map { offset in
             let entryDate = calendar.date(byAdding: .hour, value: offset, to: currentHour) ?? now
-            let unit = ContentStore.hourSlot(for: entryDate)
+            let unit = ContentStore.rotationUnit(for: entryDate)
             let quote = ContentStore.rotatingQuote(seed: seed, unit: unit, category: category, maxLength: length)
             return QuoteEntry(date: entryDate, quote: quote, theme: configuration.theme)
         }

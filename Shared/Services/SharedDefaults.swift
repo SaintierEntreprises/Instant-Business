@@ -17,6 +17,7 @@ enum SharedDefaults {
         static let quizProfile = "quizProfile"
         static let preferredCategories = "preferredCategories"
         static let rotationSeed = "rotationSeed"
+        static let rotationOffset = "rotationOffset"
         static let firstName = "firstName"
         static let lastName = "lastName"
         static let gender = "gender"
@@ -66,6 +67,18 @@ enum SharedDefaults {
     static var gender: Gender? {
         get { suite.string(forKey: Keys.gender).flatMap(Gender.init(rawValue:)) }
         set { suite.set(newValue?.rawValue, forKey: Keys.gender) }
+    }
+
+    /// Nombre de crans dont la rotation a été avancée à la main, en plus de son
+    /// avancement horaire naturel.
+    ///
+    /// Incrémenté à chaque ouverture de l'app depuis le widget : sans lui, on revenait
+    /// à l'écran d'accueil pour y retrouver la citation qu'on venait justement de lire,
+    /// et le widget paraissait figé. Appliqué au widget comme aux notifications, pour
+    /// qu'ils continuent d'afficher la même chose au même instant.
+    static var rotationOffset: Int {
+        get { suite.integer(forKey: Keys.rotationOffset) }
+        set { suite.set(newValue, forKey: Keys.rotationOffset) }
     }
 
     /// Per-installation random seed used to derive an hourly quote rotation that's

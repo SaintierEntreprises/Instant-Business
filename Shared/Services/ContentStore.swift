@@ -137,6 +137,22 @@ enum ContentStore {
         Int(date.timeIntervalSince1970 / 3600)
     }
 
+    /// Position dans la rotation à un instant donné : le créneau horaire, plus les crans
+    /// avancés à la main (voir `SharedDefaults.rotationOffset`).
+    ///
+    /// Point d'entrée unique pour le widget et le planificateur de notifications : c'est
+    /// ce qui garantit qu'ils montrent la même citation au même moment, y compris après
+    /// un avancement manuel.
+    static func rotationUnit(for date: Date = Date()) -> Int {
+        hourSlot(for: date) + SharedDefaults.rotationOffset
+    }
+
+    /// Avance la rotation d'un cran. Appelé quand quelqu'un ouvre l'app depuis le widget :
+    /// la citation qu'il vient de lire laisse la place à la suivante.
+    static func advanceRotation() {
+        SharedDefaults.rotationOffset += 1
+    }
+
     private static func stableHash(_ string: String) -> Int {
         var hash: UInt64 = 0xcbf29ce484222325
         for byte in string.utf8 {

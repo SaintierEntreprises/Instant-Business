@@ -88,7 +88,7 @@ final class NotificationManager: ObservableObject {
             for hour in Self.rotationHours {
                 guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
                       fireDate > now else { continue }
-                let unit = ContentStore.hourSlot(for: fireDate)
+                let unit = ContentStore.rotationUnit(for: fireDate)
                 guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
 
                 await schedule(
