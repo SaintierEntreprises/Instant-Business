@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="IB Stats">
+<meta name="theme-color" content="#FFFCF8">
+<title>Instant Business — Tableau de bord</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #FFFCF8;
+    --paper-raised: #FFFFFF;
+    --ink: #211D18;
+    --ink-soft: #6E655A;
+    --ink-faint: #A69A8B;
+    --line: #ECE4D8;
+    --line-strong: #DED2C0;
+
+    --accent: #FF7A33;
+    --accent-ink: #C4501A;
+    --accent-soft: #FFE6D5;
+    --accent-soft-2: #FFF1E7;
+
+    --good: #2E9B6B;
+    --good-soft: #E1F3EA;
+    --bad: #D3564A;
+    --bad-soft: #FBE4E1;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    padding: max(18px, env(safe-area-inset-top)) 18px calc(40px + env(safe-area-inset-bottom));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* ---------- porte d'entrée par mot de passe ---------- */
+
+  #gate {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+    padding: 0 8px;
+  }
+  #gate .icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(155deg, #FF9A57, var(--accent) 65%);
+    display: grid; place-items: center;
+    box-shadow: 0 10px 20px -10px rgb(196 80 26 / 0.5);
+  }
+  #gate .icon svg { width: 26px; height: 26px; }
+  #gate h1 { font-family: "Baloo 2", sans-serif; font-size: 1.25rem; margin: 0; }
+  #gate p { color: var(--ink-soft); font-size: 0.88rem; max-width: 32ch; margin: 0; line-height: 1.5; }
+  #gate input {
+    width: 100%; max-width: 300px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--line-strong);
+    background: var(--paper-raised);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+  #gate input:focus { outline: none; border-color: var(--accent); }
+  #gate button {
+    width: 100%; max-width: 300px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #gate button:active { opacity: 0.8; }
+  #gate .error {
+    color: var(--bad);
+    font-size: 0.82rem;
+    font-weight: 600;
+    min-height: 1.2em;
+  }
+
+  /* ---------- app-header ---------- */
+
+  .app-header { display: none; align-items: center; gap: 12px; }
+  .app-header.visible { display: flex; }
+  .app-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    background: linear-gradient(155deg, #FF9A57, var(--accent) 65%);
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 16px -8px rgb(196 80 26 / 0.55);
+  }
+  .app-icon svg { width: 20px; height: 20px; }
+  .app-header h1 {
+    margin: 0; font-family: "Baloo 2", sans-serif;
+    font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em;
+  }
+  .app-header .role { margin: 1px 0 0; font-size: 0.72rem; color: var(--ink-faint); font-weight: 600; }
+  .live-chip {
+    margin-left: auto; display: flex; align-items: center; gap: 6px;
+    padding: 6px 11px; border-radius: 999px;
+    background: var(--good-soft); color: var(--good);
+    font-size: 0.68rem; font-weight: 700;
+  }
+  .live-chip .pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--good);
+    animation: pulse 2.2s ease-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .live-chip .pulse { animation: none; } }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgb(46 155 107 / 0.5); }
+    70% { box-shadow: 0 0 0 7px rgb(46 155 107 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(46 155 107 / 0); }
+  }
+
+  #app { display: none; flex-direction: column; gap: 18px; }
+  #app.visible { display: flex; }
+
+  .hero {
+    background: linear-gradient(155deg, #FFF6EE, var(--accent-soft-2) 60%, var(--accent-soft));
+    border: 1px solid var(--line-strong);
+    border-radius: 22px;
+    padding: 18px 20px 16px;
+  }
+  .hero-label { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent-ink); }
+  .hero-number { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 2.9rem; line-height: 1; color: var(--ink); margin: 9px 0 2px; font-variant-numeric: tabular-nums; }
+  .hero-caption { font-size: 0.82rem; color: var(--ink-soft); font-weight: 500; }
+  .hero-caption b { color: var(--ink); font-weight: 700; }
+
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tile { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 16px; padding: 13px 14px; }
+  .tile-label { font-size: 0.66rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+  .tile-value { font-family: "Baloo 2", sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); margin: 4px 0 0; font-variant-numeric: tabular-nums; }
+
+  .section { background: var(--paper-raised); border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 14px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+  .section-title { font-size: 0.88rem; font-weight: 700; color: var(--ink); }
+  .section-note { font-size: 0.7rem; color: var(--ink-faint); font-weight: 600; }
+  .section-empty { font-size: 0.8rem; color: var(--ink-faint); padding: 6px 0; }
+
+  .chart { display: flex; align-items: flex-end; gap: 4px; height: 66px; }
+  .chart .bar { flex: 1; border-radius: 4px 4px 2px 2px; background: var(--accent-soft); min-height: 3px; }
+  .chart .bar.today { background: var(--accent); }
+  .chart-axis { display: flex; justify-content: space-between; margin-top: 7px; font-size: 0.63rem; color: var(--ink-faint); font-weight: 600; }
+
+  .funnel { display: flex; flex-direction: column; gap: 9px; }
+  .funnel-row { display: grid; grid-template-columns: 76px 1fr 34px; align-items: center; gap: 9px; }
+  .funnel-name { font-size: 0.76rem; font-weight: 600; color: var(--ink-soft); }
+  .funnel-track { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+  .funnel-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent-soft), var(--accent)); transition: width 0.4s ease; }
+  .funnel-pct { font-size: 0.76rem; font-weight: 800; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+
+  .authors { display: flex; flex-direction: column; }
+  .author-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+  .author-row:first-child { border-top: none; padding-top: 0; }
+  .author-avatar { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 0.64rem; font-weight: 800; color: #fff; flex-shrink: 0; }
+  .author-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); flex: 1; }
+  .author-count { font-size: 0.74rem; font-weight: 700; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  .notif-row { display: flex; align-items: center; gap: 13px; }
+  .notif-ring { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; background: conic-gradient(var(--good) 0% var(--rate, 0%), var(--line) var(--rate, 0%) 100%); }
+  .notif-ring span { width: 38px; height: 38px; border-radius: 50%; background: var(--paper-raised); display: grid; place-items: center; font-size: 0.68rem; font-weight: 800; color: var(--ink); }
+  .notif-text { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.5; }
+  .notif-text b { color: var(--ink); }
+
+  .footer-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 4px;
+  }
+  .refresh-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: none; padding: 6px 2px;
+    font-family: inherit; font-size: 0.76rem; font-weight: 700;
+    color: var(--ink-faint); cursor: pointer;
+  }
+  .refresh-btn svg { width: 13px; height: 13px; }
+  .refresh-btn.spinning svg { animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .updated-at { font-size: 0.7rem; color: var(--ink-faint); }
+  .signout { background: none; border: none; color: var(--ink-faint); font-size: 0.72rem; font-weight: 700; font-family: inherit; text-decoration: underline; cursor: pointer; padding: 0; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="icon">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 5h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4 4v-4H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="white" fill-opacity="0.96"/><rect x="8" y="9" width="3" height="3" rx="0.5" fill="#FF7A33"/><rect x="13" y="9" width="3" height="3" rx="0.5" fill="#FF7A33"/></svg>
+  </div>
+  <h1>Instant Business</h1>
+  <p>Entre le code d'accès pour voir les chiffres en direct.</p>
+  <input id="token-input" type="password" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Code d'accès">
+  <button id="unlock-btn">Déverrouiller</button>
+  <p class="error" id="gate-error"></p>
+</div>
+
+<div class="app-header" id="app-header">
+  <div class="app-icon">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6 5h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-6l-4 4v-4H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="white" fill-opacity="0.96"/><rect x="8" y="9" width="3" height="3" rx="0.5" fill="#FF7A33"/><rect x="13" y="9" width="3" height="3" rx="0.5" fill="#FF7A33"/></svg>
+  </div>
+  <div>
+    <h1>Instant Business</h1>
+    <p class="role">Tableau de bord</p>
+  </div>
+  <div class="live-chip"><span class="pulse"></span> En direct</div>
+</div>
+
+<div id="app">
+  <div class="hero">
+    <div class="hero-label">En ce moment</div>
+    <div class="hero-number" id="stat-active-now">—</div>
+    <p class="hero-caption"><span id="stat-active-hour">—</span> dans la dernière heure</p>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><div class="tile-label">Aujourd'hui</div><div class="tile-value" id="stat-today-active">—</div></div>
+    <div class="tile"><div class="tile-label">Cette semaine</div><div class="tile-value" id="stat-week-active">—</div></div>
+    <div class="tile"><div class="tile-label">Série moyenne</div><div class="tile-value" id="stat-streak">—</div></div>
+    <div class="tile"><div class="tile-label">Premium actifs</div><div class="tile-value" id="stat-premium">—</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="section-title">Activité — 14 jours</span><span class="section-note">comptes / jour</span></div>
+    <div class="chart" id="chart"></div>
+    <div class="chart-axis"><span>Il y a 14 j</span><span>Aujourd'hui</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="section-title">Notifications ouvertes</span><span class="section-note">7 jours</span></div>
+    <div class="notif-row">
+      <div class="notif-ring" id="notif-ring"><span id="notif-pct">—</span></div>
+      <p class="notif-text"><b id="notif-opened">—</b> ouvertures depuis une notification sur les 7 derniers jours.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="section-title">Paywall</span><span class="section-note">30 jours</span></div>
+    <div class="funnel" id="funnel"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><span class="section-title">Auteurs les plus partagés</span><span class="section-note">30 jours</span></div>
+    <div class="authors" id="authors"></div>
+  </div>
+
+  <div class="footer-row">
+    <button class="refresh-btn" id="refresh-btn">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="updated-at" class="updated-at">—</span>
+    </button>
+    <button class="signout" id="signout-btn">Verrouiller</button>
+  </div>
+</div>
+
+<script>
+  // Le code d'accès n'est jamais la véritable protection : la fonction serveur le
+  // vérifie elle-même à chaque appel et refuse sans lui (401). Ce qui est ici n'évite
+  // qu'à la personne autorisée d'avoir à le retaper à chaque visite.
+  const FUNCTION_URL = "https://lexbvkrvgsaprrgijsrf.supabase.co/functions/v1/dashboard-stats";
+  const ANON_KEY = "sb_publishable_g8_VCsQ6TkvjGIbKy3ylvQ_cqIt77tk";
+  const STORAGE_KEY = "ib_dashboard_token";
+
+  const gate = document.getElementById("gate");
+  const appHeader = document.getElementById("app-header");
+  const app = document.getElementById("app");
+  const tokenInput = document.getElementById("token-input");
+  const gateError = document.getElementById("gate-error");
+
+  const authorColors = ["#C4501A", "#2E9B6B", "#5B6EE1", "#B0509A", "#D9971F"];
+
+  function showApp() {
+    gate.style.display = "none";
+    appHeader.classList.add("visible");
+    app.classList.add("visible");
+    load();
+  }
+
+  function showGate(message) {
+    gate.style.display = "flex";
+    appHeader.classList.remove("visible");
+    app.classList.remove("visible");
+    gateError.textContent = message || "";
+  }
+
+  async function fetchStats(token) {
+    const res = await fetch(FUNCTION_URL, {
+      headers: {
+        "Authorization": "Bearer " + ANON_KEY,
+        "x-dashboard-token": token,
+      },
+    });
+    if (!res.ok) throw new Error(res.status === 401 ? "Code d'accès incorrect." : "Erreur de connexion.");
+    return res.json();
+  }
+
+  function render(data) {
+    document.getElementById("stat-active-now").textContent = data.active_now;
+    document.getElementById("stat-active-hour").textContent = data.active_last_hour;
+    document.getElementById("stat-today-active").textContent = data.today.active;
+    document.getElementById("stat-week-active").textContent = data.week.active;
+    document.getElementById("stat-streak").textContent = data.avg_streak.toLocaleString("fr-FR") + " j";
+    document.getElementById("stat-premium").textContent = data.premium_active_7d;
+
+    const chart = document.getElementById("chart");
+    chart.innerHTML = "";
+    const max = Math.max(1, ...data.daily.map((d) => d.active));
+    data.daily.forEach((d, i) => {
+      const bar = document.createElement("div");
+      bar.className = "bar" + (i === data.daily.length - 1 ? " today" : "");
+      const pct = Math.max(4, Math.round((d.active / max) * 100));
+      bar.style.height = pct + "%";
+      bar.title = d.date + " — " + d.active;
+      chart.appendChild(bar);
+    });
+
+    const sent = data.notifications_7d.opens_attributed || data.notifications_7d.opened;
+    const rate = sent > 0 ? Math.round((data.notifications_7d.opened / sent) * 100) : 0;
+    document.getElementById("notif-ring").style.setProperty("--rate", rate + "%");
+    document.getElementById("notif-pct").textContent = rate + "%";
+    document.getElementById("notif-opened").textContent = data.notifications_7d.opened;
+
+    const funnel = document.getElementById("funnel");
+    const steps = [
+      ["Affiché", data.paywall_30d.shown, data.paywall_30d.shown],
+      ["Lancé", data.paywall_30d.started, data.paywall_30d.shown],
+      ["Payé", data.paywall_30d.completed, data.paywall_30d.shown],
+    ];
+    funnel.innerHTML = steps.map(([name, value, base]) => {
+      const pct = base > 0 ? Math.round((value / base) * 100) : 0;
+      return '<div class="funnel-row"><span class="funnel-name">' + name + '</span>' +
+        '<div class="funnel-track"><div class="funnel-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="funnel-pct">' + value + '</span></div>';
+    }).join("");
+
+    const authors = document.getElementById("authors");
+    if (data.top_authors_30d.length === 0) {
+      authors.innerHTML = '<p class="section-empty">Aucun partage sur cette période.</p>';
+    } else {
+      authors.innerHTML = data.top_authors_30d.map((a, i) => {
+        const initials = a.author.split(" ").slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+        return '<div class="author-row">' +
+          '<div class="author-avatar" style="background:' + authorColors[i % authorColors.length] + '">' + initials + '</div>' +
+          '<span class="author-name">' + a.author + '</span>' +
+          '<span class="author-count">' + a.shares + '</span></div>';
+      }).join("");
+    }
+
+    const updated = new Date(data.updated_at);
+    document.getElementById("updated-at").textContent =
+      "Mis à jour à " + updated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  async function load() {
+    const btn = document.getElementById("refresh-btn");
+    btn.classList.add("spinning");
+    const token = localStorage.getItem(STORAGE_KEY);
+    try {
+      const data = await fetchStats(token);
+      render(data);
+    } catch (e) {
+      if (String(e.message).includes("incorrect")) {
+        localStorage.removeItem(STORAGE_KEY);
+        showGate(e.message);
+      }
+    } finally {
+      btn.classList.remove("spinning");
+    }
+  }
+
+  document.getElementById("unlock-btn").addEventListener("click", async () => {
+    const token = tokenInput.value.trim();
+    if (!token) return;
+    gateError.textContent = "";
+    try {
+      const data = await fetchStats(token);
+      localStorage.setItem(STORAGE_KEY, token);
+      showApp();
+      render(data);
+    } catch (e) {
+      gateError.textContent = e.message;
+    }
+  });
+  tokenInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("unlock-btn").click();
+  });
+
+  document.getElementById("refresh-btn").addEventListener("click", load);
+  document.getElementById("signout-btn").addEventListener("click", () => {
+    localStorage.removeItem(STORAGE_KEY);
+    showGate();
+  });
+
+  // Rafraîchissement automatique toutes les 60 s, mais seulement pendant que la page
+  // est réellement à l'écran : pas d'appel réseau inutile en arrière-plan.
+  setInterval(() => {
+    if (document.visibilityState === "visible" && app.classList.contains("visible")) load();
+  }, 60000);
+
+  const savedToken = localStorage.getItem(STORAGE_KEY);
+  if (savedToken) {
+    showApp();
+  } else {
+    showGate();
+  }
+</script>
+</body>
+</html>
