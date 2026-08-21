@@ -9,6 +9,74 @@ texte saisi.
 
 ---
 
+## ⭐ Le tableau de bord — une seule requête, tous les chiffres clés
+
+Celle-ci répond d'un coup à « combien de monde en ce moment, aujourd'hui, cette
+semaine ». Garde cet onglet ouvert dans le SQL Editor : il suffit de recliquer
+**Run** pour rafraîchir.
+
+```sql
+select
+  count(distinct user_id) filter (where created_at > now() - interval '5 minutes')  as en_ce_moment,
+  count(distinct user_id) filter (where created_at > now() - interval '1 hour')     as derniere_heure,
+  count(distinct user_id) filter (where created_at::date = current_date)            as aujourdhui,
+  count(distinct user_id) filter (where created_at > now() - interval '7 days')     as cette_semaine,
+  count(distinct user_id) filter (where created_at > now() - interval '30 days')    as ce_mois,
+  count(*) filter (where name = 'app_opened' and created_at::date = current_date)   as ouvertures_aujourdhui,
+  count(*) filter (where name = 'app_opened' and created_at > now() - interval '7 days') as ouvertures_semaine
+from public.events;
+```
+
+**« En ce moment »** = les personnes ayant fait quelque chose dans les 5 dernières
+minutes. C'est le plus proche du direct qu'on puisse avoir sans complexité
+inutile : l'app n'envoie un évènement que quand il se passe quelque chose, elle
+ne signale pas sa présence en continu.
+
+### Inscrits et abonnés
+
+```sql
+select
+  (select count(*) from auth.users)                                       as comptes_crees,
+  (select count(*) from auth.users where created_at > now() - interval '7 days')  as inscrits_cette_semaine,
+  (select count(*) from public.user_state)                                as profils_actifs,
+  (select count(*) from public.user_state where premium_granted)          as premium_offerts;
+```
+
+### Activité jour par jour, sur 14 jours
+
+Le vrai indicateur de santé : est-ce que la courbe monte, stagne ou descend ?
+
+```sql
+select
+  created_at::date as jour,
+  count(distinct user_id) as personnes,
+  count(*) filter (where name = 'app_opened') as ouvertures,
+  count(*) filter (where name = 'quote_favorited') as favoris,
+  count(*) filter (where name = 'quote_shared') as partages
+from public.events
+where created_at > now() - interval '14 days'
+group by 1
+order by 1 desc;
+```
+
+### À quelle heure les gens ouvrent-ils l'app ?
+
+Directement utile : si personne n'ouvre à 4h du matin, cette notification-là ne
+sert qu'à agacer.
+
+```sql
+select
+  extract(hour from created_at)::int as heure,
+  count(*) as ouvertures
+from public.events
+where name = 'app_opened'
+  and created_at > now() - interval '30 days'
+group by 1
+order by 1;
+```
+
+---
+
 ## Vue d'ensemble : que se passe-t-il dans l'app ?
 
 ```sql
