@@ -72,7 +72,11 @@ enum QuizIntent {
 }
 
 struct QuizProfile {
-    let name: String
+    /// Identifiant stable du profil, jamais affiché. Sert uniquement à segmenter les
+    /// données d'usage : le nom visible a été retiré parce qu'aucune formulation ne
+    /// paraissait à la fois juste et parlante, et qu'un titre qu'on trouve creux fait
+    /// plus de mal que pas de titre du tout.
+    let key: String
     let tagline: String
     let symbol: String
 }
@@ -191,24 +195,24 @@ enum Quiz {
 
     // MARK: - Profil
 
-    /// Le profil s'accorde au genre renseigné après la connexion (« La Déterminée » plutôt
-    /// que « Le Déterminé ») et se nuance selon le stade : on ne dit pas la même chose à
-    /// quelqu'un qui hésite encore qu'à quelqu'un qui dirige trente personnes.
+    /// La description s'accorde au genre renseigné après la connexion et se nuance selon
+    /// le stade : on ne dit pas la même chose à quelqu'un qui hésite encore qu'à quelqu'un
+    /// qui dirige trente personnes.
     static func profile(
         for scores: [QuoteCategory: Double],
         gender: Gender? = SharedDefaults.gender,
         stage: QuizStage? = nil,
         intent: QuizIntent? = nil
     ) -> QuizProfile {
-        let isFeminine = gender == .femme
-        let e = isFeminine ? "e" : ""
-        let article = isFeminine ? "La" : "Le"
+        // Seules les descriptions s'accordent désormais : les noms de profil, qui
+        // portaient l'essentiel de l'accord, ont été retirés.
+        let e = gender == .femme ? "e" : ""
 
-        // Deux profils hors de l'échelle entrepreneuriale, sinon quelqu'un venu pour les
-        // citations repartait étiqueté « Le Closer ».
+        // Deux profils hors de l'échelle entrepreneuriale : sans eux, quelqu'un venu
+        // uniquement pour les citations recevait une description d'entrepreneur.
         if intent == .nourrir || (stage == .inspiration && !(intent?.isBusinessDriven ?? false)) {
             return QuizProfile(
-                name: "\(article) Curieu\(isFeminine ? "se" : "x")",
+                key: "curieux",
                 tagline: "Tu n'as rien à prouver à personne. Tu viens chercher ce qui te tire vers le haut, et c'est déjà beaucoup.",
                 symbol: "sparkles"
             )
@@ -216,7 +220,7 @@ enum Quiz {
 
         if stage == .direction, intent == .consolider {
             return QuizProfile(
-                name: "L'Accompli\(e)",
+                key: "accompli",
                 tagline: "Tu as déjà construit. Le sujet n'est plus de courir, il est de tenir la distance.",
                 symbol: "mountain.2.fill"
             )
@@ -227,7 +231,7 @@ enum Quiz {
         switch topCategory(scores) {
         case .mindset:
             return QuizProfile(
-                name: "\(article) Déterminé\(e)",
+                key: "mindset",
                 tagline: {
                     switch bucket {
                     case .early: return "Ton moteur, c'est le mental. C'est exactement ce qu'il faut pour passer de l'idée à l'action."
@@ -239,7 +243,7 @@ enum Quiz {
             )
         case .sales:
             return QuizProfile(
-                name: "\(article) Closer",
+                key: "sales",
                 tagline: {
                     switch bucket {
                     case .early: return "Tu as l'instinct de convaincre. Il ne te manque qu'un terrain de jeu."
@@ -251,7 +255,7 @@ enum Quiz {
             )
         case .leadership:
             return QuizProfile(
-                name: "\(article) Bâtisseu\(isFeminine ? "se" : "r")",
+                key: "leadership",
                 tagline: {
                     switch bucket {
                     case .early: return "Tu penses déjà équipe et long terme, avant même d'en avoir une."
@@ -263,7 +267,7 @@ enum Quiz {
             )
         case .finance:
             return QuizProfile(
-                name: "\(article) Stratège",
+                key: "finance",
                 tagline: {
                     switch bucket {
                     case .early: return "Tu raisonnes chiffres avant même de te lancer. C'est plus rare qu'on ne croit."

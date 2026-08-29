@@ -369,7 +369,7 @@
     </button>
     <button class="signout" id="signout-btn">Verrouiller</button>
   </div>
-  <p class="build-stamp">Tableau de bord v3 — 29 août 2026</p>
+  <p class="build-stamp">Tableau de bord v4 — 29 août 2026</p>
 </div>
 
 <script>
@@ -392,6 +392,11 @@
   const catName = { mindset: "Mindset", sales: "Vente", leadership: "Leadership", finance: "Finance" };
   const sourceName = { direct: "Icône de l'app", notification: "Notification", widget: "Widget" };
   const originName = { category_filter: "Filtre catégories", author_page: "Page auteur", settings: "Réglages", unknown: "Inconnu" };
+  // Les profils ne portent plus de nom affiché dans l'app : la clé technique est
+  // traduite ici pour rester lisible côté tableau de bord.
+  const profileName = { curieux: "Vient pour l'inspiration", accompli: "Déjà installé",
+    mindset: "Orienté mental", sales: "Orienté vente",
+    leadership: "Orienté leadership", finance: "Orienté finance" };
 
   function initials(name) {
     return name.split(" ").slice(0, 2).map((w) => w[0] || "").join("").toUpperCase() || "?";
@@ -515,7 +520,7 @@
       { key: "4-7 jours", count: b.j4a7 }, { key: "8 jours et +", count: b.j8plus },
     ].filter((x) => x.count > 0), (k) => k);
 
-    barlines($("quiz"), d.quiz_profiles, (k) => k);
+    barlines($("quiz"), d.quiz_profiles, (k) => profileName[k] ?? k);
 
     $("top-users").innerHTML = d.top_users.length ? d.top_users.map((u, i) => `
       <div class="row">

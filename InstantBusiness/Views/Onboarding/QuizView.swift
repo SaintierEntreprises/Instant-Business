@@ -118,11 +118,11 @@ struct QuizView: View {
         )
         let preferred = Quiz.preferredCategories(for: scores)
 
-        SharedDefaults.quizProfile = profile.name
+        SharedDefaults.quizProfile = profile.key
         SharedDefaults.preferredCategories = preferred
 
         Analytics.track(.quizCompleted, [
-            "profile": .string(profile.name),
+            "profile": .string(profile.key),
             "top_category": .string(preferred.first?.rawValue ?? "none"),
             "preferred_count": .int(preferred.count)
         ])
@@ -152,7 +152,7 @@ struct QuizResultView: View {
     }
 
     private var greeting: String {
-        SharedDefaults.firstName.map { "\($0), ton profil" } ?? "Ton profil"
+        SharedDefaults.firstName.map { "\($0), voici ton profil" } ?? "Voici ton profil"
     }
 
     var body: some View {
@@ -169,23 +169,17 @@ struct QuizResultView: View {
                 .padding(.top, 22)
                 .opacity(stage >= 2 ? 1 : 0)
 
-            Text(profile.name)
-                .font(.system(.largeTitle, design: .rounded, weight: .heavy))
-                .tracking(-0.8)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 24)
-                .padding(.top, 2)
-                .opacity(stage >= 2 ? 1 : 0)
-                .offset(y: stage >= 2 ? 0 : 8)
-
+            // Le nom de profil ayant disparu, c'est la description qui devient le titre :
+            // sans cette promotion typographique, l'écran de résultat n'aurait plus rien
+            // à regarder entre l'insigne et les barres.
             Text(profile.tagline)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .font(.system(.title2, design: .rounded, weight: .bold))
+                .tracking(-0.4)
                 .multilineTextAlignment(.center)
-                .lineSpacing(2)
+                .lineSpacing(3)
                 .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 36)
-                .padding(.top, 8)
+                .padding(.horizontal, 28)
+                .padding(.top, 6)
                 .opacity(stage >= 2 ? 1 : 0)
                 .offset(y: stage >= 2 ? 0 : 8)
 
