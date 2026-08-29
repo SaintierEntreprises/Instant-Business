@@ -1,14 +1,11 @@
-// Fonction serveur pour le mini tableau de bord (docs/dashboard/).
+// Fonction serveur pour le tableau de bord (docs/dashboard/).
 //
 // Tourne côté Supabase, jamais dans le navigateur : c'est elle qui détient la clé
-// service_role (injectée automatiquement par la plateforme, jamais écrite ici), la
-// seule capable de lire au travers des politiques RLS. La page web, elle, ne connaît
-// qu'un secret partagé (DASHBOARD_TOKEN) qui n'ouvre l'accès qu'à des chiffres agrégés
-// — jamais une ligne brute, jamais un identifiant de compte individuel.
+// service_role (injectée par la plateforme, jamais écrite ici), la seule capable de lire
+// au travers des politiques RLS. La page ne connaît qu'un secret partagé
+// (DASHBOARD_TOKEN) qui n'ouvre l'accès qu'à des chiffres agrégés.
 //
-// Double vérification à l'entrée : l'en-tête Authorization (la clé publishable, déjà
-// publique dans l'app) satisfait la passerelle Supabase elle-même ; l'en-tête
-// x-dashboard-token est le vrai contrôle d'accès, comparé au secret ci-dessous.
+// Paramètre optionnel `?days=7|30|90` pour la fenêtre d'analyse (défaut 30).
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -21,146 +18,323 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-dashboard-token",
 };
 
-Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
-  }
+const DAY_MS = 24 * 60 * 60 * 1000;
 
-  const token = req.headers.get("x-dashboard-token");
-  if (token !== dashboardToken) {
+type EventRow = {
+  user_id: string;
+  name: string;
+  created_at: string;
+  is_premium: boolean | null;
+  app_version: string | null;
+  properties: Record<string, unknown> | null;
+};
+
+/** Compte d'occurrences trié, ramené aux `limit` premiers. */
+function topOf(counts: Map<string, number>, limit: number): { key: string; count: number }[] {
+  return Array.from(counts.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, limit)
+    .map(([key, count]) => ({ key, count }));
+}
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+
+  if (req.headers.get("x-dashboard-token") !== dashboardToken) {
     return new Response(JSON.stringify({ error: "unauthorized" }), {
       status: 401,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
 
+  const url = new URL(req.url);
+  const requestedDays = Number(url.searchParams.get("days") ?? 30);
+  const windowDays = [7, 30, 90].includes(requestedDays) ? requestedDays : 30;
+
   const supabase = createClient(supabaseUrl, serviceRoleKey);
   const now = new Date();
-  const dayMs = 24 * 60 * 60 * 1000;
 
-  // Une seule lecture pour les 14 derniers jours : elle alimente en ce moment, dans
-  // l'heure, aujourd'hui, cette semaine et la courbe quotidienne, sans multiplier les
-  // aller-retours pour des fenêtres qui se recouvrent toutes.
-  const since14d = new Date(now.getTime() - 14 * dayMs).toISOString();
-  const { data: recentEvents } = await supabase
+  // Une seule lecture couvrant la plus large fenêtre demandée. Toutes les mesures en
+  // découlent : multiplier les requêtes pour des périodes qui se recouvrent coûterait
+  // plusieurs aller-retours sans rien apporter.
+  const since = new Date(now.getTime() - windowDays * DAY_MS).toISOString();
+  const { data: rawEvents } = await supabase
     .from("events")
-    .select("user_id, name, created_at, is_premium")
-    .gte("created_at", since14d);
+    .select("user_id, name, created_at, is_premium, app_version, properties")
+    .gte("created_at", since)
+    .order("created_at", { ascending: false })
+    .limit(50000);
 
-  const rows = recentEvents ?? [];
+  const events = (rawEvents ?? []) as EventRow[];
+  const at = (row: EventRow) => new Date(row.created_at).getTime();
 
   const distinctUsersSince = (msAgo: number) => {
     const cutoff = now.getTime() - msAgo;
     const set = new Set<string>();
-    for (const row of rows) {
-      if (new Date(row.created_at).getTime() >= cutoff) set.add(row.user_id);
-    }
+    for (const e of events) if (at(e) >= cutoff) set.add(e.user_id);
     return set.size;
   };
 
-  const countEventsSince = (name: string, msAgo: number) => {
+  const countSince = (name: string, msAgo: number) => {
     const cutoff = now.getTime() - msAgo;
-    return rows.filter((r) => r.name === name && new Date(r.created_at).getTime() >= cutoff).length;
+    return events.filter((e) => e.name === name && at(e) >= cutoff).length;
   };
 
-  // Courbe des 14 jours : un groupe de comptes distincts par jour calendaire.
-  const dailyBuckets = new Map<string, Set<string>>();
-  for (let i = 13; i >= 0; i--) {
-    const day = new Date(now.getTime() - i * dayMs).toISOString().slice(0, 10);
-    dailyBuckets.set(day, new Set());
+  // --- Courbe quotidienne : actifs, ouvertures, favoris, partages ------------------
+  const dayKeys: string[] = [];
+  for (let i = windowDays - 1; i >= 0; i--) {
+    dayKeys.push(new Date(now.getTime() - i * DAY_MS).toISOString().slice(0, 10));
   }
-  for (const row of rows) {
-    const day = row.created_at.slice(0, 10);
-    dailyBuckets.get(day)?.add(row.user_id);
+  const dailyUsers = new Map<string, Set<string>>();
+  const dailyOpens = new Map<string, number>();
+  const dailyFavorites = new Map<string, number>();
+  const dailyShares = new Map<string, number>();
+  for (const key of dayKeys) {
+    dailyUsers.set(key, new Set());
+    dailyOpens.set(key, 0);
+    dailyFavorites.set(key, 0);
+    dailyShares.set(key, 0);
   }
-  const daily = Array.from(dailyBuckets.entries()).map(([date, set]) => ({
+  for (const e of events) {
+    const day = e.created_at.slice(0, 10);
+    dailyUsers.get(day)?.add(e.user_id);
+    if (e.name === "app_opened") dailyOpens.set(day, (dailyOpens.get(day) ?? 0) + 1);
+    if (e.name === "quote_favorited") dailyFavorites.set(day, (dailyFavorites.get(day) ?? 0) + 1);
+    if (e.name === "quote_shared") dailyShares.set(day, (dailyShares.get(day) ?? 0) + 1);
+  }
+  const daily = dayKeys.map((date) => ({
     date,
-    active: set.size,
+    active: dailyUsers.get(date)?.size ?? 0,
+    opens: dailyOpens.get(date) ?? 0,
+    favorites: dailyFavorites.get(date) ?? 0,
+    shares: dailyShares.get(date) ?? 0,
   }));
 
-  // Premium actif : chaque évènement porte l'état d'abonnement du moment où il a été
-  // émis (voir Analytics.swift). Le compte distinct sur 7 jours reflète aussi bien un
-  // abonnement StoreKit qu'un accès offert, sans dépendre d'une seule table.
-  const premiumActive7d = new Set(
-    rows.filter((r) => r.is_premium && new Date(r.created_at).getTime() >= now.getTime() - 7 * dayMs)
-      .map((r) => r.user_id)
-  ).size;
+  // --- Répartition horaire des ouvertures -----------------------------------------
+  // Dit directement si une notification tombe à une heure où personne n'est là.
+  const hourly = Array.from({ length: 24 }, () => 0);
+  for (const e of events) {
+    if (e.name === "app_opened") hourly[new Date(e.created_at).getUTCHours()]++;
+  }
 
-  // Séries : lue directement, hors RLS grâce au rôle de service.
-  const { data: streaks } = await supabase.from("user_state").select("streak_count");
-  const streakValues = (streaks ?? []).map((s) => s.streak_count).filter((n) => n > 0);
+  // --- Origine des ouvertures ------------------------------------------------------
+  const sources = new Map<string, number>();
+  for (const e of events) {
+    if (e.name !== "app_opened") continue;
+    const source = (e.properties?.source as string) ?? "direct";
+    sources.set(source, (sources.get(source) ?? 0) + 1);
+  }
+
+  // --- Contenu : auteurs, citations, catégories ------------------------------------
+  const sharedAuthors = new Map<string, number>();
+  const favoritedAuthors = new Map<string, number>();
+  const favoritedQuotes = new Map<string, number>();
+  const categoryEngagement = new Map<string, number>();
+  const openedAuthors = new Map<string, number>();
+  for (const e of events) {
+    const author = e.properties?.author as string | undefined;
+    const category = e.properties?.category as string | undefined;
+    if (e.name === "quote_shared" && author) sharedAuthors.set(author, (sharedAuthors.get(author) ?? 0) + 1);
+    if (e.name === "quote_favorited") {
+      if (author) favoritedAuthors.set(author, (favoritedAuthors.get(author) ?? 0) + 1);
+      const quoteID = e.properties?.quote_id as string | undefined;
+      if (quoteID) favoritedQuotes.set(quoteID, (favoritedQuotes.get(quoteID) ?? 0) + 1);
+    }
+    if (category && (e.name === "quote_favorited" || e.name === "quote_shared")) {
+      categoryEngagement.set(category, (categoryEngagement.get(category) ?? 0) + 1);
+    }
+    if (e.name === "author_opened" && author) {
+      openedAuthors.set(author, (openedAuthors.get(author) ?? 0) + 1);
+    }
+  }
+
+  // --- Paywall : entonnoir global et par point d'entrée ----------------------------
+  const paywallByOrigin = new Map<string, { shown: number; started: number; completed: number }>();
+  for (const e of events) {
+    if (!["paywall_shown", "purchase_started", "purchase_completed"].includes(e.name)) continue;
+    const origin = (e.properties?.origin as string) ?? "unknown";
+    const bucket = paywallByOrigin.get(origin) ?? { shown: 0, started: 0, completed: 0 };
+    if (e.name === "paywall_shown") bucket.shown++;
+    if (e.name === "purchase_started") bucket.started++;
+    if (e.name === "purchase_completed") bucket.completed++;
+    paywallByOrigin.set(origin, bucket);
+  }
+
+  // --- Catégories verrouillées touchées : signal de demande -------------------------
+  const lockedTaps = new Map<string, number>();
+  for (const e of events) {
+    if (e.name !== "locked_category_tapped") continue;
+    const category = (e.properties?.category as string) ?? "?";
+    lockedTaps.set(category, (lockedTaps.get(category) ?? 0) + 1);
+  }
+
+  // --- Profils du quiz --------------------------------------------------------------
+  const quizProfiles = new Map<string, number>();
+  for (const e of events) {
+    if (e.name !== "quiz_completed") continue;
+    const profile = (e.properties?.profile as string) ?? "?";
+    quizProfiles.set(profile, (quizProfiles.get(profile) ?? 0) + 1);
+  }
+
+  // --- Versions de l'app en circulation ---------------------------------------------
+  const versionUsers = new Map<string, Set<string>>();
+  for (const e of events) {
+    const version = e.app_version ?? "?";
+    if (!versionUsers.has(version)) versionUsers.set(version, new Set());
+    versionUsers.get(version)!.add(e.user_id);
+  }
+  const versions = Array.from(versionUsers.entries())
+    .map(([version, set]) => ({ version, users: set.size }))
+    .sort((a, b) => b.users - a.users);
+
+  // --- Rétention : reviennent-ils le lendemain, la semaine suivante ? ----------------
+  // Calculée sur la première activité observée dans la fenêtre — approximation
+  // honnête tant que la fenêtre ne remonte pas avant le lancement des mesures.
+  const firstSeen = new Map<string, number>();
+  const daysActive = new Map<string, Set<string>>();
+  for (const e of events) {
+    const t = at(e);
+    const prev = firstSeen.get(e.user_id);
+    if (prev === undefined || t < prev) firstSeen.set(e.user_id, t);
+    if (!daysActive.has(e.user_id)) daysActive.set(e.user_id, new Set());
+    daysActive.get(e.user_id)!.add(e.created_at.slice(0, 10));
+  }
+  let d1Eligible = 0, d1Returned = 0, d7Eligible = 0, d7Returned = 0;
+  for (const [userID, first] of firstSeen) {
+    const days = daysActive.get(userID)!;
+    const firstDay = new Date(first).toISOString().slice(0, 10);
+    if (now.getTime() - first >= 2 * DAY_MS) {
+      d1Eligible++;
+      const nextDay = new Date(first + DAY_MS).toISOString().slice(0, 10);
+      if (days.has(nextDay)) d1Returned++;
+    }
+    if (now.getTime() - first >= 8 * DAY_MS) {
+      d7Eligible++;
+      for (let i = 1; i <= 7; i++) {
+        const d = new Date(first + i * DAY_MS).toISOString().slice(0, 10);
+        if (d !== firstDay && days.has(d)) { d7Returned++; break; }
+      }
+    }
+  }
+
+  // --- Utilisateurs les plus actifs --------------------------------------------------
+  const perUser = new Map<string, number>();
+  for (const e of events) perUser.set(e.user_id, (perUser.get(e.user_id) ?? 0) + 1);
+
+  // --- Tables annexes ----------------------------------------------------------------
+  const { data: states } = await supabase
+    .from("user_state")
+    .select("streak_count, premium_granted, first_name, last_name, user_id");
+  const rows = states ?? [];
+  const streakValues = rows.map((s) => s.streak_count ?? 0).filter((n) => n > 0);
   const avgStreak = streakValues.length
     ? streakValues.reduce((a, b) => a + b, 0) / streakValues.length
     : 0;
-
-  // Notifications : ouvertures réelles vs envoyées, sur 7 jours.
-  const notificationsOpened7d = countEventsSince("notification_opened", 7 * dayMs);
-  const appOpenedViaNotif7d = rows.filter(
-    (r) => r.name === "app_opened" && new Date(r.created_at).getTime() >= now.getTime() - 7 * dayMs
-  ).length;
-
-  // Entonnoir du paywall, sur 30 jours : requête séparée, fenêtre plus large que le
-  // lot principal.
-  const since30d = new Date(now.getTime() - 30 * dayMs).toISOString();
-  const { data: paywallEvents } = await supabase
-    .from("events")
-    .select("name")
-    .in("name", ["paywall_shown", "purchase_started", "purchase_completed"])
-    .gte("created_at", since30d);
-  const paywallCount = (name: string) => (paywallEvents ?? []).filter((r) => r.name === name).length;
-
-  // Auteurs les plus partagés, sur 30 jours.
-  const { data: shareEvents } = await supabase
-    .from("events")
-    .select("properties")
-    .eq("name", "quote_shared")
-    .gte("created_at", since30d);
-  const authorCounts = new Map<string, number>();
-  for (const row of shareEvents ?? []) {
-    const author = (row.properties as Record<string, unknown>)?.author as string | undefined;
-    if (!author) continue;
-    authorCounts.set(author, (authorCounts.get(author) ?? 0) + 1);
+  const bestStreak = streakValues.length ? Math.max(...streakValues) : 0;
+  const streakBuckets = { j1: 0, j2a3: 0, j4a7: 0, j8plus: 0 };
+  for (const v of streakValues) {
+    if (v === 1) streakBuckets.j1++;
+    else if (v <= 3) streakBuckets.j2a3++;
+    else if (v <= 7) streakBuckets.j4a7++;
+    else streakBuckets.j8plus++;
   }
-  const topAuthors = Array.from(authorCounts.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([author, shares]) => ({ author, shares }));
 
-  // Inscriptions : l'API d'administration, seule façon d'atteindre auth.users depuis
-  // un client Supabase — ce schéma n'est pas exposé via les tables ordinaires.
+  const { count: favoritesTotal } = await supabase
+    .from("favorites").select("*", { count: "exact", head: true });
+  const { count: reachableDevices } = await supabase
+    .from("device_tokens").select("*", { count: "exact", head: true });
+
   const { data: usersPage } = await supabase.auth.admin.listUsers({ page: 1, perPage: 1000 });
   const allUsers = usersPage?.users ?? [];
-  const signupsThisWeek = allUsers.filter(
-    (u) => new Date(u.created_at).getTime() >= now.getTime() - 7 * dayMs
-  ).length;
+  const signupsByDay = new Map<string, number>();
+  for (const key of dayKeys) signupsByDay.set(key, 0);
+  for (const u of allUsers) {
+    const day = u.created_at.slice(0, 10);
+    if (signupsByDay.has(day)) signupsByDay.set(day, (signupsByDay.get(day) ?? 0) + 1);
+  }
+
+  // Nom lisible pour les listes de personnes, sans exposer d'e-mail.
+  const nameByUser = new Map<string, string>();
+  for (const s of rows) {
+    const name = [s.first_name, s.last_name].filter(Boolean).join(" ").trim();
+    if (name) nameByUser.set(s.user_id, name);
+  }
+
+  const premiumActive7d = new Set(
+    events.filter((e) => e.is_premium && at(e) >= now.getTime() - 7 * DAY_MS).map((e) => e.user_id),
+  ).size;
 
   const body = {
     updated_at: now.toISOString(),
-    active_now: distinctUsersSince(5 * 60 * 1000),
-    active_last_hour: distinctUsersSince(60 * 60 * 1000),
-    today: {
-      active: distinctUsersSince(dayMs),
-      opens: countEventsSince("app_opened", dayMs),
+    window_days: windowDays,
+
+    live: {
+      active_now: distinctUsersSince(5 * 60 * 1000),
+      active_last_hour: distinctUsersSince(60 * 60 * 1000),
     },
-    week: {
-      active: distinctUsersSince(7 * dayMs),
-      opens: countEventsSince("app_opened", 7 * dayMs),
-      signups: signupsThisWeek,
+    totals: {
+      today_active: distinctUsersSince(DAY_MS),
+      today_opens: countSince("app_opened", DAY_MS),
+      week_active: distinctUsersSince(7 * DAY_MS),
+      week_opens: countSince("app_opened", 7 * DAY_MS),
+      window_active: distinctUsersSince(windowDays * DAY_MS),
+      window_opens: countSince("app_opened", windowDays * DAY_MS),
+      accounts: allUsers.length,
+      signups_week: allUsers.filter((u) => new Date(u.created_at).getTime() >= now.getTime() - 7 * DAY_MS).length,
+      profiles: rows.length,
+      favorites_total: favoritesTotal ?? 0,
+      reachable_devices: reachableDevices ?? 0,
+      premium_active_7d: premiumActive7d,
+      premium_granted: rows.filter((s) => s.premium_granted).length,
+      events_total: events.length,
+      events_per_user: perUser.size ? Math.round((events.length / perUser.size) * 10) / 10 : 0,
     },
-    total_accounts: allUsers.length,
-    avg_streak: Math.round(avgStreak * 10) / 10,
-    premium_active_7d: premiumActive7d,
+    streaks: {
+      average: Math.round(avgStreak * 10) / 10,
+      best: bestStreak,
+      buckets: streakBuckets,
+    },
+    retention: {
+      d1: d1Eligible ? Math.round((d1Returned / d1Eligible) * 100) : null,
+      d1_base: d1Eligible,
+      d7: d7Eligible ? Math.round((d7Returned / d7Eligible) * 100) : null,
+      d7_base: d7Eligible,
+    },
     daily,
-    notifications_7d: {
-      opened: notificationsOpened7d,
-      opens_attributed: appOpenedViaNotif7d,
+    signups_daily: dayKeys.map((date) => ({ date, count: signupsByDay.get(date) ?? 0 })),
+    hourly,
+    sources: Array.from(sources.entries()).map(([source, count]) => ({ source, count })),
+    notifications: {
+      opened: countSince("notification_opened", windowDays * DAY_MS),
+      enabled: countSince("notifications_enabled", windowDays * DAY_MS),
+      disabled: countSince("notifications_disabled", windowDays * DAY_MS),
+      widget_opened: countSince("widget_opened", windowDays * DAY_MS),
     },
-    paywall_30d: {
-      shown: paywallCount("paywall_shown"),
-      started: paywallCount("purchase_started"),
-      completed: paywallCount("purchase_completed"),
+    paywall: Array.from(paywallByOrigin.entries())
+      .map(([origin, v]) => ({ origin, ...v }))
+      .sort((a, b) => b.shown - a.shown),
+    locked_taps: topOf(lockedTaps, 6),
+    content: {
+      shared_authors: topOf(sharedAuthors, 8),
+      favorited_authors: topOf(favoritedAuthors, 8),
+      favorited_quotes: topOf(favoritedQuotes, 8),
+      opened_authors: topOf(openedAuthors, 8),
+      categories: topOf(categoryEngagement, 4),
     },
-    top_authors_30d: topAuthors,
+    quiz_profiles: topOf(quizProfiles, 8),
+    versions,
+    top_users: topOf(perUser, 8).map((u) => ({
+      name: nameByUser.get(u.key) ?? u.key.slice(0, 8),
+      user_id: u.key,
+      events: u.count,
+    })),
+    recent: events.slice(0, 40).map((e) => ({
+      at: e.created_at,
+      name: e.name,
+      who: nameByUser.get(e.user_id) ?? e.user_id.slice(0, 8),
+      detail: (e.properties?.author as string) ?? (e.properties?.category as string) ??
+        (e.properties?.origin as string) ?? (e.properties?.source as string) ?? "",
+    })),
   };
 
   return new Response(JSON.stringify(body), {
