@@ -11,3 +11,7 @@ DerivedData/
 
 # Supabase CLI local state
 supabase/.temp/
+
+# Secrets — jamais versionnés (clés APNs, etc.)
+secrets/
+*.p8

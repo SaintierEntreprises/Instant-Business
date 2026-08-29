@@ -50,18 +50,22 @@ enum PushRegistrar {
         }
     }
 
-    /// Apple sert deux réseaux distincts et rejette un jeton présenté au mauvais. Un
-    /// build signé pour le développement ou TestFlight parle au bac à sable, l'App Store
-    /// à la production — c'est le profil d'approvisionnement embarqué qui tranche.
+    /// Apple sert deux réseaux distincts et rejette un jeton présenté au mauvais.
+    ///
+    /// Ce qui décide, c'est le profil d'approvisionnement — pas le type de build.
+    /// TestFlight et l'App Store utilisent tous deux un profil de distribution, donc
+    /// tous deux parlent à la production. Seul un lancement direct depuis Xcode (profil
+    /// de développement) parle au bac à sable.
+    ///
+    /// Une version antérieure se fiait au nom du reçu (« sandboxReceipt » pour
+    /// TestFlight) en le confondant avec l'environnement push : ce nom concerne les
+    /// achats, pas les notifications, et aurait classé chaque testeur TestFlight au
+    /// mauvais réseau — leurs jetons se seraient vus opposer un rejet silencieux à
+    /// chaque tentative d'envoi.
     private static var environment: String {
         #if DEBUG
         return "sandbox"
         #else
-        // TestFlight embarque un reçu nommé « sandboxReceipt », l'App Store non. C'est
-        // le seul moyen fiable de distinguer les deux dans un build Release.
-        if Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" {
-            return "sandbox"
-        }
         return "production"
         #endif
     }
