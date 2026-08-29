@@ -213,7 +213,7 @@ enum Quiz {
         if intent == .nourrir || (stage == .inspiration && !(intent?.isBusinessDriven ?? false)) {
             return QuizProfile(
                 key: "curieux",
-                tagline: "Tu n'as rien à prouver à personne. Tu viens chercher ce qui te tire vers le haut, et c'est déjà beaucoup.",
+                tagline: "Tu n'as rien à prouver. Tu viens chercher ce qui te tire vers le haut.",
                 symbol: "sparkles"
             )
         }
@@ -221,7 +221,7 @@ enum Quiz {
         if stage == .direction, intent == .consolider {
             return QuizProfile(
                 key: "accompli",
-                tagline: "Tu as déjà construit. Le sujet n'est plus de courir, il est de tenir la distance.",
+                tagline: "Tu as déjà construit. Le sujet maintenant, c'est de tenir la distance.",
                 symbol: "mountain.2.fill"
             )
         }
@@ -234,9 +234,9 @@ enum Quiz {
                 key: "mindset",
                 tagline: {
                     switch bucket {
-                    case .early: return "Ton moteur, c'est le mental. C'est exactement ce qu'il faut pour passer de l'idée à l'action."
+                    case .early: return "Ton moteur, c'est le mental. De quoi passer de l'idée à l'action."
                     case .active: return "Ton moteur, c'est le mental. Tu avances quand les autres lâchent."
-                    case .leading: return "Ton moteur, c'est le mental — et c'est ce que ton équipe vient chercher chez toi."
+                    case .leading: return "Ton moteur, c'est le mental. C'est ce que ton équipe vient chercher."
                     }
                 }(),
                 symbol: "flame.fill"
@@ -246,9 +246,9 @@ enum Quiz {
                 key: "sales",
                 tagline: {
                     switch bucket {
-                    case .early: return "Tu as l'instinct de convaincre. Il ne te manque qu'un terrain de jeu."
-                    case .active: return "Tu es fait\(e) pour convaincre et pour vendre ce en quoi tu crois."
-                    case .leading: return "Tu sais vendre. Ton enjeu maintenant, c'est de transmettre ce réflexe."
+                    case .early: return "Tu as l'instinct de convaincre. Il te manque un terrain de jeu."
+                    case .active: return "Tu es fait\(e) pour convaincre et vendre ce en quoi tu crois."
+                    case .leading: return "Tu sais vendre. Ton enjeu, c'est de transmettre ce réflexe."
                     }
                 }(),
                 symbol: "megaphone.fill"
@@ -258,9 +258,9 @@ enum Quiz {
                 key: "leadership",
                 tagline: {
                     switch bucket {
-                    case .early: return "Tu penses déjà équipe et long terme, avant même d'en avoir une."
+                    case .early: return "Tu penses équipe et long terme, avant même d'avoir une équipe."
                     case .active: return "Tu penses équipe, vision et long terme."
-                    case .leading: return "Tu penses équipe, vision et long terme — et tu le fais déjà au quotidien."
+                    case .leading: return "Tu penses équipe et long terme, et tu le fais déjà au quotidien."
                     }
                 }(),
                 symbol: "person.3.fill"
@@ -270,9 +270,9 @@ enum Quiz {
                 key: "finance",
                 tagline: {
                     switch bucket {
-                    case .early: return "Tu raisonnes chiffres avant même de te lancer. C'est plus rare qu'on ne croit."
-                    case .active: return "Tu raisonnes chiffres, marges et indépendance financière."
-                    case .leading: return "Tu raisonnes chiffres, marges et indépendance. C'est ce qui garde la maison debout."
+                    case .early: return "Tu raisonnes chiffres avant de te lancer. C'est plus rare qu'on croit."
+                    case .active: return "Tu raisonnes chiffres, marges et indépendance."
+                    case .leading: return "Tu raisonnes chiffres et indépendance. C'est ce qui tient la maison."
                     }
                 }(),
                 symbol: "chart.line.uptrend.xyaxis"

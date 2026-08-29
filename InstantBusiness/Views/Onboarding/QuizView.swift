@@ -157,7 +157,11 @@ struct QuizResultView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            // Espace du haut plafonné, celui du bas laissé libre : deux `Spacer` égaux
+            // centraient le bloc verticalement, ce qui faisait flotter l'insigne trop bas
+            // et laissait un grand vide au-dessus.
             Spacer(minLength: 0)
+                .frame(maxHeight: 76)
 
             badge
                 .scaleEffect(stage >= 1 ? 1 : 0.6)
