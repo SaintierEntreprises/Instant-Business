@@ -5,7 +5,7 @@ import SwiftUI
 /// l'impression de recommencer à zéro ; les deux vues partagent donc une même barre,
 /// graduée sur le total réel.
 enum OnboardingFlow {
-    static let profileStepCount = 3
+    static let profileStepCount = 4
     static let quizStepCount = 6
     static var totalSteps: Int { profileStepCount + quizStepCount }
 

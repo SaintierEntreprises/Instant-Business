@@ -7,6 +7,7 @@ struct SettingsView: View {
     @State private var showThemePicker = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
+    @State private var frequency = SharedDefaults.notificationFrequency
 
     /// Voir `CardFeedView` : recopier la valeur dans un `@State` à l'apparition affichait
     /// une série périmée, la synchronisation serveur arrivant après.
@@ -82,10 +83,34 @@ struct SettingsView: View {
                             }
                         }
                     }
+                    if notificationsEnabled {
+                        Picker(selection: $frequency) {
+                            ForEach(NotificationFrequency.allCases) { option in
+                                Text("\(option.displayName) — \(option.summary)").tag(option)
+                            }
+                        } label: {
+                            HStack(spacing: 12) {
+                                SettingsIconBadge(systemName: "slider.horizontal.3", color: .orange)
+                                Text("Rythme")
+                            }
+                        }
+                        .onChange(of: frequency) { _, newValue in
+                            SharedDefaults.notificationFrequency = newValue
+                            Analytics.track(.notificationFrequencyChanged, [
+                                "frequency": .string(newValue.rawValue),
+                                "per_day": .int(newValue.perDay)
+                            ])
+                            // Reprogrammation immédiate : sans elle, l'ancien rythme
+                            // resterait en vigueur jusqu'au prochain retour au premier plan.
+                            Task { await notificationManager.reschedule() }
+                        }
+                    }
                 } header: {
                     Text("Notifications")
                 } footer: {
-                    Text("Ta citation du jour à minuit, plus une citation aléatoire toutes les 4h — synchronisée avec ce que montre ton widget. Et un rappel à 18h les jours où tu n'as pas encore ouvert l'app, pour ne pas perdre ta série.")
+                    Text(notificationsEnabled
+                         ? "\(frequency.summary), toujours entre 8h et 21h — synchronisées avec ce que montre ton widget. Plus un rappel à 18h les jours où tu n'as pas encore ouvert l'app, pour ne pas perdre ta série."
+                         : "Active les notifications pour recevoir tes citations dans la journée.")
                 }
 
                 Section("Abonnement") {
@@ -234,6 +259,7 @@ struct SettingsView: View {
             SharedDefaults.notificationsEnabled = false
         }
         notificationsEnabled = SharedDefaults.notificationsEnabled
+        frequency = SharedDefaults.notificationFrequency
     }
 }
 

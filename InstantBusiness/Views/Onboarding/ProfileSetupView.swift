@@ -11,6 +11,7 @@ struct ProfileSetupView: View {
         case gender
         case firstName
         case lastName
+        case notifications
 
         var previous: Step? { Step(rawValue: rawValue - 1) }
     }
@@ -25,6 +26,7 @@ struct ProfileSetupView: View {
     @State private var lastName = ""
     @State private var isSaving = false
     @State private var isMovingForward = true
+    @State private var frequency: NotificationFrequency = .default
     @FocusState private var focusedField: Step?
 
     private let userSyncService = UserSyncService()
@@ -49,6 +51,7 @@ struct ProfileSetupView: View {
                 case .gender: genderStep
                 case .firstName: firstNameStep
                 case .lastName: lastNameStep
+                case .notifications: notificationsStep
                 }
             }
             .padding(.horizontal, 24)
@@ -62,6 +65,7 @@ struct ProfileSetupView: View {
             gender = SharedDefaults.gender
             firstName = SharedDefaults.firstName ?? ""
             lastName = SharedDefaults.lastName ?? ""
+            frequency = SharedDefaults.notificationFrequency
         }
     }
 
@@ -139,9 +143,93 @@ struct ProfileSetupView: View {
             contentType: .familyName,
             field: .lastName,
             isValid: !trimmedLastName.isEmpty,
-            isLoading: isSaving,
-            action: save
-        )
+            isLoading: false
+        ) {
+            advance(to: .notifications)
+        }
+    }
+
+    // MARK: - Étape 4
+
+    private var notificationsStep: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            stepTitle(
+                "Combien de citations par jour ?",
+                subtitle: "Toujours entre 8h et 21h. Modifiable à tout moment dans les réglages."
+            )
+
+            VStack(spacing: 12) {
+                ForEach(NotificationFrequency.allCases) { option in
+                    frequencyButton(option)
+                }
+            }
+            .padding(.top, 24)
+
+            Button {
+                Haptics.commit()
+                save()
+            } label: {
+                ZStack {
+                    Text("Terminer")
+                        .font(.headline)
+                        .opacity(isSaving ? 0 : 1)
+                    if isSaving { ProgressView().tint(.white) }
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.accentColor)
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            }
+            .buttonStyle(PressableButtonStyle(scale: 0.97))
+            .disabled(isSaving)
+            .padding(.top, 24)
+        }
+    }
+
+    private func frequencyButton(_ option: NotificationFrequency) -> some View {
+        let isSelected = frequency == option
+
+        return Button {
+            Haptics.select()
+            frequency = option
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: option.symbolName)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(isSelected ? .white : Color.accentColor)
+                    .frame(width: 36, height: 36)
+                    .background(
+                        isSelected ? Color.accentColor : Color.accentColor.opacity(0.12),
+                        in: RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    )
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(option.summary)
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text(option.detail)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 0)
+
+                if isSelected {
+                    Image(systemName: "checkmark")
+                        .font(.body.weight(.bold))
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+            .padding(14)
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(isSelected ? Color.accentColor : .clear, lineWidth: 2)
+            }
+        }
+        .buttonStyle(PressableButtonStyle(scale: 0.98))
+        .animation(.spring(response: 0.3, dampingFraction: 1), value: isSelected)
     }
 
     private func textStep(
@@ -238,6 +326,7 @@ struct ProfileSetupView: View {
         SharedDefaults.firstName = trimmedFirstName
         SharedDefaults.lastName = trimmedLastName
         SharedDefaults.gender = gender
+        SharedDefaults.notificationFrequency = frequency
 
         Task {
             if let userID = authManager.session?.user.id.uuidString {
@@ -248,9 +337,17 @@ struct ProfileSetupView: View {
                     gender: gender
                 )
             }
+            // Le calendrier est reconstruit ici plutôt qu'au prochain lancement : sans
+            // cela, la personne garderait le rythme par défaut jusqu'à sa prochaine
+            // ouverture, alors qu'elle vient d'en choisir un autre.
+            await NotificationManager().reschedule()
+
             isSaving = false
-            // Le genre seul : ni le prénom ni le nom ne quittent l'app par ce canal.
-            Analytics.track(.profileCompleted, ["gender": .string(gender.rawValue)])
+            // Le genre et le rythme seuls : ni le prénom ni le nom ne quittent l'app ici.
+            Analytics.track(.profileCompleted, [
+                "gender": .string(gender.rawValue),
+                "notification_frequency": .string(frequency.rawValue)
+            ])
             hasCompletedProfile = true
         }
     }

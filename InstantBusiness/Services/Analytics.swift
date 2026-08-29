@@ -33,6 +33,7 @@ enum Analytics {
         case widgetOpened = "widget_opened"
         case notificationsEnabled = "notifications_enabled"
         case notificationsDisabled = "notifications_disabled"
+        case notificationFrequencyChanged = "notification_frequency_changed"
         case onboardingCompleted = "onboarding_completed"
         case profileCompleted = "profile_completed"
         case quizCompleted = "quiz_completed"

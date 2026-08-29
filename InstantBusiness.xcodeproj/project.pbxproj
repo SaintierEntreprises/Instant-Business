@@ -35,6 +35,7 @@
 		586AEABC34948980F2F4A256 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD38765966AF44016F29AA6 /* StoreManager.swift */; };
 		59D14923DC5F80C1B40913EB /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
 		5BF7FFF183BE2093612C1762 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A364C7D258DB7F3153E84 /* SyncState.swift */; };
+		5EAB958E1290E63824F573F6 /* NotificationFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */; };
 		5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */; };
 		62114FED0C9309980FA6409D /* ForcedUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29F14C6B86FDDFA7EF786B8 /* ForcedUpdateView.swift */; };
 		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
@@ -43,6 +44,7 @@
 		6D1FC49BD1BF16B7B45664AF /* DailyQuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60D8F19F23E265DB4C64E09 /* DailyQuoteCard.swift */; };
 		6E6A459FFF97E8D88394CC1A /* PushRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D76350042A06627FF2D247 /* PushRegistrar.swift */; };
 		702AA521D93B14A6E8C610ED /* LegalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F916E6100AFA05C41E90D /* LegalDocument.swift */; };
+		74E8AC843FE5DFF5948ABEDF /* NotificationFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */; };
 		765F61B32FC37861330E14C7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0BA7E4132A008E21F5E59 /* Category.swift */; };
 		77E6F6093C8189F4239D33F8 /* TermsOfSale.md in Resources */ = {isa = PBXBuildFile; fileRef = 5B334C99F00D956274C16932 /* TermsOfSale.md */; };
 		7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */; };
@@ -112,6 +114,7 @@
 		0941CD3482DDC4B77D47F75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		099B12399329D986EB390312 /* OnboardingChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChrome.swift; sourceTree = "<group>"; };
 		0D7011A6FE0E310F32225B1B /* AuthorQuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorQuotesView.swift; sourceTree = "<group>"; };
+		0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequency.swift; sourceTree = "<group>"; };
 		0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessApp.swift; sourceTree = "<group>"; };
 		116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 				81A1560ED9E0632BCE797684 /* CardTheme.swift */,
 				2CD0BA7E4132A008E21F5E59 /* Category.swift */,
 				B619CC87D0D27E2848B53FBA /* Gender.swift */,
+				0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */,
 				7A3762836BBFF09781681731 /* Quote.swift */,
 				3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */,
 			);
@@ -602,6 +606,7 @@
 				702AA521D93B14A6E8C610ED /* LegalDocument.swift in Sources */,
 				3A9E8FBC56F7BF482B7C2235 /* LegalDocumentView.swift in Sources */,
 				83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */,
+				74E8AC843FE5DFF5948ABEDF /* NotificationFrequency.swift in Sources */,
 				BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */,
 				57BA877A58F40E651AEE77D3 /* OnboardingChrome.swift in Sources */,
 				0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */,
@@ -637,6 +642,7 @@
 				AF745263B22D180F5739BFCD /* DeepLink.swift in Sources */,
 				811FB64C80651E32E5C8CFEB /* Gender.swift in Sources */,
 				98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */,
+				5EAB958E1290E63824F573F6 /* NotificationFrequency.swift in Sources */,
 				5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */,
 				4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */,
 				ADF7EC8135F01B092DB281DF /* QuoteWidgetConfigurationIntent.swift in Sources */,

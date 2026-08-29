@@ -12,6 +12,7 @@ enum SharedDefaults {
         static let widgetTheme = "widgetTheme"
         static let widgetCategory = "widgetCategory"
         static let notificationsEnabled = "notificationsEnabled"
+        static let notificationFrequency = "notificationFrequency"
         static let isPremium = "isPremium"
         static let cardTheme = "cardTheme"
         static let quizProfile = "quizProfile"
@@ -140,6 +141,19 @@ enum SharedDefaults {
     static var notificationsEnabled: Bool {
         get { suite.bool(forKey: Keys.notificationsEnabled) }
         set { suite.set(newValue, forKey: Keys.notificationsEnabled) }
+    }
+
+    /// Exposée pour permettre à une vue de s'y abonner via `@AppStorage`.
+    static var notificationFrequencyKey: String { Keys.notificationFrequency }
+
+    /// Rythme choisi par la personne. Absent — parce qu'elle s'est inscrite avant que ce
+    /// choix existe — vaut le rythme par défaut, jamais l'ancien rythme nocturne.
+    static var notificationFrequency: NotificationFrequency {
+        get {
+            suite.string(forKey: Keys.notificationFrequency)
+                .flatMap(NotificationFrequency.init(rawValue:)) ?? .default
+        }
+        set { suite.set(newValue.rawValue, forKey: Keys.notificationFrequency) }
     }
 
     static var isPremium: Bool {

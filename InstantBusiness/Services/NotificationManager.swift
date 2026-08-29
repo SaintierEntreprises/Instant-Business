@@ -6,14 +6,17 @@ final class NotificationManager: ObservableObject {
     private static let dailyIdentifierPrefix = "instant-business-daily-"
     private static let rotationIdentifierPrefix = "instant-business-rotation-"
 
-    /// Fixed times of day for the rotating quote. With the daily quote at midnight,
-    /// this yields one notification every 4 hours: 00h, 04h, 08h, 12h, 16h, 20h.
-    private static let rotationHours = [4, 8, 12, 16, 20]
-
-    /// 6 notifications/day (1 daily + 5 rotation). iOS caps pending local notifications
-    /// at 64, so a 10-day rolling window (60 requests) stays under that — plus the single
-    /// streak reminder below, 61 in total.
-    private let rollingWindowDays = 10
+    /// Fenêtre glissante de programmation.
+    ///
+    /// iOS plafonne à 64 les notifications locales en attente. Au rythme le plus dense
+    /// (6 par jour), dix jours en consommeraient 60, plus le rappel de série : trop juste
+    /// si le plafond était atteint, la fin de la fenêtre serait silencieusement tronquée.
+    /// La fenêtre s'adapte donc au rythme choisi pour rester sous la limite dans tous
+    /// les cas.
+    private var rollingWindowDays: Int {
+        let perDay = max(1, SharedDefaults.notificationFrequency.perDay)
+        return min(14, max(3, 55 / perDay))
+    }
 
     private static let streakReminderIdentifier = "instant-business-streak"
     private static let streakReminderHour = 18
@@ -62,42 +65,42 @@ final class NotificationManager: ObservableObject {
         let now = Date()
         let seed = SharedDefaults.rotationSeed
 
-        // Fixed for every user: the daily quote, sent at midnight.
-        for offset in 0..<rollingWindowDays {
-            guard let day = calendar.date(byAdding: .day, value: offset, to: now),
-                  let fireDate = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: day),
-                  fireDate > now,
-                  let quote = ContentStore.quoteOfTheDay(on: day) else { continue }
+        // Créneaux fixes issus du rythme choisi, jamais ancrés sur « maintenant » : le
+        // faire repousserait la prochaine notification à chaque ouverture de l'app, si
+        // bien que plus quelqu'un s'en sert, moins il en recevrait.
+        let hours = SharedDefaults.notificationFrequency.hours
+        let days = rollingWindowDays
 
-            await schedule(
-                identifier: Self.dailyIdentifierPrefix + "\(offset)",
-                title: "Citation du jour",
-                quote: quote,
-                fireDate: fireDate,
-                center: center
-            )
-        }
-
-        // Per-user rotation at fixed times of day, so the schedule never shifts.
-        // Anchoring on "now" instead would push the next notification 4h away every
-        // time the app is opened — the more someone uses the app, the fewer they'd get.
-        // Combined with the midnight daily quote, this lands one notification every 4h.
-        for offset in 0..<rollingWindowDays {
+        for offset in 0..<days {
             guard let day = calendar.date(byAdding: .day, value: offset, to: now) else { continue }
 
-            for hour in Self.rotationHours {
+            for (index, hour) in hours.enumerated() {
                 guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
                       fireDate > now else { continue }
-                let unit = ContentStore.rotationUnit(for: fireDate)
-                guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
 
-                await schedule(
-                    identifier: Self.rotationIdentifierPrefix + "\(offset)-\(hour)",
-                    title: "Instant Business",
-                    quote: quote,
-                    fireDate: fireDate,
-                    center: center
-                )
+                // La première notification de la journée porte la citation du jour, celle
+                // que tout le monde reçoit ; les suivantes suivent la rotation propre à
+                // chaque installation.
+                if index == 0 {
+                    guard let quote = ContentStore.quoteOfTheDay(on: day) else { continue }
+                    await schedule(
+                        identifier: Self.dailyIdentifierPrefix + "\(offset)",
+                        title: "Citation du jour",
+                        quote: quote,
+                        fireDate: fireDate,
+                        center: center
+                    )
+                } else {
+                    let unit = ContentStore.rotationUnit(for: fireDate)
+                    guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
+                    await schedule(
+                        identifier: Self.rotationIdentifierPrefix + "\(offset)-\(hour)",
+                        title: "Instant Business",
+                        quote: quote,
+                        fireDate: fireDate,
+                        center: center
+                    )
+                }
             }
         }
 
