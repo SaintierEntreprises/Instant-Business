@@ -1,8 +1,13 @@
 import Foundation
 
-/// Quiz d'accueil en six questions. Chaque réponse pondère une ou plusieurs catégories ;
+/// Quiz d'accueil en trois questions. Chaque réponse pondère une ou plusieurs catégories ;
 /// les totaux déterminent le profil affiché à la fin et les catégories présélectionnées
 /// dans le fil.
+///
+/// Trois et pas six : les questions écartées — ce qui te freine, quel ton te motive, quand
+/// tu as besoin d'un boost — nuançaient le profil sans jamais changer ce que la personne
+/// voit dans son fil. Dix écrans avant d'entrer dans une app de citations font renoncer
+/// plus de monde qu'un profil finement ciselé n'en retient.
 ///
 /// Deux réponses portent en plus une information qui n'est pas un score : où en est la
 /// personne (`QuizStage`, première question) et ce qu'elle vise (`QuizIntent`, dernière).
@@ -112,17 +117,6 @@ enum Quiz {
         ),
         QuizQuestion(
             id: 1,
-            prompt: "Qu'est-ce qui te freine le plus ?",
-            options: [
-                QuizOption(label: "Le manque de discipline", symbol: "flame.fill", weights: [.mindset: 3]),
-                QuizOption(label: "La peur de l'échec", symbol: "cloud.fill", weights: [.mindset: 3]),
-                QuizOption(label: "Trouver des clients", symbol: "megaphone.fill", weights: [.sales: 3]),
-                QuizOption(label: "Gérer l'argent", symbol: "eurosign.circle.fill", weights: [.finance: 3]),
-                QuizOption(label: "Rien de bloquant en ce moment", symbol: "checkmark.seal.fill", weights: [.mindset: 2, .leadership: 1])
-            ]
-        ),
-        QuizQuestion(
-            id: 2,
             prompt: "Que veux-tu développer en priorité ?",
             options: [
                 QuizOption(label: "Mon mental", symbol: "brain.head.profile", weights: [.mindset: 4]),
@@ -132,27 +126,7 @@ enum Quiz {
             ]
         ),
         QuizQuestion(
-            id: 3,
-            prompt: "Quel ton te motive le plus ?",
-            options: [
-                QuizOption(label: "Cash et direct", symbol: "bolt.fill", weights: [.sales: 2, .mindset: 2]),
-                QuizOption(label: "Inspirant", symbol: "sun.max.fill", weights: [.mindset: 3]),
-                QuizOption(label: "Stratégique", symbol: "target", weights: [.leadership: 2, .finance: 2]),
-                QuizOption(label: "Philosophique", symbol: "quote.opening", weights: [.mindset: 2, .leadership: 1])
-            ]
-        ),
-        QuizQuestion(
-            id: 4,
-            prompt: "Quand as-tu besoin d'un boost ?",
-            options: [
-                QuizOption(label: "Au réveil", symbol: "sunrise.fill", weights: [.mindset: 2]),
-                QuizOption(label: "En pleine journée", symbol: "sun.max.fill", weights: [.sales: 2]),
-                QuizOption(label: "Le soir", symbol: "moon.stars.fill", weights: [.leadership: 2]),
-                QuizOption(label: "Tout le temps", symbol: "infinity", weights: [.mindset: 1, .sales: 1, .leadership: 1, .finance: 1])
-            ]
-        ),
-        QuizQuestion(
-            id: 5,
+            id: 2,
             prompt: "Ton objectif des 6 prochains mois ?",
             options: [
                 QuizOption(

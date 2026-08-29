@@ -1,12 +1,12 @@
 import SwiftUI
 
-/// Profil (3 écrans) puis quiz (6 écrans) forment un seul parcours du point de vue de la
-/// personne qui s'inscrit. Un compteur qui repart à « 1 / 6 » juste après « 3 / 3 » donne
-/// l'impression de recommencer à zéro ; les deux vues partagent donc une même barre,
-/// graduée sur le total réel.
+/// Profil (4 écrans) puis quiz (3 écrans) forment un seul parcours du point de vue de la
+/// personne qui s'inscrit. Un compteur qui repartirait à « 1 / 3 » juste après « 4 / 4 »
+/// donnerait l'impression de recommencer à zéro ; les deux vues partagent donc une même
+/// barre, graduée sur le total réel.
 enum OnboardingFlow {
     static let profileStepCount = 4
-    static let quizStepCount = 6
+    static let quizStepCount = 3
     static var totalSteps: Int { profileStepCount + quizStepCount }
 
     /// Rang absolu, à partir de 1, d'une étape du quiz dans le parcours complet.
