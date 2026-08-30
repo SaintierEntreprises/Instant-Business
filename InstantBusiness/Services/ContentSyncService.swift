@@ -27,6 +27,8 @@ enum ContentSyncService {
         let context: String?
         let source: String?
         let year: Int?
+        let meaning: String?
+        let application: String?
     }
 
     static func refreshIfNeeded(force: Bool = false) async {
@@ -39,7 +41,7 @@ enum ContentSyncService {
         do {
             let rows: [RemoteQuote] = try await SupabaseProvider.client
                 .from("quotes")
-                .select("id,text,author,category,context,source,year")
+                .select("id,text,author,category,context,source,year,meaning,application")
                 .execute()
                 .value
 
@@ -56,7 +58,9 @@ enum ContentSyncService {
                     category: category,
                     context: row.context,
                     source: row.source,
-                    year: row.year
+                    year: row.year,
+                    meaning: row.meaning,
+                    application: row.application
                 )
             }
 

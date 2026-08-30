@@ -20,9 +20,23 @@ struct Quote: Codable, Identifiable, Hashable {
 
     var year: Int?
 
+    /// Le principe derrière la formule : ce que l'auteur veut réellement dire.
+    ///
+    /// Distinct de `context`, et c'est la distinction qui permet d'en avoir partout.
+    /// `context` est un fait — qui, quand, à quel propos — qui se vérifie ou ne s'écrit
+    /// pas. `meaning` est une lecture de la citation elle-même : elle s'appuie sur le
+    /// texte, pas sur une archive. Une citation dont on ignore tout de l'origine peut
+    /// donc quand même être expliquée.
+    var meaning: String?
+
+    /// Ce qu'on en fait concrètement. C'est la moitié qui justifie d'ouvrir la fiche :
+    /// une citation bien expliquée mais inapplicable reste une décoration.
+    var application: String?
+
     /// Vrai dès qu'il y a quelque chose à montrer en plus de la citation elle-même.
     var hasContext: Bool {
         context?.isEmpty == false || source?.isEmpty == false || year != nil
+            || meaning?.isEmpty == false || application?.isEmpty == false
     }
 
     /// Ligne de provenance compacte : « Stanford, 2005 », « 2005 », ou rien.

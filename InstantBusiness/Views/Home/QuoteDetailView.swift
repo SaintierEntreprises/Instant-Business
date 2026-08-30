@@ -66,10 +66,18 @@ struct QuoteDetailView: View {
                             .padding(.top, 4)
                     }
 
-                    if let context = quote.context, !context.isEmpty {
-                        contextBlock(context)
-                            .padding(.top, 28)
+                    VStack(spacing: 12) {
+                        if let meaning = quote.meaning, !meaning.isEmpty {
+                            section("LE PRINCIPE", systemImage: "lightbulb.fill", text: meaning)
+                        }
+                        if let application = quote.application, !application.isEmpty {
+                            section("COMMENT L'APPLIQUER", systemImage: "arrow.turn.down.right", text: application)
+                        }
+                        if let context = quote.context, !context.isEmpty {
+                            section("CONTEXTE", systemImage: "text.book.closed.fill", text: context)
+                        }
                     }
+                    .padding(.top, quote.hasContext ? 28 : 0)
 
                     actions
                         .padding(.top, 28)
@@ -117,19 +125,25 @@ struct QuoteDetailView: View {
         }
     }
 
-    private func contextBlock(_ context: String) -> some View {
+    /// Bloc de lecture : un intitulé en petites capitales, un paragraphe.
+    ///
+    /// Trois blocs au maximum se suivent, du plus utile au plus anecdotique — ce que ça
+    /// veut dire, quoi en faire, d'où ça vient. L'ordre n'est pas neutre : la provenance
+    /// est ce qui manque le plus souvent, la mettre en tête laisserait beaucoup de fiches
+    /// commencer par un trou.
+    private func section(_ title: String, systemImage: String, text: String) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 8) {
-                Image(systemName: "text.book.closed.fill")
+                Image(systemName: systemImage)
                     .font(.caption.weight(.bold))
                     .foregroundStyle(quote.category.tint)
-                Text("LE CONTEXTE")
+                Text(title)
                     .font(.system(size: 11, weight: .bold, design: .rounded))
                     .tracking(1.2)
                     .foregroundStyle(.secondary)
             }
 
-            Text(context)
+            Text(text)
                 .font(.system(.callout, design: .rounded, weight: .medium))
                 .foregroundStyle(.secondary)
                 .lineSpacing(3)
