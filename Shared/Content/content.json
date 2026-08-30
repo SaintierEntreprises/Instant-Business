@@ -1670,7 +1670,9 @@
     "text": "Si ce que vous faites ne vous rapproche pas de vos buts, alors c'est que ça vous en éloigne.",
     "author": "Brian Tracy",
     "category": "mindset",
-    "id": "q-0276"
+    "id": "q-0276",
+    "meaning": "Tracy ferme la position neutre : le temps passe de toute façon, donc une activité qui ne rapproche pas d'un objectif consomme la ressource sans contrepartie. Il n'y a pas d'action sans effet.",
+    "application": "Passe tes activités récurrentes au test : celle-ci me rapproche-t-elle de quelque chose ? Ce qui ne passe pas le test mérite d'être supprimé ou assumé comme du repos."
   },
   {
     "text": "En matière commerciale, le succès vient davantage de l'attitude que de l'aptitude.",
@@ -1752,7 +1754,9 @@
     "text": "L'entreprise est élue tous les jours par ses clients.",
     "author": "François Michelin",
     "category": "sales",
-    "id": "q-0289"
+    "id": "q-0289",
+    "meaning": "Michelin décrit le marché comme un vote quotidien : chaque achat est un mandat renouvelé, chaque abandon un retrait. Aucune position n'est acquise, quelle que soit l'ancienneté.",
+    "application": "Regarde ton taux de réachat plutôt que ton nombre de clients. Le premier mesure le mandat renouvelé, le second un cumul historique."
   },
   {
     "text": "La philosophie commerciale nous enseigne que celui qui ne demande rien n'a rien, et il est déçu.",
@@ -1953,13 +1957,17 @@
     "text": "Les quatre mots les plus dangereux dans le monde de l'investissement sont : « cette fois, c'est différent ».",
     "author": "John Templeton",
     "category": "finance",
-    "id": "q-0325"
+    "id": "q-0325",
+    "meaning": "Templeton désigne la formule qui précède les pires erreurs : croire que les règles habituelles ne s'appliquent plus. Chaque bulle s'est construite sur cette conviction.",
+    "application": "Quand on te dit qu'une situation est sans précédent, cherche les précédents. Ils existent presque toujours, et ils finissent de la même façon."
   },
   {
     "text": "La patience est la clé de l'investissement réussi.",
     "author": "John Templeton",
     "category": "finance",
-    "id": "q-0326"
+    "id": "q-0326",
+    "meaning": "Templeton place la patience au rang de compétence principale, avant l'analyse : les résultats supposent de laisser du temps au raisonnement pour se vérifier.",
+    "application": "Fixe ton horizon avant d'engager quoi que ce soit, et note-le. C'est cette décision écrite à froid qui te tiendra quand l'agitation reviendra."
   },
   {
     "text": "Ne cherchez pas l'aiguille dans la meule de foin : achetez la meule.",
@@ -2041,7 +2049,9 @@
     "text": "La raison d'être d'une entreprise est de créer et de garder un client.",
     "author": "Theodore Levitt",
     "category": "sales",
-    "id": "q-0338"
+    "id": "q-0338",
+    "meaning": "Levitt réduit la finalité de l'entreprise à deux verbes : créer un client, puis le garder. Le profit en découle et n'est pas l'objectif — le poser comme tel conduit à sacrifier le second verbe.",
+    "application": "Vérifie que tes objectifs couvrent les deux temps. Beaucoup d'organisations mesurent l'acquisition et ignorent la conservation, qui coûte pourtant bien moins cher."
   },
   {
     "text": "Prenez soin du client et l'entreprise prendra soin d'elle-même.",
@@ -2061,7 +2071,9 @@
     "text": "Un client qui n'a qu'un seul fournisseur cesse d'être intelligent.",
     "author": "François Michelin",
     "category": "sales",
-    "id": "q-0341"
+    "id": "q-0341",
+    "meaning": "Michelin observe qu'un client en situation de dépendance perd sa capacité de comparaison, donc d'exigence. C'est un avertissement pour l'acheteur, mais aussi pour le fournisseur qui s'endort sur cette rente.",
+    "application": "Si un client dépend entièrement de toi, ne t'en félicite pas : c'est le moment où ta compétitivité cesse d'être testée. Vérifie régulièrement que tu resterais choisi."
   },
   {
     "text": "Ce qui compte, c'est le chiffre un : une tasse, un client, un partenaire.",
@@ -2115,13 +2127,17 @@
     "text": "Il est impossible d'être chef d'entreprise sans un minimum d'audace.",
     "author": "Carlos Ghosn",
     "category": "leadership",
-    "id": "q-0349"
+    "id": "q-0349",
+    "meaning": "Ghosn pose l'audace comme condition d'exercice, pas comme trait de caractère : diriger suppose de trancher avec une information incomplète, ce qu'aucune analyse supplémentaire ne supprime.",
+    "application": "Face à une décision où l'information manquera toujours, fixe-toi un seuil : à partir de quel niveau de certitude tu tranches. Sans ce seuil, tu attends indéfiniment."
   },
   {
     "text": "Si vous vous limitez aux avis des experts, il y a peu de chances que vous innoviez.",
     "author": "Carlos Ghosn",
     "category": "leadership",
-    "id": "q-0351"
+    "id": "q-0351",
+    "meaning": "Ghosn observe que l'expertise raisonne à partir de l'existant : elle sait ce qui a été essayé et ce qui a échoué, ce qui la rend précieuse pour éviter les erreurs et médiocre pour créer du neuf.",
+    "application": "Consulte les experts sur les risques, pas sur la faisabilité de ce qui n'existe pas. Ils sont excellents sur le premier point et structurellement conservateurs sur le second."
   },
   {
     "text": "Une équipe n'est pas un groupe de personnes qui travaillent ensemble. C'est un groupe de personnes qui se font confiance.",
@@ -2271,19 +2287,25 @@
     "id": "q-0374",
     "text": "Il n'y a pas de meilleure mesure de vos valeurs que la façon dont vous dépensez votre temps.",
     "author": "Scott Belsky",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Belsky propose un test objectif : les valeurs déclarées coûtent peu, l'emploi du temps révèle les priorités réelles. L'agenda ne ment pas, contrairement au discours.",
+    "application": "Relève où sont passées tes heures cette semaine et compare avec ce que tu dis prioritaire. L'écart désigne exactement ce qu'il faut corriger."
   },
   {
     "id": "q-0375",
     "text": "Une idée ne peut devenir une réalité qu'une fois qu'elle est décomposée en éléments organisés et actionnables.",
     "author": "Scott Belsky",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Belsky décrit le passage de l'idée au réel : tant qu'elle n'est pas découpée en actions identifiables et attribuées, une idée reste une intention. La décomposition est le travail qui la rend possible.",
+    "application": "Prends ton idée et écris les cinq premières actions concrètes, avec un responsable pour chacune. Ce qui ne se découpe pas ne se réalise pas."
   },
   {
     "id": "q-0378",
     "text": "Être sans peur, ce n'est pas l'absence de peur, c'est la maîtrise de la peur. C'est se relever une fois de plus qu'on ne tombe.",
     "author": "Arianna Huffington",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Huffington définit l'intrépidité comme une maîtrise, pas une absence : la peur reste, elle cesse simplement de commander. La seconde partie ajoute la persistance — se relever une fois de plus qu'on ne tombe suffit.",
+    "application": "Compte tes relèvements plutôt que tes chutes. Tant que le premier chiffre dépasse le second d'une unité, tu es debout."
   },
   {
     "id": "q-0379",
@@ -2375,7 +2397,9 @@
     "id": "q-0399",
     "text": "Il faut avoir le courage de prendre des risques et de ne pas avoir peur de l'échec.",
     "author": "Marc Simoncini",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Simoncini associe deux conditions : accepter le risque, et ne pas craindre l'échec qui en découle. La première sans la seconde produit des prises de risque qu'on abandonne au premier revers.",
+    "application": "Avant de te lancer, écris ce que tu feras si ça échoue. Avoir un plan de repli rend paradoxalement plus audacieux."
   },
   {
     "id": "q-0400",
@@ -2451,7 +2475,9 @@
     "id": "q-0410",
     "text": "L'entrepreneur est cette personne qui saute d'une falaise, et construit un avion au cours de sa chute.",
     "author": "Reid Hoffman",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Hoffman décrit la simultanéité propre à l'entrepreneuriat : on s'engage avant que les moyens existent, et on les construit pendant la chute. C'est inconfortable et c'est la description exacte du métier.",
+    "application": "Accepte de démarrer avec un dispositif incomplet, mais mesure ta hauteur de chute : combien de temps te reste-t-il avant l'impact ? C'est le seul chiffre qui compte."
   },
   {
     "id": "q-0411",
@@ -2501,7 +2527,9 @@
     "id": "q-0417",
     "text": "L'échec signifie un dépouillement de l'inessentiel.",
     "author": "J.K. Rowling",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Rowling décrit l'échec comme un filtre : il retire ce qui n'était pas essentiel et laisse ce qui compte vraiment. La perte est réelle, mais elle clarifie.",
+    "application": "Après un échec majeur, liste ce qui te reste et qui a de la valeur. Cette liste plus courte est souvent plus juste que celle d'avant."
   },
   {
     "id": "q-0419",
@@ -2529,7 +2557,9 @@
     "id": "q-0426",
     "text": "Nous avons plus de force que de volonté.",
     "author": "La Rochefoucauld",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "La Rochefoucauld distingue la capacité de l'intention : nous pourrions faire beaucoup plus que nous ne voulons réellement faire. L'obstacle est rarement la force, presque toujours la détermination.",
+    "application": "Quand tu attribues un renoncement à un manque de moyens, vérifie honnêtement s'il s'agit de moyens ou d'envie. Le remède diffère complètement."
   },
   {
     "id": "q-0427",
@@ -2579,7 +2609,9 @@
     "id": "q-0440",
     "text": "Je patine là où le palet va aller, pas là où il était.",
     "author": "Wayne Gretzky",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Gretzky décrit l'anticipation : se positionner là où l'action va se produire, pas là où elle vient de se produire. Suivre le mouvement garantit d'arriver en retard.",
+    "application": "Sur ton marché, regarde où va la demande plutôt que d'où elle vient. Se positionner sur le passé récent est l'erreur la plus fréquente."
   },
   {
     "id": "q-0442",
@@ -2617,7 +2649,9 @@
     "id": "q-0456",
     "text": "L'espérance est un risque à courir.",
     "author": "Georges Bernanos",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Bernanos présente l'espérance comme un engagement risqué, pas comme un confort : espérer, c'est accepter d'être déçu. C'est ce qui la distingue de l'optimisme naïf.",
+    "application": "Quand tu t'engages sur un projet incertain, accepte explicitement la possibilité de l'échec. L'espérance lucide tient mieux que la confiance aveugle."
   },
   {
     "id": "q-0457",
@@ -2659,7 +2693,9 @@
     "id": "q-0466",
     "text": "Il faut un peu risquer dans la vie, quand on veut avoir quelque chose.",
     "author": "Marcel Pagnol",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Pagnol formule une condition simple : obtenir suppose d'engager quelque chose. Refuser tout risque garantit surtout de conserver exactement ce qu'on a déjà.",
+    "application": "Sur un objectif qui compte, identifie ce que tu dois accepter de mettre en jeu — du temps, de l'argent, une réputation. Sans mise, pas de gain."
   },
   {
     "id": "q-0467",
@@ -2705,7 +2741,9 @@
     "author": "Jim Collins",
     "category": "leadership",
     "source": "De la performance à l'excellence",
-    "year": 2001
+    "year": 2001,
+    "meaning": "Collins désigne le confort du satisfaisant comme obstacle principal à l'excellence : ce qui fonctionne correctement n'appelle aucune remise en cause, donc rien ne progresse.",
+    "application": "Identifie ce qui marche « assez bien » dans ton activité depuis des années. C'est là que se cache ton plus gros potentiel inexploité."
   },
   {
     "id": "q-0482",
@@ -2835,7 +2873,9 @@
     "id": "q-0509",
     "text": "Les grands vendeurs sont des créateurs de relations qui apportent de la valeur et aident leurs clients à gagner.",
     "author": "Jeffrey Gitomer",
-    "category": "sales"
+    "category": "sales",
+    "meaning": "Gitomer redéfinit le métier commercial : la valeur créée pour le client précède la transaction, et la relation en découle. Vendre devient une conséquence, pas l'objectif direct.",
+    "application": "Avant ta prochaine relance, demande-toi ce que tu peux apporter d'utile sans rien vendre. C'est ce qui te distinguera de tous ceux qui relancent."
   },
   {
     "id": "q-0510",
@@ -2899,7 +2939,9 @@
     "id": "q-0522",
     "text": "L'échec n'est pas le contraire du succès, c'est une étape nécessaire pour y parvenir.",
     "author": "Marc Simoncini",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Simoncini place l'échec dans la séquence qui mène au succès plutôt qu'en opposition. Cette lecture transforme un revers en information sur la suite du chemin.",
+    "application": "Après un échec, cherche ce qu'il t'apprend sur l'étape suivante plutôt que sur tes capacités. La première question produit une action."
   },
   {
     "id": "q-0524",
@@ -2932,7 +2974,9 @@
     "id": "q-0527",
     "text": "L'ambition s'accorde mal avec la paresse.",
     "author": "La Rochefoucauld",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "La Rochefoucauld pointe une incompatibilité pratique : vouloir beaucoup et fournir peu ne se combine pas. L'ambition non suivie d'effort produit surtout de la frustration.",
+    "application": "Compare l'ambition que tu affiches au temps que tu y consacres réellement. L'écart entre les deux explique la plupart des projets qui n'avancent pas."
   },
   {
     "id": "q-0529",
@@ -2962,13 +3006,17 @@
     "id": "q-0534",
     "text": "Si vous n'avez pas honte de la première version de votre produit, vous avez lancé trop tard.",
     "author": "Reid Hoffman",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Hoffman propose la gêne comme indicateur de calendrier : si la première version te paraît présentable, tu as attendu trop longtemps et perdu du temps d'apprentissage.",
+    "application": "Livre ta prochaine version quand elle résout le problème principal, même mal. Les retours réels valent mieux que les améliorations imaginées."
   },
   {
     "id": "q-0535",
     "text": "L'échec n'est pas l'opposé de la réussite, il en fait partie.",
     "author": "Arianna Huffington",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Huffington place l'échec à l'intérieur du parcours plutôt qu'en face. Cette lecture change ce qu'on en fait : une étape se traverse, un contraire se combat.",
+    "application": "Quand un échec survient, demande-toi de quelle étape il s'agit plutôt que s'il fallait l'éviter. La première question fait avancer, la seconde paralyse."
   },
   {
     "id": "q-0536",
@@ -3018,7 +3066,9 @@
     "id": "q-0545",
     "text": "Il est impossible de vivre sans jamais échouer, à moins de vivre trop prudemment pour vivre vraiment.",
     "author": "J.K. Rowling",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Rowling pose une alternative sans échappatoire : soit on échoue parfois, soit on a organisé sa vie pour ne rien risquer — et cette prudence est elle-même une forme de renoncement.",
+    "application": "Vérifie que ta prudence protège quelque chose qui compte. Une vie sans échec signale souvent une ambition rabotée par précaution."
   },
   {
     "id": "q-0546",
@@ -3167,13 +3217,17 @@
     "id": "q-0565",
     "text": "Les grands battants sont portés non par la quête du succès, mais par la peur de l'échec.",
     "author": "Larry Ellison",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Ellison propose une lecture inhabituelle de la motivation : la crainte de l'échec pousse plus fort et plus longtemps que l'attrait du succès. C'est un constat sur les moteurs réels, pas une recommandation.",
+    "application": "Identifie ce qui te motive réellement — obtenir, ou éviter. Connaître son propre moteur permet de l'utiliser plutôt que de le subir."
   },
   {
     "id": "q-0566",
     "text": "Quand on innove, il faut être prêt à ce que tout le monde vous dise que vous êtes fou.",
     "author": "Larry Ellison",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Ellison décrit une conséquence mécanique de l'innovation : ce qui est nouveau ne peut pas être évalué avec les critères existants, donc il est jugé absurde. Le rejet est un effet, pas un verdict.",
+    "application": "Quand une idée provoque un rejet unanime, distingue les objections argumentées des réactions d'incompréhension. Seules les premières doivent te faire réviser."
   },
   {
     "id": "q-0567",
@@ -3204,7 +3258,9 @@
     "text": "Les gens détestent qu'on leur vende, mais ils adorent acheter.",
     "author": "Jeffrey Gitomer",
     "category": "sales",
-    "id": "q-0570"
+    "id": "q-0570",
+    "meaning": "Gitomer distingue deux expériences opposées : subir une pression, ou décider par soi-même. Le produit peut être identique, c'est le sentiment de contrôle qui change tout.",
+    "application": "Remplace tes affirmations par des questions qui aident le client à évaluer. Il conclura lui-même, et il défendra sa décision au lieu de la regretter."
   },
   {
     "text": "Le marketing ne consiste plus à parler des produits que vous fabriquez, mais à raconter des histoires.",
@@ -3218,7 +3274,9 @@
     "text": "Approchez chaque client avec l'idée de l'aider à résoudre un problème, pas de lui vendre un produit.",
     "author": "Brian Tracy",
     "category": "sales",
-    "id": "q-0572"
+    "id": "q-0572",
+    "meaning": "Tracy réoriente l'intention commerciale : arriver avec l'idée d'aider change les questions posées, donc l'information obtenue, donc la pertinence de la proposition. La vente devient une conséquence.",
+    "application": "Ouvre ton prochain rendez-vous par une question sur le problème du client, pas par ta présentation. Tu sauras vite si tu peux réellement l'aider."
   },
   {
     "text": "Faites de votre client le héros de votre histoire.",
@@ -3502,7 +3560,9 @@
     "id": "q-0611",
     "context": "Formulation devenue le résumé de tout le marketing moderne : le client n'achète pas un produit, il achète le résultat qu'il en attend.",
     "source": "« Marketing Myopia », Harvard Business Review",
-    "year": 1960
+    "year": 1960,
+    "meaning": "Levitt formule le principe fondateur du marketing moderne : le client n'achète pas un objet mais le résultat qu'il en attend. Décrire l'objet plutôt que le résultat manque la raison de l'achat.",
+    "application": "Réécris ta présentation en partant du résultat obtenu par le client. Les caractéristiques viennent après, pour prouver que le résultat est atteignable."
   },
   {
     "text": "Faites ce que vous faites si bien que les gens auront envie de revenir et d'amener leurs amis.",
@@ -3638,13 +3698,17 @@
     "text": "Payez-vous en premier.",
     "author": "George S. Clason",
     "category": "finance",
-    "id": "q-0632"
+    "id": "q-0632",
+    "meaning": "Clason énonce une règle d'ordre : prélever son épargne avant toute dépense, plutôt qu'espérer un solde. Ce qui vient en dernier ne vient jamais.",
+    "application": "Programme un virement automatique le jour de ta paie. L'automatisme retire la décision mensuelle, qui est le vrai point de fuite."
   },
   {
     "text": "Une partie de tout ce que vous gagnez vous appartient, à vous et à personne d'autre.",
     "author": "George S. Clason",
     "category": "finance",
-    "id": "q-0633"
+    "id": "q-0633",
+    "meaning": "Clason affirme un droit sur une part de ses propres revenus, avant les créanciers et les besoins courants. La formule transforme l'épargne en dû plutôt qu'en effort de volonté.",
+    "application": "Fixe un pourcentage — même faible — que tu ne dépenses jamais, quelles que soient les circonstances. C'est le principe qui compte, pas le montant de départ."
   },
   {
     "text": "Le temps passé sur le marché bat le fait de vouloir choisir le bon moment.",
@@ -3791,7 +3855,9 @@
     "category": "leadership",
     "id": "q-0652",
     "source": "De la performance à l'excellence",
-    "year": 2001
+    "year": 2001,
+    "meaning": "Collins inverse l'ordre habituel : constituer la bonne équipe avant de fixer la direction. Une équipe solide s'adapte à un changement de cap, une direction parfaite ne compense pas une mauvaise équipe.",
+    "application": "Avant de lancer un projet, assure-toi d'avoir les bonnes personnes. Le temps passé à recruter est presque toujours rentabilisé par la suite."
   },
   {
     "text": "Commencez avec la fin en tête.",
@@ -3873,13 +3939,17 @@
     "text": "Le leadership, c'est aussi savoir quand se taire.",
     "author": "Indra Nooyi",
     "category": "leadership",
-    "id": "q-0663"
+    "id": "q-0663",
+    "meaning": "Nooyi inclut le silence dans les compétences de direction. Parler en premier ferme le débat, occuper l'espace prive l'équipe de la sienne — se taire est parfois l'acte de leadership le plus utile.",
+    "application": "En réunion, parle en dernier sur les sujets où tu as un avis fort. Tu obtiendras des positions qui n'auraient jamais été exprimées autrement."
   },
   {
     "text": "Supposez toujours la bonne intention chez votre interlocuteur.",
     "author": "Indra Nooyi",
     "category": "leadership",
-    "id": "q-0664"
+    "id": "q-0664",
+    "meaning": "Nooyi propose un principe de lecture : partir du postulat que l'autre agit de bonne foi. Cela évite les conflits fondés sur des malentendus et change la qualité des échanges.",
+    "application": "Face à un comportement qui t'agace, formule d'abord une explication bienveillante plausible. Si elle tient, la conversation qui suit sera très différente."
   },
   {
     "text": "Si vous voulez aller vite, allez seul. Si vous voulez aller loin, allez ensemble.",
@@ -3902,14 +3972,18 @@
     "text": "Un bon plan exécuté aujourd'hui vaut mieux qu'un plan parfait exécuté la semaine prochaine.",
     "author": "George S. Patton",
     "category": "leadership",
-    "id": "q-0668"
+    "id": "q-0668",
+    "meaning": "Patton arbitre entre qualité et délai : dans une situation qui évolue, un plan appliqué maintenant s'adapte, tandis qu'un plan parfait arrive après que la situation a changé.",
+    "application": "Quand tu peaufines un plan depuis plus d'une semaine, lance-le en l'état. Les ajustements se feront au contact, avec de meilleures informations."
   },
   {
     "text": "Ne dites pas aux gens comment faire les choses. Dites-leur quoi faire et laissez-les vous surprendre par leur ingéniosité.",
     "author": "George S. Patton",
     "category": "leadership",
     "id": "q-0669",
-    "context": "Principe de commandement d'un général réputé pour son exigence, qui tenait pourtant à laisser l'initiative à ses subordonnés."
+    "context": "Principe de commandement d'un général réputé pour son exigence, qui tenait pourtant à laisser l'initiative à ses subordonnés.",
+    "meaning": "Patton, réputé exigeant, sépare l'objectif de la méthode : imposer le comment supprime l'ingéniosité de ceux qui exécutent, alors que c'est précisément ce qu'on attend d'eux.",
+    "application": "Formule tes demandes en résultat attendu plutôt qu'en marche à suivre. Tu recevras parfois mieux que ce que tu avais imaginé."
   },
   {
     "text": "Restez affamés, restez fous.",
@@ -3997,19 +4071,25 @@
     "text": "On rate cent pour cent des tirs qu'on ne tente pas.",
     "author": "Wayne Gretzky",
     "category": "mindset",
-    "id": "q-0680"
+    "id": "q-0680",
+    "meaning": "Gretzky énonce une certitude arithmétique : une tentative non faite a zéro chance d'aboutir. Toutes les autres, même improbables, ont une probabilité supérieure.",
+    "application": "Compte les demandes que tu n'as pas formulées ce mois-ci par crainte du refus. Chacune était une occasion à probabilité nulle."
   },
   {
     "text": "Je détestais chaque minute d'entraînement, mais je me disais : souffre maintenant et vis le reste de ta vie en champion.",
     "author": "Muhammad Ali",
     "category": "mindset",
-    "id": "q-0681"
+    "id": "q-0681",
+    "meaning": "Ali décrit un arbitrage entre deux souffrances : celle de l'entraînement, courte et choisie, et celle du regret, longue et subie. Il ne prétend pas aimer l'effort, il en accepte le prix.",
+    "application": "Quand une discipline te coûte, compare-la à ce que coûterait de ne pas la tenir sur dix ans. La comparaison rend l'effort du jour plus supportable."
   },
   {
     "text": "L'homme qui n'a pas d'imagination n'a pas d'ailes.",
     "author": "Muhammad Ali",
     "category": "mindset",
-    "id": "q-0682"
+    "id": "q-0682",
+    "meaning": "Ali relie l'imagination à la capacité de dépasser sa condition : sans représentation de ce qui pourrait être, on reste borné à ce qui est. L'image des ailes désigne cette capacité de projection.",
+    "application": "Avant de fixer un objectif réaliste, autorise-toi à décrire la version idéale. Tu pourras réduire ensuite, mais tu ne pourras pas viser plus haut que ce que tu as su imaginer."
   },
   {
     "text": "Le job n'est pas fini.",
@@ -4057,13 +4137,17 @@
     "text": "La passion est courante, la persévérance est rare.",
     "author": "Angela Duckworth",
     "category": "mindset",
-    "id": "q-0688"
+    "id": "q-0688",
+    "meaning": "Duckworth distingue une ressource abondante d'une ressource rare. Beaucoup de gens sont passionnés par quelque chose ; très peu maintiennent cet engagement quand l'enthousiasme retombe. C'est la seconde qualité qui discrimine.",
+    "application": "Ne choisis pas ta voie sur l'intensité de ton envie initiale, mais sur ce que tu es prêt à faire quand elle sera retombée."
   },
   {
     "text": "Le talent, c'est le potentiel. L'effort, c'est ce qui le transforme en résultat.",
     "author": "Angela Duckworth",
     "category": "mindset",
-    "id": "q-0689"
+    "id": "q-0689",
+    "meaning": "Duckworth pose une équation en deux temps : le talent définit un plafond potentiel, l'effort détermine quelle fraction en est atteinte. Deux personnes de talent inégal peuvent donc obtenir l'inverse de ce qu'on attend.",
+    "application": "Cesse d'évaluer les gens sur leur potentiel apparent. Regarde ce qu'ils produisent réellement sur six mois — c'est la seule mesure qui intègre l'effort."
   },
   {
     "text": "Tu as pouvoir sur ton esprit, pas sur les évènements extérieurs. Comprends cela et tu trouveras la force.",
@@ -4128,7 +4212,9 @@
     "category": "mindset",
     "id": "q-0699",
     "source": "Le Crépuscule des idoles",
-    "year": 1888
+    "year": 1888,
+    "meaning": "Nietzsche décrit un renforcement par l'épreuve, à condition d'y survivre — la formule contient sa propre limite. Ce n'est pas un éloge de la souffrance mais un constat sur ce qui reste après.",
+    "application": "Après une période difficile, note ce que tu sais désormais gérer et qui t'aurait effrayé avant. C'est le gain concret, à distinguer du coût."
   },
   {
     "text": "Celui qui a un pourquoi qui lui tient lieu de but peut supporter presque n'importe quel comment.",
@@ -4136,7 +4222,9 @@
     "category": "mindset",
     "id": "q-0700",
     "source": "Le Crépuscule des idoles",
-    "year": 1888
+    "year": 1888,
+    "meaning": "Nietzsche relie l'endurance au sens : disposer d'une raison suffisante rend supportable presque n'importe quelle modalité. La difficulté n'est pas absolue, elle dépend de ce à quoi elle sert.",
+    "application": "Quand une tâche te pèse, reformule à quoi elle sert précisément. Si tu n'y arrives pas, le problème n'est pas la charge mais l'absence de finalité."
   },
   {
     "text": "La plus grande aventure, c'est de vivre la vie de ses rêves.",
@@ -4177,7 +4265,9 @@
     "text": "On ne subit pas l'avenir, on le fait.",
     "author": "Georges Bernanos",
     "category": "mindset",
-    "id": "q-0707"
+    "id": "q-0707",
+    "meaning": "Bernanos oppose deux rapports au futur : le subir comme une donnée, ou le construire comme un résultat. Le choix entre les deux est lui-même une décision quotidienne.",
+    "application": "Repère un aspect de ta situation que tu décris comme inévitable. Vérifie s'il l'est réellement ou si tu as simplement cessé d'agir dessus."
   },
   {
     "text": "Le pessimiste se plaint du vent, l'optimiste espère qu'il va changer, le réaliste ajuste ses voiles.",
@@ -4206,6 +4296,8 @@
     "text": "Tout le monde savait que c'était impossible. Il est venu un imbécile qui ne le savait pas et qui l'a fait.",
     "author": "Marcel Pagnol",
     "category": "mindset",
-    "id": "q-0712"
+    "id": "q-0712",
+    "meaning": "Pagnol décrit un mécanisme réel : le consensus sur l'impossibilité empêche d'essayer, donc empêche de découvrir que c'était possible. L'ignorance de l'obstacle peut être un avantage.",
+    "application": "Face à un « tout le monde sait que ça ne marche pas », demande sur quoi repose cette certitude. Souvent, personne n'a réellement testé depuis longtemps."
   }
 ]
