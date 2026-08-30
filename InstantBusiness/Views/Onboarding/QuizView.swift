@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct QuizView: View {
+    @EnvironmentObject private var authManager: AuthManager
     @AppStorage("hasCompletedQuiz") private var hasCompletedQuiz = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private let userSyncService = UserSyncService()
 
     @State private var index = 0
     @State private var answers: [Int: QuizOption] = [:]
@@ -120,6 +123,19 @@ struct QuizView: View {
 
         SharedDefaults.quizProfile = profile.key
         SharedDefaults.preferredCategories = preferred
+
+        // Envoyé au serveur comme le profil : c'est ce qui évite de reposer ces questions
+        // après une réinstallation ou sur un deuxième appareil. L'écriture est en
+        // arrière-plan, l'écran suivant n'a pas à l'attendre.
+        if let userID = authManager.session?.user.id.uuidString {
+            Task {
+                await userSyncService.saveQuiz(
+                    userID: userID,
+                    profileKey: profile.key,
+                    categories: preferred
+                )
+            }
+        }
 
         Analytics.track(.quizCompleted, [
             "profile": .string(profile.key),
@@ -292,4 +308,5 @@ struct QuizResultView: View {
 
 #Preview {
     QuizView()
+        .environmentObject(AuthManager())
 }

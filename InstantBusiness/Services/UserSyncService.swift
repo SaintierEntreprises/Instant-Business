@@ -19,6 +19,8 @@ final class UserSyncService {
         var freeze_period: String?
         var freeze_granted: Int?
         var last_freeze_date: String?
+        var quiz_profile: String?
+        var preferred_categories: [String]?
     }
 
     /// Écritures volontairement séparées : chaque upsert ne transmet que ses propres
@@ -41,10 +43,18 @@ final class UserSyncService {
         var gender: String
     }
 
+    private struct QuizUpdate: Encodable {
+        let user_id: String
+        var quiz_profile: String
+        var preferred_categories: [String]
+    }
+
     struct Profile {
         var firstName: String?
         var lastName: String?
         var gender: Gender?
+        var quizProfile: String?
+        var preferredCategories: [QuoteCategory]?
     }
 
     private static let dateFormatter: DateFormatter = {
@@ -77,6 +87,19 @@ final class UserSyncService {
                 first_name: firstName,
                 last_name: lastName,
                 gender: gender.rawValue
+            ))
+            .execute()
+    }
+
+    /// Enregistre le résultat du quiz, pour ne pas le redemander après une
+    /// réinstallation ou sur un deuxième téléphone.
+    func saveQuiz(userID: String, profileKey: String, categories: [QuoteCategory]) async {
+        _ = try? await SupabaseProvider.client
+            .from("user_state")
+            .upsert(QuizUpdate(
+                user_id: userID,
+                quiz_profile: profileKey,
+                preferred_categories: categories.map(\.rawValue)
             ))
             .execute()
     }
@@ -185,7 +208,12 @@ final class UserSyncService {
         let profile = Profile(
             firstName: remote?.first_name,
             lastName: remote?.last_name,
-            gender: remote?.gender.flatMap(Gender.init(rawValue:))
+            gender: remote?.gender.flatMap(Gender.init(rawValue:)),
+            quizProfile: remote?.quiz_profile,
+            // Une catégorie que cette version ne connaît pas est ignorée plutôt que de
+            // faire échouer la restauration entière, comme pour le contenu distant.
+            preferredCategories: remote?.preferred_categories?
+                .compactMap(QuoteCategory.init(rawValue:))
         )
         return (newStreak, profile, Self.isGrantActive(remote))
     }

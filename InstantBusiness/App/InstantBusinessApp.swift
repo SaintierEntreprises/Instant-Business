@@ -121,6 +121,18 @@ struct InstantBusinessApp: App {
                 SharedDefaults.gender = result.profile.gender
                 UserDefaults.standard.set(true, forKey: "hasCompletedProfile")
             }
+
+            // Le quiz suit le même chemin que le profil. Sans cela, une réinstallation
+            // reposait les questions à quelqu'un dont on venait de restaurer le prénom
+            // sans le lui redemander — et le fil repartait sur des catégories neutres,
+            // alors que le serveur savait lesquelles avaient été retenues.
+            if let quizProfile = result.profile.quizProfile, !quizProfile.isEmpty {
+                SharedDefaults.quizProfile = quizProfile
+                if let categories = result.profile.preferredCategories, !categories.isEmpty {
+                    SharedDefaults.preferredCategories = categories
+                }
+                UserDefaults.standard.set(true, forKey: "hasCompletedQuiz")
+            }
         } else {
             favorites.detachSession()
             // Le blocage doit aussi s'appliquer avant connexion.
