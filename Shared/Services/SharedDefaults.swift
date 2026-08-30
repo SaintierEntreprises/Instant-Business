@@ -26,6 +26,7 @@ enum SharedDefaults {
         static let hasGrantedPremium = "hasGrantedPremium"
         static let lastForegroundDate = "lastForegroundDate"
         static let openDays = "openDays"
+        static let dailyQuoteIDs = "dailyQuoteIDs"
         static let bestStreak = "bestStreak"
         static let lastStreakSheetDate = "lastStreakSheetDate"
         static let appTheme = "appTheme"
@@ -180,6 +181,11 @@ enum SharedDefaults {
         dayKeyFormatter.string(from: date)
     }
 
+    /// L'opération inverse, pour relire un historique stocké sous forme de clés.
+    static func date(fromDayKey key: String) -> Date? {
+        dayKeyFormatter.date(from: key)
+    }
+
     /// Conservés bien au-delà de la semaine affichée : la vue n'en montre que sept, mais
     /// garder un historique court permettrait plus tard un calendrier mensuel sans avoir
     /// à repartir de zéro. Tronqué pour que la liste ne grossisse pas indéfiniment.
@@ -200,6 +206,36 @@ enum SharedDefaults {
 
     static func hasOpened(_ date: Date) -> Bool {
         openDays.contains(dayKey(for: date))
+    }
+
+    /// Citation du jour effectivement montrée, par journée.
+    ///
+    /// `ContentStore.quoteOfTheDay(on:)` sait recalculer n'importe quel jour passé, mais
+    /// son résultat dépend du catalogue en vigueur : une citation corrigée ou retirée
+    /// depuis réécrirait l'histoire, et le journal montrerait des citations que personne
+    /// n'a jamais lues. On retient donc ce qui a été montré, et le recalcul ne sert plus
+    /// que de secours pour les jours antérieurs à cette mémoire.
+    ///
+    /// Plafonné comme `openDays` : au-delà, un journal de plus d'un an n'a pas de lecteur.
+    static var dailyQuoteIDs: [String: String] {
+        get { suite.dictionary(forKey: Keys.dailyQuoteIDs) as? [String: String] ?? [:] }
+        set {
+            let trimmed = newValue.keys.sorted().suffix(openDaysLimit)
+            suite.set(
+                Dictionary(uniqueKeysWithValues: trimmed.map { ($0, newValue[$0]!) }),
+                forKey: Keys.dailyQuoteIDs
+            )
+        }
+    }
+
+    /// Retient la citation montrée un jour donné, sans jamais écraser une entrée existante :
+    /// la première version affichée est celle qui a été lue.
+    static func rememberDailyQuote(id: String, on date: Date) {
+        let key = dayKey(for: date)
+        var all = dailyQuoteIDs
+        guard all[key] == nil else { return }
+        all[key] = id
+        dailyQuoteIDs = all
     }
 
     /// Meilleure série atteinte, jamais redescendue. Sert de repère quand la série en
@@ -370,6 +406,7 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.hasGrantedPremium)
         suite.removeObject(forKey: Keys.lastForegroundDate)
         suite.removeObject(forKey: Keys.openDays)
+        suite.removeObject(forKey: Keys.dailyQuoteIDs)
         suite.removeObject(forKey: Keys.bestStreak)
         suite.removeObject(forKey: Keys.lastStreakSheetDate)
         suite.removeObject(forKey: Keys.frozenDays)

@@ -113,6 +113,13 @@ enum StreakManager {
         }
         SharedDefaults.openDays = days
 
+        // La citation du jour est retenue au moment où elle est vue, pas recalculée plus
+        // tard : le catalogue peut changer entre-temps, et le journal doit montrer ce qui
+        // a réellement été lu.
+        if let quote = ContentStore.quoteOfTheDay(on: today) {
+            SharedDefaults.rememberDailyQuote(id: quote.id, on: today)
+        }
+
         if streak > SharedDefaults.bestStreak {
             SharedDefaults.bestStreak = streak
         }

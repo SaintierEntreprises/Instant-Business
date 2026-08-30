@@ -48,6 +48,7 @@ struct StreakDetailView: View {
         ScrollView {
             VStack(spacing: 22) {
                 summary
+                journalRow
                 monthCard
                 badgesCard
                 freezeCard
@@ -92,6 +93,54 @@ struct StreakDetailView: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(Color(.secondarySystemGroupedBackground))
         )
+    }
+
+    // MARK: - Journal
+
+    /// Placé juste sous le résumé : c'est la contrepartie des chiffres qu'on vient de
+    /// lire, et la seule partie de cet écran qu'on peut réellement parcourir.
+    private var journalRow: some View {
+        NavigationLink {
+            JournalView()
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: "book.closed.fill")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .frame(width: 34, height: 34)
+                    .background(
+                        RoundedRectangle(cornerRadius: 9, style: .continuous)
+                            .fill(StreakPalette.tint)
+                    )
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Mon journal")
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.primary)
+                    Text(journalCaption)
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(16)
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            )
+        }
+        .buttonStyle(PressableButtonStyle(scale: 0.98))
+    }
+
+    private var journalCaption: String {
+        totalDays > 1
+            ? "Les \(totalDays) citations que tu as déjà lues"
+            : "Retrouve tes citations du jour, jour après jour"
     }
 
     // MARK: - Calendrier
