@@ -18,6 +18,7 @@
 		1BFA6C2BA2962A3B5EF5E526 /* WidgetGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */; };
 		1C4465A8F20A5F1AF2D23BF7 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
 		1DF2DB7C42C828A616DE34B3 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = CB6897B2C8A2EB351679232C /* Supabase */; };
+		216D70BC234A441ED6FE3459 /* StreakTrackerLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */; };
 		23D20746DFC69DBE01802C70 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 98FA651AFB70B064EA7E06B7 /* content.json */; };
 		23F94F7FB75E2AC87EC3ECAD /* PrivacyPolicy.md in Resources */ = {isa = PBXBuildFile; fileRef = 2592274ABF3F66089FFFFE7A /* PrivacyPolicy.md */; };
 		2732C1FABBD1063AA555E082 /* AppUpdateGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7A52DF3EE5BC0956CBE732 /* AppUpdateGate.swift */; };
@@ -153,6 +154,7 @@
 		2AD38765966AF44016F29AA6 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		2C1F916E6100AFA05C41E90D /* LegalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalDocument.swift; sourceTree = "<group>"; };
 		2CD0BA7E4132A008E21F5E59 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTrackerLayoutTests.swift; sourceTree = "<group>"; };
 		3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTheme.swift; sourceTree = "<group>"; };
 		31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = InstantBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1DBE96777E0978047DC7F4 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
 				1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */,
 				A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */,
+				2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */,
 			);
 			path = InstantBusinessTests;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
 				9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */,
 				EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */,
+				216D70BC234A441ED6FE3459 /* StreakTrackerLayoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

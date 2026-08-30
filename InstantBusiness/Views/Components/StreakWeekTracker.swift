@@ -43,14 +43,35 @@ struct StreakWeekTracker: View {
         case compact
         case prominent
 
+        /// Diamètre *souhaité*. Le diamètre réellement dessiné peut être plus petit :
+        /// voir `diameter(forColumn:)`.
         var circle: CGFloat { self == .prominent ? 38 : 30 }
-        var glyph: Font {
-            .system(size: self == .prominent ? 17 : 14, weight: .bold, design: .rounded)
+
+        /// Hauteur réservée à la rangée, calculée sur le diamètre souhaité pour rester
+        /// stable quelle que soit la largeur : sans hauteur fixe, la carte se
+        /// redimensionnerait d'un téléphone à l'autre.
+        var rowHeight: CGFloat { circle + 16 }
+
+        /// Le glyphe suit le rond plutôt qu'une taille figée, sinon une coche calibrée
+        /// pour 38 pt paraît énorme dans un rond réduit à 32.
+        func glyph(diameter: CGFloat) -> Font {
+            .system(size: diameter * 0.45, weight: .bold, design: .rounded)
         }
         var label: Font {
             .system(size: self == .prominent ? 13 : 11, weight: .semibold, design: .rounded)
         }
         var spacing: CGFloat { self == .prominent ? 10 : 8 }
+
+        /// Diamètre qui tient dans une colonne.
+        ///
+        /// Le rond était figé à 38 pt alors qu'une colonne n'en fait qu'environ 45 sur un
+        /// iPhone — anneau d'aujourd'hui compris (+9 pt), le marqueur débordait de sa
+        /// colonne, chevauchait ses voisins et se faisait rogner par les angles arrondis
+        /// de la carte. Les 12 pt retirés couvrent cet anneau et laissent une marge
+        /// visible de part et d'autre.
+        func diameter(forColumn column: CGFloat) -> CGFloat {
+            max(18, min(circle, column - 12))
+        }
     }
 
     let days: [StreakDay]
@@ -76,25 +97,30 @@ struct StreakWeekTracker: View {
                 }
             }
 
-            ZStack(alignment: .leading) {
-                GeometryReader { proxy in
-                    streakBand(width: proxy.size.width)
-                }
+            GeometryReader { proxy in
+                let column = proxy.size.width / CGFloat(max(days.count, 1))
+                let diameter = size.diameter(forColumn: column)
 
-                HStack(spacing: 0) {
-                    ForEach(Array(days.enumerated()), id: \.element.id) { index, day in
-                        marker(for: day)
-                            .frame(maxWidth: .infinity)
-                            .scaleEffect(isRevealed ? 1 : 0.4)
-                            .opacity(isRevealed ? 1 : 0)
-                            .animation(
-                                .spring(response: 0.42, dampingFraction: 0.62)
-                                    .delay(reduceMotion ? 0 : Double(index) * 0.06),
-                                value: isRevealed
-                            )
+                ZStack(alignment: .leading) {
+                    streakBand(width: proxy.size.width, diameter: diameter)
+
+                    HStack(spacing: 0) {
+                        ForEach(Array(days.enumerated()), id: \.element.id) { index, day in
+                            marker(for: day, diameter: diameter)
+                                .frame(maxWidth: .infinity)
+                                .scaleEffect(isRevealed ? 1 : 0.4)
+                                .opacity(isRevealed ? 1 : 0)
+                                .animation(
+                                    .spring(response: 0.42, dampingFraction: 0.62)
+                                        .delay(reduceMotion ? 0 : Double(index) * 0.06),
+                                    value: isRevealed
+                                )
+                        }
                     }
                 }
+                .frame(maxHeight: .infinity)
             }
+            .frame(height: size.rowHeight)
         }
         .onAppear { revealed = true }
         .accessibilityElement(children: .contain)
@@ -108,11 +134,14 @@ struct StreakWeekTracker: View {
     /// Un seul bandeau suffit : une série est par définition contiguë, ses jours ne
     /// peuvent pas être séparés dans la semaine.
     @ViewBuilder
-    private func streakBand(width: CGFloat) -> some View {
+    private func streakBand(width: CGFloat, diameter: CGFloat) -> some View {
         if let first = days.firstIndex(where: \.isInCurrentStreak),
            let last = days.lastIndex(where: \.isInCurrentStreak) {
             let column = width / CGFloat(max(days.count, 1))
-            let height = size.circle + 14
+            // Plafonnée à la colonne : la demi-hauteur du bandeau déborde de son extrémité
+            // arrondie, et dépassait donc à gauche et à droite quand la série touchait
+            // lundi ou dimanche — c'est ce qui rognait les angles de la carte.
+            let height = min(diameter + 12, column - 2)
             let bandWidth = CGFloat(last - first) * column + height
             let leading = (CGFloat(first) + 0.5) * column - height / 2
 
@@ -131,14 +160,14 @@ struct StreakWeekTracker: View {
     // MARK: - Ronds
 
     @ViewBuilder
-    private func marker(for day: StreakDay) -> some View {
+    private func marker(for day: StreakDay, diameter: CGFloat) -> some View {
         ZStack {
             // Anneau d'aujourd'hui, posé à l'extérieur du rond : c'est le seul repère qui
             // dit où on se trouve dans la semaine sans ajouter de texte.
             if day.isToday {
                 Circle()
                     .strokeBorder(StreakPalette.tint.opacity(0.35), lineWidth: 2)
-                    .frame(width: size.circle + 9, height: size.circle + 9)
+                    .frame(width: diameter + 9, height: diameter + 9)
             }
 
             Group {
@@ -149,14 +178,14 @@ struct StreakWeekTracker: View {
                         .fill(StreakPalette.frost)
                         .shadow(color: StreakPalette.frostTint.opacity(0.35), radius: 5, y: 2)
                     Image(systemName: "snowflake")
-                        .font(size.glyph)
+                        .font(size.glyph(diameter: diameter))
                         .foregroundStyle(.white)
                 } else if day.isInCurrentStreak {
                     Circle()
                         .fill(StreakPalette.flame)
                         .shadow(color: StreakPalette.tint.opacity(0.35), radius: 5, y: 2)
                     Image(systemName: day.isToday ? "flame.fill" : "checkmark")
-                        .font(size.glyph)
+                        .font(size.glyph(diameter: diameter))
                         .foregroundStyle(.white)
                 } else if day.isOpened {
                     // Fait, mais avant une coupure : marqué sans être célébré. L'effacer
@@ -164,7 +193,7 @@ struct StreakWeekTracker: View {
                     Circle()
                         .fill(Color.primary.opacity(0.08))
                     Image(systemName: "checkmark")
-                        .font(size.glyph)
+                        .font(size.glyph(diameter: diameter))
                         .foregroundStyle(.secondary)
                 } else if day.isFuture {
                     Circle()
@@ -177,9 +206,9 @@ struct StreakWeekTracker: View {
                         .strokeBorder(Color.primary.opacity(0.10), lineWidth: 2)
                 }
             }
-            .frame(width: size.circle, height: size.circle)
+            .frame(width: diameter, height: diameter)
         }
-        .frame(width: size.circle + 16, height: size.circle + 16)
+        .frame(width: diameter + 12, height: diameter + 12)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(day.fullName)
         .accessibilityValue(accessibilityValue(for: day))
