@@ -11,9 +11,13 @@ import Supabase
 @MainActor
 final class AppUpdateGate: ObservableObject {
     /// Identifiant App Store de l'app, utilisé pour ouvrir sa fiche.
-    static let appStoreID = "6801872138"
+    ///
+    /// `nonisolated` : c'est une constante, elle n'a aucune raison d'être liée au fil
+    /// principal. Sans cela, la lire depuis un contexte non isolé — comme le lien « Noter
+    /// l'app » — produit un avertissement qui devient une erreur en Swift 6.
+    nonisolated static let appStoreID = "6801872138"
 
-    static var appStoreURL: URL? {
+    nonisolated static var appStoreURL: URL? {
         URL(string: "https://apps.apple.com/app/id\(appStoreID)")
     }
 

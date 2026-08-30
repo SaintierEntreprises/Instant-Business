@@ -6,7 +6,7 @@ Document de passation, réécrit le 30 août 2026. Lis ce fichier en entier avan
 
 App iOS native (Swift/SwiftUI + WidgetKit), en français, façon Punchlines/Instant Bible mais pour l'entrepreneuriat : citations business affichées sur écran d'accueil/verrouillage, **573 citations, 258 auteurs**, en 4 catégories (Mindset, Vente, Leadership, Finance), compte obligatoire (Sign in with Apple/Google) pour synchroniser favoris et série, abonnement Premium via StoreKit, notifications locales programmables, et un tableau de bord analytique maison (hors app, page web privée).
 
-**Statut : publiée sur l'App Store.** ⚠️ **Seule la 1.1 est en ligne.** La 1.2 a été préparée mais jamais soumise — une session antérieure a cru à tort qu'elle était publiée et avait fait monter la version à 1.3 sans raison. Corrigé : `project.yml` porte `MARKETING_VERSION 1.2`, `CURRENT_PROJECT_VERSION 25` (le build reste supérieur au 22 déjà téléversé, donc jamais en conflit). **Vérifier l'état réel sur App Store Connect avant de toucher au numéro de version.**
+**Statut : publiée sur l'App Store.** ⚠️ **Seule la 1.1 est en ligne.** Version prête à soumettre : **1.2 (28)** — les builds 26 et 27 ont déjà été téléversés chez Apple, tout nouveau build doit donc partir de 28. La 1.2 a été préparée mais jamais soumise — une session antérieure a cru à tort qu'elle était publiée et avait fait monter la version à 1.3 sans raison. Corrigé : `project.yml` porte `MARKETING_VERSION 1.2`, `CURRENT_PROJECT_VERSION 25` (le build reste supérieur au 22 déjà téléversé, donc jamais en conflit). **Vérifier l'état réel sur App Store Connect avant de toucher au numéro de version.**
 
 ## ⚠️ Priorité n°1 pour la prochaine session : 4 commits locaux non poussés
 
@@ -238,6 +238,36 @@ D'où les garde-fous : au moins **5 jours d'usage distincts**, **120 jours entre
 **Ligne « Noter Instant Business »** ajoutée dans les réglages, ouvrant l'App Store directement sur le formulaire d'avis (`?action=write-review`). Indispensable en complément : la feuille native peut refuser de s'afficher sans prévenir, et quelqu'un qui veut noter doit toujours pouvoir le faire.
 
 Évènements : `review_prompt_shown`, `review_link_opened`.
+
+## ✅ Fait le 30 août 2026 : fiches de citation complètes
+
+### Ce que porte chaque citation
+
+Les 555 citations ont désormais un **principe** (le mécanisme que la formule nomme) et une **application** (une action concrète, avec un critère de décision). Longueurs calibrées sur le sujet : 21 à 45 mots pour le principe, 17 à 42 pour l'application.
+
+La fiche affiche trois blocs dans cet ordre : **LE PRINCIPE**, **COMMENT L'APPLIQUER**, **CONTEXTE**. La provenance passe en dernier parce que c'est elle qui manque le plus souvent.
+
+### Pourquoi 100 % d'analyse mais seulement 13 % de provenance
+
+C'est la distinction qui structure tout ce travail. `context` est une **affirmation sur le passé** : elle se vérifie ou ne s'écrit pas. `meaning` et `application` sont des **lectures du texte lui-même** : elles s'appuient sur la citation, pas sur une archive. Une citation dont l'origine est introuvable peut donc être expliquée sans qu'une seule source soit inventée.
+
+Le plafond de la provenance est réel, pas un travail inachevé : beaucoup de formules — notamment françaises — circulent sans origine identifiable. Une recherche sur la citation Bezos « votre marque est ce que les gens disent de vous » n'a donné **aucune source primaire**, alors que c'est une des phrases business les plus reprises au monde.
+
+### Règles tenues sur l'ensemble
+
+- **Aucune source non vérifiée.** C'est ce qui avait produit les 18 fausses citations retirées plus tôt.
+- **Aucun conseil d'investissement personnalisé.** Sur les 79 citations de finance, les applications restent des règles de méthode : calculer son taux d'épargne, écrire ses critères à froid, vérifier d'où vient un rendement promis.
+- **Aucune analyse ni application dupliquée** sur 1110 textes — vérifié automatiquement.
+
+### Contrôles et migrations
+
+Migrations `0011` (colonnes `meaning`/`application`), `0012` (286 premières fiches) et `0013` (les 555) appliquées en production. Chaque migration a été **réanalysée ligne par ligne et comparée champ par champ au JSON avant envoi** — le texte français est saturé d'apostrophes, une erreur d'échappement corromprait la base sans prévenir.
+
+Un contrôle détecte les fiches à moitié remplies : il a déjà rattrapé deux Buffett passés à travers un lot.
+
+### Contenu piloté serveur : ce que ça permet et ce que ça ne permet pas
+
+Les corrections éditoriales ultérieures **ne demandent plus de build** — seulement du SQL. Mais le contenu serveur permet de changer ce que l'app sait déjà afficher, **pas de lui apprendre à afficher quelque chose de nouveau**. C'est exactement pourquoi les blocs principe/application n'apparaissaient pas dans le build 27 : le code qui les lit a été écrit après cet archivage.
 
 ## Infrastructure et identifiants (non sensibles, référence rapide)
 
