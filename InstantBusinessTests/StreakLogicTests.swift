@@ -16,6 +16,21 @@ final class StreakLogicTests: XCTestCase {
         calendar.date(byAdding: .day, value: offset, to: today)!
     }
 
+    /// Date fixe pour tout ce qui touche à la semaine affichée : un dimanche, donc le
+    /// dernier jour de sa semaine, où les jours précédents figurent tous.
+    ///
+    /// Ces tests s'appuyaient sur la date du jour et devenaient faux le lundi — « hier »
+    /// tombait alors dans la semaine précédente, la recherche ne renvoyait rien, et trois
+    /// assertions échouaient sans que rien n'ait changé dans l'app. Un test de calendrier
+    /// ne doit pas dépendre du jour où on le lance.
+    private var weekReference: Date {
+        calendar.date(from: DateComponents(year: 2026, month: 8, day: 30))!
+    }
+
+    private func weekDay(_ offset: Int) -> Date {
+        calendar.date(byAdding: .day, value: offset, to: weekReference)!
+    }
+
     override func setUp() {
         super.setUp()
         // Chaque test repart d'un état vierge : ces valeurs vivent dans la suite partagée
@@ -165,12 +180,21 @@ final class StreakLogicTests: XCTestCase {
     }
 
     func testUnJourGeleCompteDansLaSerieSansEtreOuvert() {
-        let open: Set<String> = [SharedDefaults.dayKey(for: today), SharedDefaults.dayKey(for: day(-2))]
-        let frozen: Set<String> = [SharedDefaults.dayKey(for: day(-1))]
+        let open: Set<String> = [
+            SharedDefaults.dayKey(for: weekReference),
+            SharedDefaults.dayKey(for: weekDay(-2))
+        ]
+        let frozen: Set<String> = [SharedDefaults.dayKey(for: weekDay(-1))]
 
-        let days = StreakWeek.days(streak: 3, openDays: open, frozenDays: frozen)
-        let yesterday = days.first { calendar.isDate($0.date, inSameDayAs: day(-1)) }
+        let days = StreakWeek.days(
+            streak: 3,
+            openDays: open,
+            frozenDays: frozen,
+            reference: weekReference
+        )
+        let yesterday = days.first { calendar.isDate($0.date, inSameDayAs: weekDay(-1)) }
 
+        XCTAssertNotNil(yesterday, "la veille de la référence doit figurer dans la semaine")
         XCTAssertEqual(yesterday?.isFrozen, true)
         XCTAssertEqual(yesterday?.isOpened, false)
         XCTAssertEqual(yesterday?.isInCurrentStreak, true)
@@ -180,20 +204,20 @@ final class StreakLogicTests: XCTestCase {
     /// faux, le compter dans la série le serait aussi.
     func testUnJourOuvertAvantUneCoupureEstHorsSerie() {
         let open: Set<String> = [
-            SharedDefaults.dayKey(for: today),
-            SharedDefaults.dayKey(for: day(-1)),
-            SharedDefaults.dayKey(for: day(-4))
+            SharedDefaults.dayKey(for: weekReference),
+            SharedDefaults.dayKey(for: weekDay(-1)),
+            SharedDefaults.dayKey(for: weekDay(-4))
         ]
 
-        let days = StreakWeek.days(streak: 2, openDays: open)
-        let old = days.first { calendar.isDate($0.date, inSameDayAs: day(-4)) }
+        let days = StreakWeek.days(streak: 2, openDays: open, reference: weekReference)
+        let old = days.first { calendar.isDate($0.date, inSameDayAs: weekDay(-4)) }
 
-        // Le jour -4 peut tomber hors de la semaine affichée selon le jour de la semaine ;
-        // le test ne vaut que lorsqu'il y figure.
-        if let old {
-            XCTAssertTrue(old.isOpened)
-            XCTAssertFalse(old.isInCurrentStreak)
-        }
+        // La référence fixe garantit que le jour -4 figure dans la semaine. Le test
+        // n'avait auparavant de valeur que certains jours, et passait sans rien vérifier
+        // les autres.
+        XCTAssertNotNil(old, "le jour -4 doit figurer dans la semaine")
+        XCTAssertEqual(old?.isOpened, true)
+        XCTAssertEqual(old?.isInCurrentStreak, false)
     }
 
     // MARK: - Historique reconstitué
