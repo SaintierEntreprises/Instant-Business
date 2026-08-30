@@ -6,7 +6,7 @@ Document de passation, réécrit le 30 août 2026. Lis ce fichier en entier avan
 
 App iOS native (Swift/SwiftUI + WidgetKit), en français, façon Punchlines/Instant Bible mais pour l'entrepreneuriat : citations business affichées sur écran d'accueil/verrouillage, **573 citations, 258 auteurs**, en 4 catégories (Mindset, Vente, Leadership, Finance), compte obligatoire (Sign in with Apple/Google) pour synchroniser favoris et série, abonnement Premium via StoreKit, notifications locales programmables, et un tableau de bord analytique maison (hors app, page web privée).
 
-**Statut : publiée sur l'App Store.** Version courante dans `project.yml` : `MARKETING_VERSION 1.3`, `CURRENT_PROJECT_VERSION 23` — 1.2 / 22 est la version en ligne, 1.3 / 23 n'a pas encore été archivée.
+**Statut : publiée sur l'App Store.** ⚠️ **Seule la 1.1 est en ligne.** La 1.2 a été préparée mais jamais soumise — une session antérieure a cru à tort qu'elle était publiée et avait fait monter la version à 1.3 sans raison. Corrigé : `project.yml` porte `MARKETING_VERSION 1.2`, `CURRENT_PROJECT_VERSION 25` (le build reste supérieur au 22 déjà téléversé, donc jamais en conflit). **Vérifier l'état réel sur App Store Connect avant de toucher au numéro de version.**
 
 ## ⚠️ Priorité n°1 pour la prochaine session : 4 commits locaux non poussés
 
