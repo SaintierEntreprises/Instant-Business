@@ -33,7 +33,10 @@ struct SettingsView: View {
                         streakCard
                     }
                     .buttonStyle(PressableButtonStyle(scale: 0.98))
-                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 10, trailing: 16))
+                    // Marges horizontales nulles : `Form` retranche déjà la sienne à
+                    // chaque section. Les 16 pt qui figuraient ici s'y ajoutaient, et la
+                    // carte de série s'affichait plus étroite que celles d'en dessous.
+                    .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 10, trailing: 0))
                     .listRowBackground(Color.clear)
                 }
 
