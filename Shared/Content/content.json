@@ -3,31 +3,41 @@
     "text": "Quand vous êtes dans le sens contraire du courant et que vous nagez vite, vous reculez moins que les autres.",
     "author": "Bernard Tapie",
     "category": "mindset",
-    "id": "q-0005"
+    "id": "q-0005",
+    "meaning": "Tapie décrit une situation défavorable où l'effort ne produit pas de gain visible, mais limite la perte. C'est une définition réaliste de la résistance : on ne gagne pas, on perd moins vite que les autres.",
+    "application": "En période difficile, mesure-toi à ton secteur plutôt qu'à ton passé. Reculer moins que les autres est une performance, même si ça n'en a pas l'air."
   },
   {
     "text": "La réussite, c'est un peu de talent, beaucoup de travail et surtout une passion dévorante.",
     "author": "Bernard Tapie",
     "category": "mindset",
-    "id": "q-0006"
+    "id": "q-0006",
+    "meaning": "Tapie pondère trois facteurs et donne le poids principal au dernier : le talent aide, le travail est indispensable, mais c'est l'intensité de l'engagement qui fait tenir la durée nécessaire.",
+    "application": "Si un projet ne t'anime pas, sois lucide sur ta capacité à fournir l'effort qu'il exigera. Le talent seul ne compense jamais un investissement tiède."
   },
   {
     "text": "Seul un poisson mort navigue dans le sens du courant.",
     "author": "Bernard Arnault",
     "category": "mindset",
-    "id": "q-0007"
+    "id": "q-0007",
+    "meaning": "Arnault oppose le mouvement propre à la dérive. Suivre le courant demande zéro effort et donne l'impression d'avancer, mais c'est le courant qui décide de la destination.",
+    "application": "Repère ce que tu fais uniquement parce que ton secteur le fait. Chacun de ces points est une décision que tu as déléguée sans le savoir."
   },
   {
     "text": "Un bon produit peut durer éternellement.",
     "author": "Bernard Arnault",
     "category": "mindset",
-    "id": "q-0008"
+    "id": "q-0008",
+    "meaning": "Arnault, qui bâtit sur des maisons centenaires, oppose la qualité intrinsèque à la mode. Un produit réellement bon échappe aux cycles ; un produit tendance vit le temps de la tendance.",
+    "application": "Sur ta prochaine décision produit, demande-toi si elle tiendra dans dix ans. Ce filtre écarte l'essentiel de ce qui paraît urgent aujourd'hui."
   },
   {
     "text": "Si vous contrôlez votre distribution, vous contrôlez votre image.",
     "author": "Bernard Arnault",
     "category": "leadership",
-    "id": "q-0009"
+    "id": "q-0009",
+    "meaning": "Arnault désigne la distribution comme le point de contrôle de l'image : c'est là que le client rencontre le produit, et cette rencontre détermine la perception plus que n'importe quelle campagne.",
+    "application": "Regarde les points de contact que tu ne contrôles pas — revendeurs, plateformes, intermédiaires. Ce sont eux qui façonnent ton image, pas ta communication."
   },
   {
     "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
@@ -87,7 +97,9 @@
     "text": "L'opportunité se situe à l'endroit où se trouvent les réclamations et les plaintes.",
     "author": "Jack Ma",
     "category": "mindset",
-    "id": "q-0017"
+    "id": "q-0017",
+    "meaning": "Jack Ma désigne les plaintes comme un gisement : chaque réclamation signale un besoin non satisfait, donc un espace pour celui qui saura y répondre. Ce qui agace les clients d'un secteur est sa liste d'opportunités.",
+    "application": "Va lire les avis négatifs de tes concurrents. Les motifs qui reviennent décrivent le produit que personne n'a encore fait."
   },
   {
     "text": "L'échec est simplement l'opportunité de recommencer, cette fois de manière plus pertinente.",
@@ -137,7 +149,9 @@
     "text": "Les gagnants trouvent des moyens, les perdants des excuses.",
     "author": "Franklin D. Roosevelt",
     "category": "mindset",
-    "id": "q-0026"
+    "id": "q-0026",
+    "meaning": "Roosevelt oppose deux réactions au même obstacle : chercher un chemin, ou chercher une justification. Les deux demandent de l'énergie, une seule produit un résultat.",
+    "application": "Quand tu t'entends expliquer pourquoi ce n'était pas possible, arrête-toi et cherche une option que tu n'as pas testée. L'explication peut attendre."
   },
   {
     "text": "Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.",
@@ -163,13 +177,17 @@
     "text": "La victoire appartient à celui qui a la persévérance la plus longue.",
     "author": "Napoléon Bonaparte",
     "category": "mindset",
-    "id": "q-0033"
+    "id": "q-0033",
+    "meaning": "Napoléon désigne la durée comme facteur décisif : à forces comparables, c'est celui qui tient le plus longtemps qui l'emporte. La victoire va moins au plus fort qu'au dernier debout.",
+    "application": "Sur un objectif long, dimensionne ton effort pour pouvoir le tenir des années. Un rythme insoutenable est une défaite programmée, quelle que soit l'intensité de départ."
   },
   {
     "text": "Toutes les choses semblent réalisables par la volonté et le courage.",
     "author": "Napoléon Bonaparte",
     "category": "mindset",
-    "id": "q-0034"
+    "id": "q-0034",
+    "meaning": "Napoléon associe la volonté au courage : la première fixe la direction, le second permet d'y aller malgré le risque. L'une sans l'autre produit soit des intentions, soit de l'agitation.",
+    "application": "Devant un projet ambitieux, sépare ce qui te manque en clarté de ce qui te manque en audace. Le remède n'est pas le même."
   },
   {
     "text": "Se concentrer sur le client rend une entreprise plus résiliente.",
@@ -381,13 +399,17 @@
     "text": "Tous nos rêves peuvent devenir réalité si nous avons le courage de les poursuivre.",
     "author": "Walt Disney",
     "category": "mindset",
-    "id": "q-0063"
+    "id": "q-0063",
+    "meaning": "Disney conditionne la réalisation au courage plutôt qu'aux moyens. Le rêve ne suffit pas et ne se réalise pas seul : il exige d'accepter le risque de l'exposer et de le poursuivre.",
+    "application": "Prends le projet dont tu parles depuis des années et fixe-lui une première échéance publique. L'engagement devant témoin est ce qui transforme l'envie en obligation."
   },
   {
     "text": "La manière de commencer est d'arrêter de parler et de commencer à faire.",
     "author": "Walt Disney",
     "category": "mindset",
-    "id": "q-0065"
+    "id": "q-0065",
+    "meaning": "Disney tranche l'illusion de la préparation infinie : à un moment, réfléchir devient un moyen de ne pas commencer. Le passage à l'acte n'est pas la dernière étape de la réflexion, c'en est la sortie.",
+    "application": "Si tu prépares un projet depuis plus d'un mois sans rien produire, livre une version imparfaite cette semaine. Elle t'apprendra plus que le mois suivant de préparation."
   },
   {
     "text": "La patience est un élément clé de la réussite.",
@@ -541,7 +563,9 @@
     "text": "Tout ce que tu feras sera dérisoire, mais il est essentiel que tu le fasses.",
     "author": "Mahatma Gandhi",
     "category": "mindset",
-    "id": "q-0097"
+    "id": "q-0097",
+    "meaning": "Gandhi tient ensemble deux idées contradictoires : l'action individuelle pèse peu à l'échelle du monde, et elle reste indispensable. L'insignifiance apparente n'est pas une raison de s'abstenir.",
+    "application": "Quand l'ampleur d'un problème te décourage, choisis la part qui te concerne directement. L'inaction par découragement est le seul choix qui ne change rien."
   },
   {
     "text": "Je ne crains pas l'homme qui a pratiqué 10 000 coups une fois, mais celui qui a pratiqué un coup 10 000 fois.",
@@ -740,7 +764,9 @@
     "id": "q-0127",
     "context": "Sa dernière interview publique, où il détaille sa philosophie du management : diriger par les idées plutôt que par la hiérarchie.",
     "source": "Conférence D8, entretien avec Walt Mossberg et Kara Swisher",
-    "year": 2010
+    "year": 2010,
+    "meaning": "Jobs relève une incohérence coûteuse : recruter des gens compétents puis leur dicter la méthode revient à payer une expertise qu'on s'interdit d'utiliser.",
+    "application": "Sur ta prochaine délégation, donne l'objectif et les contraintes, pas la marche à suivre. Si tu ne peux pas, le problème est le recrutement, pas la délégation."
   },
   {
     "text": "Ne quittez jamais les flux de trésorerie des yeux, car c'est le sang de l'entreprise.",
@@ -1141,7 +1167,9 @@
     "text": "Tout ce que je sais, c'est que je ne sais rien.",
     "author": "Socrate",
     "category": "mindset",
-    "id": "q-0188"
+    "id": "q-0188",
+    "meaning": "Socrate fait de la conscience de son ignorance le point de départ du savoir. Celui qui croit savoir cesse de chercher ; celui qui mesure son ignorance continue d'apprendre.",
+    "application": "Sur un sujet que tu maîtrises, cherche activement ce que tu ignores encore. C'est cette question qui empêche l'expertise de se figer."
   },
   {
     "text": "Une vie sans examen ne vaut pas la peine d'être vécue.",
@@ -1149,14 +1177,18 @@
     "category": "mindset",
     "id": "q-0191",
     "context": "Ce que Socrate répond à ses juges qui lui proposent l'exil plutôt que la mort : une vie sauvée au prix de renoncer à examiner ses idées ne l'intéresse pas.",
-    "source": "Platon, Apologie de Socrate"
+    "source": "Platon, Apologie de Socrate",
+    "meaning": "Socrate défend une vie soumise à l'examen : accepter ses choix sans jamais les interroger revient à vivre selon des décisions qu'on n'a pas prises soi-même.",
+    "application": "Consacre une heure par trimestre à réexaminer tes choix structurants — métier, priorités, engagements. Sans ce rendez-vous, l'inertie décide à ta place."
   },
   {
     "text": "Sois comme un promontoire contre lequel les flots viennent sans cesse se briser.",
     "author": "Marc Aurèle",
     "category": "mindset",
     "id": "q-0193",
-    "source": "Pensées pour moi-même, livre IV"
+    "source": "Pensées pour moi-même, livre IV",
+    "meaning": "Marc Aurèle propose une image de stabilité : le promontoire ne repousse pas les vagues, il les laisse se briser. La solidité ne vient pas de la lutte mais du fait de ne pas être déplacé.",
+    "application": "Face à des critiques répétées, décide à l'avance de ce que tu changes et de ce que tu maintiens. Sans cette ligne, chaque vague te déplace un peu."
   },
   {
     "text": "Avoir du courage ne veut pas dire que nous n'avons pas peur, mais que nous affrontons nos peurs.",
@@ -1186,13 +1218,17 @@
     "text": "Aussi dur que tu crois pouvoir travailler, tu peux travailler encore plus dur que ça.",
     "author": "Kobe Bryant",
     "category": "mindset",
-    "id": "q-0199"
+    "id": "q-0199",
+    "meaning": "Bryant décrit un plafond d'effort systématiquement sous-estimé : ce qu'on croit être sa limite est presque toujours en deçà de ce qu'on peut réellement soutenir. Il parle d'exigence, pas d'épuisement.",
+    "application": "Sur ta compétence clé, ajoute une séance de travail délibéré par semaine. L'objectif est de déplacer ce que tu crois être ton maximum, pas de saturer ton agenda."
   },
   {
     "text": "On n'abandonne pas, on ne bat en retraite, on ne fuit pas.",
     "author": "Kobe Bryant",
     "category": "mindset",
-    "id": "q-0200"
+    "id": "q-0200",
+    "meaning": "Bryant énonce trois refus qui décrivent une discipline plus qu'un état d'esprit : ne pas céder, ne pas reculer, ne pas éviter. C'est une règle de conduite pour les moments où tout pousse à faire l'inverse.",
+    "application": "Identifie la situation où tu as tendance à te dérober. Décide à l'avance de ta réaction : c'est la décision prise à froid qui tient le jour venu."
   },
   {
     "text": "Tout changement de vie commence par une décision.",
@@ -1222,13 +1258,17 @@
     "text": "La qualité de la vie d'une personne est en rapport direct avec sa volonté d'exceller, quel que soit le domaine où elle s'exerce.",
     "author": "Vince Lombardi",
     "category": "mindset",
-    "id": "q-0205"
+    "id": "q-0205",
+    "meaning": "Lombardi relie la qualité de vie à l'exigence, sans la limiter à un domaine : c'est la disposition à bien faire, quel que soit le sujet, qui détermine ce qu'on tire de son existence.",
+    "application": "Choisis un domaine où tu te contentes du minimum et relève le niveau pendant un mois. L'effet déborde généralement sur le reste."
   },
   {
     "text": "Si l'important n'est pas de gagner, pourquoi compte-t-on les points ?",
     "author": "Vince Lombardi",
     "category": "mindset",
-    "id": "q-0206"
+    "id": "q-0206",
+    "meaning": "Lombardi démonte le discours sur la participation : si le résultat n'avait aucune importance, on ne le mesurerait pas. Reconnaître qu'on veut gagner est une condition pour s'en donner les moyens.",
+    "application": "Assume l'objectif que tu poursuis réellement au lieu de le minimiser par prudence. Un objectif qu'on n'ose pas nommer ne mobilise personne."
   },
   {
     "text": "Les conditions essentielles pour réussir sont la patience et la certitude du succès.",
@@ -1272,13 +1312,17 @@
     "text": "La meilleure raison de lancer une entreprise, c'est de créer du sens.",
     "author": "Guy Kawasaki",
     "category": "leadership",
-    "id": "q-0213"
+    "id": "q-0213",
+    "meaning": "Kawasaki place le sens avant le profit comme motif de création. Une entreprise fondée pour l'argent seul manque de résistance dans les périodes où l'argent tarde — c'est-à-dire au début.",
+    "application": "Écris ce que ton activité change pour ceux qui l'utilisent. Cette phrase te servira les jours où les chiffres ne suffiront pas à te faire tenir."
   },
   {
     "text": "Les vrais entrepreneurs sont motivés par leur passion, non par le profit.",
     "author": "Guy Kawasaki",
     "category": "mindset",
-    "id": "q-0214"
+    "id": "q-0214",
+    "meaning": "Kawasaki distingue le moteur du résultat : le profit sanctionne la réussite mais ne fait pas travailler quelqu'un pendant des années sans garantie. La passion, elle, tient sans contrepartie immédiate.",
+    "application": "Vérifie que tu ferais encore ce projet s'il rapportait moitié moins. Si la réponse est non, sois lucide sur ta capacité à traverser les périodes creuses."
   },
   {
     "text": "Être réaliste est la voie la plus commune vers la médiocrité.",
@@ -1386,13 +1430,17 @@
     "text": "Il y a toujours deux raisons pour faire quelque chose : une bonne raison et la vraie raison !",
     "author": "Dale Carnegie",
     "category": "mindset",
-    "id": "q-0236"
+    "id": "q-0236",
+    "meaning": "Carnegie distingue le motif avoué du motif réel. Comprendre cette différence change la façon de négocier : on répond souvent à la bonne raison alors que la décision se joue sur l'autre.",
+    "application": "Face à un refus argumenté, cherche ce qui n'est pas dit — un budget, une crainte, un rapport de force interne. C'est là que se trouve le vrai obstacle."
   },
   {
     "text": "Ni les situations ni les gens ne peuvent être améliorés par un facteur externe. Si amélioration il doit y avoir, elle doit venir de l'intérieur.",
     "author": "Dale Carnegie",
     "category": "mindset",
-    "id": "q-0237"
+    "id": "q-0237",
+    "meaning": "Carnegie situe le levier du changement à l'intérieur. On peut créer les conditions, mais personne ne transforme quelqu'un contre son gré : la contrainte produit de la conformité, pas de l'amélioration.",
+    "application": "Plutôt que d'imposer un changement, rends-le désirable et possible. Si la personne n'y trouve pas son intérêt, la mesure ne survivra pas à ta surveillance."
   },
   {
     "text": "Un enfant, un professeur, un livre, un crayon peuvent changer le monde.",
@@ -1404,13 +1452,17 @@
     "text": "Les chefs d'entreprise ne peuvent pas être des spectateurs.",
     "author": "Howard Schultz",
     "category": "leadership",
-    "id": "q-0244"
+    "id": "q-0244",
+    "meaning": "Schultz refuse la position d'observateur pour un dirigeant. Regarder son entreprise de loin, à travers des rapports, revient à découvrir les problèmes une fois qu'ils sont irréversibles.",
+    "application": "Passe régulièrement du temps là où le travail se fait réellement. Ce que tu y verras ne remonte jamais tel quel dans un tableau de bord."
   },
   {
     "text": "Parfois, vous devez créer la chose dont vous voulez faire partie.",
     "author": "Howard Schultz",
     "category": "mindset",
-    "id": "q-0245"
+    "id": "q-0245",
+    "meaning": "Schultz décrit l'entrepreneuriat comme une réponse à un manque personnel : construire ce dont on aurait voulu disposer. C'est le point de départ le plus fiable, parce qu'on connaît le besoin de l'intérieur.",
+    "application": "Note ce qui te manque et que personne ne propose. Ta frustration de client est une information que tes concurrents n'ont pas."
   },
   {
     "text": "Nous devrions construire de grandes choses qui n'existent pas.",
@@ -1560,13 +1612,17 @@
     "text": "La seule limite à notre réalisation de demain sera nos doutes d'aujourd'hui.",
     "author": "Franklin D. Roosevelt",
     "category": "mindset",
-    "id": "q-0268"
+    "id": "q-0268",
+    "meaning": "Roosevelt, s'adressant à un pays en crise, désigne le doute comme la contrainte principale — avant les moyens. Ce qu'on renonce à tenter aujourd'hui fixe la limite de ce qui sera possible demain.",
+    "application": "Liste ce que tu n'as pas tenté cette année par manque de confiance plutôt que de moyens. C'est cette liste qui dessine ton plafond réel."
   },
   {
     "text": "Ce n'est pas que je sois si intelligent, c'est juste que je reste avec les problèmes plus longtemps.",
     "author": "Albert Einstein",
     "category": "mindset",
-    "id": "q-0269"
+    "id": "q-0269",
+    "meaning": "Einstein attribue ses résultats à l'endurance sur un problème plutôt qu'à une capacité supérieure. C'est le temps passé sans abandonner qui fait la différence, pas la vitesse de compréhension.",
+    "application": "Face à un problème difficile, prolonge ton effort au-delà du point où tu abandonnes d'habitude. C'est souvent juste après que la solution apparaît."
   },
   {
     "text": "Le succès est la somme de petits efforts, répétés jour après jour.",
@@ -1666,13 +1722,17 @@
     "text": "Ne trouvez pas des clients pour vos produits, trouvez des produits pour vos clients.",
     "author": "Seth Godin",
     "category": "sales",
-    "id": "q-0283"
+    "id": "q-0283",
+    "meaning": "Godin inverse la démarche : partir du produit oblige à chercher qui pourrait le vouloir ; partir d'un groupe de personnes permet de construire ce qu'elles attendent. Le second sens est bien plus efficace.",
+    "application": "Définis précisément à qui tu t'adresses avant de définir ce que tu vends. Un public net rend l'offre presque évidente."
   },
   {
     "text": "Nous plaçons le client en numéro un, l'employé en numéro deux, l'actionnaire en numéro trois.",
     "author": "Jack Ma",
     "category": "sales",
-    "id": "q-0284"
+    "id": "q-0284",
+    "meaning": "Jack Ma fixe un ordre de priorité qui inverse la doctrine actionnariale. La logique est séquentielle : des clients servis font une entreprise saine, qui finit par récompenser l'actionnaire — l'inverse ne fonctionne pas.",
+    "application": "Quand deux intérêts s'opposent, vérifie lequel produit l'autre. Sacrifier le client pour le résultat trimestriel détruit précisément ce qui génère le résultat."
   },
   {
     "text": "On se souvient de la qualité bien plus longtemps que du prix.",
@@ -1716,7 +1776,9 @@
     "text": "L'attitude détermine les actions. Les actions déterminent les résultats.",
     "author": "Jim Rohn",
     "category": "leadership",
-    "id": "q-0294"
+    "id": "q-0294",
+    "meaning": "Rohn décrit une chaîne : l'attitude oriente les actions, les actions produisent les résultats. On ne peut donc pas corriger un résultat sans remonter au moins jusqu'aux actions, souvent jusqu'à l'attitude.",
+    "application": "Face à un résultat décevant, remonte la chaîne au lieu de fixer un nouvel objectif. Le même état d'esprit produira les mêmes actions et les mêmes chiffres."
   },
   {
     "text": "Un leader est quelqu'un qui connaît le chemin, qui suit le chemin, et qui montre le chemin.",
@@ -1804,7 +1866,9 @@
     "text": "À une époque, le leadership résidait dans les muscles. Aujourd'hui, il réside dans la façon de traiter les gens.",
     "author": "Mahatma Gandhi",
     "category": "leadership",
-    "id": "q-0314"
+    "id": "q-0314",
+    "meaning": "Gandhi décrit un déplacement historique de la source d'autorité : de la force physique vers la qualité de la relation. Ce qui fait suivre aujourd'hui n'est plus la capacité à contraindre.",
+    "application": "Regarde ce sur quoi repose ton autorité : la position, ou la façon dont tu traites les gens. Seule la seconde survit à un changement d'organigramme."
   },
   {
     "text": "Le leader est celui qui sait inspirer sans éteindre, diriger sans écraser.",
@@ -1848,7 +1912,9 @@
     "text": "Les leaders ne naissent pas, ils sont faits. Et ils sont faits par l'effort acharné.",
     "author": "Vince Lombardi",
     "category": "leadership",
-    "id": "q-0321"
+    "id": "q-0321",
+    "meaning": "Lombardi écarte le talent inné au profit de la construction. Le leadership se fabrique par un travail répété, ce qui le rend accessible — mais coûteux.",
+    "application": "Traite le leadership comme une compétence à travailler : demande un retour après chaque réunion que tu animes. C'est la répétition corrigée qui construit, pas l'expérience seule."
   },
   {
     "text": "Soyez craintifs quand les autres sont avides. Soyez avide quand les autres sont craintifs.",
@@ -1905,7 +1971,9 @@
     "text": "Investissez dans ce que vous connaissez.",
     "author": "Peter Lynch",
     "category": "finance",
-    "id": "q-0328"
+    "id": "q-0328",
+    "meaning": "Lynch recommande de rester dans son périmètre de compréhension. Investir dans ce qu'on ne comprend pas revient à déléguer son jugement à d'autres, sans pouvoir évaluer s'ils ont raison.",
+    "application": "Avant de t'engager, vérifie que tu peux expliquer le modèle économique en quelques phrases. Si tu t'appuies sur du vocabulaire que tu ne maîtrises pas, tu ne décides pas, tu suis."
   },
   {
     "text": "Investir n'est pas battre les autres à leur jeu. Il s'agit de se contrôler soi-même.",
@@ -1979,7 +2047,9 @@
     "text": "Prenez soin du client et l'entreprise prendra soin d'elle-même.",
     "author": "Ray Kroc",
     "category": "sales",
-    "id": "q-0339"
+    "id": "q-0339",
+    "meaning": "Kroc énonce une causalité : la santé de l'entreprise découle du soin apporté au client, pas l'inverse. Surveiller les chiffres sans surveiller le service revient à regarder le thermomètre plutôt que le malade.",
+    "application": "Choisis un indicateur de qualité client et suis-le aussi sérieusement que ton chiffre d'affaires. Le second se corrige rarement sans le premier."
   },
   {
     "text": "Le service client ne doit pas être uniquement un service, il doit concerner l'ensemble de l'entreprise.",
@@ -1997,7 +2067,9 @@
     "text": "Ce qui compte, c'est le chiffre un : une tasse, un client, un partenaire.",
     "author": "Howard Schultz",
     "category": "sales",
-    "id": "q-0342"
+    "id": "q-0342",
+    "meaning": "Schultz ramène l'échelle à l'unité : la qualité se joue sur une transaction, pas sur une moyenne. Un client mal servi ne se console pas d'un taux de satisfaction global.",
+    "application": "Cesse de juger uniquement sur des moyennes. Regarde un cas réel en détail chaque semaine — c'est là que les défauts apparaissent."
   },
   {
     "text": "Un objectif correctement défini est à moitié atteint.",
@@ -2295,7 +2367,9 @@
     "id": "q-0398",
     "text": "Si l'on doit se souvenir de tous ses échecs, on ne s'en sort pas.",
     "author": "Xavier Niel",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Niel écarte la rumination : rejouer ses échecs consomme l'énergie nécessaire à la suite. Ce n'est pas un appel à ne rien apprendre, mais à ne pas s'installer dans l'analyse.",
+    "application": "Accorde-toi un temps limité pour tirer les leçons d'un échec, puis passe à autre chose. Au-delà, tu ne apprends plus rien de nouveau."
   },
   {
     "id": "q-0399",
@@ -2325,13 +2399,17 @@
     "id": "q-0403",
     "text": "Il n'y a pas meilleur catalyseur du succès que la curiosité.",
     "author": "Michael Dell",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Dell place la curiosité en amont de la compétence : c'est elle qui pousse à comprendre un marché, un client ou une technologie avant que ce soit nécessaire. Elle produit l'avance.",
+    "application": "Consacre une heure par semaine à explorer un sujet adjacent à ton métier, sans objectif immédiat. C'est ce temps sans rendement apparent qui crée les connexions."
   },
   {
     "id": "q-0404",
     "text": "Il est possible dans certains cas d'être occupé, très occupé, et parfaitement inefficace.",
     "author": "Stephen R. Covey",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Covey distingue l'activité de l'efficacité. Être occupé rassure et se voit ; produire ce qui compte se voit moins et demande de renoncer à une partie du reste.",
+    "application": "En fin de semaine, note ce qui a réellement fait avancer tes objectifs. L'écart avec le temps passé est presque toujours instructif."
   },
   {
     "id": "q-0405",
@@ -2385,19 +2463,25 @@
     "id": "q-0412",
     "text": "L'histoire, c'est la rencontre d'une volonté et d'un événement.",
     "author": "Charles de Gaulle",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "De Gaulle décrit l'histoire comme un produit de deux facteurs : les circonstances seules ne font rien, la volonté seule non plus. C'est leur rencontre qui produit un basculement — ce qui suppose d'être prêt quand l'occasion se présente.",
+    "application": "Prépare-toi pour l'occasion que tu ne peux pas provoquer. Ceux qui saisissent un tournant sont ceux qui avaient déjà fait le travail avant qu'il arrive."
   },
   {
     "id": "q-0413",
     "text": "Délibérer est le fait de plusieurs. Agir est le fait d'un seul.",
     "author": "Charles de Gaulle",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "De Gaulle sépare deux temps qu'on mélange souvent : la délibération gagne à être collective, l'exécution suppose un responsable unique. Une décision portée par tout le monde n'est portée par personne.",
+    "application": "Après une réunion, désigne nommément qui décide et qui exécute. Sans ce nom, le sujet reviendra à l'ordre du jour de la réunion suivante."
   },
   {
     "id": "q-0414",
     "text": "Si tu veux construire un bateau, ne rassemble pas des hommes pour aller chercher du bois, mais donne-leur envie de la mer immense.",
     "author": "Antoine de Saint-Exupéry",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Saint-Exupéry oppose deux façons de mobiliser : organiser des tâches, ou créer un désir. La première produit de l'obéissance qui s'arrête avec la consigne, la seconde produit une initiative qui continue sans surveillance.",
+    "application": "Avant de distribuer les tâches d'un projet, prends dix minutes pour expliquer à quoi il servira. Ce temps se rattrape largement en autonomie ensuite."
   },
   {
     "id": "q-0415",
@@ -2423,13 +2507,17 @@
     "id": "q-0419",
     "text": "Le succès recèle le germe de sa propre destruction.",
     "author": "Andrew Grove",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Grove décrit un mécanisme d'auto-destruction : le succès installe des certitudes, réduit la vigilance et rend l'organisation attachée à ce qui a marché. C'est cette rigidité qui la rend vulnérable.",
+    "application": "Après une réussite, demande explicitement ce qui pourrait la rendre obsolète. Personne ne pose cette question spontanément quand tout va bien."
   },
   {
     "id": "q-0420",
     "text": "Seuls ceux qui dorment ne font pas d'erreurs.",
     "author": "Ingvar Kamprad",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Kamprad relie l'erreur à l'activité : seule l'inaction garantit un dossier vierge. Reprocher les erreurs sans distinguer leur origine revient donc à décourager l'initiative.",
+    "application": "Quand tu analyses une erreur, sépare celle qui vient d'une prise d'initiative de celle qui vient d'une négligence. Traiter les deux pareil élimine la première."
   },
   {
     "id": "q-0425",
@@ -2453,7 +2541,9 @@
     "id": "q-0429",
     "text": "Il ne dépend pas de toi d'être riche, mais il dépend de toi d'être heureux.",
     "author": "Épictète",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Épictète distingue ce qui dépend de nous de ce qui n'en dépend pas. La richesse relève des circonstances, du marché, de la chance ; le rapport qu'on entretient avec sa situation reste sous contrôle.",
+    "application": "Fais deux colonnes : ce que tu peux influencer, ce que tu subis. Consacre ton énergie à la première et cesse de la dépenser sur la seconde."
   },
   {
     "id": "q-0431",
@@ -2519,7 +2609,9 @@
     "id": "q-0455",
     "text": "Celui qui n'a jamais commis d'erreur n'a jamais tenté quelque chose de nouveau.",
     "author": "Albert Einstein",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Einstein relie l'erreur à la nouveauté : un parcours sans faute signale qu'on est resté dans le connu. L'erreur devient alors un indicateur d'exploration, pas d'incompétence.",
+    "application": "Si tu n'as commis aucune erreur ce trimestre, demande-toi ce que tu as tenté de nouveau. L'absence d'erreur est rarement une bonne nouvelle."
   },
   {
     "id": "q-0456",
@@ -2579,7 +2671,9 @@
     "id": "q-0468",
     "text": "Le leadership consiste à rendre les autres meilleurs en sa présence et à faire en sorte que cet impact dure en son absence.",
     "author": "Sheryl Sandberg",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Sandberg propose deux critères, dont le second est plus exigeant : améliorer les gens en sa présence, et faire que cet effet persiste après le départ. Le premier peut venir du charisme, le second suppose d'avoir transmis.",
+    "application": "Demande-toi ce que ton équipe saura faire sans toi dans un an. Si la réponse est « la même chose qu'aujourd'hui », tu diriges sans former."
   },
   {
     "id": "q-0470",
@@ -2789,13 +2883,17 @@
     "id": "q-0519",
     "text": "Le bon entrepreneur, c'est vous : il n'y a pas de profil type pour réussir.",
     "author": "Xavier Niel",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Niel refuse le profil type de l'entrepreneur — diplôme, parcours, réseau. Cette croyance élimine par avance des gens capables, sur des critères sans rapport avec ce qui fait réussir.",
+    "application": "Cesse de comparer ton parcours à celui des fondateurs médiatisés. La seule question utile est de savoir si tu résous un problème réel pour quelqu'un."
   },
   {
     "id": "q-0520",
     "text": "On peut casser les codes d'un secteur et oser ce que personne n'a osé faire.",
     "author": "Xavier Niel",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Niel décrit une stratégie de rupture : dans un secteur où tous appliquent les mêmes règles, les enfreindre crée un avantage que la taille ne procure pas.",
+    "application": "Liste les règles que ton secteur suit sans les questionner — tarification, contrat, distribution. Une seule remise en cause suffit à te rendre différent."
   },
   {
     "id": "q-0522",
@@ -2818,13 +2916,17 @@
     "category": "mindset",
     "context": "Ce que le renard confie au Petit Prince avant de le laisser repartir, après lui avoir appris ce qu'apprivoiser veut dire.",
     "source": "Le Petit Prince",
-    "year": 1943
+    "year": 1943,
+    "meaning": "Le renard désigne ce qui compte et qui échappe au regard : la confiance, l'attachement, le temps investi. Ces éléments décident de tout mais n'apparaissent sur aucun tableau de bord.",
+    "application": "Quand tu évalues une relation professionnelle, ne t'arrête pas aux chiffres. Ce qui la rend solide — ou fragile — ne s'y trouve pas."
   },
   {
     "id": "q-0526",
     "text": "Fais de ta vie un rêve, et d'un rêve, une réalité.",
     "author": "Antoine de Saint-Exupéry",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Saint-Exupéry décrit un enchaînement en deux temps : concevoir ce qu'on veut, puis le construire. La formule ne dispense pas du travail, elle rappelle que sans le rêve initial il n'y a rien à réaliser.",
+    "application": "Écris ce que tu voudrais avoir construit dans dix ans, sans filtrer par le réalisme. Le tri viendra ensuite ; le faire trop tôt supprime tout ce qui vaut la peine."
   },
   {
     "id": "q-0527",
@@ -2844,13 +2946,17 @@
     "id": "q-0531",
     "text": "Terminé vaut mieux que parfait : mieux vaut avancer qu'attendre la perfection.",
     "author": "Sheryl Sandberg",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Sandberg arbitre entre deux coûts : celui d'un travail imparfait livré, et celui d'un travail parfait jamais terminé. Le second est plus élevé parce qu'il ne produit rien du tout.",
+    "application": "Fixe une date de livraison avant de commencer, et livre à cette date l'état atteint. L'amélioration continue après la mise en service, pas avant."
   },
   {
     "id": "q-0532",
     "text": "Demandez-vous : que ferais-je si je n'avais pas peur ? Puis faites-le.",
     "author": "Sheryl Sandberg",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Sandberg utilise la peur comme révélateur de préférence : ce qu'on ferait sans elle indique ce qu'on veut vraiment. La question sépare le désir réel des renoncements déguisés en choix raisonnables.",
+    "application": "Pose-toi la question par écrit et note la première réponse qui vient. C'est généralement celle qui compte, avant que les justifications arrivent."
   },
   {
     "id": "q-0534",
@@ -2868,13 +2974,17 @@
     "id": "q-0536",
     "text": "Le succès peut pousser à désapprendre les habitudes qui nous ont fait réussir.",
     "author": "Satya Nadella",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Nadella pointe un piège : les habitudes qui ont produit le succès deviennent des réflexes qu'on n'interroge plus, alors même que le contexte a changé. Le succès rend donc l'adaptation plus difficile, pas plus facile.",
+    "application": "Repère une pratique que tu maintiens parce qu'elle a marché autrefois. Vérifie qu'elle fonctionne encore dans les conditions actuelles, pas dans celles d'il y a cinq ans."
   },
   {
     "id": "q-0537",
     "text": "Il faut passer d'une culture du tout savoir à une culture du tout apprendre.",
     "author": "Satya Nadella",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Nadella oppose deux postures : celle où l'on est valorisé pour savoir, qui pousse à cacher son ignorance, et celle où l'on est valorisé pour apprendre, qui autorise à poser des questions. La seconde va beaucoup plus vite.",
+    "application": "En réunion, dis « je ne sais pas » au moins une fois quand c'est vrai. Ce que tu perds en assurance apparente, ton équipe le gagne en liberté de faire pareil."
   },
   {
     "id": "q-0539",
@@ -2886,13 +2996,17 @@
     "id": "q-0540",
     "text": "Le poison le plus dangereux, c'est le sentiment d'avoir réussi.",
     "author": "Ingvar Kamprad",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Kamprad désigne le sentiment d'avoir réussi comme le vrai danger : il installe la satisfaction là où il faudrait de la vigilance, et transforme une avance en retard sans qu'on le remarque.",
+    "application": "Après un bon trimestre, consacre une réunion à ce qui ne va pas. Le moment où personne n'en voit l'utilité est précisément celui où c'est utile."
   },
   {
     "id": "q-0541",
     "text": "Le temps est votre ressource la plus précieuse : une fois perdu, il est perdu pour de bon.",
     "author": "Ingvar Kamprad",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Kamprad range le temps parmi les ressources non renouvelables. Contrairement à l'argent, il ne se récupère pas — ce qui devrait en faire l'objet du calcul le plus rigoureux.",
+    "application": "Traite ton agenda comme un budget : chaque acceptation retire du temps à autre chose. La question n'est pas « est-ce utile » mais « est-ce plus utile que ce que ça remplace »."
   },
   {
     "id": "q-0544",
@@ -2922,7 +3036,9 @@
     "id": "q-0548",
     "text": "Faites des erreurs, mais faites-les plus vite que les autres.",
     "author": "Andrew Grove",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Grove ne valorise pas l'erreur mais la vitesse de détection. Se tromper vite et le savoir coûte peu ; se tromper lentement laisse le temps d'investir dans la mauvaise direction.",
+    "application": "Raccourcis tes cycles de vérification : teste sur un échantillon avant de déployer. L'objectif n'est pas d'éviter l'erreur mais de la découvrir tôt."
   },
   {
     "id": "q-0549",
@@ -2952,37 +3068,49 @@
     "id": "q-0552",
     "text": "Dans une startup, l'exécution est tout.",
     "author": "Paul Graham",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Graham place l'exécution au-dessus de l'idée. Les idées circulent et se ressemblent ; ce qui distingue les projets, c'est la capacité à les mener, ce que personne ne peut copier.",
+    "application": "Cesse de protéger ton idée et commence à la construire. Ceux qui l'auraient volée n'auraient de toute façon pas fait le travail."
   },
   {
     "id": "q-0553",
     "text": "N'embauchez pas de génies toxiques : le coût pour l'esprit d'équipe est trop élevé.",
     "author": "Reed Hastings",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Hastings arbitre entre talent individuel et coût collectif : une personne brillante mais destructrice fait perdre plus qu'elle n'apporte, parce qu'elle dégrade le travail de tous les autres.",
+    "application": "Quand quelqu'un de performant abîme l'équipe, chiffre l'effet sur les autres avant de trancher. Le calcul individuel est presque toujours trompeur."
   },
   {
     "id": "q-0555",
     "text": "Mon but n'est pas d'échouer vite, mais de réussir sur la durée : ce n'est pas la même chose.",
     "author": "Marc Andreessen",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Andreessen corrige un slogan devenu paresseux : échouer vite n'a d'intérêt que si l'on apprend et qu'on finit par réussir. Faire de l'échec rapide un objectif revient à confondre le moyen et la fin.",
+    "application": "Quand tu abandonnes vite, vérifie que tu as appris quelque chose de réutilisable. Sinon tu n'as pas itéré, tu as juste renoncé rapidement."
   },
   {
     "id": "q-0556",
     "text": "Les mauvais managers embauchent de très mauvais employés car ils se sentent menacés par les meilleurs.",
     "author": "Marc Andreessen",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Andreessen décrit une spirale : un manager peu sûr recrute moins fort que lui pour ne pas être menacé, et ces recrues font pareil. La qualité d'une organisation se dégrade par niveaux successifs.",
+    "application": "À chaque recrutement, demande-toi si la personne pourrait te remplacer un jour. Répondre non par confort est le début de la spirale."
   },
   {
     "id": "q-0557",
     "text": "Chaque décision difficile mais juste vous rend un peu plus courageux.",
     "author": "Ben Horowitz",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Horowitz décrit le courage comme un muscle : chaque décision difficile prise correctement rend la suivante moins coûteuse. À l'inverse, chaque évitement rend l'évitement plus probable.",
+    "application": "Traite la décision désagréable que tu repousses. Au-delà du sujet lui-même, c'est ta capacité à trancher la prochaine qui se joue."
   },
   {
     "id": "q-0558",
     "text": "Un fondateur doit croire qu'une solution existe et la chercher, sans se soucier des probabilités.",
     "author": "Ben Horowitz",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Horowitz décrit la position particulière du fondateur : raisonner en probabilités conduit à abandonner, puisque les statistiques sont défavorables. Son travail est de chercher la solution en supposant qu'elle existe.",
+    "application": "Face à un problème qualifié d'insoluble, impose-toi de produire trois pistes avant de conclure. La conviction qu'une solution existe change ce que tu cherches."
   },
   {
     "id": "q-0559",
@@ -3015,19 +3143,25 @@
     "id": "q-0562",
     "text": "Si ça ne vend pas, ce n'est pas créatif.",
     "author": "David Ogilvy",
-    "category": "sales"
+    "category": "sales",
+    "meaning": "Ogilvy, publicitaire, soumet la créativité à un critère unique : l'effet commercial. Une campagne remarquée mais sans vente n'a pas rempli sa fonction, quel que soit son mérite artistique.",
+    "application": "Avant de valider une communication, définis le résultat attendu et comment tu le mesureras. Sans ce critère, seul le goût tranchera."
   },
   {
     "id": "q-0563",
     "text": "Dites la vérité, mais rendez-la fascinante : on n'achète pas ce qui nous ennuie.",
     "author": "David Ogilvy",
-    "category": "sales"
+    "category": "sales",
+    "meaning": "Ogilvy pose deux exigences conjointes : dire vrai, et le dire de façon intéressante. La première sans la seconde est ignorée, la seconde sans la première ne survit pas au premier achat.",
+    "application": "Reprends ton argumentaire et supprime ce qui est exact mais ennuyeux. Garde ce qui est à la fois vrai et digne d'être écouté."
   },
   {
     "id": "q-0564",
     "text": "Si chacun de nous embauche des gens plus petits que lui, nous deviendrons une entreprise de nains.",
     "author": "David Ogilvy",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Ogilvy décrit l'effet cumulatif du recrutement défensif : si chacun recrute moins bon que lui, l'organisation rétrécit à chaque génération. L'image des nains rend le mécanisme visible.",
+    "application": "Fixe comme règle de recruter quelqu'un de meilleur que toi sur au moins une dimension. C'est vérifiable, et ça inverse la spirale."
   },
   {
     "id": "q-0565",
@@ -3045,13 +3179,17 @@
     "id": "q-0567",
     "text": "Pas besoin d'être un génie ou un visionnaire pour réussir : il faut un cadre et un rêve.",
     "author": "Michael Dell",
-    "category": "mindset"
+    "category": "mindset",
+    "meaning": "Dell dédramatise l'entrepreneuriat : il ne faut ni génie ni vision prophétique, mais une structure de travail et une direction. Deux choses accessibles à qui décide de s'organiser.",
+    "application": "Si tu attends d'avoir une idée géniale, remplace cette attente par un cadre de travail régulier. Les idées viennent en travaillant, pas en attendant."
   },
   {
     "id": "q-0568",
     "text": "Les entreprises réussissent ou échouent selon leur capacité à transformer la donnée en décisions.",
     "author": "Michael Dell",
-    "category": "leadership"
+    "category": "leadership",
+    "meaning": "Dell relie la donnée à la décision. Accumuler des chiffres sans les convertir en choix ne produit rien : la valeur est dans la conversion, pas dans la collecte.",
+    "application": "Pour chaque indicateur que tu suis, écris la décision qu'il déclenchera. Ceux qui n'en déclenchent aucune peuvent être supprimés."
   },
   {
     "text": "Le but du marketing est de rendre la vente superflue.",
@@ -3072,7 +3210,9 @@
     "text": "Le marketing ne consiste plus à parler des produits que vous fabriquez, mais à raconter des histoires.",
     "author": "Seth Godin",
     "category": "sales",
-    "id": "q-0571"
+    "id": "q-0571",
+    "meaning": "Godin décrit un déplacement du marketing : les caractéristiques se comparent et se copient, un récit crée un lien et une mémoire. Ce qu'on retient d'une marque est une histoire, pas une fiche technique.",
+    "application": "Raconte comment ton produit est né et quel problème t'a poussé à le créer. C'est ce que les gens répéteront, pas tes spécifications."
   },
   {
     "text": "Approchez chaque client avec l'idée de l'aider à résoudre un problème, pas de lui vendre un produit.",
@@ -3098,7 +3238,9 @@
     "text": "Si vous essayez de plaire à tout le monde, vous n'intéresserez personne.",
     "author": "Seth Godin",
     "category": "sales",
-    "id": "q-0575"
+    "id": "q-0575",
+    "meaning": "Godin explique pourquoi le consensus est commercialement stérile : pour plaire à tous, il faut retirer tout ce qui pourrait déplaire — c'est-à-dire tout ce qui distingue. Le résultat n'intéresse personne.",
+    "application": "Assume ce qui, dans ton offre, ne conviendra pas à tout le monde. C'est exactement ce qui la rendra indispensable à certains."
   },
   {
     "text": "Vendre, ce n'est pas convaincre quelqu'un d'acheter, c'est l'aider à décider.",
@@ -3155,7 +3297,11 @@
     "text": "Devenir riche et le rester sont deux compétences complètement différentes.",
     "author": "Morgan Housel",
     "category": "finance",
-    "id": "q-0582"
+    "id": "q-0582",
+    "meaning": "Housel sépare deux compétences opposées : s'enrichir demande de la prise de risque et de l'optimisme, le rester demande de la prudence et de la paranoïa. Beaucoup échouent en appliquant la première logique trop longtemps.",
+    "application": "Quand une situation s'améliore, change de mode : passe de l'expansion à la consolidation. Continuer sur la même intensité est la cause la plus fréquente des retours en arrière.",
+    "source": "La Psychologie de l'argent",
+    "year": 2020
   },
   {
     "text": "Ce n'est pas votre salaire qui vous enrichit, c'est vos habitudes de dépense.",
@@ -3195,7 +3341,9 @@
     "text": "Prenez soin des gens, du produit et des profits — dans cet ordre.",
     "author": "Ben Horowitz",
     "category": "leadership",
-    "id": "q-0590"
+    "id": "q-0590",
+    "meaning": "Horowitz fixe un ordre de priorité, et c'est l'ordre qui porte le message : les gens d'abord, parce qu'ils font le produit, qui génère les profits. Inverser la séquence casse la chaîne à la source.",
+    "application": "Quand tu arbitres sous pression, vérifie que tu ne sacrifies pas le premier terme pour sauver le troisième. C'est le raccourci le plus courant et le plus coûteux."
   },
   {
     "text": "Seuls les paranoïaques survivent.",
@@ -3204,7 +3352,9 @@
     "id": "q-0591",
     "context": "Titre du livre où Grove, alors patron d'Intel, raconte les « points d'inflexion stratégiques » qui peuvent emporter une entreprise dominante.",
     "source": "Livre « Only the Paranoid Survive »",
-    "year": 1996
+    "year": 1996,
+    "meaning": "Grove, dirigeant d'un secteur à cycles courts, décrit la vigilance permanente comme condition de survie. Ce n'est pas de l'anxiété mais un refus de considérer une position comme acquise.",
+    "application": "Programme un point trimestriel sur ce qui pourrait te déplacer — nouvel entrant, changement d'usage, évolution réglementaire. La menace vient rarement de là où on regarde."
   },
   {
     "text": "Embauchez des gens plus intelligents que vous, puis laissez-les faire leur travail.",
@@ -3218,7 +3368,9 @@
     "text": "Un dirigeant doit dire la vérité, surtout quand elle est mauvaise.",
     "author": "Ben Horowitz",
     "category": "leadership",
-    "id": "q-0593"
+    "id": "q-0593",
+    "meaning": "Horowitz place la franchise au moment où elle coûte le plus. Une mauvaise nouvelle annoncée tôt permet de réagir ; dissimulée, elle détruit la confiance quand elle finit par sortir — et elle finit toujours par sortir.",
+    "application": "Quand une mauvaise nouvelle tombe, communique-la avant qu'on te la demande. Le coût de l'annonce est toujours inférieur à celui de la découverte."
   },
   {
     "text": "Un bon dirigeant assume plus que sa part de responsabilité et prend moins que sa part de mérite.",
@@ -3241,14 +3393,18 @@
     "category": "mindset",
     "id": "q-0597",
     "context": "Écrit pour lui-même pendant ses campagnes militaires, dans un carnet jamais destiné à la publication.",
-    "source": "Pensées pour moi-même, livre V"
+    "source": "Pensées pour moi-même, livre V",
+    "meaning": "Marc Aurèle renverse le rapport à l'obstacle : ce qui bloque une voie oblige à en trouver une autre, et cette contrainte devient le chemin réel. L'empêchement se transforme en direction.",
+    "application": "Quand une porte se ferme, demande-toi ce que cette fermeture t'oblige à explorer. Les meilleures bifurcations viennent rarement d'un choix confortable."
   },
   {
     "text": "Ce ne sont pas les choses qui troublent les hommes, mais l'opinion qu'ils en ont.",
     "author": "Épictète",
     "category": "mindset",
     "id": "q-0598",
-    "source": "Manuel d'Épictète, V"
+    "source": "Manuel d'Épictète, V",
+    "meaning": "Épictète situe la perturbation dans le jugement, pas dans l'événement. Deux personnes vivant la même chose ne réagissent pas pareil — la différence n'est donc pas dans le fait mais dans sa lecture.",
+    "application": "Face à une contrariété, sépare ce qui s'est réellement passé de ce que tu en conclus. La plupart du temps, c'est la conclusion qui blesse, pas le fait."
   },
   {
     "text": "Vous ne vous élevez pas au niveau de vos objectifs, vous retombez au niveau de vos systèmes.",
@@ -3256,7 +3412,9 @@
     "category": "mindset",
     "id": "q-0599",
     "source": "Un rien peut tout changer",
-    "year": 2018
+    "year": 2018,
+    "meaning": "Clear déplace la cause du résultat : un objectif indique une direction mais ne produit rien, c'est le système d'habitudes quotidiennes qui détermine où l'on arrive réellement.",
+    "application": "Plutôt que de fixer un objectif plus ambitieux, améliore le processus qui te fait avancer chaque jour. C'est lui qui fixe ton niveau réel."
   },
   {
     "text": "La douleur plus la réflexion égale le progrès.",
@@ -3292,7 +3450,9 @@
     "id": "q-0604",
     "context": "Conseil à contre-courant adressé aux fondateurs : au début, il faut recruter ses premiers utilisateurs un par un, à la main, précisément parce que ça ne tient pas à grande échelle.",
     "source": "Essai « Do Things That Don't Scale »",
-    "year": 2013
+    "year": 2013,
+    "meaning": "Graham conseille aux débutants ce qui semble inefficace : recruter ses premiers clients un par un, à la main. Ces méthodes ne tiennent pas à grande échelle, mais c'est là qu'on apprend ce que veulent les gens.",
+    "application": "Contacte personnellement tes dix prochains clients plutôt que d'automatiser. Ce que tu apprendras vaut plus que le temps économisé."
   },
   {
     "text": "Le logiciel est en train de dévorer le monde.",
@@ -3301,7 +3461,9 @@
     "id": "q-0605",
     "context": "Essai écrit alors que les logiciels commençaient à remplacer des industries entières ; le titre est devenu la formule de référence pour décrire cette bascule.",
     "source": "Essai « Why Software Is Eating the World », Wall Street Journal",
-    "year": 2011
+    "year": 2011,
+    "meaning": "Andreessen constate que les logiciels absorbent des activités qui n'avaient rien d'informatique — distribution, transport, finance. Le secteur n'est plus une industrie parmi d'autres, il en redéfinit d'autres.",
+    "application": "Demande-toi quelle partie de ton métier pourrait être automatisée par quelqu'un d'extérieur. Mieux vaut le découvrir avant qu'il le fasse."
   },
   {
     "text": "Le seul moyen de gagner est d'apprendre plus vite que tout le monde.",
@@ -3346,7 +3508,9 @@
     "text": "Faites ce que vous faites si bien que les gens auront envie de revenir et d'amener leurs amis.",
     "author": "Walt Disney",
     "category": "sales",
-    "id": "q-0614"
+    "id": "q-0614",
+    "meaning": "Disney décrit un modèle de croissance par la qualité : un client satisfait revient et amène d'autres personnes. C'est le seul canal d'acquisition qui se renforce au lieu de coûter plus cher.",
+    "application": "Mesure combien de tes clients reviennent et combien en amènent d'autres. Améliorer ce chiffre coûte moins cher que d'acheter de nouveaux prospects."
   },
   {
     "text": "On ne construit pas une réputation sur ce qu'on a l'intention de faire.",
@@ -3361,7 +3525,9 @@
     "author": "Ray Kroc",
     "category": "sales",
     "id": "q-0616",
-    "context": "Règle de terrain d'un homme qui inspectait lui-même les restaurants et jugeait la propreté aussi importante que la cuisine."
+    "context": "Règle de terrain d'un homme qui inspectait lui-même les restaurants et jugeait la propreté aussi importante que la cuisine.",
+    "meaning": "Kroc traite l'exigence comme une affaire d'occupation du temps disponible. Le temps mort n'existe pas : il est soit utilisé à améliorer, soit perdu — et cette règle s'applique d'abord au dirigeant.",
+    "application": "Repère les creux dans ta semaine et affecte-leur d'avance une tâche de fond. Sans affectation préalable, ils se remplissent tout seuls de choses sans valeur."
   },
   {
     "text": "Le doute tue plus de rêves que l'échec ne le fera jamais.",
@@ -3373,7 +3539,9 @@
     "text": "Créez quelque chose que les gens veulent vraiment. C'est tout.",
     "author": "Paul Graham",
     "category": "sales",
-    "id": "q-0618"
+    "id": "q-0618",
+    "meaning": "Graham réduit la condition de réussite à une seule : produire quelque chose que des gens veulent réellement. Tout le reste — financement, croissance, organisation — découle ou ne sert à rien sans cela.",
+    "application": "Vérifie que des gens seraient déçus si ton produit disparaissait. Si personne ne l'est, aucune optimisation ne compensera."
   },
   {
     "text": "Quelqu'un est assis à l'ombre aujourd'hui parce qu'un autre a planté un arbre il y a longtemps.",
@@ -3446,7 +3614,9 @@
     "category": "finance",
     "id": "q-0629",
     "source": "La Psychologie de l'argent",
-    "year": 2020
+    "year": 2020,
+    "meaning": "Housel définit la richesse par ce qui n'a pas été dépensé — donc par ce qui reste invisible. Ce qu'on voit chez les autres, ce sont leurs dépenses, pas leur patrimoine : la comparaison est structurellement faussée.",
+    "application": "Cesse de te comparer aux signes extérieurs. Un train de vie visible indique une dépense, jamais une richesse."
   },
   {
     "text": "Le plus grand dividende que l'argent puisse verser, c'est la maîtrise de votre temps.",
@@ -3454,7 +3624,9 @@
     "category": "finance",
     "id": "q-0630",
     "source": "La Psychologie de l'argent",
-    "year": 2020
+    "year": 2020,
+    "meaning": "Housel désigne l'usage le plus rentable de l'argent : la maîtrise de son temps. Pouvoir choisir ce qu'on fait de ses journées est un rendement que la consommation ne procure pas.",
+    "application": "Avant un achat important, demande-toi s'il augmente ou réduit ta liberté d'emploi du temps. Beaucoup de dépenses imposent ensuite de travailler pour les financer."
   },
   {
     "text": "Ce ne sont pas les revenus qui font la richesse, c'est l'écart entre ce que vous gagnez et ce que vous dépensez.",
@@ -3478,13 +3650,17 @@
     "text": "Le temps passé sur le marché bat le fait de vouloir choisir le bon moment.",
     "author": "Peter Lynch",
     "category": "finance",
-    "id": "q-0635"
+    "id": "q-0635",
+    "meaning": "Lynch oppose la durée à la synchronisation. Rester présent longtemps produit un résultat régulier ; chercher le bon moment suppose de réussir deux paris successifs, sortir puis revenir.",
+    "application": "Si tu envisages de sortir puis de revenir, écris à l'avance à quel signal tu reviendras. Sans ce critère, la sortie devient définitive par indécision."
   },
   {
     "text": "Bien plus d'argent a été perdu par des investisseurs à essayer d'anticiper les corrections qu'à en subir.",
     "author": "Peter Lynch",
     "category": "finance",
-    "id": "q-0636"
+    "id": "q-0636",
+    "meaning": "Lynch chiffre un coût invisible : l'argent perdu à éviter les baisses dépasse celui perdu en les traversant. Se protéger a un prix, souvent supérieur au risque évité.",
+    "application": "Avant une mesure de protection, compare son coût permanent au risque qu'elle couvre. Beaucoup de précautions coûtent chaque mois pour un danger rare."
   },
   {
     "text": "Il vaut mieux acheter une entreprise formidable à un prix correct qu'une entreprise correcte à un prix formidable.",
@@ -3526,13 +3702,17 @@
     "text": "La difficulté attire l'homme de caractère, car c'est en l'étreignant qu'il se réalise lui-même.",
     "author": "Charles de Gaulle",
     "category": "leadership",
-    "id": "q-0641"
+    "id": "q-0641",
+    "meaning": "De Gaulle voit dans la difficulté un révélateur et un moyen : c'est en l'affrontant qu'on développe ce qu'on ne savait pas avoir. L'obstacle n'est pas un empêchement, c'est l'occasion de se constituer.",
+    "application": "Quand tu as le choix entre deux missions, prends celle qui t'oblige à progresser. Le confort ne construit rien qui te serve ensuite."
   },
   {
     "text": "On ne fait rien de grand sans de grands hommes, et ceux-ci le sont pour l'avoir voulu.",
     "author": "Charles de Gaulle",
     "category": "leadership",
-    "id": "q-0642"
+    "id": "q-0642",
+    "meaning": "De Gaulle lie les réalisations aux personnes, et les personnes à leur volonté. Il écarte le déterminisme : ce n'est pas la naissance ou le talent qui font les grands hommes, c'est le fait de l'avoir voulu.",
+    "application": "Cesse d'attendre de te sentir légitime. Ceux que tu admires ont commencé sans l'être davantage — la légitimité vient après l'engagement, jamais avant."
   },
   {
     "text": "Le prix de la grandeur, c'est la responsabilité.",
@@ -3546,7 +3726,9 @@
     "text": "Un chef est un marchand d'espérance.",
     "author": "Napoléon Bonaparte",
     "category": "leadership",
-    "id": "q-0644"
+    "id": "q-0644",
+    "meaning": "Napoléon définit le chef par ce qu'il fournit : une raison de croire que l'effort mènera quelque part. Sans cette perspective, l'autorité ne produit que de l'obéissance passive.",
+    "application": "Quand ton équipe traverse une passe difficile, décris précisément ce à quoi ressemble la sortie. L'espérance sans contenu ne tient pas plus de quelques semaines."
   },
   {
     "text": "Ne demandez pas ce que votre pays peut faire pour vous, demandez ce que vous pouvez faire pour votre pays.",
@@ -3593,7 +3775,9 @@
     "text": "La qualité d'un dirigeant se mesure aux normes qu'il se fixe à lui-même.",
     "author": "Ray Kroc",
     "category": "leadership",
-    "id": "q-0650"
+    "id": "q-0650",
+    "meaning": "Kroc situe l'exigence envers soi comme la source de l'exigence collective. Un dirigeant ne peut pas demander un niveau qu'il ne tient pas lui-même sans que l'écart soit remarqué.",
+    "application": "Écris les trois standards que tu exiges de ton équipe et vérifie que tu les respectes. Chaque écart annule silencieusement la règle correspondante."
   },
   {
     "text": "Les gens ne quittent pas des entreprises, ils quittent des managers.",
@@ -3615,7 +3799,9 @@
     "category": "leadership",
     "id": "q-0653",
     "source": "Les 7 habitudes de ceux qui réalisent tout ce qu'ils entreprennent",
-    "year": 1989
+    "year": 1989,
+    "meaning": "Covey propose de raisonner à rebours : définir l'aboutissement avant de choisir les moyens. Sans cette clarté, chaque décision intermédiaire se prend au hasard des circonstances.",
+    "application": "Avant un projet, écris à quoi ressemble le résultat le jour où il est terminé. Ce texte devient le critère qui tranche toutes les questions suivantes."
   },
   {
     "text": "Cherchez d'abord à comprendre, ensuite à être compris.",
@@ -3623,7 +3809,9 @@
     "category": "leadership",
     "id": "q-0654",
     "source": "Les 7 habitudes de ceux qui réalisent tout ce qu'ils entreprennent",
-    "year": 1989
+    "year": 1989,
+    "meaning": "Covey inverse l'ordre habituel d'une conversation : on cherche d'ordinaire à se faire comprendre avant d'écouter, ce qui produit deux monologues. Comprendre d'abord change ce qu'on aura à dire.",
+    "application": "Dans ton prochain désaccord, reformule la position de l'autre jusqu'à ce qu'il la valide avant d'exposer la tienne. La suite de l'échange en est transformée."
   },
   {
     "text": "Recrutez lentement, licenciez vite.",
@@ -3653,25 +3841,33 @@
     "text": "Notre culture, c'est la liberté et la responsabilité.",
     "author": "Reed Hastings",
     "category": "leadership",
-    "id": "q-0659"
+    "id": "q-0659",
+    "meaning": "Hastings associe deux termes qui se conditionnent : la liberté n'est tenable que si chacun assume les conséquences de ses choix. Sans responsabilité, elle devient du laisser-faire.",
+    "application": "Avant d'accorder plus d'autonomie, précise ce dont la personne devra rendre compte. C'est cette clarté qui rend la liberté possible."
   },
   {
     "text": "Le talent dense attire le talent dense.",
     "author": "Reed Hastings",
     "category": "leadership",
-    "id": "q-0660"
+    "id": "q-0660",
+    "meaning": "Hastings décrit un effet d'attraction : les gens compétents veulent travailler avec des gens compétents. La qualité de l'équipe devient donc son propre argument de recrutement.",
+    "application": "Traite chaque recrutement comme un signal envoyé aux suivants. Une exception à la baisse rend les recrutements ultérieurs plus difficiles."
   },
   {
     "text": "L'empathie n'est pas un luxe pour un dirigeant, c'est un outil de travail.",
     "author": "Satya Nadella",
     "category": "leadership",
-    "id": "q-0661"
+    "id": "q-0661",
+    "meaning": "Nadella traite l'empathie comme une compétence opérationnelle : comprendre ce que vit l'autre est ce qui permet de concevoir un produit utile et de diriger une équipe réelle. Ce n'est pas une qualité morale ajoutée.",
+    "application": "Avant une décision qui affecte d'autres personnes, formule leur point de vue à voix haute. Si tu n'y arrives pas, tu n'as pas assez d'informations pour décider."
   },
   {
     "text": "Notre secteur ne respecte pas la tradition, il ne respecte que l'innovation.",
     "author": "Satya Nadella",
     "category": "leadership",
-    "id": "q-0662"
+    "id": "q-0662",
+    "meaning": "Nadella décrit un secteur où l'ancienneté ne protège de rien : une position acquise ne vaut que tant qu'elle reste la meilleure réponse. L'histoire d'une entreprise n'est pas un actif défendable.",
+    "application": "Ne t'appuie pas sur ton antériorité comme argument. Demande-toi ce que tu apportes aujourd'hui à quelqu'un qui découvrirait ton marché sans te connaître."
   },
   {
     "text": "Le leadership, c'est aussi savoir quand se taire.",
@@ -3698,7 +3894,9 @@
     "id": "q-0667",
     "context": "Premier discours d'investiture, au creux de la Grande Dépression : un adulte américain sur quatre est sans emploi et les banques ferment les unes après les autres.",
     "source": "Premier discours d'investiture",
-    "year": 1933
+    "year": 1933,
+    "meaning": "Roosevelt décrit un mécanisme d'auto-aggravation : la peur pousse à des décisions défensives qui provoquent ce qu'on redoutait. Dans une panique bancaire, c'est la peur du retrait qui vide les banques.",
+    "application": "Face à un risque, distingue la menace réelle des réactions qu'elle déclenche. Souvent, le coût vient de la panique en chaîne, pas de l'événement."
   },
   {
     "text": "Un bon plan exécuté aujourd'hui vaut mieux qu'un plan parfait exécuté la semaine prochaine.",
@@ -3731,7 +3929,9 @@
     "id": "q-0671",
     "context": "Jobs y raconte avoir suivi, sans but apparent, un cours de calligraphie après avoir quitté l'université — devenu dix ans plus tard la typographie soignée du Macintosh.",
     "source": "Discours de remise des diplômes, Université Stanford",
-    "year": 2005
+    "year": 2005,
+    "meaning": "Jobs décrit une cohérence qui n'apparaît qu'après coup : les expériences apparemment inutiles finissent par se relier, mais seulement rétrospectivement. Cela justifie de suivre sa curiosité sans plan d'usage.",
+    "application": "Ne renonce pas à un apprentissage parce que tu n'en vois pas l'usage immédiat. Les compétences les plus différenciantes viennent souvent de ces détours."
   },
   {
     "text": "Je n'ai pas échoué. J'ai simplement trouvé dix mille façons qui ne fonctionnent pas.",
@@ -3750,13 +3950,17 @@
     "text": "Vous êtes la moyenne des cinq personnes que vous fréquentez le plus.",
     "author": "Jim Rohn",
     "category": "mindset",
-    "id": "q-0674"
+    "id": "q-0674",
+    "meaning": "Rohn décrit un effet d'environnement : les habitudes, le niveau d'exigence et les ambitions de l'entourage deviennent notre référence de normalité, sans qu'on l'ait décidé.",
+    "application": "Ajoute à ton entourage une personne dont le niveau te met légèrement mal à l'aise. C'est le moyen le plus rapide de déplacer ta propre norme."
   },
   {
     "text": "Ne souhaitez pas que ce soit plus facile, souhaitez d'être meilleur.",
     "author": "Jim Rohn",
     "category": "mindset",
-    "id": "q-0675"
+    "id": "q-0675",
+    "meaning": "Rohn déplace la demande : espérer des conditions plus faciles rend dépendant des circonstances, chercher à devenir meilleur rend capable de les affronter. Seul le second est sous contrôle.",
+    "application": "Face à une difficulté récurrente, demande-toi quelle compétence te la rendrait gérable. Travaille celle-là plutôt que d'attendre que la difficulté disparaisse."
   },
   {
     "text": "Ce que l'esprit peut concevoir et croire, il peut le réaliser.",
@@ -3811,7 +4015,9 @@
     "text": "Le job n'est pas fini.",
     "author": "Kobe Bryant",
     "category": "mindset",
-    "id": "q-0683"
+    "id": "q-0683",
+    "meaning": "Bryant refuse de célébrer avant la fin. Se satisfaire d'une étape intermédiaire relâche l'effort exactement au moment où il faudrait le maintenir — la victoire partielle est le piège.",
+    "application": "Après une réussite intermédiaire, redéfinis immédiatement l'étape suivante. Le relâchement d'après-succès coûte plus cher que la difficulté elle-même."
   },
   {
     "text": "Les gens oublieront ce que vous avez dit et ce que vous avez fait, mais jamais ce que vous leur avez fait ressentir.",
@@ -3833,7 +4039,9 @@
     "text": "Aujourd'hui est dur, demain sera pire, mais après-demain sera magnifique. La plupart abandonnent le soir du deuxième jour.",
     "author": "Jack Ma",
     "category": "mindset",
-    "id": "q-0686"
+    "id": "q-0686",
+    "meaning": "Jack Ma décrit la courbe réelle d'un projet difficile : ça empire avant de s'améliorer, et l'abandon se produit systématiquement au creux. Connaître la forme de la courbe permet de ne pas confondre le creux avec la fin.",
+    "application": "Quand tout se dégrade, vérifie si c'est une trajectoire ou un accident. Si les fondamentaux tiennent, le creux fait partie du chemin — c'est là que la majorité s'arrête."
   },
   {
     "text": "Chaque action que vous entreprenez est un vote pour la personne que vous voulez devenir.",
@@ -3841,7 +4049,9 @@
     "category": "mindset",
     "id": "q-0687",
     "source": "Un rien peut tout changer",
-    "year": 2018
+    "year": 2018,
+    "meaning": "Clear décrit l'identité comme un cumul d'actes : chaque action confirme ou infirme l'idée qu'on se fait de soi. Le changement durable passe par cette accumulation, pas par la motivation.",
+    "application": "Choisis l'identité que tu veux renforcer, puis identifie l'action minimale qui la prouve chaque jour. La régularité compte plus que l'intensité."
   },
   {
     "text": "La passion est courante, la persévérance est rare.",
@@ -3859,7 +4069,9 @@
     "text": "Tu as pouvoir sur ton esprit, pas sur les évènements extérieurs. Comprends cela et tu trouveras la force.",
     "author": "Marc Aurèle",
     "category": "mindset",
-    "id": "q-0691"
+    "id": "q-0691",
+    "meaning": "Marc Aurèle délimite le périmètre de contrôle : les événements extérieurs échappent, le jugement qu'on porte reste accessible. La force vient de concentrer l'effort là où il produit quelque chose.",
+    "application": "Quand une situation t'échappe, écris ce qui dépend encore de toi — même minime. Cette liste est ton vrai terrain d'action."
   },
   {
     "text": "Nous souffrons plus souvent en imagination qu'en réalité.",
@@ -3874,20 +4086,26 @@
     "text": "Ce n'est pas ce qui t'arrive qui compte, mais la façon dont tu y réagis.",
     "author": "Épictète",
     "category": "mindset",
-    "id": "q-0693"
+    "id": "q-0693",
+    "meaning": "Formulation stoïcienne du contrôle : les événements sont extérieurs, la réponse est intérieure. C'est la seule part sur laquelle on peut travailler, et elle suffit à changer l'issue.",
+    "application": "Après une mauvaise nouvelle, accorde-toi un délai avant de répondre. C'est dans ce délai que la réaction se transforme en décision."
   },
   {
     "text": "Ne cherche pas que les évènements arrivent comme tu veux, mais veuille les évènements comme ils arrivent.",
     "author": "Épictète",
     "category": "mindset",
     "id": "q-0694",
-    "source": "Manuel d'Épictète, VIII"
+    "source": "Manuel d'Épictète, VIII",
+    "meaning": "Épictète propose un renversement radical : plutôt que d'épuiser son énergie à vouloir plier le réel, accorder sa volonté à ce qui advient. Ce n'est pas de la résignation mais une économie d'effort.",
+    "application": "Sur une situation que tu ne peux pas changer, cesse de la contester et demande-toi ce qu'elle rend possible. Tu récupères l'énergie que la lutte consommait."
   },
   {
     "text": "Le premier pas n'emmène pas là où vous voulez aller, mais il vous sort de là où vous êtes.",
     "author": "James Clear",
     "category": "mindset",
-    "id": "q-0695"
+    "id": "q-0695",
+    "meaning": "Clear décrit la fonction réelle du premier pas : il ne rapproche pas beaucoup du but, mais il fait sortir de l'immobilité. C'est ce déblocage qui compte, pas la distance parcourue.",
+    "application": "Quand tu es bloqué, fais l'action la plus petite possible sans te soucier de son utilité. Sortir de l'arrêt est le seul objectif de ce premier geste."
   },
   {
     "text": "Connaître les autres, c'est sagesse. Se connaître soi-même, c'est sagesse supérieure.",
@@ -3951,7 +4169,9 @@
     "id": "q-0705",
     "context": "Saint-Exupéry y parle de la conception des avions : la beauté d'une machine vient de tout ce qu'on a fini par lui retirer.",
     "source": "Terre des hommes",
-    "year": 1939
+    "year": 1939,
+    "meaning": "Saint-Exupéry, qui parle de conception d'avions, définit la perfection par soustraction et non par accumulation. Ajouter est facile et rassurant ; retirer demande de savoir ce qui est essentiel.",
+    "application": "Sur ton produit ou ton offre, cherche ce que tu peux supprimer sans rien perdre. C'est plus difficile et plus rentable que d'ajouter une fonctionnalité."
   },
   {
     "text": "On ne subit pas l'avenir, on le fait.",
