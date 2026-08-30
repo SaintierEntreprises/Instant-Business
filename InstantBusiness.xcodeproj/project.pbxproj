@@ -28,6 +28,7 @@
 		38BEF9070CDA52FAF93083A4 /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8802591D8BA622C2533188CC /* SharedDefaults.swift */; };
 		3956F9DBFB34D6E567097CFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */; };
 		3A9E8FBC56F7BF482B7C2235 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D74E86D3E60AF54910576F /* LegalDocumentView.swift */; };
+		3BCE8E3CEB62672A0719D333 /* ReviewPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCFAE3B6BED99DFCB01C60 /* ReviewPrompter.swift */; };
 		422D82E3FCC197BE8F90FD92 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */; };
 		46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4B87701458F70F79A76CE /* PaywallView.swift */; };
@@ -62,6 +63,7 @@
 		8827851E233719EDF272FCED /* SupabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */; };
 		8A5A010AADB6EE5789129B7B /* QuoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706576B606F8D4E0AFB78DB8 /* QuoteDetailView.swift */; };
 		8AAA2029095BC80FBC269FD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75079EF67F80899A96034B99 /* Assets.xcassets */; };
+		9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */; };
 		97BB1BF094EE12E7C754DCE3 /* FavoriteHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080AB01F0BF4CC3EA397F22 /* FavoriteHeartButton.swift */; };
 		98557D427E53D5A118ED373C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FECA8B5BC1C7A10FF20A6C2E /* GoogleSignIn */; };
 		98DEF701BEA5244FA5E3EE19 /* InstantBusinessWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */; };
@@ -141,6 +143,7 @@
 		116EADA1BD9A8043FF7B4C83 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		1716BC36A4F2D82614D94A2B /* ContentSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSyncService.swift; sourceTree = "<group>"; };
 		1C88F216AF72133D477FCF4E /* InstantBusinessWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantBusinessWidget.entitlements; sourceTree = "<group>"; };
+		1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompterTests.swift; sourceTree = "<group>"; };
 		22B4B87701458F70F79A76CE /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		2592274ABF3F66089FFFFE7A /* PrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PrivacyPolicy.md; sourceTree = "<group>"; };
 		25C21D015741E420EBB13737 /* UserSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSyncService.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThemes.swift; sourceTree = "<group>"; };
 		A6AFDBB050BDFE08FD82ADD1 /* AppearanceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceStore.swift; sourceTree = "<group>"; };
 		A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakLogicTests.swift; sourceTree = "<group>"; };
+		ABCCFAE3B6BED99DFCB01C60 /* ReviewPrompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompter.swift; sourceTree = "<group>"; };
 		ADA58AD076DBEA1E899762F0 /* InstantBusinessTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = InstantBusinessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeedView.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 			children = (
 				6BEC446CE0F37464D9B19FBC /* ContentStoreTests.swift */,
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
+				1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */,
 				A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */,
 			);
 			path = InstantBusinessTests;
@@ -421,6 +426,7 @@
 				42F099D2E3972D46FBFCC187 /* Haptics.swift */,
 				53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */,
 				79D76350042A06627FF2D247 /* PushRegistrar.swift */,
+				ABCCFAE3B6BED99DFCB01C60 /* ReviewPrompter.swift */,
 				E218AB6D9528E25FE4335538 /* SeenQuotes.swift */,
 				2AD38765966AF44016F29AA6 /* StoreManager.swift */,
 				41636C5175259A1EAB7A77E9 /* StreakManager.swift */,
@@ -704,6 +710,7 @@
 				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
 				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
 				8A5A010AADB6EE5789129B7B /* QuoteDetailView.swift in Sources */,
+				3BCE8E3CEB62672A0719D333 /* ReviewPrompter.swift in Sources */,
 				3011510FCC7A5345115F2DD2 /* SeenQuotes.swift in Sources */,
 				E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */,
 				F130446E75628E913CF52C8E /* SettingsView.swift in Sources */,
@@ -753,6 +760,7 @@
 			files = (
 				EBB2C84F5F25EB1541C4FBA5 /* ContentStoreTests.swift in Sources */,
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
+				9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */,
 				EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

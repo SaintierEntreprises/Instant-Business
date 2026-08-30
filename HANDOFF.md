@@ -210,6 +210,35 @@ Le tout est déterministe, donc le cache ne change aucun comportement — quatre
 
 **30 tests, tous verts.**
 
+## ✅ Fait le 30 août 2026 : demande de note + diagnostic du blocage de version
+
+### Pourquoi le forçage de mise à jour n'avait rien fait
+
+Diagnostic complet dans `FORCER_MISE_A_JOUR.md`, réécrit. En résumé : la commande SQL était bonne et `minimum_version = '1.1'` est bien en base depuis le 21 août 12h04. Deux raisons cumulées expliquent l'absence d'effet.
+
+1. `'1.1'` ne vise que les versions **antérieures** à 1.1 — donc personne, puisque tout le monde est en 1.1.
+2. Surtout : **la 1.1 publiée ne contient pas `AppUpdateGate`**. La 1.1 (build 19) a été approuvée dans la nuit du 20 au 21 août ; le commit `508a1cf` qui ajoute le mécanisme date du 21 août à 11h56. Les téléphones en 1.1 n'ont donc aucun code qui lise `app_config`.
+
+**Règle générale à retenir : un blocage ne peut jamais atteindre une version publiée avant lui.** Les gens restés en 1.0/1.1 ne seront jamais bloqués par ce mécanisme. La 1.2 est la première version qui l'embarque.
+
+**Ne pas poser `'1.2'` avant que la 1.2 soit publique** : ça ne toucherait aucun utilisateur public, mais les builds TestFlight 20/21/22 portent le numéro `1.1` **et contiennent le blocage** — ils se retrouveraient verrouillés sur un écran pointant vers une version inexistante.
+
+### Demande de note (`ReviewPrompter`)
+
+Feuille native `AppStore.requestReview` : les cinq étoiles s'affichent **dans l'app**, la note part de là, personne n'est renvoyé vers l'App Store. C'est ce que demandait l'utilisateur, et c'est la seule forme qu'Apple autorise à déclencher soi-même.
+
+Deux limites d'Apple qui conditionnent la conception :
+- **On ne peut pas savoir si quelqu'un a déjà noté.** Le système ne le dit pas. Impossible donc de cibler « ceux qui n'ont pas noté » ; on sollicite qui remplit les conditions et iOS ignore silencieusement si c'est de trop.
+- **Trois affichages par an maximum**, comptés par iOS. Une demande au mauvais moment est perdue pour l'année.
+
+D'où les garde-fous : au moins **5 jours d'usage distincts**, **120 jours entre deux demandes**, **3 demandes maximum**. La règle est une fonction pure (`shouldRequest`) couverte par 8 tests.
+
+**Déclencheur** : la fermeture de la célébration de série, et uniquement quand un **palier** vient d'être franchi — le seul moment de l'app où l'on vient de donner quelque chose plutôt que d'en attendre. Un délai de 700 ms laisse la feuille se refermer, sans quoi les deux présentations se croisent et la demande ne s'affiche pas.
+
+**Ligne « Noter Instant Business »** ajoutée dans les réglages, ouvrant l'App Store directement sur le formulaire d'avis (`?action=write-review`). Indispensable en complément : la feuille native peut refuser de s'afficher sans prévenir, et quelqu'un qui veut noter doit toujours pouvoir le faire.
+
+Évènements : `review_prompt_shown`, `review_link_opened`.
+
 ## Infrastructure et identifiants (non sensibles, référence rapide)
 
 - **Repo GitHub** : `https://github.com/SaintierEntreprises/Instant-Business.git` — compte isolé de l'autre projet de l'utilisateur (BetterBets). **Ne jamais mélanger les deux projets, ni Supabase ni Google Cloud ni GitHub.**

@@ -46,6 +46,8 @@ enum Analytics {
         case streakMilestoneReached = "streak_milestone_reached"
         case streakShared = "streak_shared"
         case streakFreezeUsed = "streak_freeze_used"
+        case reviewPromptShown = "review_prompt_shown"
+        case reviewLinkOpened = "review_link_opened"
     }
 
     /// D'où vient l'ouverture de l'app. Sans cette distinction, impossible de dire si les

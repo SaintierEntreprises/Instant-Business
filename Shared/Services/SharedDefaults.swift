@@ -37,6 +37,25 @@ enum SharedDefaults {
         static let celebratedMilestone = "celebratedMilestone"
         static let lastContentSyncDate = "lastContentSyncDate"
         static let seenQuoteIDs = "seenQuoteIDs"
+        static let reviewPromptCount = "reviewPromptCount"
+        static let lastReviewPromptDate = "lastReviewPromptDate"
+    }
+
+    // MARK: - Demande de note
+
+    /// Nombre de fois où la feuille de notation a été demandée.
+    ///
+    /// Hors de `resetAccountData` comme le reste de ce bloc : le plafond d'iOS est par
+    /// appareil, pas par compte. Se déconnecter ne doit pas remettre les compteurs à zéro
+    /// et faire redemander une note à quelqu'un qui vient d'en donner une.
+    static var reviewPromptCount: Int {
+        get { suite.integer(forKey: Keys.reviewPromptCount) }
+        set { suite.set(newValue, forKey: Keys.reviewPromptCount) }
+    }
+
+    static var lastReviewPromptDate: Date? {
+        get { suite.object(forKey: Keys.lastReviewPromptDate) as? Date }
+        set { suite.set(newValue, forKey: Keys.lastReviewPromptDate) }
     }
 
     /// Dernier rafraîchissement réussi du contenu depuis Supabase.

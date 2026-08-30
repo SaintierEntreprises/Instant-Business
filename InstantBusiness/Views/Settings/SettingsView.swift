@@ -4,6 +4,7 @@ struct SettingsView: View {
     @EnvironmentObject private var store: StoreManager
     @EnvironmentObject private var authManager: AuthManager
     @EnvironmentObject private var appearance: AppearanceStore
+    @Environment(\.openURL) private var openURL
     @State private var showThemePicker = false
     @StateObject private var notificationManager = NotificationManager()
     @State private var notificationsEnabled = SharedDefaults.notificationsEnabled
@@ -176,6 +177,35 @@ struct SettingsView: View {
                         .buttonStyle(.plain)
                         .padding(.vertical, 2)
                     }
+                }
+
+                Section {
+                    Button {
+                        Haptics.tap()
+                        Analytics.track(.reviewLinkOpened)
+                        if let url = ReviewPrompter.writeReviewURL {
+                            openURL(url)
+                        }
+                    } label: {
+                        HStack(spacing: 12) {
+                            SettingsIconBadge(systemName: "star.fill", color: .orange)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Noter Instant Business")
+                                    .fontWeight(.semibold)
+                                Text("Une note aide vraiment une app indépendante")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "arrow.up.right")
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+                    // Même raison que la ligne « Thème des cartes » : sans style explicite,
+                    // un bouton de formulaire teinte toute son étiquette en orange.
+                    .buttonStyle(.plain)
+                    .padding(.vertical, 2)
                 }
 
                 Section("Légal") {

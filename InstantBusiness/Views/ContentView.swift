@@ -12,6 +12,9 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @State private var focusedQuoteID: String?
     @State private var streakCelebration: StreakCelebrationContext?
+    /// Retient qu'un palier a été fêté, pour savoir à la fermeture si le moment se prête
+    /// à une demande de note.
+    @State private var celebratedMilestoneOnDismiss = false
 
     /// Intro → connexion → profil → quiz, puis l'app. Profil et quiz n'arrivent qu'une
     /// fois le compte créé.
@@ -146,6 +149,7 @@ struct ContentView: View {
             streakCelebration = context
             if let milestone = context.milestone {
                 SharedDefaults.celebratedMilestone = milestone.days
+                celebratedMilestoneOnDismiss = true
                 Analytics.track(.streakMilestoneReached, ["days": .int(milestone.days)])
             }
             if context.freezeSavedDay != nil {
@@ -210,6 +214,22 @@ struct ContentView: View {
             guard pending else { return }
             router.pendingStreakCelebration = false
             presentStreakCelebrationIfNeeded(forced: true)
+        }
+        // La note se demande à la fermeture de la célébration, et seulement quand un
+        // palier vient d'être franchi : c'est le seul instant de l'app où l'on vient de
+        // donner quelque chose plutôt que d'attendre quelque chose. Les trois affichages
+        // annuels autorisés par iOS sont trop rares pour être dépensés ailleurs.
+        .onChange(of: streakCelebration == nil) { wasPresented, isDismissed in
+            guard isDismissed, !wasPresented, celebratedMilestoneOnDismiss else { return }
+            celebratedMilestoneOnDismiss = false
+            Task { @MainActor in
+                // Laisse la feuille finir de se refermer : deux présentations qui se
+                // croisent et la demande de note ne s'affiche pas du tout.
+                try? await Task.sleep(nanoseconds: 700_000_000)
+                if ReviewPrompter.requestIfAppropriate() {
+                    Analytics.track(.reviewPromptShown)
+                }
+            }
         }
         .sheet(item: $streakCelebration) { context in
             StreakCelebrationSheet(
