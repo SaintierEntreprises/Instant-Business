@@ -26,7 +26,14 @@ enum ContentStore {
     }
 
     private static func loadQuotes() -> [Quote] {
-        if let url = cacheURL,
+        // Le cache n'est retenu que s'il a été écrit par la version en cours. Une mise à
+        // jour embarque un JSON plus riche que la copie téléchargée par la version
+        // précédente — champs ajoutés, citations corrigées — et cette copie ne dit rien
+        // de ce qu'elle ignore : rien dans un cache dépourvu de « principe » ne permet de
+        // deviner qu'un principe existe désormais. Le bundle reprend donc la main jusqu'au
+        // prochain rafraîchissement, que `ContentSyncService` déclenche sans attendre.
+        if SharedDefaults.cachedContentBuild == SharedDefaults.currentAppBuild,
+           let url = cacheURL,
            let data = try? Data(contentsOf: url),
            let quotes = try? JSONDecoder().decode([Quote].self, from: data),
            quotes.count >= minimumTrustedCount {
@@ -53,6 +60,10 @@ enum ContentStore {
               let data = try? JSONEncoder().encode(remoteQuotes),
               (try? data.write(to: url, options: .atomic)) != nil
         else { return false }
+
+        // Le cache et son estampille sont écrits ensemble : une copie sans estampille à
+        // jour serait ignorée au prochain démarrage, et l'app repartirait du bundle.
+        SharedDefaults.cachedContentBuild = SharedDefaults.currentAppBuild
 
         allQuotes = remoteQuotes
         rebuildIndexes()

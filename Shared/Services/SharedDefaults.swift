@@ -36,6 +36,7 @@ enum SharedDefaults {
         static let lastFreezeDate = "lastFreezeDate"
         static let celebratedMilestone = "celebratedMilestone"
         static let lastContentSyncDate = "lastContentSyncDate"
+        static let cachedContentBuild = "cachedContentBuild"
         static let seenQuoteIDs = "seenQuoteIDs"
         static let reviewPromptCount = "reviewPromptCount"
         static let lastReviewPromptDate = "lastReviewPromptDate"
@@ -65,6 +66,28 @@ enum SharedDefaults {
     static var lastContentSyncDate: Date? {
         get { suite.object(forKey: Keys.lastContentSyncDate) as? Date }
         set { suite.set(newValue, forKey: Keys.lastContentSyncDate) }
+    }
+
+    /// Version de l'app qui a écrit la copie téléchargée du contenu.
+    ///
+    /// Une mise à jour peut apprendre à l'app un champ que la copie en cache ignore : le
+    /// cache de la 1.2 ne contient ni « principe » ni « comment l'appliquer », que la
+    /// 1.3 saurait pourtant afficher. Sans ce repère, l'app préférerait indéfiniment ce
+    /// cache appauvri au JSON embarqué, plus complet, livré avec la mise à jour.
+    static var cachedContentBuild: String? {
+        get { suite.string(forKey: Keys.cachedContentBuild) }
+        set { suite.set(newValue, forKey: Keys.cachedContentBuild) }
+    }
+
+    /// Version de l'app en cours d'exécution, `1.2 (31)`.
+    ///
+    /// Lue depuis `Bundle.main`, donc valable aussi bien dans l'app que dans le widget :
+    /// les deux cibles partagent le même numéro de build.
+    static var currentAppBuild: String {
+        let info = Bundle.main.infoDictionary
+        let version = info?["CFBundleShortVersionString"] as? String ?? "?"
+        let build = info?["CFBundleVersion"] as? String ?? "?"
+        return "\(version) (\(build))"
     }
 
     // MARK: - Citations déjà vues

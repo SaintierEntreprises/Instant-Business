@@ -30,6 +30,7 @@
 		3956F9DBFB34D6E567097CFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D8B9C8472149FA0A853C22BF /* GoogleSignInSwift */; };
 		3A9E8FBC56F7BF482B7C2235 /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D74E86D3E60AF54910576F /* LegalDocumentView.swift */; };
 		3BCE8E3CEB62672A0719D333 /* ReviewPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCFAE3B6BED99DFCB01C60 /* ReviewPrompter.swift */; };
+		3D064F6193CE80AE40C98C1F /* ContentCacheStampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C65134CDF9C0803A237525 /* ContentCacheStampTests.swift */; };
 		422D82E3FCC197BE8F90FD92 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
 		42818505243D7E8CE907F932 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */; };
 		46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B4B87701458F70F79A76CE /* PaywallView.swift */; };
@@ -213,6 +214,7 @@
 		BCF17A10A39691F2FD99766A /* WidgetGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetGalleryView.swift; sourceTree = "<group>"; };
 		BE7980174D13FB4A5539FA01 /* TermsOfUse.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TermsOfUse.md; sourceTree = "<group>"; };
 		C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C1C65134CDF9C0803A237525 /* ContentCacheStampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCacheStampTests.swift; sourceTree = "<group>"; };
 		C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButtonView.swift; sourceTree = "<group>"; };
 		DB4EBA232994A42EA87CC03B /* StreakBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakBadge.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		32A987A24785A3BE35E587DB /* InstantBusinessTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1C65134CDF9C0803A237525 /* ContentCacheStampTests.swift */,
 				6BEC446CE0F37464D9B19FBC /* ContentStoreTests.swift */,
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
 				FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */,
@@ -764,6 +767,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D064F6193CE80AE40C98C1F /* ContentCacheStampTests.swift in Sources */,
 				EBB2C84F5F25EB1541C4FBA5 /* ContentStoreTests.swift in Sources */,
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
 				ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */,
@@ -916,7 +920,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -995,7 +999,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -32,7 +32,13 @@ enum ContentSyncService {
     }
 
     static func refreshIfNeeded(force: Bool = false) async {
-        if !force,
+        // Une mise à jour vient d'être installée : le cache écrit par la version
+        // précédente a été écarté au démarrage, et l'app tourne sur le contenu embarqué.
+        // Attendre six heures la laisserait ignorer les corrections faites côté serveur
+        // depuis la préparation de la version.
+        let isNewBuild = SharedDefaults.cachedContentBuild != SharedDefaults.currentAppBuild
+
+        if !force, !isNewBuild,
            let last = SharedDefaults.lastContentSyncDate,
            Date().timeIntervalSince(last) < refreshInterval {
             return

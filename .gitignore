@@ -15,3 +15,6 @@ supabase/.temp/
 # Secrets — jamais versionnés (clés APNs, etc.)
 secrets/
 *.p8
+
+# Archives produites en ligne de commande
+build/
