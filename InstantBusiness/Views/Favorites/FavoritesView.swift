@@ -4,6 +4,7 @@ struct FavoritesView: View {
     @EnvironmentObject private var favorites: FavoritesStore
     @EnvironmentObject private var appearance: AppearanceStore
     @State private var shareItem: ShareItem?
+    @State private var detailQuote: Quote?
     var onDiscoverTapped: () -> Void = {}
 
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -24,7 +25,8 @@ struct FavoritesView: View {
                                 onShare: {
                                     Analytics.trackShare(quote, origin: "favorites")
                                     shareItem = ShareItem(quote: quote)
-                                }
+                                },
+                                onTapped: { detailQuote = quote }
                             )
                         }
                     }
@@ -36,6 +38,9 @@ struct FavoritesView: View {
                 if let uiImage = ShareCardRenderer.uiImage(for: item.quote) {
                     ShareSheet(items: [uiImage, item.quote.text])
                 }
+            }
+            .sheet(item: $detailQuote) { quote in
+                QuoteDetailView(quote: quote)
             }
         }
     }

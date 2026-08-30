@@ -1,38 +1,74 @@
 import SwiftUI
 
-/// Liste des auteurs, filtrable. Le fil ne propose que du hasard : quelqu'un qui vient de
-/// lire une citation de Buffett n'avait aucun moyen de voir les dix autres.
+/// Recherche : les auteurs, et le texte des citations.
+///
+/// Le fil ne propose que du hasard, et l'écran ne cherchait que par auteur : avec 573
+/// citations, quelqu'un qui se rappelait d'une phrase sur l'échec sans savoir qui l'avait
+/// dite n'avait aucun moyen de la retrouver. Les deux résultats cohabitent dans une même
+/// liste, auteurs d'abord — c'est la recherche la plus fréquente, et la plus courte à
+/// parcourir.
 struct AuthorSearchView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
+    @State private var detailQuote: Quote?
 
     /// Recalculé à chaque frappe, mais seulement en filtrant un index déjà trié.
-    private var results: [ContentStore.Author] {
+    private var authorResults: [ContentStore.Author] {
         ContentStore.authors(matching: query)
+    }
+
+    /// Vide tant que rien n'est saisi : afficher les 573 citations d'entrée ferait de cet
+    /// écran une liste à faire défiler, alors qu'il sert à trouver.
+    private var quoteResults: [Quote] {
+        ContentStore.quotes(matching: query)
+    }
+
+    private var isEmpty: Bool {
+        authorResults.isEmpty && quoteResults.isEmpty
     }
 
     var body: some View {
         NavigationStack {
             Group {
-                if results.isEmpty {
+                if isEmpty {
                     emptyState
                 } else {
-                    List(results) { author in
-                        NavigationLink {
-                            AuthorQuotesView(author: author.name)
-                        } label: {
-                            row(for: author)
+                    List {
+                        if !authorResults.isEmpty {
+                            Section("Auteurs") {
+                                ForEach(authorResults) { author in
+                                    NavigationLink {
+                                        AuthorQuotesView(author: author.name)
+                                    } label: {
+                                        row(for: author)
+                                    }
+                                }
+                            }
+                        }
+
+                        if !quoteResults.isEmpty {
+                            Section("Citations") {
+                                ForEach(quoteResults) { quote in
+                                    Button {
+                                        Haptics.tap()
+                                        detailQuote = quote
+                                    } label: {
+                                        row(for: quote)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
-                    .listStyle(.plain)
+                    .listStyle(.insetGrouped)
                 }
             }
-            .navigationTitle("Auteurs")
+            .navigationTitle("Rechercher")
             .navigationBarTitleDisplayMode(.inline)
             .searchable(
                 text: $query,
                 placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "Rechercher un auteur"
+                prompt: "Un auteur, un mot, une phrase"
             )
             .autocorrectionDisabled()
             .toolbar {
@@ -40,7 +76,37 @@ struct AuthorSearchView: View {
                     Button("Fermer") { dismiss() }
                 }
             }
+            .sheet(item: $detailQuote) { quote in
+                QuoteDetailView(quote: quote)
+            }
+            // Une seule mesure par recherche aboutie, et jamais la saisie elle-même :
+            // ce qui est tapé dans un champ de recherche est du texte personnel.
+            .onChange(of: quoteResults.count) { _, count in
+                guard count > 0, query.count >= 3 else { return }
+                Analytics.track(.quoteSearched, ["results": .int(count)])
+            }
         }
+    }
+
+    private func row(for quote: Quote) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(quote.text)
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.primary)
+                .lineLimit(3)
+                .multilineTextAlignment(.leading)
+            HStack(spacing: 6) {
+                Circle()
+                    .fill(quote.category.tint)
+                    .frame(width: 6, height: 6)
+                Text(quote.author)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(.vertical, 3)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
     }
 
     private func row(for author: ContentStore.Author) -> some View {
@@ -71,7 +137,9 @@ struct AuthorSearchView: View {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 34))
                 .foregroundStyle(.tertiary)
-            Text("Aucun auteur pour « \(query) »")
+            Text(query.isEmpty
+                 ? "Cherche un auteur, un mot ou une phrase"
+                 : "Aucun résultat pour « \(query) »")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

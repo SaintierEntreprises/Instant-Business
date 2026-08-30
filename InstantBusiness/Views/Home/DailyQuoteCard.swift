@@ -8,6 +8,8 @@ struct DailyQuoteCard: View {
     var theme: CardTheme = SharedDefaults.cardTheme
     var onToggleFavorite: () -> Void
     var onShare: () -> Void
+    /// Même geste que sur les cartes du carrousel : appuyer ouvre la fiche.
+    var onTapped: (() -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -65,6 +67,12 @@ struct DailyQuoteCard: View {
                 .stroke(theme.borderColor, lineWidth: 1)
         }
         .shadow(color: theme.shadowColor(for: quote.category), radius: 16, y: 8)
+        .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .onTapGesture {
+            guard let onTapped else { return }
+            Haptics.tap()
+            onTapped()
+        }
     }
 }
 

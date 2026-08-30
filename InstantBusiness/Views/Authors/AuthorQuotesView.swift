@@ -13,6 +13,7 @@ struct AuthorQuotesView: View {
     @EnvironmentObject private var favorites: FavoritesStore
     @EnvironmentObject private var store: StoreManager
     @State private var shareItem: ShareItem?
+    @State private var detailQuote: Quote?
     @State private var showPaywall = false
 
     private var quotes: [Quote] { ContentStore.quotes(by: author) }
@@ -82,6 +83,9 @@ struct AuthorQuotesView: View {
         }
         .sheet(isPresented: $showPaywall) {
             PaywallView(origin: "author_page")
+        }
+        .sheet(item: $detailQuote) { quote in
+            QuoteDetailView(quote: quote)
         }
     }
 
@@ -239,6 +243,11 @@ struct AuthorQuotesView: View {
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .contentShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .onTapGesture {
+            Haptics.tap()
+            detailQuote = quote
+        }
     }
 
     private var initials: String {

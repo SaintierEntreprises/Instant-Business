@@ -25,6 +25,156 @@ enum SharedDefaults {
         static let accountUserID = "accountUserID"
         static let hasGrantedPremium = "hasGrantedPremium"
         static let lastForegroundDate = "lastForegroundDate"
+        static let openDays = "openDays"
+        static let bestStreak = "bestStreak"
+        static let lastStreakSheetDate = "lastStreakSheetDate"
+        static let appTheme = "appTheme"
+        static let frozenDays = "frozenDays"
+        static let freezesRemaining = "freezesRemaining"
+        static let freezePeriod = "freezePeriod"
+        static let freezeGranted = "freezeGranted"
+        static let lastFreezeDate = "lastFreezeDate"
+        static let celebratedMilestone = "celebratedMilestone"
+        static let lastContentSyncDate = "lastContentSyncDate"
+        static let seenQuoteIDs = "seenQuoteIDs"
+    }
+
+    /// Dernier rafraîchissement réussi du contenu depuis Supabase.
+    ///
+    /// Hors de `resetAccountData` : le contenu n'appartient à personne, changer de compte
+    /// ne doit pas provoquer un retéléchargement de 573 citations.
+    static var lastContentSyncDate: Date? {
+        get { suite.object(forKey: Keys.lastContentSyncDate) as? Date }
+        set { suite.set(newValue, forKey: Keys.lastContentSyncDate) }
+    }
+
+    // MARK: - Citations déjà vues
+
+    /// Identifiants déjà montrés dans le fil, du plus ancien au plus récent.
+    ///
+    /// Une liste ordonnée et non un ensemble : il faut pouvoir oublier les plus anciennes
+    /// quand la liste déborde. Sans cette mémoire, le fil retombait sur les mêmes
+    /// citations à quelques jours d'intervalle — le mélange est aléatoire, il n'a aucune
+    /// raison d'éviter ce qui vient d'être lu.
+    private static let seenQuoteLimit = 600
+
+    static var seenQuoteIDs: [String] {
+        get { suite.stringArray(forKey: Keys.seenQuoteIDs) ?? [] }
+        set { suite.set(Array(newValue.suffix(seenQuoteLimit)), forKey: Keys.seenQuoteIDs) }
+    }
+
+
+    // MARK: - Jokers de série
+
+    /// Jours sauvés par un joker, au même format que `openDays`.
+    ///
+    /// Tenus à part des jours ouverts, et pas seulement pour l'affichage : le
+    /// remplissage rétroactif de `StreakManager.recordVisit` reconstitue les jours d'une
+    /// série à partir de son compteur, or un jour gelé fait partie de la série sans avoir
+    /// été ouvert. Les confondre reviendrait à prétendre que la personne était là.
+    static var frozenDays: Set<String> {
+        get { Set(suite.stringArray(forKey: Keys.frozenDays) ?? []) }
+        set { suite.set(Array(newValue.sorted().suffix(openDaysLimit)), forKey: Keys.frozenDays) }
+    }
+
+    /// Jokers restants pour la période en cours.
+    static var freezesRemaining: Int {
+        get { suite.integer(forKey: Keys.freezesRemaining) }
+        set { suite.set(max(0, newValue), forKey: Keys.freezesRemaining) }
+    }
+
+    /// Mois auquel se rapporte `freezesRemaining`, au format `yyyy-MM`. Un mois différent
+    /// déclenche le réapprovisionnement.
+    static var freezePeriod: String? {
+        get { suite.string(forKey: Keys.freezePeriod) }
+        set { suite.set(newValue, forKey: Keys.freezePeriod) }
+    }
+
+    /// Quota déjà accordé pour la période en cours, pour ne pas rejouer le complément
+    /// premium à chaque ouverture.
+    static var freezeGranted: Int {
+        get { suite.integer(forKey: Keys.freezeGranted) }
+        set { suite.set(newValue, forKey: Keys.freezeGranted) }
+    }
+
+    /// Jour effectivement sauvé par le dernier joker consommé, pour pouvoir l'annoncer.
+    static var lastFreezeDate: Date? {
+        get { suite.object(forKey: Keys.lastFreezeDate) as? Date }
+        set { suite.set(newValue, forKey: Keys.lastFreezeDate) }
+    }
+
+    /// Dernier palier déjà fêté, pour ne pas rejouer la célébration à chaque ouverture du
+    /// jour où il a été atteint.
+    static var celebratedMilestone: Int {
+        get { suite.integer(forKey: Keys.celebratedMilestone) }
+        set { suite.set(newValue, forKey: Keys.celebratedMilestone) }
+    }
+
+    /// Apparence choisie pour l'interface. Absente — installation antérieure à ce
+    /// réglage — vaut « Automatique », jamais une valeur imposée.
+    static var appTheme: AppTheme {
+        get { suite.string(forKey: Keys.appTheme).flatMap(AppTheme.init(rawValue:)) ?? .default }
+        set { suite.set(newValue.rawValue, forKey: Keys.appTheme) }
+    }
+
+    // MARK: - Historique d'ouverture
+
+    /// Jours d'ouverture au format `yyyy-MM-dd`, calendrier local.
+    ///
+    /// Le compteur de série seul ne suffit pas à dessiner une semaine : il dit combien de
+    /// jours consécutifs tiennent aujourd'hui, pas quels jours ont été ouverts. Une série
+    /// cassée mardi puis relancée jeudi laisserait lundi et mardi vides alors qu'ils ont
+    /// bien été faits. On garde donc les jours eux-mêmes, sous la même forme que
+    /// `last_open_date` côté serveur.
+    static let dayKeyFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    static func dayKey(for date: Date) -> String {
+        dayKeyFormatter.string(from: date)
+    }
+
+    /// Conservés bien au-delà de la semaine affichée : la vue n'en montre que sept, mais
+    /// garder un historique court permettrait plus tard un calendrier mensuel sans avoir
+    /// à repartir de zéro. Tronqué pour que la liste ne grossisse pas indéfiniment.
+    private static let openDaysLimit = 400
+
+    /// Plafond du remplissage rétroactif, aligné sur la taille de l'historique conservé.
+    static var openDaysLimitForBackfill: Int { openDaysLimit }
+
+    static var openDays: Set<String> {
+        get { Set(suite.stringArray(forKey: Keys.openDays) ?? []) }
+        set {
+            // Le format `yyyy-MM-dd` se trie alphabétiquement comme chronologiquement :
+            // garder la fin de la liste triée revient à garder les jours les plus récents.
+            let trimmed = newValue.sorted().suffix(openDaysLimit)
+            suite.set(Array(trimmed), forKey: Keys.openDays)
+        }
+    }
+
+    static func hasOpened(_ date: Date) -> Bool {
+        openDays.contains(dayKey(for: date))
+    }
+
+    /// Meilleure série atteinte, jamais redescendue. Sert de repère quand la série en
+    /// cours repart de 1 : sans elle, une rechute efface toute trace de ce qui a été fait.
+    /// Exposée pour permettre à une vue de s'y abonner via `@AppStorage`.
+    static var bestStreakKey: String { Keys.bestStreak }
+
+    static var bestStreak: Int {
+        get { suite.integer(forKey: Keys.bestStreak) }
+        set { suite.set(newValue, forKey: Keys.bestStreak) }
+    }
+
+    /// Dernier jour où la célébration de série a été montrée, pour ne l'afficher qu'une
+    /// fois par jour.
+    static var lastStreakSheetDate: Date? {
+        get { suite.object(forKey: Keys.lastStreakSheetDate) as? Date }
+        set { suite.set(newValue, forKey: Keys.lastStreakSheetDate) }
     }
 
     /// Dernier passage au premier plan, écrit à chaque ouverture.
@@ -177,5 +327,15 @@ enum SharedDefaults {
         suite.removeObject(forKey: Keys.accountUserID)
         suite.removeObject(forKey: Keys.hasGrantedPremium)
         suite.removeObject(forKey: Keys.lastForegroundDate)
+        suite.removeObject(forKey: Keys.openDays)
+        suite.removeObject(forKey: Keys.bestStreak)
+        suite.removeObject(forKey: Keys.lastStreakSheetDate)
+        suite.removeObject(forKey: Keys.frozenDays)
+        suite.removeObject(forKey: Keys.freezesRemaining)
+        suite.removeObject(forKey: Keys.freezePeriod)
+        suite.removeObject(forKey: Keys.freezeGranted)
+        suite.removeObject(forKey: Keys.lastFreezeDate)
+        suite.removeObject(forKey: Keys.celebratedMilestone)
+        suite.removeObject(forKey: Keys.seenQuoteIDs)
     }
 }

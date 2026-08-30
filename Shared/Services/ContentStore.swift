@@ -1,15 +1,62 @@
 import Foundation
 
 enum ContentStore {
-    static let allQuotes: [Quote] = loadQuotes()
+    /// Contenu en vigueur : la copie téléchargée si elle existe, sinon celle du bundle.
+    ///
+    /// `var` et non plus `let` : le contenu vient désormais de Supabase et peut changer
+    /// sans mise à jour de l'app. La mutation est réservée au processus de l'app, et au
+    /// fil principal (voir `apply`) ; l'extension widget ne fait que lire, dans son propre
+    /// processus, au moment où elle démarre.
+    static private(set) var allQuotes: [Quote] = loadQuotes()
+
+    /// Plancher de confiance pour un contenu téléchargé.
+    ///
+    /// Une réponse tronquée, une table vidée par erreur, un filtre malheureux : sans ce
+    /// garde-fou, l'app remplacerait 573 citations par trois et n'aurait plus rien à
+    /// montrer, y compris hors ligne. En dessous, on garde ce qu'on a.
+    private static let minimumTrustedCount = 50
+
+    /// Copie téléchargée, dans le conteneur partagé et non dans les Documents de l'app :
+    /// le widget et l'extension de notifications doivent lire exactement le même contenu,
+    /// sinon la citation annoncée sur l'écran d'accueil n'existerait plus dans l'app.
+    static var cacheURL: URL? {
+        FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: SharedDefaults.appGroupID)?
+            .appendingPathComponent("content-remote.json")
+    }
 
     private static func loadQuotes() -> [Quote] {
+        if let url = cacheURL,
+           let data = try? Data(contentsOf: url),
+           let quotes = try? JSONDecoder().decode([Quote].self, from: data),
+           quotes.count >= minimumTrustedCount {
+            return quotes
+        }
+        return bundledQuotes()
+    }
+
+    private static func bundledQuotes() -> [Quote] {
         guard let url = Bundle.main.url(forResource: "content", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let quotes = try? JSONDecoder().decode([Quote].self, from: data) else {
             return []
         }
         return quotes
+    }
+
+    /// Remplace le contenu et les index dérivés. Retourne `false` si la liste proposée
+    /// n'est pas crédible, auquel cas rien n'est touché.
+    @discardableResult
+    static func apply(remoteQuotes: [Quote]) -> Bool {
+        guard remoteQuotes.count >= minimumTrustedCount else { return false }
+        guard let url = cacheURL,
+              let data = try? JSONEncoder().encode(remoteQuotes),
+              (try? data.write(to: url, options: .atomic)) != nil
+        else { return false }
+
+        allQuotes = remoteQuotes
+        rebuildIndexes()
+        return true
     }
 
     static func quotes(in category: QuoteCategory) -> [Quote] {
@@ -35,13 +82,34 @@ enum ContentStore {
     /// Ordre alphabétique : dans une liste de cette longueur, c'est le seul classement où
     /// l'on sait d'avance où regarder. `localizedStandardCompare` place « Sénèque » sous
     /// S et non après Z, contrairement à une comparaison brute de chaînes.
-    static let authors: [Author] = {
+    static private(set) var authors: [Author] = buildAuthors()
+
+    private static var quotesByAuthor: [String: [Quote]] = Dictionary(grouping: allQuotes, by: \.author)
+
+    /// Clé de recherche de chaque citation, calculée une fois.
+    ///
+    /// Replier 573 textes à chaque frappe rendait la saisie visiblement saccadée — le même
+    /// problème, et la même réponse, que pour l'index des auteurs. La clé couvre le texte
+    /// *et* l'auteur : chercher « buffett argent » doit fonctionner.
+    private static var quoteSearchKeys: [(quote: Quote, key: String)] = buildQuoteSearchKeys()
+
+    private static func buildAuthors() -> [Author] {
         Dictionary(grouping: allQuotes, by: \.author)
             .map { Author(name: $0.key, quoteCount: $0.value.count, searchKey: searchKey(for: $0.key)) }
             .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
-    }()
+    }
 
-    private static let quotesByAuthor: [String: [Quote]] = Dictionary(grouping: allQuotes, by: \.author)
+    private static func buildQuoteSearchKeys() -> [(quote: Quote, key: String)] {
+        allQuotes.map { ($0, searchKey(for: "\($0.text) \($0.author)")) }
+    }
+
+    private static func rebuildIndexes() {
+        clearCaches()
+        authors = buildAuthors()
+        quotesByAuthor = Dictionary(grouping: allQuotes, by: \.author)
+        quotesByID = Dictionary(allQuotes.map { ($0.id, $0) }) { first, _ in first }
+        quoteSearchKeys = buildQuoteSearchKeys()
+    }
 
     static func quotes(by author: String) -> [Quote] {
         quotesByAuthor[author] ?? []
@@ -53,14 +121,32 @@ enum ContentStore {
         return authors.filter { $0.searchKey.contains(key) }
     }
 
+    /// Citations dont le texte ou l'auteur contient la saisie.
+    ///
+    /// `limit` existe parce qu'une saisie d'une seule lettre remonte des centaines de
+    /// résultats dont personne ne lira le dixième : au-delà, la liste ne rend plus service,
+    /// elle rame.
+    static func quotes(matching query: String, limit: Int = 60) -> [Quote] {
+        let key = searchKey(for: query)
+        guard !key.isEmpty else { return [] }
+        var results: [Quote] = []
+        for entry in quoteSearchKeys where entry.key.contains(key) {
+            results.append(entry.quote)
+            if results.count >= limit { break }
+        }
+        return results
+    }
+
     private static func searchKey(for string: String) -> String {
         string
             .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
             .filter { $0.isLetter || $0.isNumber }
     }
 
+    private static var quotesByID: [String: Quote] = Dictionary(allQuotes.map { ($0.id, $0) }) { first, _ in first }
+
     static func quote(id: String) -> Quote? {
-        allQuotes.first { $0.id == id }
+        quotesByID[id]
     }
 
     /// Random order, but never two quotes from the same author back to back.
@@ -91,6 +177,89 @@ enum ContentStore {
         return result
     }
 
+    /// Ordre du fil : d'abord ce qui n'a pas encore été vu, puis le reste.
+    ///
+    /// Le mélange seul n'a aucune raison d'éviter ce qu'on vient de lire : à trois
+    /// citations par jour, quelqu'un d'assidu retombait sur les mêmes à quelques jours
+    /// d'intervalle alors que des centaines n'avaient jamais été montrées.
+    ///
+    /// Les vues restent présentes à la suite plutôt que d'être retirées : une fois le
+    /// stock épuisé, un fil qui se vide serait pire qu'un fil qui se répète.
+    static func feedOrder(for quotes: [Quote], seen: Set<String>) -> [Quote] {
+        let unseen = quotes.filter { !seen.contains($0.id) }
+        guard !unseen.isEmpty, unseen.count < quotes.count else {
+            return shuffledAvoidingAdjacentAuthors(quotes)
+        }
+        let alreadySeen = quotes.filter { seen.contains($0.id) }
+        return shuffledAvoidingAdjacentAuthors(unseen) + shuffledAvoidingAdjacentAuthors(alreadySeen)
+    }
+
+    // MARK: - Mémoïsation
+
+    /// Pools filtrés et ordres mélangés déjà calculés.
+    ///
+    /// Sans eux, chaque citation demandée refiltrait les 573 entrées puis mélangeait
+    /// autant d'indices. Programmer une fenêtre de notifications en déclenche une
+    /// quarantaine d'affilée, et `CardFeedView` en redéclenchait un à chaque
+    /// reconstruction de sa vue — SwiftUI recrée la structure à chaque rendu du parent,
+    /// or la citation du jour était calculée dans un stockage de propriété.
+    ///
+    /// Le tout est déterministe : mêmes entrées, même sortie. Le cache ne change donc
+    /// aucun comportement, il évite seulement de refaire le même travail.
+    private struct PoolKey: Hashable {
+        let category: QuoteCategory?
+        let maxLength: Int?
+    }
+
+    private struct OrderKey: Hashable {
+        let seed: Int
+        let pool: PoolKey
+    }
+
+    /// Le widget lit depuis son propre processus et son propre fil : deux écritures
+    /// concurrentes dans un dictionnaire Swift ne se contentent pas de donner un résultat
+    /// faux, elles font tomber le processus. Le verrou est sans conséquence sur les
+    /// performances — il protège quelques lectures de dictionnaire.
+    private static let cacheLock = NSLock()
+    private static var poolCache: [PoolKey: [Quote]] = [:]
+    private static var orderCache: [OrderKey: [Int]] = [:]
+    private static var dailyCache: [String: Quote] = [:]
+
+    private static func clearCaches() {
+        cacheLock.lock()
+        poolCache.removeAll()
+        orderCache.removeAll()
+        dailyCache.removeAll()
+        cacheLock.unlock()
+    }
+
+    private static func pool(category: QuoteCategory?, maxLength: Int?) -> [Quote] {
+        let key = PoolKey(category: category, maxLength: maxLength)
+        cacheLock.lock()
+        defer { cacheLock.unlock() }
+        if let cached = poolCache[key] { return cached }
+
+        var result = category.map { cat in allQuotes.filter { $0.category == cat } } ?? allQuotes
+        if let maxLength {
+            let short = result.filter { $0.text.count <= maxLength }
+            if !short.isEmpty { result = short }
+        }
+        poolCache[key] = result
+        return result
+    }
+
+    private static func order(seed: Int, category: QuoteCategory?, maxLength: Int?, count: Int) -> [Int] {
+        let key = OrderKey(seed: seed, pool: PoolKey(category: category, maxLength: maxLength))
+        cacheLock.lock()
+        defer { cacheLock.unlock() }
+        if let cached = orderCache[key] { return cached }
+
+        var generator = SeededGenerator(seed: seed)
+        let shuffled = Array(0..<count).shuffled(using: &generator)
+        orderCache[key] = shuffled
+        return shuffled
+    }
+
     /// Deterministic "quote of the day" so the app and the widget agree without shared state.
     /// Uses a stable (non-hashValue-based) seeded shuffle so the daily sequence doesn't
     /// mirror the raw content order, where quotes are grouped by author.
@@ -98,19 +267,25 @@ enum ContentStore {
     /// `maxLength` keeps the lock-screen widget readable: its container only fits a few
     /// short lines, so long quotes would be truncated mid-sentence.
     static func quoteOfTheDay(category: QuoteCategory? = nil, maxLength: Int? = nil, on date: Date = Date()) -> Quote? {
-        var pool = category.map(quotes(in:)) ?? allQuotes
-        if let maxLength {
-            let short = pool.filter { $0.text.count <= maxLength }
-            if !short.isEmpty { pool = short }
-        }
+        let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
+        let cacheKey = "\(category?.rawValue ?? "all")-\(maxLength ?? 0)-\(dayOfYear)"
+
+        cacheLock.lock()
+        let cached = dailyCache[cacheKey]
+        cacheLock.unlock()
+        if let cached { return cached }
+
+        let pool = pool(category: category, maxLength: maxLength)
         guard !pool.isEmpty else { return nil }
 
-        var generator = SeededGenerator(seed: stableHash("\(category?.rawValue ?? "all")-\(maxLength ?? 0)"))
-        let order = pool.indices.shuffled(using: &generator)
+        let seed = stableHash("\(category?.rawValue ?? "all")-\(maxLength ?? 0)")
+        let order = order(seed: seed, category: category, maxLength: maxLength, count: pool.count)
+        let quote = pool[order[dayOfYear % order.count]]
 
-        let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
-        let index = order[dayOfYear % order.count]
-        return pool[index]
+        cacheLock.lock()
+        dailyCache[cacheKey] = quote
+        cacheLock.unlock()
+        return quote
     }
 
     /// Per-user rotating quote: `seed` (one random value per installation) picks a fixed
@@ -118,15 +293,11 @@ enum ContentStore {
     /// (seed, unit) always yields the same quote, so the widget and the notification
     /// scheduler agree on "what's showing right now" without sharing any other state.
     static func rotatingQuote(seed: Int, unit: Int, category: QuoteCategory? = nil, maxLength: Int? = nil) -> Quote? {
-        var pool = category.map(quotes(in:)) ?? allQuotes
-        if let maxLength {
-            let short = pool.filter { $0.text.count <= maxLength }
-            if !short.isEmpty { pool = short }
-        }
+        let pool = pool(category: category, maxLength: maxLength)
         guard !pool.isEmpty else { return nil }
 
-        var generator = SeededGenerator(seed: stableHash("\(seed)-\(category?.rawValue ?? "all")-\(maxLength ?? 0)"))
-        let order = pool.indices.shuffled(using: &generator)
+        let effectiveSeed = stableHash("\(seed)-\(category?.rawValue ?? "all")-\(maxLength ?? 0)")
+        let order = order(seed: effectiveSeed, category: category, maxLength: maxLength, count: pool.count)
         let index = order[((unit % order.count) + order.count) % order.count]
         return pool[index]
     }

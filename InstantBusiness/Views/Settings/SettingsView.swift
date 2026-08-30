@@ -13,6 +13,9 @@ struct SettingsView: View {
     /// une série périmée, la synchronisation serveur arrivant après.
     @AppStorage(SharedDefaults.streakCountKey, store: SharedDefaults.suite)
     private var streak = 0
+    @AppStorage(SharedDefaults.bestStreakKey, store: SharedDefaults.suite)
+    private var bestStreak = 0
+    @State private var showStreakDetail = false
     @State private var showPaywall = false
     @State private var isSigningOut = false
     @State private var isDeletingAccount = false
@@ -22,28 +25,33 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    HStack(spacing: 16) {
-                        ZStack {
-                            Circle()
-                                .fill(LinearGradient(colors: [.orange, .red.opacity(0.85)], startPoint: .top, endPoint: .bottom))
-                                .frame(width: 56, height: 56)
-                            Image(systemName: "flame.fill")
-                                .font(.title2)
-                                .foregroundStyle(.white)
-                        }
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("\(streak) jour\(streak > 1 ? "s" : "") de suite")
-                                .font(.headline)
-                            Text(streak > 0 ? "Continue comme ça !" : "Ouvre l'app chaque jour pour démarrer ta série")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        Spacer()
+                    Button {
+                        Haptics.tap()
+                        showStreakDetail = true
+                    } label: {
+                        streakCard
                     }
-                    .padding(.vertical, 6)
+                    .buttonStyle(PressableButtonStyle(scale: 0.98))
+                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 10, trailing: 16))
+                    .listRowBackground(Color.clear)
                 }
 
-                Section("Apparence") {
+                Section {
+                    Picker(selection: $appearance.appTheme) {
+                        ForEach(AppTheme.allCases) { option in
+                            Label(option.displayName, systemImage: option.icon).tag(option)
+                        }
+                    } label: {
+                        HStack(spacing: 12) {
+                            SettingsIconBadge(systemName: "moon.fill", color: .indigo)
+                            Text("Mode nuit")
+                        }
+                    }
+                    .onChange(of: appearance.appTheme) { _, newValue in
+                        Haptics.select()
+                        Analytics.track(.appThemeChanged, ["theme": .string(newValue.rawValue)])
+                    }
+
                     Button {
                         showThemePicker = true
                     } label: {
@@ -59,6 +67,18 @@ struct SettingsView: View {
                                 .foregroundStyle(.tertiary)
                         }
                     }
+                    // Sans style explicite, un bouton de formulaire teinte toute son
+                    // étiquette avec la couleur d'accent : `.primary` et `.secondary` sont
+                    // des styles hiérarchiques, ils se résolvent contre la teinte
+                    // ambiante. La ligne s'affichait donc en orange à côté de voisines
+                    // noires, comme si elle était active.
+                    .buttonStyle(.plain)
+                } header: {
+                    Text("Apparence")
+                } footer: {
+                    Text(appearance.appTheme == .system
+                         ? "L'app suit le réglage clair/sombre d'iOS."
+                         : "L'app reste en \(appearance.appTheme.displayName.lowercased()), quel que soit le réglage d'iOS.")
                 }
 
                 Section {
@@ -225,6 +245,9 @@ struct SettingsView: View {
             .sheet(isPresented: $showPaywall) {
                 PaywallView(origin: "settings")
             }
+            .navigationDestination(isPresented: $showStreakDetail) {
+                StreakDetailView()
+            }
             .sheet(isPresented: $showThemePicker) {
                 CardThemePickerView()
             }
@@ -242,6 +265,71 @@ struct SettingsView: View {
                 Text("Tes favoris, ta série et ton profil seront effacés définitivement. Cette action est irréversible.")
             }
         }
+    }
+
+    /// Recalculé à chaque rendu plutôt que figé dans un `@State` : la série arrive de la
+    /// synchronisation après l'apparition de l'écran, et `streak` change alors — c'est ce
+    /// changement qui redessine la semaine avec les bons jours.
+    private var weekDays: [StreakDay] {
+        StreakWeek.days(streak: streak, openDays: SharedDefaults.openDays, frozenDays: SharedDefaults.frozenDays)
+    }
+
+    /// La même semaine que dans la célébration, en plus discret.
+    ///
+    /// Le texte « X jours de suite » seul ne disait rien de ce qu'il fallait faire pour
+    /// que le nombre monte, ni de ce qui restait à tenir. La carte reprend donc les deux
+    /// repères de la sheet — la semaine et le palier suivant — pour qu'on les retrouve
+    /// sans avoir à attendre une notification.
+    private var streakCard: some View {
+        VStack(spacing: 16) {
+            HStack(spacing: 14) {
+                ZStack {
+                    Circle()
+                        .fill(StreakPalette.flame)
+                        .frame(width: 52, height: 52)
+                        .shadow(color: StreakPalette.tint.opacity(0.35), radius: 8, y: 4)
+                    Image(systemName: "flame.fill")
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundStyle(.white)
+                }
+
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("\(streak) jour\(streak > 1 ? "s" : "") de suite")
+                        .font(.system(.headline, design: .rounded, weight: .bold))
+                        .foregroundStyle(.primary)
+                        .contentTransition(.numericText())
+                    Text(streakSubtitle)
+                        .font(.system(.caption, design: .rounded, weight: .medium))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
+
+                Spacer(minLength: 4)
+
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+
+            Divider()
+                .opacity(0.4)
+
+            StreakWeekTracker(days: weekDays, size: .compact)
+
+            StreakMilestoneBar(streak: streak)
+        }
+        .padding(18)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .fill(Color(.secondarySystemGroupedBackground))
+        )
+        .animation(.spring(response: 0.45, dampingFraction: 1), value: streak)
+    }
+
+    private var streakSubtitle: String {
+        guard streak > 0 else { return "Ouvre l'app chaque jour pour démarrer ta série" }
+        if bestStreak > streak { return "Ton record : \(bestStreak) jours" }
+        return "Ta meilleure série à ce jour"
     }
 
     /// Le prénom et le nom saisis après la connexion, quand ils existent : l'adresse

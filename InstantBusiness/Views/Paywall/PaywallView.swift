@@ -38,6 +38,7 @@ struct PaywallView: View {
                         benefitRow(icon: "square.grid.2x2.fill", color: .indigo, title: "Toutes les catégories", subtitle: "Vente, Leadership, Finance")
                         benefitRow(icon: "paintpalette.fill", color: .pink, title: "Tous les thèmes de widget", subtitle: "Bold, Minimal, Sombre…")
                         benefitRow(icon: "rectangle.stack.fill", color: .teal, title: "Tous les thèmes de cartes", subtitle: "Crème, Noir, Nuit…")
+                        benefitRow(icon: "snowflake", color: .blue, title: "3 jokers de série par mois", subtitle: "Au lieu d'un seul, pour rattraper un jour manqué")
                     }
                     .padding(.horizontal)
 

@@ -9,16 +9,17 @@ final class NotificationManager: ObservableObject {
     /// Fenêtre glissante de programmation.
     ///
     /// iOS plafonne à 64 les notifications locales en attente. Au rythme le plus dense
-    /// (6 par jour), dix jours en consommeraient 60, plus le rappel de série : trop juste
-    /// si le plafond était atteint, la fin de la fenêtre serait silencieusement tronquée.
-    /// La fenêtre s'adapte donc au rythme choisi pour rester sous la limite dans tous
-    /// les cas.
+    /// (6 par jour), dix jours en consommeraient 60, plus les deux rappels de série :
+    /// trop juste si le plafond était atteint, la fin de la fenêtre serait silencieusement
+    /// tronquée. La fenêtre s'adapte donc au rythme choisi pour rester sous la limite dans
+    /// tous les cas.
     private var rollingWindowDays: Int {
         let perDay = max(1, SharedDefaults.notificationFrequency.perDay)
         return min(14, max(3, 55 / perDay))
     }
 
     private static let streakReminderIdentifier = "instant-business-streak"
+    private static let streakLostIdentifier = "instant-business-streak-lost"
     private static let streakReminderHour = 18
 
     /// Autorisation réellement accordée au niveau du système, sans jamais présenter de
@@ -107,41 +108,96 @@ final class NotificationManager: ObservableObject {
         await scheduleStreakReminder(now: now, calendar: calendar, center: center)
     }
 
-    /// Rappel de série, à 18h, uniquement le lendemain du dernier jour d'ouverture.
+    /// Deux rappels de série à 18h : le lendemain du dernier jour d'ouverture, puis le
+    /// surlendemain.
     ///
     /// Une notification locale ne peut pas décider au dernier moment si elle doit
     /// s'afficher : elle est programmée à l'avance. Le filtrage se fait donc à l'envers —
     /// `reschedule()` efface tout et reprogramme à chaque passage au premier plan, si
-    /// bien qu'ouvrir l'app supprime mécaniquement le rappel du jour. Il ne survit que
-    /// si personne n'ouvre l'app d'ici là, ce qui est exactement la condition voulue.
+    /// bien qu'ouvrir l'app supprime mécaniquement les rappels en attente. Ils ne
+    /// survivent que si personne n'ouvre l'app d'ici là, ce qui est exactement la
+    /// condition voulue.
     ///
-    /// Un seul jour est programmé, et c'est volontaire : rater une seule journée remet
-    /// déjà la série à 1 (voir le `default` de `UserSyncService.reconcileStreak`).
-    /// Le surlendemain, la série est perdue — annoncer « ne perds pas ta série de 6
-    /// jours » y serait faux.
+    /// Les deux jours ne disent pas la même chose, et ce n'est pas un détail de ton :
+    /// rater une seule journée remet déjà la série à 1 (voir le `default` de
+    /// `UserSyncService.reconcileStreak`). Au premier jour la série est encore là et il
+    /// s'agit de la garder ; au second elle est perdue, et annoncer « ne perds pas ta
+    /// série de 6 jours » y serait faux. Le second rappel existe parce que sans lui,
+    /// quelqu'un qui saute deux jours ne recevait plus jamais un mot au sujet de sa
+    /// série — le rappel du lendemain était déjà passé, et rien ne le remplaçait.
     private func scheduleStreakReminder(now: Date, calendar: Calendar, center: UNUserNotificationCenter) async {
         let streak = SharedDefaults.streakCount
         guard streak > 0 else { return }
 
-        let lastOpen = SharedDefaults.lastForegroundDate ?? now
-        guard let nextDay = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: lastOpen)),
-              let fireDate = calendar.date(bySettingHour: Self.streakReminderHour, minute: 0, second: 0, of: nextDay),
+        let lastOpen = calendar.startOfDay(for: SharedDefaults.lastForegroundDate ?? now)
+        let name = SharedDefaults.firstName.flatMap { $0.isEmpty ? nil : $0 }
+
+        // Jour 1 : la série tient encore. Quand ce jour-là fait justement franchir un
+        // palier, on l'annonce plutôt que de répéter la menace : un rappel qui promet
+        // quelque chose se lit autrement qu'un rappel qui met en garde, et c'est le seul
+        // soir de la série où on a une bonne nouvelle à donner d'avance.
+        let nextMilestone = StreakBadge.badge(for: streak + 1)
+        await scheduleStreakNotification(
+            identifier: Self.streakReminderIdentifier,
+            dayOffset: 1,
+            title: nextMilestone.map { "À un jour du palier de \($0.days) jours" }
+                ?? "Ne perds pas ta série de \(streak) jour\(streak > 1 ? "s" : "")",
+            body: {
+                if let nextMilestone {
+                    return name.map { "\($0), ouvre Instant Business aujourd'hui et le palier « \(nextMilestone.name) » est à toi." }
+                        ?? "Ouvre Instant Business aujourd'hui et le palier « \(nextMilestone.name) » est à toi."
+                }
+                return name.map { "\($0), tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder." }
+                    ?? "Tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder."
+            }(),
+            lastOpen: lastOpen,
+            now: now,
+            calendar: calendar,
+            center: center
+        )
+
+        // Jour 2 : la série est tombée, on propose d'en relancer une plutôt que de faire
+        // comme si de rien n'était.
+        await scheduleStreakNotification(
+            identifier: Self.streakLostIdentifier,
+            dayOffset: 2,
+            title: "Ta série de \(streak) jour\(streak > 1 ? "s" : "") s'est arrêtée",
+            body: SharedDefaults.freezesRemaining > 0
+                ? "Il te reste un joker : ouvre l'app aujourd'hui et ta série repart d'où elle s'était arrêtée."
+                : (name.map { "\($0), rien n'est perdu : une citation aujourd'hui et une nouvelle série démarre." }
+                   ?? "Rien n'est perdu : une citation aujourd'hui et une nouvelle série démarre."),
+            lastOpen: lastOpen,
+            now: now,
+            calendar: calendar,
+            center: center
+        )
+    }
+
+    private func scheduleStreakNotification(
+        identifier: String,
+        dayOffset: Int,
+        title: String,
+        body: String,
+        lastOpen: Date,
+        now: Date,
+        calendar: Calendar,
+        center: UNUserNotificationCenter
+    ) async {
+        guard let day = calendar.date(byAdding: .day, value: dayOffset, to: lastOpen),
+              let fireDate = calendar.date(bySettingHour: Self.streakReminderHour, minute: 0, second: 0, of: day),
               fireDate > now
         else { return }
 
         let content = UNMutableNotificationContent()
-        content.title = "Ne perds pas ta série de \(streak) jour\(streak > 1 ? "s" : "")"
-        if let firstName = SharedDefaults.firstName, !firstName.isEmpty {
-            content.body = "\(firstName), tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder."
-        } else {
-            content.body = "Tu n'as pas encore ouvert Instant Business aujourd'hui. Une citation suffit pour la garder."
-        }
+        content.title = title
+        content.body = body
         content.sound = .default
+        content.userInfo = [NotificationPayload.kindKey: NotificationPayload.streakKind]
 
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: fireDate)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         try? await center.add(
-            UNNotificationRequest(identifier: Self.streakReminderIdentifier, content: content, trigger: trigger)
+            UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         )
     }
 

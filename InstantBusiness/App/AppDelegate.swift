@@ -23,14 +23,20 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        let quoteID = response.notification.request.content.userInfo[NotificationPayload.quoteIDKey] as? String
+        let userInfo = response.notification.request.content.userInfo
+        let quoteID = userInfo[NotificationPayload.quoteIDKey] as? String
+        let kind = userInfo[NotificationPayload.kindKey] as? String
         Task { @MainActor in
             Analytics.track(.notificationOpened, [
                 "quote_id": .string(quoteID ?? "none"),
+                "kind": .string(kind ?? "quote"),
                 "identifier": .string(response.notification.request.identifier)
             ])
             AppRouter.shared.launchSource = .notification
             if let quoteID { AppRouter.shared.pendingQuoteID = quoteID }
+            if kind == NotificationPayload.streakKind {
+                AppRouter.shared.pendingStreakCelebration = true
+            }
         }
         completionHandler()
     }
@@ -66,4 +72,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
 enum NotificationPayload {
     /// Clé de l'identifiant de citation transporté par chaque notification.
     static let quoteIDKey = "quoteID"
+
+    /// Nature de la notification, quand elle n'est pas une simple citation.
+    static let kindKey = "kind"
+
+    /// Rappel « ne perds pas ta série ». Marqué pour que l'appui ouvre directement le
+    /// suivi de série : sans ce marqueur, la notification qui parle de la série menait à
+    /// un fil de citations où rien n'y répondait.
+    static let streakKind = "streak"
 }

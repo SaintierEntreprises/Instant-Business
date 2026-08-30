@@ -1,6 +1,16 @@
 import SwiftUI
 
 struct WidgetGalleryView: View {
+    /// Thèmes gratuits d'abord.
+    ///
+    /// L'ordre de `allCases` est celui du modèle, qui sert aussi à l'intention de
+    /// configuration du widget : trois cadenas s'affichaient avant le seul thème
+    /// utilisable sans abonnement. Quelqu'un qui découvre l'écran devait faire défiler
+    /// pour trouver ce à quoi il a droit.
+    private var galleryOrder: [WidgetTheme] {
+        WidgetTheme.allCases.filter(\.isFree) + WidgetTheme.allCases.filter { !$0.isFree }
+    }
+
     @EnvironmentObject private var store: StoreManager
     @State private var showPaywall = false
 
@@ -29,7 +39,7 @@ struct WidgetGalleryView: View {
                         subtitle: "Quatre styles, à choisir en maintenant le widget appuyé."
                     ) {
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(WidgetTheme.allCases, id: \.self) { theme in
+                            ForEach(galleryOrder, id: \.self) { theme in
                                 themeCard(theme)
                             }
                         }

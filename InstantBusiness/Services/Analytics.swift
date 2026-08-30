@@ -20,6 +20,8 @@ enum Analytics {
         case quoteFavorited = "quote_favorited"
         case quoteUnfavorited = "quote_unfavorited"
         case quoteShared = "quote_shared"
+        case quoteOpened = "quote_opened"
+        case quoteSearched = "quote_searched"
         case authorOpened = "author_opened"
         case authorSearched = "author_searched"
         case categorySelected = "category_selected"
@@ -38,7 +40,12 @@ enum Analytics {
         case profileCompleted = "profile_completed"
         case quizCompleted = "quiz_completed"
         case cardThemeChanged = "card_theme_changed"
+        case appThemeChanged = "app_theme_changed"
         case accountDeleted = "account_deleted"
+        case streakSheetShown = "streak_sheet_shown"
+        case streakMilestoneReached = "streak_milestone_reached"
+        case streakShared = "streak_shared"
+        case streakFreezeUsed = "streak_freeze_used"
     }
 
     /// D'où vient l'ouverture de l'app. Sans cette distinction, impossible de dire si les

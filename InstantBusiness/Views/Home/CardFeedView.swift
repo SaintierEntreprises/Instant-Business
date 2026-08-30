@@ -12,6 +12,7 @@ struct CardFeedView: View {
     @State private var displayedQuotes: [Quote] = []
     @State private var scrollPosition: String?
     @State private var shareItem: ShareItem?
+    @State private var detailQuote: Quote?
     @State private var showPaywall = false
     @State private var showAuthorSearch = false
     @State private var selectedAuthor: String?
@@ -43,7 +44,8 @@ struct CardFeedView: View {
                             onShare: {
                                 Analytics.trackShare(dailyQuote, origin: "daily_card")
                                 shareItem = ShareItem(quote: dailyQuote)
-                            }
+                            },
+                            onTapped: { detailQuote = dailyQuote }
                         )
                         .padding(.horizontal, 24)
                         .padding(.top, 20)
@@ -66,6 +68,15 @@ struct CardFeedView: View {
                         .padding(.top, 20)
                         .padding(.bottom, 24)
                 }
+            }
+            // Le fil ne se renouvelait qu'en changeant de catégorie et en revenant :
+            // le geste standard fait maintenant ce que ce détour faisait par accident.
+            .refreshable {
+                Haptics.tap()
+                reshuffle()
+                // Le mélange est instantané ; sans ce délai, l'indicateur disparaît avant
+                // d'avoir été vu et le geste semble n'avoir rien déclenché.
+                try? await Task.sleep(for: .milliseconds(400))
             }
             .toolbar(.hidden, for: .navigationBar)
             // Sans barre de navigation, le contenu défilait à nu sous la barre d'état et
@@ -102,6 +113,9 @@ struct CardFeedView: View {
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView(origin: "category_filter")
+            }
+            .sheet(item: $detailQuote) { quote in
+                QuoteDetailView(quote: quote)
             }
             .sheet(isPresented: $showAuthorSearch) {
                 AuthorSearchView()
@@ -179,7 +193,8 @@ struct CardFeedView: View {
                                     "origin": .string("card")
                                 ])
                                 selectedAuthor = quote.author
-                            }
+                            },
+                            onTapped: { detailQuote = quote }
                         )
                         .frame(width: proxy.size.width - 48)
                         .scrollTransition(axis: .horizontal) { content, phase in
@@ -214,6 +229,14 @@ struct CardFeedView: View {
                 guard !suppressesScrollFeedback, let previous, let current else { return false }
                 return previous != current
             }
+            // Une carte n'est « vue » qu'une fois arrêtée au centre, pas au moment où elle
+            // entre dans le champ : le carrousel en rend deux voisines partiellement
+            // visibles, les compter reviendrait à brûler le stock trois fois plus vite
+            // que ce qui est réellement lu.
+            .onChange(of: scrollPosition) { _, id in
+                guard let id else { return }
+                SeenQuotes.record(id)
+            }
         }
         .aspectRatio(0.78, contentMode: .fit)
     }
@@ -232,7 +255,7 @@ struct CardFeedView: View {
 
     private func reshuffle() {
         let pool = selectedCategory.map(ContentStore.quotes(in:)) ?? ContentStore.allQuotes
-        var shuffled = ContentStore.shuffledAvoidingAdjacentAuthors(pool)
+        var shuffled = ContentStore.feedOrder(for: pool, seen: SeenQuotes.all())
         // Avoid showing the daily quote twice — it already has its own spot above.
         if let dailyQuote {
             shuffled.removeAll { $0.id == dailyQuote.id }

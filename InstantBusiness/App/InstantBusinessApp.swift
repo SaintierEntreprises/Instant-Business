@@ -64,7 +64,12 @@ struct InstantBusinessApp: App {
                 }
         }
         .onChange(of: scenePhase) { _, newPhase in
-            guard newPhase == .active else { return }
+            guard newPhase == .active else {
+                // Dernier moment sûr pour descendre sur disque ce qui a été lu : l'app
+                // peut être tuée en arrière-plan sans autre préavis.
+                SeenQuotes.flush()
+                return
+            }
             Task { await syncOnForeground() }
         }
     }
@@ -103,6 +108,11 @@ struct InstantBusinessApp: App {
                 StreakManager.recordOpenToday()
             }
 
+            // Après la résolution de la série, jamais avant : c'est elle qui permet de
+            // reconstituer les jours précédents sur un appareil dont l'historique local
+            // est vide (nouveau téléphone, réinstallation).
+            StreakManager.recordVisit(streak: SharedDefaults.streakCount)
+
             // Le profil vit côté serveur : sur un nouvel appareil, on le restaure plutôt
             // que de redemander prénom et genre à quelqu'un qui les a déjà renseignés.
             if let firstName = result.profile.firstName, !firstName.isEmpty {
@@ -136,10 +146,18 @@ struct InstantBusinessApp: App {
             await PushRegistrar.registerIfAuthorized()
         }
 
+        // Avant `reschedule()` : les notifications embarquent le texte de la citation au
+        // moment où elles sont programmées. Rafraîchir après reviendrait à annoncer
+        // pendant deux semaines une citation qu'on vient de corriger.
+        await ContentSyncService.refreshIfNeeded()
+
         // Re-check StoreKit on every foreground: without this an expired or cancelled
         // subscription keeps unlocking premium content until the app is cold-launched.
         await store.refresh()
         await notificationManager.reschedule()
+
+        // Série et historique sont désormais à jour : la célébration peut décider.
+        router.streakRefreshTick += 1
 
         // Après `store.refresh()`, pour que l'évènement porte le bon état d'abonnement.
         Analytics.track(.appOpened, [

@@ -12,6 +12,12 @@ struct QuoteCardView: View {
     var onToggleFavorite: () -> Void = {}
     var onShare: () -> Void = {}
     var onAuthorTapped: (() -> Void)?
+    /// Appui sur la carte elle-même, en dehors des commandes.
+    ///
+    /// Les boutons imbriqués (cœur, partage, auteur) captent le geste avant ce
+    /// `onTapGesture`, posé plus haut dans la hiérarchie : appuyer sur le cœur n'ouvre
+    /// donc pas la fiche par-dessus.
+    var onTapped: (() -> Void)?
 
     /// Largeur d'une carte pleine largeur sur iPhone, à laquelle toutes les tailles
     /// ci-dessous sont calibrées.
@@ -92,6 +98,12 @@ struct QuoteCardView: View {
         .overlay {
             RoundedRectangle(cornerRadius: 28 * scale, style: .continuous)
                 .stroke(theme.borderColor, lineWidth: 1)
+        }
+        .contentShape(RoundedRectangle(cornerRadius: 28 * scale, style: .continuous))
+        .onTapGesture {
+            guard let onTapped else { return }
+            Haptics.tap()
+            onTapped()
         }
     }
 

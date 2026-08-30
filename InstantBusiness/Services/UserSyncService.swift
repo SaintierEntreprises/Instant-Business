@@ -15,6 +15,10 @@ final class UserSyncService {
         var gender: String?
         var premium_granted: Bool?
         var premium_until: String?
+        var freezes_remaining: Int?
+        var freeze_period: String?
+        var freeze_granted: Int?
+        var last_freeze_date: String?
     }
 
     /// Écritures volontairement séparées : chaque upsert ne transmet que ses propres
@@ -24,6 +28,10 @@ final class UserSyncService {
         let user_id: String
         var streak_count: Int
         var last_open_date: String?
+        var freezes_remaining: Int
+        var freeze_period: String?
+        var freeze_granted: Int
+        var last_freeze_date: String?
     }
 
     private struct ProfileUpdate: Encodable {
@@ -132,6 +140,13 @@ final class UserSyncService {
             return (nil, Profile(), nil)
         }
 
+        // L'état des jokers vient du serveur avant toute décision : sur un téléphone
+        // fraîchement installé, le local est vide et on offrirait un quota neuf à
+        // quelqu'un qui a déjà dépensé le sien ce mois-ci.
+        applyRemoteFreezeState(remote)
+
+        // `StreakManager.resolve` écrit lui-même le joker consommé (compteur et jour
+        // gelé) : il n'y a rien à récupérer ici en dehors de la série.
         var newStreak = 1
         if let lastOpenString = remote?.last_open_date, let lastOpen = Self.dateFormatter.date(from: lastOpenString) {
             let daysSince = Calendar.current.dateComponents(
@@ -140,17 +155,26 @@ final class UserSyncService {
                 to: today
             ).day ?? 0
 
-            switch daysSince {
-            case 0: newStreak = remote?.streak_count ?? 1
-            case 1: newStreak = (remote?.streak_count ?? 0) + 1
-            default: newStreak = 1
-            }
+            let resolution = StreakManager.resolve(
+                daysSince: daysSince,
+                previousStreak: remote?.streak_count ?? 0,
+                today: today,
+                isPremium: Self.isPremiumForFreezes(remote)
+            )
+            newStreak = resolution.streak
+        } else {
+            // Première ouverture connue : on amorce quand même le quota du mois.
+            StreakFreeze.refillIfNeeded(isPremium: Self.isPremiumForFreezes(remote), on: today)
         }
 
         let updated = StreakUpdate(
             user_id: userID,
             streak_count: newStreak,
-            last_open_date: Self.dateFormatter.string(from: today)
+            last_open_date: Self.dateFormatter.string(from: today),
+            freezes_remaining: SharedDefaults.freezesRemaining,
+            freeze_period: SharedDefaults.freezePeriod,
+            freeze_granted: SharedDefaults.freezeGranted,
+            last_freeze_date: SharedDefaults.lastFreezeDate.map(Self.dateFormatter.string(from:))
         )
         // Best-effort: the streak is returned locally even if the write fails.
         _ = try? await SupabaseProvider.client
@@ -164,6 +188,31 @@ final class UserSyncService {
             gender: remote?.gender.flatMap(Gender.init(rawValue:))
         )
         return (newStreak, profile, Self.isGrantActive(remote))
+    }
+
+    /// Recopie l'état des jokers renvoyé par le serveur, quand il en a un.
+    ///
+    /// Le jour gelé est réinjecté dans l'historique local : c'est ce qui permet à la
+    /// semaine de montrer un flocon plutôt qu'un trou après un changement d'appareil.
+    private func applyRemoteFreezeState(_ remote: RemoteUserState?) {
+        guard let remote, let period = remote.freeze_period else { return }
+        SharedDefaults.freezePeriod = period
+        SharedDefaults.freezesRemaining = remote.freezes_remaining ?? 0
+        SharedDefaults.freezeGranted = remote.freeze_granted ?? 0
+        if let lastFreeze = remote.last_freeze_date.flatMap(Self.dateFormatter.date(from:)) {
+            SharedDefaults.lastFreezeDate = lastFreeze
+            var frozen = SharedDefaults.frozenDays
+            frozen.insert(SharedDefaults.dayKey(for: lastFreeze))
+            SharedDefaults.frozenDays = frozen
+        }
+    }
+
+    /// Premium tel qu'on peut le connaître à cet instant : `StoreManager.refresh()` ne
+    /// tourne qu'après cette synchronisation, on se contente donc de la dernière valeur
+    /// connue et du cadeau que le serveur vient de renvoyer. Se tromper ne coûte au pire
+    /// que deux jokers de retard, comblés au passage suivant par `refillIfNeeded`.
+    private static func isPremiumForFreezes(_ remote: RemoteUserState?) -> Bool {
+        SharedDefaults.isPremium || isGrantActive(remote)
     }
 
     /// Un cadeau n'est actif que s'il est marqué comme tel et qu'il n'a pas expiré.
