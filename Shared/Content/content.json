@@ -33,7 +33,10 @@
     "text": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0011"
+    "id": "q-0011",
+    "context": "Extrait du passage où Jobs raconte avoir fondé Apple, en être parti, puis y être revenu — et conclut que seule la passion permet de continuer face à l'échec.",
+    "source": "Discours de remise des diplômes, Université Stanford",
+    "year": 2005
   },
   {
     "text": "L'innovation distingue un leader d'un suiveur.",
@@ -45,7 +48,10 @@
     "text": "Votre temps est limité, ne le gaspillez pas en vivant la vie de quelqu'un d'autre.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0013"
+    "id": "q-0013",
+    "context": "Dans la troisième partie du discours, consacrée à sa maladie et à la mort : Jobs y explique que la conscience du temps limité doit pousser à suivre son propre chemin plutôt que les attentes des autres.",
+    "source": "Discours de remise des diplômes, Université Stanford",
+    "year": 2005
   },
   {
     "text": "Qu'est-ce qu'une entreprise ? C'est simplement une idée qui améliore la vie de quelqu'un d'autre.",
@@ -112,12 +118,6 @@
     "author": "Franklin D. Roosevelt",
     "category": "mindset",
     "id": "q-0026"
-  },
-  {
-    "text": "L'audace réussit à ceux qui savent profiter des occasions.",
-    "author": "Marcel Proust",
-    "category": "mindset",
-    "id": "q-0028"
   },
   {
     "text": "Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.",
@@ -216,13 +216,13 @@
     "id": "q-0046"
   },
   {
-    "text": "Vous devez être assez motivé pour y arriver. Sinon, vous vous rendrez simplement misérable.",
+    "text": "Vous devez être assez motivé pour y arriver. Sinon, vous vous rendrez simplement malheureux.",
     "author": "Elon Musk",
     "category": "mindset",
     "id": "q-0047"
   },
   {
-    "text": "Lorsque quelque chose est suffisamment importante, vous la faites même si les chances ne sont pas en votre faveur.",
+    "text": "Lorsque quelque chose est suffisamment important, vous le faites même si les chances ne sont pas en votre faveur.",
     "author": "Elon Musk",
     "category": "mindset",
     "id": "q-0048"
@@ -279,13 +279,19 @@
     "text": "Achetez seulement des choses que vous seriez parfaitement heureux de posséder si le marché s'effondrait pendant dix ans.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0059"
+    "id": "q-0059",
+    "context": "Buffett y explique qu'il ne faut acheter que des entreprises dont on accepterait de ne plus jamais voir le cours, preuve qu'on les détient pour ce qu'elles produisent et non pour les revendre.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 1996
   },
   {
     "text": "Notre horizon d'investissement préféré est : pour toujours.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0060"
+    "id": "q-0060",
+    "context": "Formulé en commentant l'achat de Coca-Cola : Buffett y distingue les investisseurs qui gardent leurs meilleures entreprises de ceux qui s'en séparent dès qu'elles réussissent.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 1988
   },
   {
     "text": "La bourse est un moyen de transférer l'argent des impatients vers les patients.",
@@ -312,28 +318,20 @@
     "id": "q-0065"
   },
   {
-    "text": "Ce n'est pas votre faute si vous êtes né pauvre. En revanche, si vous mourez pauvre, c'est votre erreur.",
-    "author": "Bill Gates",
-    "category": "finance",
-    "id": "q-0068"
-  },
-  {
     "text": "La patience est un élément clé de la réussite.",
     "author": "Bill Gates",
     "category": "mindset",
-    "id": "q-0069"
+    "id": "q-0069",
+    "source": "La Route du futur",
+    "year": 1995
   },
   {
     "text": "Le succès est un mauvais professeur. Il pousse les gens intelligents à croire qu'ils sont infaillibles.",
     "author": "Bill Gates",
     "category": "mindset",
-    "id": "q-0070"
-  },
-  {
-    "text": "Il ne faut jamais se comparer aux autres. Le faire, c'est s'insulter soi-même.",
-    "author": "Bill Gates",
-    "category": "mindset",
-    "id": "q-0071"
+    "id": "q-0070",
+    "source": "La Route du futur",
+    "year": 1995
   },
   {
     "text": "Pour gagner gros, il faut parfois prendre de gros risques.",
@@ -354,7 +352,7 @@
     "id": "q-0074"
   },
   {
-    "text": "Si les choses ne se cassent pas, vous ne vous déplacez pas assez vite.",
+    "text": "Si vous ne cassez rien, c'est que vous n'avancez pas assez vite.",
     "author": "Mark Zuckerberg",
     "category": "mindset",
     "id": "q-0075"
@@ -399,7 +397,8 @@
     "text": "Le bon général a gagné la bataille avant de l'engager.",
     "author": "Sun Tzu",
     "category": "leadership",
-    "id": "q-0086"
+    "id": "q-0086",
+    "source": "L'Art de la guerre, chapitre IV"
   },
   {
     "text": "Un grand dirigeant commande par l'exemple et non par la force.",
@@ -411,7 +410,8 @@
     "text": "Connais l'adversaire et surtout connais-toi toi-même et tu seras invincible.",
     "author": "Sun Tzu",
     "category": "mindset",
-    "id": "q-0088"
+    "id": "q-0088",
+    "source": "L'Art de la guerre, chapitre III"
   },
   {
     "text": "Le commencement est beaucoup plus que la moitié de l'objectif.",
@@ -426,22 +426,10 @@
     "id": "q-0090"
   },
   {
-    "text": "Le courage est la première des qualités humaines car elle garantit toutes les autres.",
-    "author": "Aristote",
-    "category": "mindset",
-    "id": "q-0092"
-  },
-  {
     "text": "Faites le premier pas sur le chemin de la foi. Vous n'avez pas à le parcourir entièrement, juste à faire le premier pas.",
     "author": "Martin Luther King",
     "category": "mindset",
     "id": "q-0094"
-  },
-  {
-    "text": "Avoir la foi, c'est monter la première marche, même quand on ne voit pas tout l'escalier.",
-    "author": "Martin Luther King",
-    "category": "mindset",
-    "id": "q-0095"
   },
   {
     "text": "Tout ce que tu feras sera dérisoire, mais il est essentiel que tu le fasses.",
@@ -468,7 +456,7 @@
     "id": "q-0100"
   },
   {
-    "text": "Il n'y a pas de limites. Il y a seulement des niveaux, et tu ne dois pas en rester là.",
+    "text": "Il n'y a pas de limites. Il n'y a que des paliers, et tu ne dois pas t'y arrêter.",
     "author": "Bruce Lee",
     "category": "mindset",
     "id": "q-0101"
@@ -567,16 +555,22 @@
     "text": "Les gens qui sont assez fous pour penser qu'ils peuvent changer le monde sont ceux qui le font.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0123"
+    "id": "q-0123",
+    "context": "Signature de la campagne « Think Different » qui a marqué le retour de Jobs à la tête d'Apple — sa rédaction exacte est disputée entre lui et l'agence TBWA\\Chiat\\Day, mais la phrase reste associée à son retour.",
+    "source": "Campagne publicitaire « Think Different », Apple",
+    "year": 1997
   },
   {
     "text": "La simplicité est la sophistication ultime.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0124"
+    "id": "q-0124",
+    "context": "Apparue sur une brochure du premier Apple II avant de devenir une formule répétée par Jobs pendant des décennies. Elle est aussi, à tort, très souvent attribuée à Léonard de Vinci — aucune trace de cette phrase n'existe dans ses écrits.",
+    "source": "Brochure publicitaire de l'Apple II, Apple",
+    "year": 1977
   },
   {
-    "text": "Je suis convaincu que la moitié qui sépare les entrepreneurs qui réussissent de ceux qui échouent est purement la persévérance.",
+    "text": "Je suis convaincu qu'environ la moitié de ce qui sépare les entrepreneurs qui réussissent de ceux qui échouent, c'est la pure persévérance.",
     "author": "Steve Jobs",
     "category": "mindset",
     "id": "q-0125"
@@ -591,7 +585,10 @@
     "text": "Cela n'a aucun sens d'embaucher des gens intelligents et de leur dire quoi faire.",
     "author": "Steve Jobs",
     "category": "leadership",
-    "id": "q-0127"
+    "id": "q-0127",
+    "context": "Sa dernière interview publique, où il détaille sa philosophie du management : diriger par les idées plutôt que par la hiérarchie.",
+    "source": "Conférence D8, entretien avec Walt Mossberg et Kara Swisher",
+    "year": 2010
   },
   {
     "text": "Ne quittez jamais les flux de trésorerie des yeux, car c'est le sang de l'entreprise.",
@@ -720,7 +717,7 @@
     "id": "q-0152"
   },
   {
-    "text": "Le management se résume à deux fonctions : commercialiser et innover.",
+    "text": "L'entreprise n'a que deux fonctions de base : commercialiser et innover.",
     "author": "Peter Drucker",
     "category": "leadership",
     "id": "q-0153"
@@ -756,12 +753,6 @@
     "id": "q-0158"
   },
   {
-    "text": "La force est construite par les échecs, pas par les réussites.",
-    "author": "Coco Chanel",
-    "category": "mindset",
-    "id": "q-0159"
-  },
-  {
     "text": "Un investissement dans le savoir paie toujours les meilleurs intérêts.",
     "author": "Benjamin Franklin",
     "category": "finance",
@@ -771,13 +762,9 @@
     "text": "Le temps, c'est de l'argent.",
     "author": "Benjamin Franklin",
     "category": "finance",
-    "id": "q-0162"
-  },
-  {
-    "text": "Le succès est le résidu de la planification.",
-    "author": "Benjamin Franklin",
-    "category": "mindset",
-    "id": "q-0163"
+    "id": "q-0162",
+    "source": "Advice to a Young Tradesman",
+    "year": 1748
   },
   {
     "text": "Si vous ne parvenez pas à planifier, vous prévoyez d'échouer !",
@@ -789,13 +776,15 @@
     "text": "Ne remettez pas au lendemain ce que vous pouvez faire le jour même.",
     "author": "Benjamin Franklin",
     "category": "mindset",
-    "id": "q-0165"
+    "id": "q-0165",
+    "source": "L'Almanach du pauvre Richard"
   },
   {
     "text": "La paresse chemine si lentement que la pauvreté la rattrape.",
     "author": "Benjamin Franklin",
     "category": "finance",
-    "id": "q-0166"
+    "id": "q-0166",
+    "source": "L'Almanach du pauvre Richard"
   },
   {
     "text": "Dans 20 ans, vous serez plus déçu par les choses que vous n'avez pas faites que par celles que vous avez faites.",
@@ -807,7 +796,8 @@
     "text": "Chaque fois que vous vous trouvez du côté de la majorité, il est temps de faire une pause et de réfléchir.",
     "author": "Mark Twain",
     "category": "mindset",
-    "id": "q-0170"
+    "id": "q-0170",
+    "source": "Carnets"
   },
   {
     "text": "Trop de publicité tue la publicité.",
@@ -819,7 +809,10 @@
     "text": "Tout homme qui meurt riche meurt déshonoré.",
     "author": "Andrew Carnegie",
     "category": "finance",
-    "id": "q-0173"
+    "id": "q-0173",
+    "context": "Carnegie a donné la quasi-totalité de sa fortune de son vivant, finançant plus de 2 500 bibliothèques publiques.",
+    "source": "L'Évangile de la richesse",
+    "year": 1889
   },
   {
     "text": "Aucun homme ne devient riche à moins qu'il enrichisse autrui.",
@@ -849,13 +842,15 @@
     "text": "Ce n'est pas parce que les choses sont difficiles que nous n'osons pas, c'est parce que nous n'osons pas qu'elles sont difficiles.",
     "author": "Sénèque",
     "category": "mindset",
-    "id": "q-0179"
+    "id": "q-0179",
+    "source": "Lettres à Lucilius, lettre 104"
   },
   {
     "text": "Il n'est pas de vent favorable pour celui qui ne sait pas où il va.",
     "author": "Sénèque",
     "category": "mindset",
-    "id": "q-0180"
+    "id": "q-0180",
+    "source": "Lettres à Lucilius, lettre 71"
   },
   {
     "text": "C'est par l'épreuve du feu qu'on reconnaît l'or pur. C'est par les épreuves qu'on reconnaît l'homme de cœur.",
@@ -867,13 +862,16 @@
     "text": "Le plus grand obstacle à la vie est l'attente, qui espère demain et néglige aujourd'hui.",
     "author": "Sénèque",
     "category": "mindset",
-    "id": "q-0182"
+    "id": "q-0182",
+    "context": "Sénèque y répond à ceux qui se plaignent de la brièveté de la vie : elle est assez longue, c'est l'usage qu'on en fait qui la gaspille.",
+    "source": "De la brièveté de la vie"
   },
   {
     "text": "À force de remettre à plus tard, la vie nous dépasse.",
     "author": "Sénèque",
     "category": "mindset",
-    "id": "q-0183"
+    "id": "q-0183",
+    "source": "Lettres à Lucilius, lettre 1"
   },
   {
     "text": "C'est pendant l'orage qu'on connaît le pilote.",
@@ -885,13 +883,15 @@
     "text": "Un voyage de mille lieues commence toujours par un premier pas.",
     "author": "Lao Tseu",
     "category": "mindset",
-    "id": "q-0185"
+    "id": "q-0185",
+    "source": "Tao Tö King, chapitre 64"
   },
   {
     "text": "Qui triomphe de lui-même possède la force.",
     "author": "Lao Tseu",
     "category": "mindset",
-    "id": "q-0187"
+    "id": "q-0187",
+    "source": "Tao Tö King, chapitre 33"
   },
   {
     "text": "Tout ce que je sais, c'est que je ne sais rien.",
@@ -900,28 +900,19 @@
     "id": "q-0188"
   },
   {
-    "text": "Connais-toi toi-même.",
-    "author": "Socrate",
-    "category": "mindset",
-    "id": "q-0189"
-  },
-  {
-    "text": "Le secret du changement, c'est de concentrer toute son énergie, non pas à lutter contre le passé mais à construire l'avenir.",
-    "author": "Socrate",
-    "category": "mindset",
-    "id": "q-0190"
-  },
-  {
     "text": "Une vie sans examen ne vaut pas la peine d'être vécue.",
     "author": "Socrate",
     "category": "mindset",
-    "id": "q-0191"
+    "id": "q-0191",
+    "context": "Ce que Socrate répond à ses juges qui lui proposent l'exil plutôt que la mort : une vie sauvée au prix de renoncer à examiner ses idées ne l'intéresse pas.",
+    "source": "Platon, Apologie de Socrate"
   },
   {
     "text": "Sois comme un promontoire contre lequel les flots viennent sans cesse se briser.",
     "author": "Marc Aurèle",
     "category": "mindset",
-    "id": "q-0193"
+    "id": "q-0193",
+    "source": "Pensées pour moi-même, livre IV"
   },
   {
     "text": "Avoir du courage ne veut pas dire que nous n'avons pas peur, mais que nous affrontons nos peurs.",
@@ -936,7 +927,7 @@
     "id": "q-0196"
   },
   {
-    "text": "Faites de votre mieux jusqu'à ce que vous en sachiez mieux. Ensuite, faites mieux.",
+    "text": "Faites de votre mieux jusqu'à ce que vous sachiez faire mieux. Et quand vous saurez, faites mieux.",
     "author": "Maya Angelou",
     "category": "mindset",
     "id": "q-0197"
@@ -1092,7 +1083,7 @@
     "id": "q-0233"
   },
   {
-    "text": "Gardez votre visage dans le soleil et vous ne verrez pas les ombres.",
+    "text": "Tournez votre visage vers le soleil et vous ne verrez pas les ombres.",
     "author": "Helen Keller",
     "category": "mindset",
     "id": "q-0234"
@@ -1218,7 +1209,7 @@
     "id": "q-0261"
   },
   {
-    "text": "Vous pouvez tromper tout le monde une fois, quelques-uns souvent, mais jamais tout le monde tout le temps.",
+    "text": "On peut tromper tout le monde une partie du temps, et une partie des gens tout le temps, mais on ne peut pas tromper tout le monde tout le temps.",
     "author": "Abraham Lincoln",
     "category": "mindset",
     "id": "q-0262"
@@ -1362,22 +1353,10 @@
     "id": "q-0285"
   },
   {
-    "text": "La meilleure des publicités est un client satisfait.",
-    "author": "Bill Gates",
-    "category": "sales",
-    "id": "q-0286"
-  },
-  {
     "text": "Il ne sert à rien d'être le meilleur si on est le seul à le savoir.",
     "author": "Richard Branson",
     "category": "sales",
     "id": "q-0287"
-  },
-  {
-    "text": "Savoir écouter, c'est posséder, outre le sien, le cerveau des autres.",
-    "author": "Léonard de Vinci",
-    "category": "sales",
-    "id": "q-0288"
   },
   {
     "text": "L'entreprise est élue tous les jours par ses clients.",
@@ -1470,12 +1449,6 @@
     "id": "q-0305"
   },
   {
-    "text": "Les réussites spectaculaires sont toujours précédées de préparations peu spectaculaires.",
-    "author": "Chamfort",
-    "category": "mindset",
-    "id": "q-0307"
-  },
-  {
     "text": "La façon la plus courante d'abandonner son pouvoir, c'est de penser qu'on n'en a pas.",
     "author": "Alice Walker",
     "category": "mindset",
@@ -1494,12 +1467,6 @@
     "id": "q-0314"
   },
   {
-    "text": "Diriger, c'est servir.",
-    "author": "Sénèque",
-    "category": "leadership",
-    "id": "q-0315"
-  },
-  {
     "text": "Le leader est celui qui sait inspirer sans éteindre, diriger sans écraser.",
     "author": "Maya Angelou",
     "category": "leadership",
@@ -1509,7 +1476,9 @@
     "text": "Les gens n'achètent pas ce que vous faites, ils achètent pourquoi vous le faites.",
     "author": "Simon Sinek",
     "category": "leadership",
-    "id": "q-0317"
+    "id": "q-0317",
+    "source": "Commencer par pourquoi",
+    "year": 2009
   },
   {
     "text": "La fonction du leadership est de produire d'autres leaders, pas plus de suiveurs.",
@@ -1539,19 +1508,28 @@
     "text": "Soyez craintifs quand les autres sont avides. Soyez avide quand les autres sont craintifs.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0322"
+    "id": "q-0322",
+    "context": "Écrite après le krach d'octobre 1987, en review de l'exercice 1986 : Buffett y résume sa discipline face aux mouvements de foule du marché.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 1986
   },
   {
     "text": "Si vous n'êtes pas prêt à détenir une action pendant 10 ans, ne pensez même pas à la détenir pendant 10 minutes.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0323"
+    "id": "q-0323",
+    "context": "Dans le même texte que le principe de détention « pour toujours » : un investissement se juge sur l'entreprise, jamais sur l'horizon qu'on lui impose.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 1996
   },
   {
     "text": "Il ne s'agit pas de prédire la pluie, il s'agit de construire l'arche.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0324"
+    "id": "q-0324",
+    "context": "La « règle de Noé » : Buffett l'a formulée après avoir lui-même sous-estimé un risque, pour dire qu'anticiper ne vaut rien sans s'y préparer réellement.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 1981
   },
   {
     "text": "Les quatre mots les plus dangereux dans le monde de l'investissement sont : « cette fois, c'est différent ».",
@@ -1633,7 +1611,7 @@
   },
   {
     "text": "La raison d'être d'une entreprise est de créer et de garder un client.",
-    "author": "Théodore Levitt",
+    "author": "Theodore Levitt",
     "category": "sales",
     "id": "q-0338"
   },
@@ -1686,7 +1664,7 @@
     "id": "q-0347"
   },
   {
-    "text": "Le marketing peut s'apprendre en une heure ; il faut toute une vie pour le maîtriser.",
+    "text": "Le marketing s'apprend en un jour ; il faut toute une vie pour le maîtriser.",
     "author": "Philip Kotler",
     "category": "sales",
     "id": "q-0348"
@@ -1837,7 +1815,7 @@
   },
   {
     "id": "q-0378",
-    "text": "Être sans peur n'est pas l'absence de peur. C'est la maîtrise de la peur. C'est se relever une fois de plus que nous tombons.",
+    "text": "Être sans peur, ce n'est pas l'absence de peur, c'est la maîtrise de la peur. C'est se relever une fois de plus qu'on ne tombe.",
     "author": "Arianna Huffington",
     "category": "mindset"
   },
@@ -1958,7 +1936,7 @@
   {
     "id": "q-0404",
     "text": "Il est possible dans certains cas d'être occupé, très occupé, et parfaitement inefficace.",
-    "author": "Stephen Covey",
+    "author": "Stephen R. Covey",
     "category": "mindset"
   },
   {
@@ -2072,19 +2050,13 @@
   {
     "id": "q-0429",
     "text": "Il ne dépend pas de toi d'être riche, mais il dépend de toi d'être heureux.",
-    "author": "Epictète",
+    "author": "Épictète",
     "category": "mindset"
   },
   {
     "id": "q-0431",
     "text": "Les rêves ne sont pas ce que vous voyez dans votre sommeil, les rêves sont des choses qui ne vous permettent pas de dormir.",
-    "author": "Cristiano Ronaldo",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0433",
-    "text": "Travailler dur bat le talent quand le talent ne travaille pas.",
-    "author": "Usain Bolt",
+    "author": "A.P.J. Abdul Kalam",
     "category": "mindset"
   },
   {
@@ -2113,7 +2085,7 @@
   },
   {
     "id": "q-0440",
-    "text": "Je patine là où la rondelle ira, pas où elle est.",
+    "text": "Je patine là où le palet va aller, pas là où il était.",
     "author": "Wayne Gretzky",
     "category": "mindset"
   },
@@ -2144,7 +2116,7 @@
   {
     "id": "q-0455",
     "text": "Celui qui n'a jamais commis d'erreur n'a jamais tenté quelque chose de nouveau.",
-    "author": "François Mitterrand",
+    "author": "Albert Einstein",
     "category": "mindset"
   },
   {
@@ -2157,12 +2129,6 @@
     "id": "q-0457",
     "text": "Le talent, c'est d'avoir envie de faire quelque chose.",
     "author": "Jacques Brel",
-    "category": "mindset"
-  },
-  {
-    "id": "q-0458",
-    "text": "Il faut toujours viser la lune, car même en cas d'échec, on atterrit dans les étoiles.",
-    "author": "Jean d'Ormesson",
     "category": "mindset"
   },
   {
@@ -2227,7 +2193,7 @@
   },
   {
     "id": "q-0473",
-    "text": "Il est difficile de rencontrer des objectifs que vous n'avez jamais définis.",
+    "text": "Il est difficile d'atteindre des objectifs que vous n'avez jamais fixés.",
     "author": "Susan Wojcicki",
     "category": "leadership"
   },
@@ -2241,7 +2207,9 @@
     "id": "q-0478",
     "text": "Le bien est l'ennemi du mieux.",
     "author": "Jim Collins",
-    "category": "leadership"
+    "category": "leadership",
+    "source": "De la performance à l'excellence",
+    "year": 2001
   },
   {
     "id": "q-0482",
@@ -2252,7 +2220,7 @@
   {
     "id": "q-0483",
     "text": "Diriger, c'est se dévouer à une idée, à un rêve, à une vision de ce qui peut advenir.",
-    "author": "John Fitzgerald Kennedy",
+    "author": "John F. Kennedy",
     "category": "leadership"
   },
   {
@@ -2329,7 +2297,7 @@
   },
   {
     "id": "q-0499",
-    "text": "Juste parce que vous pouvez vous le permettre ne signifie pas que vous devez l'acheter.",
+    "text": "Ce n'est pas parce que vous pouvez vous le permettre que vous devez l'acheter.",
     "author": "Suze Orman",
     "category": "finance"
   },
@@ -2433,13 +2401,18 @@
     "id": "q-0524",
     "text": "Le cœur a ses raisons que la raison ne connaît point.",
     "author": "Blaise Pascal",
-    "category": "mindset"
+    "category": "mindset",
+    "source": "Pensées",
+    "year": 1670
   },
   {
     "id": "q-0525",
     "text": "L'essentiel est invisible pour les yeux.",
     "author": "Antoine de Saint-Exupéry",
-    "category": "mindset"
+    "category": "mindset",
+    "context": "Ce que le renard confie au Petit Prince avant de le laisser repartir, après lui avoir appris ce qu'apprivoiser veut dire.",
+    "source": "Le Petit Prince",
+    "year": 1943
   },
   {
     "id": "q-0526",
@@ -2613,7 +2586,10 @@
     "id": "q-0561",
     "text": "On voulait des voitures volantes, on a eu 140 caractères.",
     "author": "Peter Thiel",
-    "category": "mindset"
+    "category": "mindset",
+    "context": "Formule d'ouverture du manifeste de son fonds d'investissement, pour dénoncer une innovation qui se serait repliée sur le numérique en délaissant le monde physique.",
+    "source": "Manifeste de Founders Fund",
+    "year": 2011
   },
   {
     "id": "q-0562",
@@ -2661,7 +2637,8 @@
     "text": "Le but du marketing est de rendre la vente superflue.",
     "author": "Peter Drucker",
     "category": "sales",
-    "id": "q-0569"
+    "id": "q-0569",
+    "source": "Les Fondements du marketing"
   },
   {
     "text": "Les gens détestent qu'on leur vende, mais ils adorent acheter.",
@@ -2721,13 +2698,18 @@
     "text": "Le prix est ce que vous payez, la valeur est ce que vous obtenez.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0579"
+    "id": "q-0579",
+    "context": "Buffett y attribue explicitement la leçon à son mentor Benjamin Graham, plutôt que de se l'approprier.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway",
+    "year": 2008
   },
   {
     "text": "À court terme le marché est une machine à voter ; à long terme, c'est une balance.",
     "author": "Benjamin Graham",
     "category": "finance",
-    "id": "q-0580"
+    "id": "q-0580",
+    "source": "L'Investisseur intelligent",
+    "year": 1949
   },
   {
     "text": "Montrez-moi les incitations et je vous montrerai le résultat.",
@@ -2779,9 +2761,12 @@
   },
   {
     "text": "Seuls les paranoïaques survivent.",
-    "author": "Andy Grove",
+    "author": "Andrew Grove",
     "category": "leadership",
-    "id": "q-0591"
+    "id": "q-0591",
+    "context": "Titre du livre où Grove, alors patron d'Intel, raconte les « points d'inflexion stratégiques » qui peuvent emporter une entreprise dominante.",
+    "source": "Livre « Only the Paranoid Survive »",
+    "year": 1996
   },
   {
     "text": "Embauchez des gens plus intelligents que vous, puis laissez-les faire leur travail.",
@@ -2805,25 +2790,31 @@
     "text": "Le meilleur chef est celui dont on remarque à peine l'existence.",
     "author": "Lao Tseu",
     "category": "leadership",
-    "id": "q-0596"
+    "id": "q-0596",
+    "source": "Tao Tö King, chapitre 17"
   },
   {
     "text": "L'obstacle à l'action fait avancer l'action. Ce qui se met en travers du chemin devient le chemin.",
     "author": "Marc Aurèle",
     "category": "mindset",
-    "id": "q-0597"
+    "id": "q-0597",
+    "context": "Écrit pour lui-même pendant ses campagnes militaires, dans un carnet jamais destiné à la publication.",
+    "source": "Pensées pour moi-même, livre V"
   },
   {
     "text": "Ce ne sont pas les choses qui troublent les hommes, mais l'opinion qu'ils en ont.",
     "author": "Épictète",
     "category": "mindset",
-    "id": "q-0598"
+    "id": "q-0598",
+    "source": "Manuel d'Épictète, V"
   },
   {
     "text": "Vous ne vous élevez pas au niveau de vos objectifs, vous retombez au niveau de vos systèmes.",
     "author": "James Clear",
     "category": "mindset",
-    "id": "q-0599"
+    "id": "q-0599",
+    "source": "Un rien peut tout changer",
+    "year": 2018
   },
   {
     "text": "La douleur plus la réflexion égale le progrès.",
@@ -2835,7 +2826,10 @@
     "text": "La concurrence est pour les perdants.",
     "author": "Peter Thiel",
     "category": "sales",
-    "id": "q-0602"
+    "id": "q-0602",
+    "context": "Thiel y soutient que la concurrence pure détruit les marges et que les entreprises durables sont celles qui échappent à la concurrence, pas celles qui la gagnent.",
+    "source": "Essai « Competition Is for Losers », Wall Street Journal",
+    "year": 2014
   },
   {
     "text": "Il vaut mieux avoir cent personnes qui vous adorent que cent mille qui vous trouvent sympathique.",
@@ -2847,13 +2841,19 @@
     "text": "Faites des choses qui ne passent pas à l'échelle.",
     "author": "Paul Graham",
     "category": "sales",
-    "id": "q-0604"
+    "id": "q-0604",
+    "context": "Conseil à contre-courant adressé aux fondateurs : au début, il faut recruter ses premiers utilisateurs un par un, à la main, précisément parce que ça ne tient pas à grande échelle.",
+    "source": "Essai « Do Things That Don't Scale »",
+    "year": 2013
   },
   {
     "text": "Le logiciel est en train de dévorer le monde.",
     "author": "Marc Andreessen",
     "category": "sales",
-    "id": "q-0605"
+    "id": "q-0605",
+    "context": "Essai écrit alors que les logiciels commençaient à remplacer des industries entières ; le titre est devenu la formule de référence pour décrire cette bascule.",
+    "source": "Essai « Why Software Is Eating the World », Wall Street Journal",
+    "year": 2011
   },
   {
     "text": "Le seul moyen de gagner est d'apprendre plus vite que tout le monde.",
@@ -2883,13 +2883,10 @@
     "text": "Les gens n'achètent pas une perceuse, ils achètent un trou dans leur mur.",
     "author": "Theodore Levitt",
     "category": "sales",
-    "id": "q-0611"
-  },
-  {
-    "text": "Un client mécontent est votre meilleure source d'apprentissage.",
-    "author": "Bill Gates",
-    "category": "sales",
-    "id": "q-0613"
+    "id": "q-0611",
+    "context": "Formulation devenue le résumé de tout le marketing moderne : le client n'achète pas un produit, il achète le résultat qu'il en attend.",
+    "source": "« Marketing Myopia », Harvard Business Review",
+    "year": 1960
   },
   {
     "text": "Faites ce que vous faites si bien que les gens auront envie de revenir et d'amener leurs amis.",
@@ -2907,7 +2904,8 @@
     "text": "Si vous avez le temps de flâner, vous avez le temps de nettoyer.",
     "author": "Ray Kroc",
     "category": "sales",
-    "id": "q-0616"
+    "id": "q-0616",
+    "context": "Règle de terrain d'un homme qui inspectait lui-même les restaurants et jugeait la propreté aussi importante que la cuisine."
   },
   {
     "text": "Le doute tue plus de rêves que l'échec ne le fera jamais.",
@@ -2931,13 +2929,8 @@
     "text": "Les chaînes de l'habitude sont trop légères pour être senties, jusqu'à ce qu'elles deviennent trop lourdes pour être brisées.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0621"
-  },
-  {
-    "text": "Prévoir la pluie ne compte pas. Construire l'arche, si.",
-    "author": "Warren Buffett",
-    "category": "finance",
-    "id": "q-0622"
+    "id": "q-0621",
+    "context": "Une formule qui remonte en réalité à l'écrivain anglais Samuel Johnson au XVIIIe siècle ; Buffett la reprend sans se l'attribuer pour parler du poids des habitudes de gestion."
   },
   {
     "text": "Il faut beaucoup de temps pour devenir riche lentement, et c'est précisément pour cela que peu de gens le font.",
@@ -2979,13 +2972,17 @@
     "text": "La richesse, c'est ce que vous ne voyez pas : les voitures non achetées, les sacs non achetés.",
     "author": "Morgan Housel",
     "category": "finance",
-    "id": "q-0629"
+    "id": "q-0629",
+    "source": "La Psychologie de l'argent",
+    "year": 2020
   },
   {
     "text": "Le plus grand dividende que l'argent puisse verser, c'est la maîtrise de votre temps.",
     "author": "Morgan Housel",
     "category": "finance",
-    "id": "q-0630"
+    "id": "q-0630",
+    "source": "La Psychologie de l'argent",
+    "year": 2020
   },
   {
     "text": "Ce ne sont pas les revenus qui font la richesse, c'est l'écart entre ce que vous gagnez et ce que vous dépensez.",
@@ -3006,12 +3003,6 @@
     "id": "q-0633"
   },
   {
-    "text": "L'intérêt composé est la force la plus puissante de l'univers financier : celui qui la comprend en profite, celui qui l'ignore la subit.",
-    "author": "John C. Bogle",
-    "category": "finance",
-    "id": "q-0634"
-  },
-  {
     "text": "Le temps passé sur le marché bat le fait de vouloir choisir le bon moment.",
     "author": "Peter Lynch",
     "category": "finance",
@@ -3027,13 +3018,19 @@
     "text": "Il vaut mieux acheter une entreprise formidable à un prix correct qu'une entreprise correcte à un prix formidable.",
     "author": "Warren Buffett",
     "category": "finance",
-    "id": "q-0637"
+    "id": "q-0637",
+    "context": "Tirée du bilan que Buffett dresse de ses vingt-cinq premières années à la tête de Berkshire, où il reconnaît avoir trop longtemps cherché la bonne affaire plutôt que la bonne entreprise.",
+    "source": "Lettre aux actionnaires de Berkshire Hathaway, section « Mistakes of the First Twenty-Five Years »",
+    "year": 1989
   },
   {
     "text": "Ce n'est pas le critique qui compte, ni celui qui montre comment l'homme fort a trébuché. Le mérite revient à celui qui est dans l'arène.",
     "author": "Theodore Roosevelt",
     "category": "leadership",
-    "id": "q-0638"
+    "id": "q-0638",
+    "context": "Extrait du passage dit « L'homme dans l'arène », prononcé à la Sorbonne un an après avoir quitté la Maison-Blanche. Roosevelt y défend ceux qui agissent contre ceux qui commentent.",
+    "source": "Discours « Citizenship in a Republic », Sorbonne, Paris",
+    "year": 1910
   },
   {
     "text": "Faites ce que vous pouvez, avec ce que vous avez, là où vous êtes.",
@@ -3075,7 +3072,10 @@
     "text": "Ne demandez pas ce que votre pays peut faire pour vous, demandez ce que vous pouvez faire pour votre pays.",
     "author": "John F. Kennedy",
     "category": "leadership",
-    "id": "q-0645"
+    "id": "q-0645",
+    "context": "Prononcé par un président de 43 ans, le plus jeune jamais élu, en pleine guerre froide et deux mois avant la création des Peace Corps qu'annonce cet appel.",
+    "source": "Discours d'investiture, Washington",
+    "year": 1961
   },
   {
     "text": "Le changement est la loi de la vie. Ceux qui ne regardent que le passé ou le présent manqueront à coup sûr l'avenir.",
@@ -3117,19 +3117,25 @@
     "text": "Mettez d'abord les bonnes personnes dans le bus, ensuite décidez où aller.",
     "author": "Jim Collins",
     "category": "leadership",
-    "id": "q-0652"
+    "id": "q-0652",
+    "source": "De la performance à l'excellence",
+    "year": 2001
   },
   {
     "text": "Commencez avec la fin en tête.",
     "author": "Stephen R. Covey",
     "category": "leadership",
-    "id": "q-0653"
+    "id": "q-0653",
+    "source": "Les 7 habitudes de ceux qui réalisent tout ce qu'ils entreprennent",
+    "year": 1989
   },
   {
     "text": "Cherchez d'abord à comprendre, ensuite à être compris.",
     "author": "Stephen R. Covey",
     "category": "leadership",
-    "id": "q-0654"
+    "id": "q-0654",
+    "source": "Les 7 habitudes de ceux qui réalisent tout ce qu'ils entreprennent",
+    "year": 1989
   },
   {
     "text": "Recrutez lentement, licenciez vite.",
@@ -3195,7 +3201,10 @@
     "text": "La seule chose que nous devons craindre, c'est la crainte elle-même.",
     "author": "Franklin D. Roosevelt",
     "category": "leadership",
-    "id": "q-0667"
+    "id": "q-0667",
+    "context": "Premier discours d'investiture, au creux de la Grande Dépression : un adulte américain sur quatre est sans emploi et les banques ferment les unes après les autres.",
+    "source": "Premier discours d'investiture",
+    "year": 1933
   },
   {
     "text": "Un bon plan exécuté aujourd'hui vaut mieux qu'un plan parfait exécuté la semaine prochaine.",
@@ -3207,25 +3216,33 @@
     "text": "Ne dites pas aux gens comment faire les choses. Dites-leur quoi faire et laissez-les vous surprendre par leur ingéniosité.",
     "author": "George S. Patton",
     "category": "leadership",
-    "id": "q-0669"
+    "id": "q-0669",
+    "context": "Principe de commandement d'un général réputé pour son exigence, qui tenait pourtant à laisser l'initiative à ses subordonnés."
   },
   {
     "text": "Restez affamés, restez fous.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0670"
+    "id": "q-0670",
+    "context": "Jobs conclut son discours en citant la formule d'adieu du dernier numéro du Whole Earth Catalog, publication qui l'a marqué dans sa jeunesse — la phrase n'est donc pas de lui à l'origine.",
+    "source": "Discours de remise des diplômes, Université Stanford (citant le Whole Earth Catalog, 1974)",
+    "year": 2005
   },
   {
     "text": "On ne peut pas relier les points en regardant devant soi, seulement en regardant en arrière.",
     "author": "Steve Jobs",
     "category": "mindset",
-    "id": "q-0671"
+    "id": "q-0671",
+    "context": "Jobs y raconte avoir suivi, sans but apparent, un cours de calligraphie après avoir quitté l'université — devenu dix ans plus tard la typographie soignée du Macintosh.",
+    "source": "Discours de remise des diplômes, Université Stanford",
+    "year": 2005
   },
   {
     "text": "Je n'ai pas échoué. J'ai simplement trouvé dix mille façons qui ne fonctionnent pas.",
     "author": "Thomas Edison",
     "category": "mindset",
-    "id": "q-0672"
+    "id": "q-0672",
+    "context": "Réponse d'Edison à un journaliste qui lui demandait ce que ça faisait d'avoir échoué des milliers de fois avant de mettre au point la lampe à incandescence."
   },
   {
     "text": "La vie se rétrécit ou s'élargit à proportion de notre courage.",
@@ -3267,7 +3284,10 @@
     "text": "J'ai raté plus de neuf mille tirs dans ma carrière. C'est pour cela que je réussis.",
     "author": "Michael Jordan",
     "category": "mindset",
-    "id": "q-0679"
+    "id": "q-0679",
+    "context": "Texte d'une publicité Nike entièrement consacrée à ses échecs, diffusée alors qu'il était déjà considéré comme le meilleur joueur de l'histoire.",
+    "source": "Publicité Nike « Failure »",
+    "year": 1997
   },
   {
     "text": "On rate cent pour cent des tirs qu'on ne tente pas.",
@@ -3315,7 +3335,9 @@
     "text": "Chaque action que vous entreprenez est un vote pour la personne que vous voulez devenir.",
     "author": "James Clear",
     "category": "mindset",
-    "id": "q-0687"
+    "id": "q-0687",
+    "source": "Un rien peut tout changer",
+    "year": 2018
   },
   {
     "text": "La passion est courante, la persévérance est rare.",
@@ -3339,7 +3361,8 @@
     "text": "Nous souffrons plus souvent en imagination qu'en réalité.",
     "author": "Sénèque",
     "category": "mindset",
-    "id": "q-0692"
+    "id": "q-0692",
+    "source": "Lettres à Lucilius, lettre 13"
   },
   {
     "text": "Ce n'est pas ce qui t'arrive qui compte, mais la façon dont tu y réagis.",
@@ -3351,7 +3374,8 @@
     "text": "Ne cherche pas que les évènements arrivent comme tu veux, mais veuille les évènements comme ils arrivent.",
     "author": "Épictète",
     "category": "mindset",
-    "id": "q-0694"
+    "id": "q-0694",
+    "source": "Manuel d'Épictète, VIII"
   },
   {
     "text": "Le premier pas n'emmène pas là où vous voulez aller, mais il vous sort de là où vous êtes.",
@@ -3363,7 +3387,8 @@
     "text": "Connaître les autres, c'est sagesse. Se connaître soi-même, c'est sagesse supérieure.",
     "author": "Lao Tseu",
     "category": "mindset",
-    "id": "q-0696"
+    "id": "q-0696",
+    "source": "Tao Tö King, chapitre 33"
   },
   {
     "text": "Le succès, c'est de tomber sept fois et de se relever huit.",
@@ -3372,16 +3397,20 @@
     "id": "q-0697"
   },
   {
-    "text": "Ce qui ne nous tue pas nous rend plus fort.",
+    "text": "Ce qui ne nous tue pas nous rend plus forts.",
     "author": "Friedrich Nietzsche",
     "category": "mindset",
-    "id": "q-0699"
+    "id": "q-0699",
+    "source": "Le Crépuscule des idoles",
+    "year": 1888
   },
   {
     "text": "Celui qui a un pourquoi qui lui tient lieu de but peut supporter presque n'importe quel comment.",
     "author": "Friedrich Nietzsche",
     "category": "mindset",
-    "id": "q-0700"
+    "id": "q-0700",
+    "source": "Le Crépuscule des idoles",
+    "year": 1888
   },
   {
     "text": "La plus grande aventure, c'est de vivre la vie de ses rêves.",
@@ -3405,7 +3434,10 @@
     "text": "La perfection est atteinte non pas lorsqu'il n'y a plus rien à ajouter, mais lorsqu'il n'y a plus rien à retirer.",
     "author": "Antoine de Saint-Exupéry",
     "category": "mindset",
-    "id": "q-0705"
+    "id": "q-0705",
+    "context": "Saint-Exupéry y parle de la conception des avions : la beauté d'une machine vient de tout ce qu'on a fini par lui retirer.",
+    "source": "Terre des hommes",
+    "year": 1939
   },
   {
     "text": "On ne subit pas l'avenir, on le fait.",
@@ -3429,7 +3461,10 @@
     "text": "Nous sommes ce que nous faisons de manière répétée. L'excellence n'est donc pas un acte mais une habitude.",
     "author": "Will Durant",
     "category": "mindset",
-    "id": "q-0711"
+    "id": "q-0711",
+    "context": "Souvent attribuée à Aristote : c'est en réalité le résumé qu'en fait Will Durant dans son ouvrage de vulgarisation. L'attribution ici est la bonne.",
+    "source": "Histoire de la philosophie",
+    "year": 1926
   },
   {
     "text": "Tout le monde savait que c'était impossible. Il est venu un imbécile qui ne le savait pas et qui l'a fait.",
