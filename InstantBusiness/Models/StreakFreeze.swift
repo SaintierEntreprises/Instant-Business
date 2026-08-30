@@ -51,10 +51,6 @@ enum StreakFreeze {
         return SharedDefaults.freezesRemaining
     }
 
-    static func hasFreezeAvailable() -> Bool {
-        SharedDefaults.freezesRemaining > 0
-    }
-
     /// Consomme un joker pour couvrir `day`. Retourne `false` s'il n'y en avait plus.
     @discardableResult
     static func consume(covering day: Date) -> Bool {
