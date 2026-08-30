@@ -92,6 +92,7 @@
 		E96BBED54C791A47E5FAFA6F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98C2DD1D92BA9D6F3025CE6 /* FavoritesView.swift */; };
 		EBB2C84F5F25EB1541C4FBA5 /* ContentStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEC446CE0F37464D9B19FBC /* ContentStoreTests.swift */; };
 		EBDEFA28C473AF029C86EB39 /* AuthorSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBE2C357E4563C4D3B8D8C /* AuthorSearchView.swift */; };
+		ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */; };
 		EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */; };
 		F130446E75628E913CF52C8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */; };
 		F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */; };
@@ -220,6 +221,7 @@
 		E218AB6D9528E25FE4335538 /* SeenQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenQuotes.swift; sourceTree = "<group>"; };
 		E60D8F19F23E265DB4C64E09 /* DailyQuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuoteCard.swift; sourceTree = "<group>"; };
 		F9DC9C05C18C26DF7252B0D4 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSlotTests.swift; sourceTree = "<group>"; };
 		FDDF91D9F0E2D95E64466BD2 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,6 +282,7 @@
 			children = (
 				6BEC446CE0F37464D9B19FBC /* ContentStoreTests.swift */,
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
+				FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */,
 				1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */,
 				A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */,
 				2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */,
@@ -763,6 +766,7 @@
 			files = (
 				EBB2C84F5F25EB1541C4FBA5 /* ContentStoreTests.swift in Sources */,
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
+				ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */,
 				9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */,
 				EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */,
 				216D70BC234A441ED6FE3459 /* StreakTrackerLayoutTests.swift in Sources */,

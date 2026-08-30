@@ -75,30 +75,24 @@ final class NotificationManager: ObservableObject {
         for offset in 0..<days {
             guard let day = calendar.date(byAdding: .day, value: offset, to: now) else { continue }
 
-            for (index, hour) in hours.enumerated() {
-                guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
-                      fireDate > now else { continue }
-
-                // La première notification de la journée porte la citation du jour, celle
-                // que tout le monde reçoit ; les suivantes suivent la rotation propre à
-                // chaque installation.
-                if index == 0 {
+            for slot in Self.slots(for: day, hours: hours, now: now, calendar: calendar) {
+                if slot.carriesDailyQuote {
                     guard let quote = ContentStore.quoteOfTheDay(on: day) else { continue }
                     await schedule(
                         identifier: Self.dailyIdentifierPrefix + "\(offset)",
                         title: "Citation du jour",
                         quote: quote,
-                        fireDate: fireDate,
+                        fireDate: slot.fireDate,
                         center: center
                     )
                 } else {
-                    let unit = ContentStore.rotationUnit(for: fireDate)
+                    let unit = ContentStore.rotationUnit(for: slot.fireDate)
                     guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
                     await schedule(
-                        identifier: Self.rotationIdentifierPrefix + "\(offset)-\(hour)",
+                        identifier: Self.rotationIdentifierPrefix + "\(offset)-\(slot.hour)",
                         title: "Instant Business",
                         quote: quote,
-                        fireDate: fireDate,
+                        fireDate: slot.fireDate,
                         center: center
                     )
                 }
@@ -106,6 +100,34 @@ final class NotificationManager: ObservableObject {
         }
 
         await scheduleStreakReminder(now: now, calendar: calendar, center: center)
+    }
+
+    /// Créneaux réellement programmables pour une journée, et celui qui portera la
+    /// citation du jour.
+    ///
+    /// La citation du jour va à la **première notification effectivement programmée**, et
+    /// non au premier créneau du rythme choisi. La distinction compte le jour où l'app
+    /// est ouverte après le premier horaire : avec « matin et soir », activer les
+    /// notifications à 14 h laissait passer le créneau de 9 h, si bien que l'unique
+    /// notification de la journée était une citation de rotation. Quelqu'un qui n'en
+    /// reçoit qu'une doit recevoir celle du jour, quelle que soit l'heure d'activation.
+    ///
+    /// Fonction pure, statique et `nonisolated` pour être testable : elle ne touche à
+    /// aucun état, et le cas ne se reproduit à la main qu'en changeant l'heure du
+    /// téléphone.
+    nonisolated static func slots(
+        for day: Date,
+        hours: [Int],
+        now: Date,
+        calendar: Calendar = .current
+    ) -> [(hour: Int, fireDate: Date, carriesDailyQuote: Bool)] {
+        var result: [(hour: Int, fireDate: Date, carriesDailyQuote: Bool)] = []
+        for hour in hours.sorted() {
+            guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
+                  fireDate > now else { continue }
+            result.append((hour, fireDate, result.isEmpty))
+        }
+        return result
     }
 
     /// Deux rappels de série à 18h : le lendemain du dernier jour d'ouverture, puis le
