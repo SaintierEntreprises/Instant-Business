@@ -133,6 +133,14 @@ struct InstantBusinessApp: App {
                 }
                 UserDefaults.standard.set(true, forKey: "hasCompletedQuiz")
             }
+
+            // Les réglages d'usage suivent le même chemin. Sans cela, une réinstallation
+            // remettait silencieusement le rythme des notifications et les thèmes à leurs
+            // valeurs par défaut : quelqu'un réglé sur deux citations par jour en recevait
+            // trois sans avoir rien demandé.
+            if let preferences = result.profile.preferences, !preferences.isEmpty {
+                await applyRestored(preferences)
+            }
         } else {
             favorites.detachSession()
             // Le blocage doit aussi s'appliquer avant connexion.
@@ -178,6 +186,30 @@ struct InstantBusinessApp: App {
             "favorites": .int(SharedDefaults.favoriteIDs.count),
             "notifications_on": .bool(SharedDefaults.notificationsEnabled)
         ])
+    }
+
+    /// Recopie les réglages restaurés depuis le serveur.
+    ///
+    /// L'autorisation de notifier est propre à l'appareil : le serveur retient que la
+    /// personne en voulait, pas qu'iOS les accorde ici. On ne rallume donc le rythme que
+    /// si l'autorisation tient encore — sinon l'écran des réglages afficherait un
+    /// interrupteur allumé pendant qu'aucune notification n'arriverait jamais.
+    private func applyRestored(_ preferences: UserSyncService.Preferences) async {
+        if let theme = preferences.appTheme { appearance.appTheme = theme }
+        if let cardTheme = preferences.cardTheme { appearance.cardTheme = cardTheme }
+        if let frequency = preferences.notificationFrequency {
+            SharedDefaults.notificationFrequency = frequency
+        }
+
+        let manager = NotificationManager()
+        guard preferences.notificationsEnabled == true,
+              await manager.isSystemAuthorized()
+        else { return }
+
+        SharedDefaults.notificationsEnabled = true
+        // Le calendrier est reconstruit tout de suite : le rythme vient peut-être de
+        // changer, et attendre la prochaine ouverture laisserait l'ancien en place.
+        await manager.reschedule()
     }
 
     /// `signOut()` ne nettoyait rien en local : quelqu'un qui se connectait ensuite sur le

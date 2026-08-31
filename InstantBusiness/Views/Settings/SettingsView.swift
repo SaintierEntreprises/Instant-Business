@@ -120,6 +120,7 @@ struct SettingsView: View {
                         }
                         .onChange(of: frequency) { _, newValue in
                             SharedDefaults.notificationFrequency = newValue
+                            PreferenceSync.push()
                             Analytics.track(.notificationFrequencyChanged, [
                                 "frequency": .string(newValue.rawValue),
                                 "per_day": .int(newValue.perDay)

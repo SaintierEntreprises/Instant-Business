@@ -26,6 +26,9 @@ final class AuthManager: NSObject, ObservableObject {
         Task {
             for await (_, session) in SupabaseProvider.client.auth.authStateChanges {
                 self.session = session
+                // Recopié pour les services et les vues qui n'ont pas accès à
+                // l'environnement SwiftUI, notamment l'envoi des réglages.
+                AuthSession.currentUserID = session?.user.id.uuidString
                 self.isRestoringSession = false
             }
         }

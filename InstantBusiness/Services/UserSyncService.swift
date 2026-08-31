@@ -21,6 +21,10 @@ final class UserSyncService {
         var last_freeze_date: String?
         var quiz_profile: String?
         var preferred_categories: [String]?
+        var notification_frequency: String?
+        var notifications_enabled: Bool?
+        var app_theme: String?
+        var card_theme: String?
     }
 
     /// Écritures volontairement séparées : chaque upsert ne transmet que ses propres
@@ -49,12 +53,38 @@ final class UserSyncService {
         var preferred_categories: [String]
     }
 
+    private struct PreferencesUpdate: Encodable {
+        let user_id: String
+        var notification_frequency: String
+        var notifications_enabled: Bool
+        var app_theme: String
+        var card_theme: String
+    }
+
     struct Profile {
         var firstName: String?
         var lastName: String?
         var gender: Gender?
         var quizProfile: String?
         var preferredCategories: [QuoteCategory]?
+        var preferences: Preferences?
+    }
+
+    /// Réglages d'usage restaurés depuis le serveur.
+    ///
+    /// Chaque champ est optionnel séparément : un compte créé avant cette colonne n'a rien
+    /// à dire sur son thème, et écraser le réglage local par une valeur par défaut serait
+    /// pire que de ne rien restaurer.
+    struct Preferences {
+        var notificationFrequency: NotificationFrequency?
+        var notificationsEnabled: Bool?
+        var appTheme: AppTheme?
+        var cardTheme: CardTheme?
+
+        var isEmpty: Bool {
+            notificationFrequency == nil && notificationsEnabled == nil
+                && appTheme == nil && cardTheme == nil
+        }
     }
 
     private static let dateFormatter: DateFormatter = {
@@ -102,6 +132,33 @@ final class UserSyncService {
                 preferred_categories: categories.map(\.rawValue)
             ))
             .execute()
+    }
+
+    /// Enregistre les réglages d'usage, pour ne pas les reperdre à la réinstallation.
+    func savePreferences(userID: String) async {
+        _ = try? await SupabaseProvider.client
+            .from("user_state")
+            .upsert(PreferencesUpdate(
+                user_id: userID,
+                notification_frequency: SharedDefaults.notificationFrequency.rawValue,
+                notifications_enabled: SharedDefaults.notificationsEnabled,
+                app_theme: SharedDefaults.appTheme.rawValue,
+                card_theme: SharedDefaults.cardTheme.rawValue
+            ))
+            .execute()
+    }
+
+    /// Une valeur que cette version ne sait pas interpréter est ignorée plutôt que de
+    /// faire échouer toute la restauration : un rythme ajouté plus tard ne doit pas priver
+    /// quelqu'un de son thème.
+    private static func preferences(from remote: RemoteUserState) -> Preferences {
+        Preferences(
+            notificationFrequency: remote.notification_frequency
+                .flatMap(NotificationFrequency.init(rawValue:)),
+            notificationsEnabled: remote.notifications_enabled,
+            appTheme: remote.app_theme.flatMap(AppTheme.init(rawValue:)),
+            cardTheme: remote.card_theme.flatMap(CardTheme.init(rawValue:))
+        )
     }
 
     func toggleFavorite(userID: String, quoteID: String, isFavorite: Bool) async {
@@ -213,7 +270,8 @@ final class UserSyncService {
             // Une catégorie que cette version ne connaît pas est ignorée plutôt que de
             // faire échouer la restauration entière, comme pour le contenu distant.
             preferredCategories: remote?.preferred_categories?
-                .compactMap(QuoteCategory.init(rawValue:))
+                .compactMap(QuoteCategory.init(rawValue:)),
+            preferences: remote.map(Self.preferences(from:))
         )
         return (newStreak, profile, Self.isGrantActive(remote))
     }

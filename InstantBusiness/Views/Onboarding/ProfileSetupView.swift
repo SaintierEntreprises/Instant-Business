@@ -327,6 +327,7 @@ struct ProfileSetupView: View {
         SharedDefaults.lastName = trimmedLastName
         SharedDefaults.gender = gender
         SharedDefaults.notificationFrequency = frequency
+        PreferenceSync.push()
 
         Task {
             if let userID = authManager.session?.user.id.uuidString {

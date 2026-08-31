@@ -49,11 +49,13 @@ final class NotificationManager: ObservableObject {
             return
         }
         SharedDefaults.notificationsEnabled = true
+        PreferenceSync.push()
         await reschedule()
     }
 
     func disable() {
         SharedDefaults.notificationsEnabled = false
+        PreferenceSync.push()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 

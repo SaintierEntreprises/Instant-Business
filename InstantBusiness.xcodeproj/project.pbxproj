@@ -38,6 +38,7 @@
 		4A1FE3A56C4C9485F94B8FCB /* QuoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */; };
 		4CF9671FBBD16B92BCD4FE1A /* JournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B643455F723F9782A69329 /* JournalTests.swift */; };
 		4EBA62ADABC5EB714240275D /* LaunchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43772A66EA93DD473FC9428F /* LaunchPlaceholderView.swift */; };
+		4FF31C01DF00B54622A7E765 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */; };
 		5071B71AC14F4AE18E54B1D7 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3762836BBFF09781681731 /* Quote.swift */; };
 		57A02CF1639D429CE0309B1F /* StreakShareCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558DA4CFE6A360FB5DAE089 /* StreakShareCard.swift */; };
 		57BA877A58F40E651AEE77D3 /* OnboardingChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B12399329D986EB390312 /* OnboardingChrome.swift */; };
@@ -82,6 +83,7 @@
 		BD4D530951A67778D3752221 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A60239C5225A6CF0DDE4E /* AuthManager.swift */; };
 		BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */; };
 		BF79F684A970856123C2A246 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */; };
+		C23EBFA6280985C880AF9765 /* PreferenceSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB77AB0DB038881120F0F2A /* PreferenceSync.swift */; };
 		C423A80FF3E91E13FA12F0EB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF91D9F0E2D95E64466BD2 /* AppTheme.swift */; };
 		C7399FC4E334732B0289D768 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41636C5175259A1EAB7A77E9 /* StreakManager.swift */; };
 		CE5FE1C624059ECADD2EA1FE /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DA74A2E4C5F154DB52B /* ProfileSetupView.swift */; };
@@ -143,6 +145,7 @@
 		04BBE2C357E4563C4D3B8D8C /* AuthorSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorSearchView.swift; sourceTree = "<group>"; };
 		0941CD3482DDC4B77D47F75C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		099B12399329D986EB390312 /* OnboardingChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChrome.swift; sourceTree = "<group>"; };
+		0CB77AB0DB038881120F0F2A /* PreferenceSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceSync.swift; sourceTree = "<group>"; };
 		0D7011A6FE0E310F32225B1B /* AuthorQuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorQuotesView.swift; sourceTree = "<group>"; };
 		0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequency.swift; sourceTree = "<group>"; };
 		0EC8473AF649B893ECE1F2A4 /* InstantBusinessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessApp.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 		7C7A52DF3EE5BC0956CBE732 /* AppUpdateGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateGate.swift; sourceTree = "<group>"; };
 		7DEC47BEAEC1764AC793A113 /* StreakWeekTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakWeekTracker.swift; sourceTree = "<group>"; };
 		7F0A364C7D258DB7F3153E84 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
+		80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		81A1560ED9E0632BCE797684 /* CardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTheme.swift; sourceTree = "<group>"; };
 		81BBB3C381C0F4D20628F136 /* CardThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardThemePickerView.swift; sourceTree = "<group>"; };
 		82FF709D9F886AABF491B0A3 /* SupabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseProvider.swift; sourceTree = "<group>"; };
@@ -294,6 +298,7 @@
 				79B643455F723F9782A69329 /* JournalTests.swift */,
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
 				FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */,
+				80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */,
 				1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */,
 				A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */,
 				2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */,
@@ -443,6 +448,7 @@
 				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
 				42F099D2E3972D46FBFCC187 /* Haptics.swift */,
 				53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */,
+				0CB77AB0DB038881120F0F2A /* PreferenceSync.swift */,
 				79D76350042A06627FF2D247 /* PushRegistrar.swift */,
 				ABCCFAE3B6BED99DFCB01C60 /* ReviewPrompter.swift */,
 				E218AB6D9528E25FE4335538 /* SeenQuotes.swift */,
@@ -722,6 +728,7 @@
 				57BA877A58F40E651AEE77D3 /* OnboardingChrome.swift in Sources */,
 				0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */,
 				46FC9FBC143C5009A0251003 /* PaywallView.swift in Sources */,
+				C23EBFA6280985C880AF9765 /* PreferenceSync.swift in Sources */,
 				7A9F5C8A8A56A9F2BA307BDF /* PressableButtonStyle.swift in Sources */,
 				CE5FE1C624059ECADD2EA1FE /* ProfileSetupView.swift in Sources */,
 				6E6A459FFF97E8D88394CC1A /* PushRegistrar.swift in Sources */,
@@ -783,6 +790,7 @@
 				4CF9671FBBD16B92BCD4FE1A /* JournalTests.swift in Sources */,
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
 				ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */,
+				4FF31C01DF00B54622A7E765 /* PreferencesTests.swift in Sources */,
 				9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */,
 				EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */,
 				216D70BC234A441ED6FE3459 /* StreakTrackerLayoutTests.swift in Sources */,
