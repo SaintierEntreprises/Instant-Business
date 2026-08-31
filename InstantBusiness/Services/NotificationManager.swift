@@ -88,8 +88,16 @@ final class NotificationManager: ObservableObject {
                         center: center
                     )
                 } else {
+                    // Les deux tirages sont indépendants : rien n'empêche la rotation de
+                    // retomber sur la citation du jour, et recevoir deux fois la même dans
+                    // la journée se remarque immédiatement. On avance alors d'un cran.
                     let unit = ContentStore.rotationUnit(for: slot.fireDate)
-                    guard let quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
+                    let daily = ContentStore.quoteOfTheDay(on: day)
+                    guard var quote = ContentStore.rotatingQuote(seed: seed, unit: unit) else { continue }
+                    if quote.id == daily?.id,
+                       let next = ContentStore.rotatingQuote(seed: seed, unit: unit + 1) {
+                        quote = next
+                    }
                     await schedule(
                         identifier: Self.rotationIdentifierPrefix + "\(offset)-\(slot.hour)",
                         title: "Instant Business",
@@ -104,15 +112,23 @@ final class NotificationManager: ObservableObject {
         await scheduleStreakReminder(now: now, calendar: calendar, center: center)
     }
 
-    /// Créneaux réellement programmables pour une journée, et celui qui portera la
-    /// citation du jour.
+    /// Créneaux encore programmables pour une journée, et celui qui portera la citation
+    /// du jour.
     ///
-    /// La citation du jour va à la **première notification effectivement programmée**, et
-    /// non au premier créneau du rythme choisi. La distinction compte le jour où l'app
-    /// est ouverte après le premier horaire : avec « matin et soir », activer les
-    /// notifications à 14 h laissait passer le créneau de 9 h, si bien que l'unique
-    /// notification de la journée était une citation de rotation. Quelqu'un qui n'en
-    /// reçoit qu'une doit recevoir celle du jour, quelle que soit l'heure d'activation.
+    /// La citation du jour appartient au **premier créneau du rythme choisi**, et non au
+    /// premier créneau encore à venir. La nuance est tout le sujet : `reschedule()`
+    /// s'exécute à chaque passage au premier plan et reconstruit toutes les notifications
+    /// en attente. Désigner « le prochain créneau libre » rendait donc l'attribution
+    /// dépendante de l'heure d'exécution — la citation du jour partait à 9 h, puis l'app
+    /// rouverte à 10 h la réattribuait à 14 h, puis à 20 h. La même citation arrivait
+    /// trois fois dans la journée.
+    ///
+    /// Ancrée sur le premier horaire configuré, l'attribution ne dépend plus que du jour
+    /// et du rythme : reprogrammer à n'importe quelle heure donne le même résultat.
+    ///
+    /// Conséquence assumée : activer les notifications après le premier horaire ne donne
+    /// pas la citation du jour ce jour-là. Elle reste lisible dans l'app et sur le widget,
+    /// et une attribution stable vaut mieux qu'un doublon quotidien.
     ///
     /// Fonction pure, statique et `nonisolated` pour être testable : elle ne touche à
     /// aucun état, et le cas ne se reproduit à la main qu'en changeant l'heure du
@@ -123,11 +139,12 @@ final class NotificationManager: ObservableObject {
         now: Date,
         calendar: Calendar = .current
     ) -> [(hour: Int, fireDate: Date, carriesDailyQuote: Bool)] {
+        let sorted = hours.sorted()
         var result: [(hour: Int, fireDate: Date, carriesDailyQuote: Bool)] = []
-        for hour in hours.sorted() {
+        for hour in sorted {
             guard let fireDate = calendar.date(bySettingHour: hour, minute: 0, second: 0, of: day),
                   fireDate > now else { continue }
-            result.append((hour, fireDate, result.isEmpty))
+            result.append((hour, fireDate, hour == sorted.first))
         }
         return result
     }
