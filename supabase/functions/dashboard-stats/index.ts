@@ -177,14 +177,25 @@ Deno.serve(async (req) => {
   }
 
   // --- Versions de l'app en circulation ---------------------------------------------
-  const versionUsers = new Map<string, Set<string>>();
+  //
+  // Chaque personne compte une fois, sous sa version la plus récente. Ranger quelqu'un
+  // dans chaque version d'où il a émis un évènement le comptait deux fois pendant qu'il
+  // mettait à jour : le tableau était donc faux précisément pendant une migration, le
+  // seul moment où on le consulte.
+  //
+  // `events` arrive trié du plus récent au plus ancien : la première occurrence d'une
+  // personne porte sa version actuelle.
+  const latestVersion = new Map<string, string>();
   for (const e of events) {
-    const version = e.app_version ?? "?";
-    if (!versionUsers.has(version)) versionUsers.set(version, new Set());
-    versionUsers.get(version)!.add(e.user_id);
+    if (latestVersion.has(e.user_id)) continue;
+    latestVersion.set(e.user_id, e.app_version ?? "?");
   }
-  const versions = Array.from(versionUsers.entries())
-    .map(([version, set]) => ({ version, users: set.size }))
+  const versionCounts = new Map<string, number>();
+  for (const version of latestVersion.values()) {
+    versionCounts.set(version, (versionCounts.get(version) ?? 0) + 1);
+  }
+  const versions = Array.from(versionCounts.entries())
+    .map(([version, users]) => ({ version, users }))
     .sort((a, b) => b.users - a.users);
 
   // --- Rétention : reviennent-ils le lendemain, la semaine suivante ? ----------------
