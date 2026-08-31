@@ -38,6 +38,7 @@ enum SharedDefaults {
         static let celebratedMilestone = "celebratedMilestone"
         static let lastContentSyncDate = "lastContentSyncDate"
         static let cachedContentBuild = "cachedContentBuild"
+        static let notificationConfig = "notificationConfig"
         static let seenQuoteIDs = "seenQuoteIDs"
         static let reviewPromptCount = "reviewPromptCount"
         static let lastReviewPromptDate = "lastReviewPromptDate"
@@ -78,6 +79,17 @@ enum SharedDefaults {
     static var cachedContentBuild: String? {
         get { suite.string(forKey: Keys.cachedContentBuild) }
         set { suite.set(newValue, forKey: Keys.cachedContentBuild) }
+    }
+
+    /// Dernier réglage de notification reçu du serveur, conservé tel quel.
+    ///
+    /// Recopié en local parce que la reprogrammation a lieu au lancement, souvent avant
+    /// que la requête réseau n'aboutisse — et parfois sans réseau du tout. Sans cette
+    /// copie, le réglage ne s'appliquerait qu'à l'ouverture suivante, ce qui est exactement
+    /// ce qu'on ne veut pas d'un interrupteur d'urgence.
+    static var notificationConfig: [String: Any] {
+        get { suite.dictionary(forKey: Keys.notificationConfig) ?? [:] }
+        set { suite.set(newValue, forKey: Keys.notificationConfig) }
     }
 
     /// Version de l'app en cours d'exécution, `1.2 (31)`.

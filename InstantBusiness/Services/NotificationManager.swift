@@ -59,10 +59,26 @@ final class NotificationManager: ObservableObject {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
+    /// Réglage distant en vigueur, reconstruit depuis la copie locale.
+    nonisolated static var remoteConfig: NotificationConfig {
+        let stored = SharedDefaults.notificationConfig
+        return NotificationConfig.from(
+            enabled: stored["enabled"] as? Bool,
+            dailyQuoteMode: stored["dailyQuoteMode"] as? String,
+            hours: stored["hours"] as? [String: [Int]]
+        )
+    }
+
     func reschedule() async {
         guard SharedDefaults.notificationsEnabled else { return }
         let center = UNUserNotificationCenter.current()
         center.removeAllPendingNotificationRequests()
+
+        // Interrupteur d'urgence : ne rien envoyer vaut mieux qu'envoyer n'importe quoi,
+        // le temps qu'un correctif atteigne les téléphones. Placé après l'effacement, pour
+        // que l'actionner retire aussi ce qui était déjà programmé.
+        let config = Self.remoteConfig
+        guard config.allowsScheduling else { return }
 
         let calendar = Calendar.current
         let now = Date()
@@ -71,14 +87,14 @@ final class NotificationManager: ObservableObject {
         // Créneaux fixes issus du rythme choisi, jamais ancrés sur « maintenant » : le
         // faire repousserait la prochaine notification à chaque ouverture de l'app, si
         // bien que plus quelqu'un s'en sert, moins il en recevrait.
-        let hours = SharedDefaults.notificationFrequency.hours
+        let hours = config.hours(for: SharedDefaults.notificationFrequency)
         let days = rollingWindowDays
 
         for offset in 0..<days {
             guard let day = calendar.date(byAdding: .day, value: offset, to: now) else { continue }
 
             for slot in Self.slots(for: day, hours: hours, now: now, calendar: calendar) {
-                if slot.carriesDailyQuote {
+                if slot.carriesDailyQuote, config.usesDailyQuote {
                     guard let quote = ContentStore.quoteOfTheDay(on: day) else { continue }
                     await schedule(
                         identifier: Self.dailyIdentifierPrefix + "\(offset)",

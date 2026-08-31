@@ -26,6 +26,9 @@ final class AppUpdateGate: ObservableObject {
 
     private struct RemoteConfig: Decodable {
         let minimum_version: String?
+        let notifications_enabled: Bool?
+        let daily_quote_mode: String?
+        let notification_hours: [String: [Int]]?
     }
 
     /// Version marketing de l'app installée (« 1.1 »).
@@ -36,10 +39,17 @@ final class AppUpdateGate: ObservableObject {
     func refresh() async {
         let rows: [RemoteConfig]? = try? await SupabaseProvider.client
             .from("app_config")
-            .select("minimum_version")
+            .select("minimum_version,notifications_enabled,daily_quote_mode,notification_hours")
             .limit(1)
             .execute()
             .value
+
+        // Les réglages de notification voyagent dans la même requête : ils changent aussi
+        // rarement que le minimum de version, et une requête de plus au lancement pour
+        // n'apprendre presque jamais rien ne se justifie pas.
+        if let row = rows?.first {
+            Self.store(row)
+        }
 
         // Toute incertitude laisse passer : réseau coupé, table absente, valeur illisible.
         // Bloquer une app par accident est bien pire que laisser tourner une version
@@ -52,6 +62,25 @@ final class AppUpdateGate: ObservableObject {
 
         requiredVersion = minimum
         isUpdateRequired = Self.isVersion(Self.installedVersion, olderThan: minimum)
+    }
+
+    /// Recopie les réglages de notification, puis reprogramme si quelque chose a bougé.
+    ///
+    /// La reprogrammation n'a lieu qu'en cas de changement : elle efface et reconstruit
+    /// toutes les notifications en attente, ce qu'il serait absurde de refaire à chaque
+    /// lancement pour une valeur qui ne bouge que lors d'un incident.
+    private static func store(_ row: RemoteConfig) {
+        let updated: [String: Any] = [
+            "enabled": row.notifications_enabled as Any,
+            "dailyQuoteMode": row.daily_quote_mode as Any,
+            "hours": row.notification_hours as Any
+        ].compactMapValues { $0 is NSNull ? nil : $0 }
+
+        let previous = SharedDefaults.notificationConfig
+        SharedDefaults.notificationConfig = updated
+
+        guard !NSDictionary(dictionary: previous).isEqual(to: updated) else { return }
+        Task { await NotificationManager().reschedule() }
     }
 
     /// Comparaison composant par composant, en nombres : « 1.10 » est postérieure à

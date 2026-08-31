@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02FB6E6076491FE586FC112A /* NotificationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A531699932EB3DF3C975199 /* NotificationConfig.swift */; };
 		055133EC64BFD2BBAA92AC27 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926C98D044596E4958CB5735 /* Analytics.swift */; };
 		083C7B0A876C8F39B6B62F85 /* UserSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C21D015741E420EBB13737 /* UserSyncService.swift */; };
 		0876CD19836AD7E699791184 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF91D9F0E2D95E64466BD2 /* AppTheme.swift */; };
@@ -49,6 +50,7 @@
 		5EAB958E1290E63824F573F6 /* NotificationFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2A9117011E7DD05C72BB5 /* NotificationFrequency.swift */; };
 		5FDA47AA2291D3D1EC3BB633 /* GoogleSignInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAD0F5B5BD4DF8C3602AD37 /* GoogleSignInButtonView.swift */; };
 		62114FED0C9309980FA6409D /* ForcedUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29F14C6B86FDDFA7EF786B8 /* ForcedUpdateView.swift */; };
+		65027075222EC5B67512E2A7 /* NotificationConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E54B4AF361D9AC163A8F7A9 /* NotificationConfigTests.swift */; };
 		668AA818B8CBA1BD265B417E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EC37E218974E125EB582 /* ContentView.swift */; };
 		6709D069B0EE624A157F1EA1 /* AuthorQuotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7011A6FE0E310F32225B1B /* AuthorQuotesView.swift */; };
 		6BE1E59851ABA4D12692A170 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
@@ -162,6 +164,7 @@
 		276E1E1A05265244CA9B1126 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		288A60239C5225A6CF0DDE4E /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		297EB0EF21E12BD64AB2086C /* InstantBusinessWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantBusinessWidgetBundle.swift; sourceTree = "<group>"; };
+		2A531699932EB3DF3C975199 /* NotificationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConfig.swift; sourceTree = "<group>"; };
 		2AD38765966AF44016F29AA6 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		2C1F916E6100AFA05C41E90D /* LegalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalDocument.swift; sourceTree = "<group>"; };
 		2CD0BA7E4132A008E21F5E59 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		7A3762836BBFF09781681731 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		7C7A52DF3EE5BC0956CBE732 /* AppUpdateGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateGate.swift; sourceTree = "<group>"; };
 		7DEC47BEAEC1764AC793A113 /* StreakWeekTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakWeekTracker.swift; sourceTree = "<group>"; };
+		7E54B4AF361D9AC163A8F7A9 /* NotificationConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConfigTests.swift; sourceTree = "<group>"; };
 		7F0A364C7D258DB7F3153E84 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		81A1560ED9E0632BCE797684 /* CardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTheme.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				C1C65134CDF9C0803A237525 /* ContentCacheStampTests.swift */,
 				6BEC446CE0F37464D9B19FBC /* ContentStoreTests.swift */,
 				79B643455F723F9782A69329 /* JournalTests.swift */,
+				7E54B4AF361D9AC163A8F7A9 /* NotificationConfigTests.swift */,
 				8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */,
 				FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */,
 				80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */,
@@ -453,6 +458,7 @@
 				1716BC36A4F2D82614D94A2B /* ContentSyncService.swift */,
 				74C2FFD2FE0AE099479C31D2 /* FavoritesStore.swift */,
 				42F099D2E3972D46FBFCC187 /* Haptics.swift */,
+				2A531699932EB3DF3C975199 /* NotificationConfig.swift */,
 				53C3A637D7E4D0DDA9C43629 /* NotificationManager.swift */,
 				0CB77AB0DB038881120F0F2A /* PreferenceSync.swift */,
 				79D76350042A06627FF2D247 /* PushRegistrar.swift */,
@@ -729,6 +735,7 @@
 				702AA521D93B14A6E8C610ED /* LegalDocument.swift in Sources */,
 				3A9E8FBC56F7BF482B7C2235 /* LegalDocumentView.swift in Sources */,
 				83A83315D51A2ECDFACF5A8C /* LoginView.swift in Sources */,
+				02FB6E6076491FE586FC112A /* NotificationConfig.swift in Sources */,
 				74E8AC843FE5DFF5948ABEDF /* NotificationFrequency.swift in Sources */,
 				BD59A036A85AD66B6FE8ECF1 /* NotificationManager.swift in Sources */,
 				57BA877A58F40E651AEE77D3 /* OnboardingChrome.swift in Sources */,
@@ -795,6 +802,7 @@
 				3D064F6193CE80AE40C98C1F /* ContentCacheStampTests.swift in Sources */,
 				EBB2C84F5F25EB1541C4FBA5 /* ContentStoreTests.swift in Sources */,
 				4CF9671FBBD16B92BCD4FE1A /* JournalTests.swift in Sources */,
+				65027075222EC5B67512E2A7 /* NotificationConfigTests.swift in Sources */,
 				146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */,
 				ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */,
 				4FF31C01DF00B54622A7E765 /* PreferencesTests.swift in Sources */,
@@ -948,7 +956,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1027,7 +1035,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
