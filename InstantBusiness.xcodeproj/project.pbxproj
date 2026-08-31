@@ -12,6 +12,7 @@
 		0876CD19836AD7E699791184 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF91D9F0E2D95E64466BD2 /* AppTheme.swift */; };
 		0B3776387CB952730BC33540 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B196CC6BCDAEF9134B4F604 /* OnboardingView.swift */; };
 		0B9CE7F68D8B352BEE6E43D5 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B619CC87D0D27E2848B53FBA /* Gender.swift */; };
+		0D78617F844B4D58B61C331C /* ShareCardRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899A345E09B5EFC95C83BE96 /* ShareCardRenderTests.swift */; };
 		146F5A9203490DB4CB7912F6 /* NotificationFrequencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */; };
 		18F5555FE3D730E0FFA78DC1 /* WidgetThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60E0807C4A25DAE4BE08DB7 /* WidgetThemes.swift */; };
 		19319FD13E3DBCD7D0E7C3A6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F099D2E3972D46FBFCC187 /* Haptics.swift */; };
@@ -101,6 +102,7 @@
 		ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */; };
 		EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */; };
 		F130446E75628E913CF52C8E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02DC7A12B67A70A33FB2F55 /* SettingsView.swift */; };
+		F1B8DF9FCAB8425BE0AE191A /* QuoteShareCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33244758801DA53DADD9EF7B /* QuoteShareCard.swift */; };
 		F257C530A47E7BB4CBEBF39C /* CardFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBBE180CFDAF926A265E2E7 /* CardFeedView.swift */; };
 		F4ECC230D32BA82CE7D82495 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DBE96777E0978047DC7F4 /* ContentStore.swift */; };
 		F58CEB962B2105CB620BC55D /* StreakCelebrationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552736CC9902EC6877D1ED8B /* StreakCelebrationSheet.swift */; };
@@ -166,6 +168,7 @@
 		2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTrackerLayoutTests.swift; sourceTree = "<group>"; };
 		3091F7D0369B030CF47D8A13 /* WidgetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTheme.swift; sourceTree = "<group>"; };
 		31A1BA6A4C5417DBECEE19AC /* InstantBusiness.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = InstantBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33244758801DA53DADD9EF7B /* QuoteShareCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteShareCard.swift; sourceTree = "<group>"; };
 		3C1DBE96777E0978047DC7F4 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
 		3E055FD814EA49A767F6DC5C /* QuoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidget.swift; sourceTree = "<group>"; };
 		3EECCDF2350300521482CD7C /* CategoryFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterBar.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 		839EF20BDAA6B3D63F32C1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83F3D69D4B6341ED12298A60 /* StreakFreeze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakFreeze.swift; sourceTree = "<group>"; };
 		8802591D8BA622C2533188CC /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		899A345E09B5EFC95C83BE96 /* ShareCardRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCardRenderTests.swift; sourceTree = "<group>"; };
 		8B146F852CD513CA46AFCD03 /* NotificationFrequencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequencyTests.swift; sourceTree = "<group>"; };
 		926C98D044596E4958CB5735 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		98FA651AFB70B064EA7E06B7 /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				FB6194E8F29F434E9E4441CF /* NotificationSlotTests.swift */,
 				80D440B6E58AF7045AB660E6 /* PreferencesTests.swift */,
 				1D13684A8B85824A3F582D6C /* ReviewPrompterTests.swift */,
+				899A345E09B5EFC95C83BE96 /* ShareCardRenderTests.swift */,
 				A6D9C82AAD0BE04439690EF4 /* StreakLogicTests.swift */,
 				2F344E66B951F6EBFA06BB65 /* StreakTrackerLayoutTests.swift */,
 			);
@@ -309,6 +314,7 @@
 		345B611FBBD1D0115D92CEFC /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				33244758801DA53DADD9EF7B /* QuoteShareCard.swift */,
 				AFB521C794CF4668EC6CF4B4 /* ShareSheet.swift */,
 			);
 			path = Share;
@@ -737,6 +743,7 @@
 				D9BB87D63354F1C9C278E2CD /* Quote.swift in Sources */,
 				7D15BA9FBC84EEF92B84AF68 /* QuoteCardView.swift in Sources */,
 				8A5A010AADB6EE5789129B7B /* QuoteDetailView.swift in Sources */,
+				F1B8DF9FCAB8425BE0AE191A /* QuoteShareCard.swift in Sources */,
 				3BCE8E3CEB62672A0719D333 /* ReviewPrompter.swift in Sources */,
 				3011510FCC7A5345115F2DD2 /* SeenQuotes.swift in Sources */,
 				E95BC7C4F00B06CD32D9F841 /* SettingsIconBadge.swift in Sources */,
@@ -792,6 +799,7 @@
 				ED322CA99A45705D05675CD9 /* NotificationSlotTests.swift in Sources */,
 				4FF31C01DF00B54622A7E765 /* PreferencesTests.swift in Sources */,
 				9474153FEAC983CC1505EB61 /* ReviewPrompterTests.swift in Sources */,
+				0D78617F844B4D58B61C331C /* ShareCardRenderTests.swift in Sources */,
 				EE394F4E06F07529BE040F2F /* StreakLogicTests.swift in Sources */,
 				216D70BC234A441ED6FE3459 /* StreakTrackerLayoutTests.swift in Sources */,
 			);
@@ -940,7 +948,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1019,7 +1027,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7L2K39BW92;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

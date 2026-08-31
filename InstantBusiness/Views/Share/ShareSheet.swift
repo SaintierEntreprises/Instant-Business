@@ -14,19 +14,14 @@ struct ShareSheet: UIViewControllerRepresentable {
 @MainActor
 enum ShareCardRenderer {
     static func uiImage(for quote: Quote, theme: CardTheme = SharedDefaults.cardTheme) -> UIImage? {
-        let view = QuoteCardView(
-            quote: quote,
-            showControls: false,
-            showSignature: true,
-            theme: theme
-        )
-        .frame(width: 400, height: 533)
-
-        let renderer = ImageRenderer(content: view)
+        let renderer = ImageRenderer(content: QuoteShareCard(quote: quote, theme: theme))
         // Échelle fixe plutôt que celle de l'écran : sur un appareil en @2x, l'image
-        // partagée sortait en 800×1066, visiblement molle une fois affichée en story.
-        // 1200×1599 est net partout et reste léger.
-        renderer.scale = 3
+        // sortait molle une fois affichée en plein écran. 540 × 675 à l'échelle 2 donne
+        // 1080 × 1350, la définition qu'Instagram attend sans rééchantillonner.
+        renderer.scale = 2
+        // Sans fond opaque, les pixels transparents de l'image sont composés par la
+        // destination : c'est ce qui donnait des angles rognés sur Instagram.
+        renderer.isOpaque = true
         return renderer.uiImage
     }
 }
